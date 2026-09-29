@@ -2,14 +2,16 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
+import { AlertTriangle, List, Network } from "lucide-react";
 import { Background, Controls, Handle, MiniMap, Position, ReactFlow, type Node, type NodeProps } from "@xyflow/react";
 import type { Domain, GraphNode } from "@/lib/types";
-import { topicById } from "@/content";
+import { resolveConcept } from "@/content";
 import { useAtlas } from "@/components/atlas-provider";
-import { buildAdjacencyMap, buildEntranceOrder, getGraphNodeHref, type GraphMode } from "@/lib/graph";
+import { buildAdjacencyMap, buildEntranceOrder, type GraphMode } from "@/lib/graph";
+import { getConceptGraphView } from "@/lib/concepts/views";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/components/locale-provider";
-import { localizedLabel, localizeTopic } from "@/i18n/content";
+import { localizedLabel } from "@/i18n/content";
 
 type NodeStatus = "not-started" | "in-progress" | "completed";
 
@@ -29,7 +31,7 @@ export interface GraphNodeActionProps {
 
 export function GraphNodeAction({ label, href, kind, status, mode, dimmed, related, justCompleted, entranceOrder, onNavigate, onFocusChange }: GraphNodeActionProps) {
   const { t } = useI18n();
-  const targetType = href?.startsWith("/topics/") ? "topic" : href ? "domain" : "branch";
+  const targetType = href?.startsWith("/topics/") || href?.startsWith("/concepts/") ? "topic" : href ? "domain" : "branch";
   const accessibleLabel = targetType === "topic" ? t("graph.openTopic", { label }) : targetType === "domain" ? t("graph.openDomain", { label }) : t("graph.exploreBranch", { label });
   return (
     <button
@@ -92,7 +94,8 @@ export function GraphExplorer({ domain, mode }: { domain: Domain; mode: GraphMod
   const router = useRouter();
   const { progress, ready } = useAtlas();
   const { locale, t } = useI18n();
-  const graph = domain[mode === "roadmap" ? "roadmap" : "mindMap"];
+  const graph = useMemo(() => getConceptGraphView(domain, mode), [domain, mode]);
+  const [view, setView] = useState<"map" | "list">("list");
   const [activeNodeId, setActiveNodeId] = useState<string | null>(null);
   const [entering, setEntering] = useState(true);
   const [celebrating, setCelebrating] = useState<Set<string>>(new Set());
@@ -101,22 +104,31 @@ export function GraphExplorer({ domain, mode }: { domain: Domain; mode: GraphMod
   const setFocusedNode = useCallback((id: string | null) => setActiveNodeId(id), []);
 
   useEffect(() => {
+    // A deterministic list is the initial narrow-screen experience.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (!window.matchMedia("(max-width: 650px)").matches) setView("map");
+  }, []);
+
+  useEffect(() => {
     const timeout = window.setTimeout(() => setEntering(false), 1050);
     return () => window.clearTimeout(timeout);
   }, [domain.id, mode]);
 
   const adjacency = useMemo(() => buildAdjacencyMap(graph.nodes, graph.edges, mode), [graph.edges, graph.nodes, mode]);
   const entranceOrder = useMemo(() => buildEntranceOrder(graph.nodes, graph.edges, mode), [graph.edges, graph.nodes, mode]);
-  const baseNodes = useMemo(() => graph.nodes.map((node) => ({
-    id: node.id,
-    type: "atlas",
-    position: { x: node.x, y: node.y },
-    label: node.topicId && topicById.get(node.topicId) ? localizeTopic(topicById.get(node.topicId)!, locale).title : localizedLabel(node.label, locale),
-    href: getGraphNodeHref(node, domain.slug, (topicId) => topicById.get(topicId)?.slug),
-    kind: node.kind,
-    topicId: node.topicId,
-    entranceOrder: entranceOrder.get(node.id) ?? 0,
-  })), [domain.slug, entranceOrder, graph.nodes, locale]);
+  const baseNodes = useMemo(() => graph.nodes.map((node) => {
+    const concept = node.conceptId ? resolveConcept(node.conceptId) : null;
+    return {
+      id: node.id,
+      type: "atlas",
+      position: { x: node.x, y: node.y },
+      label: concept ? concept.name[locale] : localizedLabel(node.label, locale),
+      href: concept ? `/concepts/${concept.slug}` : node.kind === "root" ? `/domains/${domain.slug}` : undefined,
+      kind: node.kind,
+      topicId: node.topicId,
+      entranceOrder: entranceOrder.get(node.id) ?? 0,
+    };
+  }), [domain.slug, entranceOrder, graph.nodes, locale]);
   const baseEdges = useMemo(() => graph.edges.map((edge, index) => ({ ...edge, animated: false, type: "smoothstep", entranceOrder: index })), [graph.edges]);
   const statuses = useMemo<Record<string, NodeStatus>>(() => Object.fromEntries(baseNodes.map((node) => [node.id, node.topicId ? progress[node.topicId] ?? "not-started" : "not-started"])), [baseNodes, progress]);
 
@@ -168,11 +180,17 @@ export function GraphExplorer({ domain, mode }: { domain: Domain; mode: GraphMod
   const handleNodeEnter = useCallback((_: React.MouseEvent, node: Node<AtlasNodeData>) => setActiveNodeId(node.id), []);
   const handleNodeLeave = useCallback(() => setActiveNodeId(null), []);
 
+  const listNodes = [...baseNodes].sort((a, b) => a.entranceOrder - b.entranceOrder || a.id.localeCompare(b.id));
+
   return (
-    <div className={cn("graph-shell", `graph-${mode}`, entering && "graph-entering")}>
-      <div className="graph-legend"><span><i className="legend-dot" />{t("graph.notStarted")}</span><span><i className="legend-dot progress" />{t("graph.inProgress")}</span><span><i className="legend-dot complete" />{t("graph.completed")}</span></div>
-      <p className="graph-instruction">{t("graph.instruction")}</p>
-      <ReactFlow
+    <div className="graph-explorer">
+      <div className="graph-view-bar"><div className="graph-legend"><span><i className="legend-dot" />{t("graph.notStarted")}</span><span><i className="legend-dot progress" />{t("graph.inProgress")}</span><span><i className="legend-dot complete" />{t("graph.completed")}</span></div><div className="view-toggle"><button className="icon-button" aria-label={t("workspace.map")} aria-pressed={view === "map"} onClick={() => setView("map")}><Network size={17} /></button><button className="icon-button" aria-label={t("workspace.list")} aria-pressed={view === "list"} onClick={() => setView("list")}><List size={17} /></button></div></div>
+      {graph.unresolvedNodes.length > 0 && <p className="graph-warning" role="status"><AlertTriangle size={15} />{t("graph.unresolved", { count: graph.unresolvedNodes.length })}</p>}
+      {view === "list" ? <ol className="graph-node-list" aria-label={t(mode === "roadmap" ? "common.roadmap" : "common.mindMap")}>
+        {listNodes.map((node) => <li key={node.id} className={statuses[node.id]}><span className="graph-list-index">{String(node.entranceOrder + 1).padStart(2, "0")}</span>{node.href ? <button type="button" onClick={() => { if (node.href) navigate(node.href); }}><span>{node.label}</span><small>{t(statuses[node.id] === "completed" ? "graph.completed" : statuses[node.id] === "in-progress" ? "graph.inProgress" : "graph.notStarted")}</small></button> : <div><span>{node.label}</span><small>{t("graph.structuralNode")}</small></div>}</li>)}
+      </ol> : <div className={cn("graph-shell", `graph-${mode}`, entering && "graph-entering")}>
+        <p className="graph-instruction">{t("graph.instruction")}</p>
+        <ReactFlow
         className="atlas-flow"
         nodes={nodes}
         edges={edges}
@@ -186,10 +204,10 @@ export function GraphExplorer({ domain, mode }: { domain: Domain; mode: GraphMod
         nodesDraggable={false}
         nodesConnectable={false}
         elementsSelectable={false}
-      >
-        <Background gap={mode === "mindmap" ? 32 : 24} size={1} color="var(--border)" />
-        <Controls showInteractive={false} />
-        <MiniMap
+        >
+          <Background gap={mode === "mindmap" ? 32 : 24} size={1} color="var(--border)" />
+          <Controls showInteractive={false} />
+          <MiniMap
           className="atlas-minimap"
           style={{ width: 140, height: 92 }}
           bgColor="transparent"
@@ -201,8 +219,9 @@ export function GraphExplorer({ domain, mode }: { domain: Domain; mode: GraphMod
           pannable={false}
           zoomable={false}
           nodeColor={(node) => node.data.status === "completed" ? "#34d399" : node.data.status === "in-progress" ? "#fbbf24" : "#8b95a7"}
-        />
-      </ReactFlow>
+          />
+        </ReactFlow>
+      </div>}
     </div>
   );
 }

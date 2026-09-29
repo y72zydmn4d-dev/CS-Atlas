@@ -127,6 +127,8 @@ export const en = {
   "graph.openTopic": "Open topic: {label}",
   "graph.openDomain": "Open domain: {label}",
   "graph.exploreBranch": "Explore branch: {label}",
+  "graph.structuralNode": "Structural grouping",
+  "graph.unresolved": "{count} graph node(s) could not be resolved to a current Concept.",
   "settings.keyboard": "Keyboard",
   "settings.keyboardBody": "Press Cmd+K or Ctrl+K anywhere to search.",
   "settings.privacy": "Privacy",

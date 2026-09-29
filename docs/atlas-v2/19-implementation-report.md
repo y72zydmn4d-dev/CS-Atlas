@@ -35,6 +35,8 @@ The App Router, existing topic content renderer, route URLs, bilingual overlays,
 
 Canonical IDs are type-qualified: `topic:<legacy-id>`, `algorithm:<legacy-id>`, and `technique:<legacy-id>`. This prevents legacy collisions such as separate Algorithm and Technique records named `two-pointers`. Relations use validated typed vocabulary, and authored content records refer to Concept IDs rather than duplicating Concept metadata.
 
+The checked `content/concepts/legacy-map.ts` artifact records every source ID/slug, preserved route, canonical destination, and raw-ID collision. Migration parity tests cover registry counts, routes, citations, graph references, Exercises, Problems, and compatibility resolution.
+
 ## 9. Knowledge Graph
 
 The in-memory, content-backed graph service supports bounded Concept and relation queries. `/atlas` projects canonical topic concepts and prerequisite relations. Roadmaps and Mind Maps retain separate authored nodes, layouts, and edge semantics while resolving Concept references through `lib/concepts/views.ts`.
@@ -57,7 +59,7 @@ Judge contracts define language, submission state, and AC/WA/TLE/MLE/RE/CE vocab
 
 ## 14. Roadmap / Mind Map status
 
-Current roadmaps and mind maps have an adapter that resolves their topic links to canonical Concepts without changing structural nodes, layouts, or their separate sequence/association semantics. Existing graph routes and accessible non-canvas alternatives remain intact.
+Current roadmaps and mind maps render through an adapter that resolves topic links to canonical Concepts without changing structural nodes, layouts, or their separate sequence/association semantics. Existing graph routes remain intact, progress overlays are preserved, unresolved mappings are reported, and both views provide a deterministic keyboard-accessible list alternative. Roadmap prerequisite order is validated independently; mind-map association edges are not reinterpreted as prerequisites.
 
 ## 15. Library status
 

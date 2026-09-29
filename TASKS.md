@@ -42,8 +42,8 @@ Depends on M2.
 - [x] Define graph read/query contracts over canonical records and typed relations; do not add a graph database absent measured query need.
 - [x] Implement in-memory/content-backed graph adapter for concepts and existing prerequisite relationships.
 - [x] Convert `/atlas` to a projection over canonical entities while retaining its filters, bilingual search, inspector, progress context, and keyboard list.
-- [ ] Establish relation validation, stable layout input IDs, pagination/limits, and safe handling of missing/deprecated concepts.
-- [ ] Add graph fixture tests for cross-domain prerequisites, deduplicated edges, relation direction, and graph/list parity.
+- [x] Establish relation validation, stable layout input IDs, bounded graph reads, and safe unresolved/deprecated Concept handling.
+- [x] Add graph fixture tests for cross-domain prerequisites, deduplicated edges, relation direction, and deterministic graph/list inputs.
 
 ## M4 - Learn platform
 
@@ -93,8 +93,8 @@ Depends on M2 and M3.
 
 - [x] Define roadmap and mind-map authored view schemas over canonical concept IDs, with distinct semantics and separate layout/edge data.
 - [x] Map current `Domain.roadmap` and `Domain.mindMap` node topic links to concepts, retaining structural nodes and domain overview meaning.
-- [ ] Preserve existing graph routes and add deterministic list alternatives, progress overlays, and unresolved-node reporting.
-- [ ] Add graph validation that checks roadmap prerequisite ordering independently from mind-map relation semantics.
+- [x] Preserve existing graph routes and add deterministic list alternatives, progress overlays, and unresolved-node reporting.
+- [x] Add graph validation that checks roadmap prerequisite ordering independently from mind-map relation semantics.
 - [ ] Remove duplicated concept labels/URLs gradually only after parity tests and authoring workflow are in place.
 
 ## M9 - Personal Library

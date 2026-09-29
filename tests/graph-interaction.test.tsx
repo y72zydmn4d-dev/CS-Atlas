@@ -5,6 +5,7 @@ import { describe, expect, it, vi } from "vitest";
 import { GraphNodeAction } from "@/components/graph-explorer";
 import { domains, topicById, validateContent } from "@/content";
 import { buildAdjacencyMap, getGraphNodeHref } from "@/lib/graph";
+import { validateConceptGraphView, validateRoadmapPrerequisiteOrder, type ConceptGraphView } from "@/lib/concepts/views";
 import type { GraphNode } from "@/lib/types";
 import { renderWithLocale } from "@/tests/test-utils";
 
@@ -37,6 +38,11 @@ describe("graph navigation", () => {
     expect(navigate).toHaveBeenCalledWith("/topics/dynamic-programming");
   });
 
+  it("recognizes canonical Concept destinations as topic navigation", () => {
+    renderWithLocale(<GraphNodeAction label="Arrays" href="/concepts/topic-arrays" status="not-started" mode="roadmap" entranceOrder={1} onNavigate={() => undefined} onFocusChange={() => undefined} />);
+    expect(screen.getByRole("button", { name: "Open topic: Arrays" })).toBeInTheDocument();
+  });
+
   it("keeps non-topic branch nodes non-navigating", () => {
     const navigate = vi.fn();
     renderWithLocale(<GraphNodeAction label="Algorithms" kind="branch" status="not-started" mode="mindmap" entranceOrder={1} onNavigate={navigate} onFocusChange={() => undefined} />);
@@ -57,6 +63,19 @@ describe("graph relationships", () => {
   it("keeps roadmap and mind-map models separate and valid", () => {
     for (const domain of domains) expect(domain.roadmap).not.toBe(domain.mindMap);
     expect(validateContent()).toEqual([]);
+  });
+
+  it("reports unresolved concepts and applies prerequisite ordering only to roadmaps", () => {
+    const view: ConceptGraphView = {
+      id: "roadmap:test",
+      kind: "roadmap",
+      domainId: "test",
+      nodes: [{ id: "missing", label: "Missing", topicId: "missing", x: 0, y: 0 }],
+      edges: [],
+      unresolvedNodes: [{ nodeId: "missing", topicId: "missing" }],
+    };
+    expect(validateConceptGraphView(view)).toContain("roadmap:test node missing cannot resolve topic missing");
+    expect(validateRoadmapPrerequisiteOrder({ ...view, kind: "mindmap", id: "mindmap:test" })).toEqual([]);
   });
 
   it("keeps React Flow positioning wrappers free of transform animation", () => {

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { algorithms, concepts, domains, exercises, problems, techniques, topics, validateContent } from "@/content";
 import { legacyConceptCollisions, legacyConceptMappings, resolveLegacyConceptMapping } from "@/content/concepts/legacy-map";
 import { resolveConcept } from "@/content/concepts/registry";
-import { getConceptGraphView, validateConceptGraphView } from "@/lib/concepts/views";
+import { getConceptGraphView, validateConceptGraphView, validateRoadmapPrerequisiteOrder } from "@/lib/concepts/views";
 
 describe("canonical Concept migration parity", () => {
   it("maps every source-qualified legacy entity without merging raw ID collisions", () => {
@@ -30,6 +30,7 @@ describe("canonical Concept migration parity", () => {
       for (const kind of ["roadmap", "mindmap"] as const) {
         const view = getConceptGraphView(domain, kind);
         expect(validateConceptGraphView(view)).toEqual([]);
+        expect(validateRoadmapPrerequisiteOrder(view)).toEqual([]);
         for (const node of view.nodes.filter((item) => item.topicId)) expect(resolveConcept(node.conceptId ?? "")).not.toBeNull();
       }
     }

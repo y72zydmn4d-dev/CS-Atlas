@@ -128,6 +128,8 @@ export const vi = {
   "graph.openTopic": "Mở chủ đề: {label}",
   "graph.openDomain": "Mở lĩnh vực: {label}",
   "graph.exploreBranch": "Khám phá nhánh: {label}",
+  "graph.structuralNode": "Nhóm cấu trúc",
+  "graph.unresolved": "Không thể liên kết {count} node đồ thị với Khái niệm hiện tại.",
   "settings.keyboard": "Bàn phím",
   "settings.keyboardBody": "Nhấn Cmd+K hoặc Ctrl+K ở bất kỳ đâu để tìm kiếm.",
   "settings.privacy": "Quyền riêng tư",

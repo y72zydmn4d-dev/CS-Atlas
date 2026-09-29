@@ -3,6 +3,7 @@ import { isLearningEvent, isLearningGoal, isStudyPlan, type LearningEvent, type 
 import { sanitizeProgress } from "@/lib/progress";
 import { sanitizePracticeState } from "@/lib/practice/validation";
 import type { PracticeState } from "@/lib/practice/types";
+import { isExerciseAttempt, type ExerciseAttempt } from "@/lib/domain/exercises";
 
 const KEYS = {
   sidebar: "cs-atlas.sidebar-collapsed.v1",
@@ -10,6 +11,7 @@ const KEYS = {
   progress: "cs-atlas.progress.v1",
   bookmarks: "cs-atlas.bookmarks.v1",
   exercises: "cs-atlas.exercises.v1",
+  exerciseAttempts: "cs-atlas.exercise-attempts.v1",
   theme: "cs-atlas.theme.v1",
   locale: "cs-atlas.locale.v1",
   translationPopover: "cs-atlas.translation-popover.v1",
@@ -91,6 +93,19 @@ export const storage = {
   },
   saveExercises(value: Record<string, ExerciseStatus>) {
     writeJson(KEYS.exercises, value);
+  },
+  loadExerciseAttempts(): ExerciseAttempt[] {
+    const value = readJson(KEYS.exerciseAttempts);
+    return Array.isArray(value) ? value.filter(isExerciseAttempt).slice(-500) : [];
+  },
+  saveExerciseAttempts(value: ExerciseAttempt[]): boolean {
+    if (typeof window === "undefined") return false;
+    try {
+      window.localStorage.setItem(KEYS.exerciseAttempts, JSON.stringify(value.filter(isExerciseAttempt).slice(-500)));
+      return true;
+    } catch {
+      return false;
+    }
   },
   loadLearningEvents(): LearningEvent[] {
     const value = readJson(KEYS.learningEvents);

@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { Bookmark, ExerciseStatus, ProgressStatus } from "@/lib/types";
 import type { GoalMetric, LearningEvent, LearningEventTarget, LearningEventType, LearningGoal, StudyPlan, StudyPlanItem } from "@/lib/domain/learning";
+import type { ExerciseAttempt } from "@/lib/domain/exercises";
 import { storage } from "@/lib/storage";
 
 interface AtlasContextValue {
@@ -10,12 +11,14 @@ interface AtlasContextValue {
   progress: Record<string, ProgressStatus>;
   bookmarks: Bookmark[];
   exercises: Record<string, ExerciseStatus>;
+  exerciseAttempts: ExerciseAttempt[];
   learningEvents: LearningEvent[];
   learningGoals: LearningGoal[];
   studyPlans: StudyPlan[];
   getStatus: (id: string) => ProgressStatus;
   setStatus: (id: string, status: ProgressStatus) => void;
   setExerciseStatus: (id: string, status: ExerciseStatus) => void;
+  recordExerciseAttempt: (attempt: Omit<ExerciseAttempt, "id" | "occurredAt">) => boolean;
   toggleBookmark: (bookmark: Omit<Bookmark, "createdAt">) => void;
   isBookmarked: (id: string, type: Bookmark["type"]) => boolean;
   recordLearningEvent: (event: { type: LearningEventType; conceptId: string; source: LearningEvent["source"]; sourceVersion?: number; target?: LearningEventTarget }) => void;
@@ -33,6 +36,7 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
   const [progress, setProgress] = useState<Record<string, ProgressStatus>>({});
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [exercises, setExercises] = useState<Record<string, ExerciseStatus>>({});
+  const [exerciseAttempts, setExerciseAttempts] = useState<ExerciseAttempt[]>([]);
   const [learningEvents, setLearningEvents] = useState<LearningEvent[]>([]);
   const [learningGoals, setLearningGoals] = useState<LearningGoal[]>([]);
   const [studyPlans, setStudyPlans] = useState<StudyPlan[]>([]);
@@ -43,6 +47,7 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
     setProgress(storage.loadProgress());
     setBookmarks(storage.loadBookmarks());
     setExercises(storage.loadExercises());
+    setExerciseAttempts(storage.loadExerciseAttempts());
     setLearningEvents(storage.loadLearningEvents());
     setLearningGoals(storage.loadLearningGoals());
     setStudyPlans(storage.loadStudyPlans());
@@ -74,6 +79,18 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
       storage.saveExercises(next);
       return next;
     });
+  }, []);
+
+  const recordExerciseAttempt = useCallback((attempt: Omit<ExerciseAttempt, "id" | "occurredAt">) => {
+    const id = typeof crypto !== "undefined" && typeof crypto.randomUUID === "function" ? crypto.randomUUID() : `exercise-attempt-${Date.now()}`;
+    const nextAttempt: ExerciseAttempt = { ...attempt, id, occurredAt: new Date().toISOString() };
+    let saved = false;
+    setExerciseAttempts((current) => {
+      const next = [...current, nextAttempt].slice(-500);
+      saved = storage.saveExerciseAttempts(next);
+      return saved ? next : current;
+    });
+    return saved;
   }, []);
 
   const recordLearningEvent = useCallback((event: { type: LearningEventType; conceptId: string; source: LearningEvent["source"]; sourceVersion?: number; target?: LearningEventTarget }) => {
@@ -162,12 +179,14 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
     progress,
     bookmarks,
     exercises,
+    exerciseAttempts,
     learningEvents,
     learningGoals,
     studyPlans,
     getStatus: (id) => progress[id] ?? "not-started",
     setStatus,
     setExerciseStatus,
+    recordExerciseAttempt,
     toggleBookmark,
     isBookmarked: (id, type) => bookmarks.some((item) => item.id === id && item.type === type),
     recordLearningEvent,
@@ -176,7 +195,7 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
     createStudyPlan,
     completeStudyPlanItem,
     rescheduleStudyPlanItem,
-  }), [archiveLearningGoal, bookmarks, completeStudyPlanItem, createLearningGoal, createStudyPlan, exercises, learningEvents, learningGoals, progress, ready, recordLearningEvent, rescheduleStudyPlanItem, setExerciseStatus, setStatus, studyPlans, toggleBookmark]);
+  }), [archiveLearningGoal, bookmarks, completeStudyPlanItem, createLearningGoal, createStudyPlan, exerciseAttempts, exercises, learningEvents, learningGoals, progress, ready, recordExerciseAttempt, recordLearningEvent, rescheduleStudyPlanItem, setExerciseStatus, setStatus, studyPlans, toggleBookmark]);
 
   return <AtlasContext.Provider value={value}>{children}</AtlasContext.Provider>;
 }

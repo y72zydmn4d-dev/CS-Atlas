@@ -11,10 +11,14 @@ export class UnavailableJudgeClient implements JudgeClient {
   async submit(input: SubmissionRequest): Promise<SubmissionResult> {
     const existing = this.submissions.get(input.idempotencyKey);
     if (existing) return existing;
+    const now = new Date().toISOString();
     const result: SubmissionResult = {
       submissionId: input.idempotencyKey,
       status: "unavailable",
       message: "Remote Judge is not configured. Public browser runs remain available.",
+      createdAt: now,
+      updatedAt: now,
+      runtime: { languageId: input.languageId, version: "not configured" },
     };
     this.submissions.set(input.idempotencyKey, result);
     return result;
@@ -27,7 +31,7 @@ export class UnavailableJudgeClient implements JudgeClient {
   async cancel(submissionId: string): Promise<SubmissionResult | null> {
     const existing = this.submissions.get(submissionId);
     if (!existing) return null;
-    const result: SubmissionResult = { ...existing, status: "cancelled", message: "Submission cancelled before remote execution." };
+    const result: SubmissionResult = { ...existing, status: "cancelled", message: "Submission cancelled before remote execution.", updatedAt: new Date().toISOString() };
     this.submissions.set(submissionId, result);
     return result;
   }

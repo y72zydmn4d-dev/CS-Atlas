@@ -22,11 +22,11 @@ _Add screenshots of the home atlas, a domain roadmap, and an algorithm visualize
 - English/Vietnamese interface with persisted language preference and bilingual search across all domain and topic metadata
 - Complete Vietnamese teaching sequences for the three reference topics, with honest partial-translation labels elsewhere
 - Selection-to-Vietnamese translation for eligible English prose using curated material, the local glossary, or the browser's Translator API when available
-- Per-exercise status, progressive hints, worked solutions, and local persistence
+- Typed Exercise records with local attempts, progressive hints, self-directed legacy exercises, and original multiple-choice/fill-code NumPy/Pandas examples
 - A verified source and citation registry used by topic blocks and search
 - Working binary search, BFS, and merge sort visualizers with play, pause, step, reset, and speed controls
 - Command search with `Cmd+K` / `Ctrl+K`, including glossary terms, exercises, and sources
-- Local progress and bookmark persistence behind a storage adapter
+- Local progress, learning evidence, goals, study plans, and bookmark persistence behind a storage adapter
 - Local-first Document Library for PDF, DOCX, Markdown, TXT, attachments, and safe external links
 - IndexedDB-backed metadata and binary storage with duplicate detection, extraction status, search, filters, notes, tags, and knowledge relationships
 - Lazy PDF.js and Mammoth extraction, safe text previews, browser PDF viewing, original-file download, and object URL cleanup
@@ -74,6 +74,8 @@ npm run build
 Open `/problems` for the v2 problem library or `/practice` for the original catalog. Each language has its own starter and locally saved draft. JavaScript `function solve(input)` can run the public tests in the browser with **Run public tests** (or Ctrl/Cmd+Enter); Python `solve(data)` is currently edit/save-only and is clearly labeled until an isolated Python runtime is configured. No API key is needed. The editor is a keyboard-friendly plain-text editor, not a full IDE. It supports Binary Search, BFS, Two Pointers, Sliding Window, Prefix Sum, 0/1 Knapsack, and an ML train/test regression audit.
 
 **Accepted means public tests passed, not hidden-test certification.** Submit is intentionally disabled. Code executes in a QuickJS WebAssembly interpreter inside a disposable browser Worker, never inside Next.js or through host `eval`/`Function`. No host APIs, network, filesystem, or credentials are exposed to learner code. This is a bounded local practice tool, not a security-audited public competition judge.
+
+The application also exposes an intentionally unavailable submission-contract endpoint at `/api/judge/submissions`. It validates source size, idempotency format, problem version, language and same-origin requests, then returns an honest unavailable state without executing or forwarding source. Remote Submit cannot be enabled until an authenticated queue, durable owner-scoped persistence, hidden-test store, isolated no-network execution service, quota/abuse controls, operational kill switch, and independent security review are in place.
 
 Limits: 20,000 source characters, 1 second per test, 32 MiB guest heap, 512 KiB guest stack, 8,000 output characters, and a 12-second worker deadline including startup. Browser/WASM overhead is additional; local runtime is not a benchmark. The latest 40 runs and versioned completion records stay in this browser. Storage is not an authoritative score or cloud backup.
 

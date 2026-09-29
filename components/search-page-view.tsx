@@ -7,7 +7,7 @@ import { searchIndex } from "@/content";
 import { useI18n } from "@/components/locale-provider";
 import { useLibraryItems } from "@/hooks/use-library";
 import { libraryItemsToSearchResults } from "@/lib/library/search";
-import { searchContent } from "@/lib/search";
+import { projectLocalPrivateSearchDocuments, projectPublicSearchDocuments, searchDocuments } from "@/lib/search/documents";
 import type { SearchResultType } from "@/lib/types";
 
 export function SearchPageView() {
@@ -15,9 +15,9 @@ export function SearchPageView() {
   const [type, setType] = useState<"all" | SearchResultType>("all");
   const { locale, t } = useI18n();
   const { items: libraryItems, loading, error } = useLibraryItems();
-  const index = useMemo(() => [...searchIndex, ...libraryItemsToSearchResults(libraryItems)], [libraryItems]);
+  const index = useMemo(() => [...projectPublicSearchDocuments(searchIndex), ...projectLocalPrivateSearchDocuments(libraryItemsToSearchResults(libraryItems))], [libraryItems]);
   const types = useMemo(() => Array.from(new Set(index.map((item) => item.type))).sort(), [index]);
-  const results = useMemo(() => searchContent(query, index).filter((item) => type === "all" || item.type === type), [index, query, type]);
+  const results = useMemo(() => searchDocuments({ query, locale, type: type === "all" ? undefined : type, limit: 50, includeLocalPrivate: true }, index), [index, locale, query, type]);
   return <div className="search-page-view">
     <section className="search-page-controls"><label className="catalog-search"><Search size={19} /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("search.pagePlaceholder")} aria-label={t("actions.searchAtlas")} /><kbd>⌘ K</kbd></label><label className="form-field"><span>{t("search.allTypes")}</span><select value={type} onChange={(event) => setType(event.target.value as "all" | SearchResultType)}><option value="all">{t("search.allTypes")}</option>{types.map((item) => <option value={item} key={item}>{item}</option>)}</select></label></section>
     <p className="search-result-count" aria-live="polite">{t("search.results", { count: results.length })}</p>

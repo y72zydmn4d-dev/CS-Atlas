@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Command, Search, X } from "lucide-react";
 import { searchIndex } from "@/content";
-import { searchContent } from "@/lib/search";
+import { projectLocalPrivateSearchDocuments, projectPublicSearchDocuments, searchDocuments } from "@/lib/search/documents";
 import { useI18n } from "@/components/locale-provider";
 import { useLibraryItems } from "@/hooks/use-library";
 import { libraryItemsToSearchResults } from "@/lib/library/search";
@@ -18,7 +18,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
   const router = useRouter();
   const { locale, t } = useI18n();
   const { items: libraryItems } = useLibraryItems();
-  const results = useMemo(() => searchContent(query, [...searchIndex, ...libraryItemsToSearchResults(libraryItems)]).slice(0, 9), [libraryItems, query]);
+  const results = useMemo(() => searchDocuments({ query, locale, limit: 9, includeLocalPrivate: true }, [...projectPublicSearchDocuments(searchIndex), ...projectLocalPrivateSearchDocuments(libraryItemsToSearchResults(libraryItems))]), [libraryItems, locale, query]);
 
   useEffect(() => {
     if (open) {

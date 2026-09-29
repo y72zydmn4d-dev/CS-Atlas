@@ -142,12 +142,12 @@ Depends on M2, M4, M5, M9, and M10 context contracts; RAG is a separate later ca
 
 Depends on M2, M3, M4, M5, M8, and M9; implement after IDs and visibility rules settle.
 
-- [ ] Define searchable document projection with entity type, canonical ID, locale fields, visibility, URL, hierarchy, and source version.
-- [ ] Preserve current accent-insensitive local search as a compatibility/fallback adapter.
-- [ ] Index Learn, concepts, exercises, problems, roadmap/mind-map links, resources, and authorized Library metadata with per-user filtering.
-- [ ] Define command palette ranking, keyboard navigation, empty/error/loading states, and deep links.
-- [ ] Evaluate full-text database search before adding a dedicated search service; semantic search requires separate privacy/cost review.
-- [ ] Add parity, localization, authorization-filter, stale-index, and accessibility tests.
+- [x] Define a versioned searchable document projection with entity type, canonical ID, locale fields, visibility, URL, hierarchy, ownership scope, and source version.
+- [x] Preserve current accent-insensitive deterministic local search as a compatibility/fallback adapter.
+- [x] Index Learn, Concepts, Exercises, Problems, Roadmap/Mind Map links, resources, and authorized local Library metadata with visibility filtering before ranking.
+- [x] Define command-palette ranking, keyboard navigation, empty/loading states, private-result labels, and deep links.
+- [x] Evaluate full-text database search before adding a dedicated service; retain the measured-small in-memory corpus and require separate semantic-search privacy/cost review.
+- [x] Add parity, localization, authorization-filter, stale-index, destination, and existing keyboard/accessibility tests.
 
 ## M14 - Security / Performance / Integration / Release Audit
 

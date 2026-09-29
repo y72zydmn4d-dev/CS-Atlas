@@ -47,3 +47,7 @@ No external search engine is installed or required. Begin with current in-memory
 **Proposed state:** one query contract over canonical public and authorized personal entities; rebuildable projections with filters and optional future semantic adapter.
 
 **Migration path:** M2 stabilizes IDs; M3 provides graph/Concept relations; M4/M5/M8/M9 expose document adapters; replace monolithic index construction with projection builders; compare legacy and new result sets for every entity type/locale; add auth filters before any remote/private index. Retain legacy command paths and aliases through cutover.
+
+## Implemented local projection
+
+`lib/search/documents.ts` now wraps public registry and browser-local Library results in schema-versioned documents containing canonical identity, entity type, visibility, source version, hierarchy, locale fields, destination, and an explicit local-browser owner scope for private metadata. Both the command palette and `/search` filter visibility before invoking the existing accent-insensitive deterministic matcher. Tests compare public ranking with the legacy adapter and reject stale versions, duplicate records, unsafe destinations, and invalid private ownership. The corpus remains small and rebuildable, so a database full-text or dedicated search service would add operational cost without a measured query need; semantic search remains separately gated on privacy, deletion, consent, and cost.

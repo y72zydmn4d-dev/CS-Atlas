@@ -31,9 +31,9 @@ Depends on M1 route ownership decisions; must precede new Learn, Judge, and user
 - [x] Define typed relation vocabulary and direction/cardinality semantics, including `PREREQUISITE_OF`, `RELATED_TO`, `PART_OF`, `USES`, `BUILDS_ON`, and `NEXT_TOPIC`.
 - [ ] Define separate records and links for `Lesson`, `Reference`, `Exercise`, `Problem`, `Roadmap`, `MindMap`, `Resource`, and `UserMastery`; use concept IDs as cross-feature anchors.
 - [x] Add runtime validation for IDs, relation endpoints, relation semantics, locale payloads, and cycles where the relation requires a DAG.
-- [ ] Create old-ID to concept-ID mapping for domains/topics/algorithms/techniques/projects/practice and document collisions/aliases.
-- [ ] Add compatibility adapters so current `content/` types and current routes resolve through canonical IDs without breaking published content.
-- [ ] Add content parity tests for entity count, IDs, citations, route destinations, graph references, and Practice relation integrity.
+- [x] Create a source-qualified old-ID to Concept-ID mapping for concept-backed topics/algorithms/techniques, retain domain/project/practice identities in their owning records, and document collisions/aliases.
+- [x] Add compatibility adapters so current `content/` types, Library relations, and current routes resolve through canonical IDs without breaking published content.
+- [x] Add content parity tests for entity count, IDs, citations, route destinations, graph references, Exercise links, and Problem/Practice relation integrity.
 
 ## M3 - Knowledge Graph foundation
 

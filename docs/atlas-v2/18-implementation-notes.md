@@ -16,6 +16,8 @@ Existing localStorage and IndexedDB records remain unchanged. `cs-atlas.learning
 
 Canonical URLs use type-qualified slugs, for example `/concepts/topic-arrays` and `/concepts/algorithm-binary-search`. This deliberately keeps the Algorithm and Technique records named `two-pointers` distinct. Old ambiguous IDs are resolved only by source-aware compatibility adapters and are never canonical identity.
 
+`content/concepts/legacy-map.ts` is the checked migration artifact for every Topic, Algorithm, and Technique ID/slug. It records preserved legacy routes, canonical destinations, and raw-ID collisions. Parity tests require complete one-to-one source coverage and validate authored citations, graph references, Exercise links, Problem links, and both route forms.
+
 Topics seed Lesson records, embedded blocks seed version-one Exercise records, and current Practice definitions seed public-only Problem records. The roadmap and mind-map adapter adds concept references without changing its authored layout or edge semantics.
 
 ## Security and availability boundary

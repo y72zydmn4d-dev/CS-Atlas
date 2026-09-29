@@ -2,6 +2,7 @@ import { algorithms } from "@/content/algorithms";
 import { techniques } from "@/content/techniques";
 import { topicTranslationsVi } from "@/content/translations/vi";
 import { topics } from "@/content/topics";
+export { legacyConceptCollisions, legacyConceptMappings, resolveLegacyConceptMapping } from "@/content/concepts/legacy-map";
 import type { Concept, ConceptId, ConceptRelation, ConceptRelationType } from "@/lib/domain/concepts";
 import { conceptIdForAlgorithm, conceptIdForTechnique, conceptIdForTopic, validateConceptRegistry } from "@/lib/domain/concepts";
 

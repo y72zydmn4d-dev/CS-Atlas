@@ -166,7 +166,7 @@ export interface Resource {
   note: string;
 }
 
-export type SearchResultType = "Domain" | "Topic" | "Algorithm" | "Technique" | "Project" | "Exercise" | "Source" | "Library";
+export type SearchResultType = "Concept" | "Domain" | "Topic" | "Algorithm" | "Technique" | "Project" | "Exercise" | "Problem" | "Source" | "Library";
 export interface SearchResult {
   id: string;
   title: string;

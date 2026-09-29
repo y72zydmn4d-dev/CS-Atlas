@@ -7,8 +7,12 @@ import { sources, sourceById } from "@/content/sources";
 import type { ExerciseBlock, SearchResult } from "@/lib/types";
 import { domainTranslationsVi, topicTranslationsVi } from "@/content/translations/vi";
 import { practiceProblems } from "@/content/practice/problems";
+import { concepts, conceptRelations, conceptValidationIssues, resolveConcept } from "@/content/concepts/registry";
+import { courses, lessons } from "@/content/lessons";
+import { exercises } from "@/content/exercises";
+import { problems } from "@/content/problems";
 
-export { algorithms, domains, projects, techniques, topics, sources, sourceById };
+export { algorithms, domains, projects, techniques, topics, sources, sourceById, concepts, conceptRelations, conceptValidationIssues, resolveConcept, courses, lessons, exercises, problems };
 
 export const domainById = new Map(domains.map((item) => [item.id, item]));
 export const domainBySlug = new Map(domains.map((item) => [item.slug, item]));
@@ -29,6 +33,9 @@ export const searchIndex: SearchResult[] = [
   ...techniques.map((item) => ({ id: item.id, title: item.name, type: "Technique" as const, hierarchy: item.family, href: `/techniques/${item.slug}`, keywords: `${item.summary} ${item.whenToUse.join(" ")}` })),
   ...projects.map((item) => ({ id: item.id, title: item.title, type: "Project" as const, hierarchy: domainById.get(item.domainId)?.name ?? "Project", href: `/projects#${item.slug}`, keywords: `${item.summary} ${item.deliverables.join(" ")}` })),
   ...sources.map((item) => ({ id: item.id, title: item.title, type: "Source" as const, hierarchy: [item.sourceType, item.publisher].filter(Boolean).join(" · "), href: item.url ?? "/search", keywords: `${item.authors?.join(" ") ?? ""} ${item.publisher ?? ""} ${item.year ?? ""}` })),
+  ...concepts.map((item) => ({ id: item.id, title: item.name.en, titleVi: item.name.vi, type: "Concept" as const, hierarchy: `Canonical ${item.kind}`, hierarchyVi: `Khái niệm chuẩn · ${item.kind}`, href: `/concepts/${item.slug}`, keywords: `${item.summary.en} ${item.summary.vi} ${item.aliases.join(" ")}` })),
+  ...problems.map((item) => ({ id: `problem:${item.id}`, title: item.title.en, titleVi: item.title.vi, type: "Problem" as const, hierarchy: "Programming problems", hierarchyVi: "Bài toán lập trình", href: item.href, keywords: `${item.summary.en} ${item.summary.vi} ${item.difficulty} ${item.conceptIds.join(" ")}` })),
+  ...exercises.map((item) => ({ id: item.id, title: item.title.en, titleVi: item.title.vi, type: "Exercise" as const, hierarchy: "Topic exercises", hierarchyVi: "Bài tập theo chủ đề", href: item.href, keywords: `${item.prompt.en} ${item.prompt.vi} ${item.mode} ${item.difficulty}` })),
 ];
 
 export function validateContent() {
@@ -112,5 +119,6 @@ export function validateContent() {
       for (const citation of block.citations ?? []) if (!sourceById.has(citation.sourceId)) errors.push(`${topic.id}.${block.id} references missing citation ${citation.sourceId}`);
     }
   }
+  for (const issue of conceptValidationIssues) errors.push(`canonical concepts: ${issue.message}`);
   return errors;
 }

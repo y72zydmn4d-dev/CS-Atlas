@@ -1,5 +1,6 @@
 import { retrieveAtlasSources, retrieveConceptSource } from "@/lib/ai/context";
 import { askGemini, GeminiError } from "@/lib/ai/gemini";
+import { validateAtlasAiRequest } from "@/lib/domain/ai";
 
 export const runtime = "nodejs";
 
@@ -30,10 +31,9 @@ export async function POST(request: Request) {
   let body: unknown;
   try { body = await readLimitedJson(request); }
   catch (error) { const large = error instanceof Error && error.message === "too-large"; return Response.json({ error: large ? "too-large" : "invalid" }, { status: large ? 413 : 400 }); }
-  if (!body || typeof body !== "object") return Response.json({ error: "invalid" }, { status: 400 });
-  const { question, locale, contextConceptId } = body as Record<string, unknown>;
-  if (typeof question !== "string" || question.trim().length < 3 || question.length > 2_000 || (locale !== "en" && locale !== "vi")) return Response.json({ error: "invalid" }, { status: 400 });
-  if (contextConceptId !== undefined && (typeof contextConceptId !== "string" || contextConceptId.length > 160)) return Response.json({ error: "invalid" }, { status: 400 });
+  const parsed = validateAtlasAiRequest(body);
+  if (!parsed.ok) return Response.json({ error: "invalid" }, { status: 400 });
+  const { question, locale, contextConceptId, task } = parsed.value;
   const explicitConceptSource = typeof contextConceptId === "string" ? retrieveConceptSource(contextConceptId) : null;
   if (typeof contextConceptId === "string" && !explicitConceptSource) return Response.json({ error: "invalid" }, { status: 400 });
   const sources = [explicitConceptSource, ...retrieveAtlasSources(question)]
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   if (requests.length >= 12) return Response.json({ error: "rate-limit" }, { status: 429 });
   requests.push(now);
   try {
-    const answer = await askGemini({ question: question.trim(), locale, sources });
+    const answer = await askGemini({ question, locale, sources, task });
     return Response.json({ answer, sources }, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
     const code = error instanceof GeminiError ? error.code : "unavailable";

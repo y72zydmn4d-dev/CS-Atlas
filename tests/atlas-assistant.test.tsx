@@ -22,4 +22,15 @@ describe("AtlasAssistant", () => {
     expect(screen.getByRole("link", { name: /Binary Search/ })).toHaveAttribute("href", "/algorithms/binary-search");
     expect(fetchMock).toHaveBeenCalledWith("/api/ai/ask", expect.objectContaining({ method: "POST" }));
   });
+
+  it("sends the selected typed task instead of an implicit workflow", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => ({ answer: "Try the invariant.", sources: [] }) });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<LocaleProvider><AtlasAssistant configured /></LocaleProvider>);
+    fireEvent.change(screen.getByLabelText("Mode"), { target: { value: "hint" } });
+    fireEvent.change(screen.getByLabelText("Your question"), { target: { value: "Help me reason about an interval" } });
+    fireEvent.click(screen.getByRole("button", { name: "Ask Gemini" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect(JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body))).toMatchObject({ task: "hint" });
+  });
 });

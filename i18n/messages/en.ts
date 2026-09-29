@@ -540,4 +540,8 @@ export const en = {
   "planner.reschedule": "Reschedule",
   "planner.saveFailed": "Your browser could not save this change.",
   "planner.localOnly": "Stored locally in this browser",
+  "planner.recurrence": "Repeat",
+  "planner.oneTime": "One time",
+  "planner.weekly": "Weekly",
+  "planner.monthly": "Monthly",
 } as const;

@@ -11,6 +11,7 @@ Last updated: 2026-09-30
 - Complete source-qualified legacy Concept migration map with collision reporting and parity tests across routes, citations, graphs, Exercises, Problems, and existing Library relations.
 - Roadmap and Mind Map screens now consume canonical Concept view records, retain authored layout semantics, report unresolved nodes, and provide deterministic keyboard-accessible list views alongside progress-aware maps.
 - Progress dashboards and graph overlays project preserved topic state through canonical Concept IDs. An idempotent local migration snapshot retains rollback data and imports topic/exercise/public-Practice evidence without altering legacy keys or claiming hidden-Judge mastery.
+- Local goals support one-time, weekly, and monthly windows in the recorded browser timezone; study items retain due dates, and activity can be aggregated by local calendar day without leaving the device.
 
 - Technical Atlas Workspace overhaul: quieter light/dark surfaces, smaller headings, consistent spacing and restrained entry/hover/focus transitions; noisy image background removed from rendering.
 - Desktop sidebar with persisted 240px/72px modes; mobile drawer with inert background, focus containment/restoration and desktop-resize recovery; top search/context/locale/theme bar.

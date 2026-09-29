@@ -8,7 +8,7 @@ import { useI18n } from "@/components/locale-provider";
 import { lessonById } from "@/content/lessons";
 import { topics } from "@/content/topics";
 import { canonicalConceptIdForTopic } from "@/content/concepts/registry";
-import { deriveGoalProgress, type GoalMetric, type StudyPlanItem } from "@/lib/domain/learning";
+import { deriveGoalProgress, type GoalMetric, type GoalRecurrence, type StudyPlanItem } from "@/lib/domain/learning";
 import { localizeTopic } from "@/i18n/content";
 
 const metrics: GoalMetric[] = ["lessons-completed", "exercises-solved", "problems-solved", "plan-items-completed"];
@@ -27,6 +27,7 @@ export function StudyPlanner({ compact = false }: { compact?: boolean }) {
   const [goalMetric, setGoalMetric] = useState<GoalMetric>("lessons-completed");
   const [goalTarget, setGoalTarget] = useState("3");
   const [goalDeadline, setGoalDeadline] = useState("");
+  const [goalRecurrence, setGoalRecurrence] = useState<GoalRecurrence>("none");
   const [planTitle, setPlanTitle] = useState("");
   const [topicId, setTopicId] = useState(topics[0]?.id ?? "");
   const [scheduledFor, setScheduledFor] = useState(localDate());
@@ -38,9 +39,9 @@ export function StudyPlanner({ compact = false }: { compact?: boolean }) {
 
   const addGoal = () => {
     const targetCount = Number(goalTarget);
-    const saved = createLearningGoal({ title: goalTitle, metric: goalMetric, targetCount, deadline: goalDeadline || undefined });
+    const saved = createLearningGoal({ title: goalTitle, metric: goalMetric, targetCount, deadline: goalDeadline || undefined, recurrence: goalRecurrence });
     setSaveFailed(!saved);
-    if (saved) { setGoalTitle(""); setGoalTarget("3"); setGoalDeadline(""); }
+    if (saved) { setGoalTitle(""); setGoalTarget("3"); setGoalDeadline(""); setGoalRecurrence("none"); }
   };
 
   const addPlan = () => {
@@ -71,8 +72,8 @@ export function StudyPlanner({ compact = false }: { compact?: boolean }) {
     </section>
     {!compact && <div className="planner-grid">
       <section className="planner-section" aria-labelledby="planner-goals-title"><div className="panel-header"><h3 id="planner-goals-title"><Target size={17} />{t("planner.goals")}</h3></div>
-        {activeGoals.length ? <ul className="goal-list">{activeGoals.map((goal) => { const progress = deriveGoalProgress(goal, learningEvents); return <li key={goal.id}><div><strong>{goal.title}</strong><small>{t(`planner.${goal.metric === "lessons-completed" ? "lessons" : goal.metric === "exercises-solved" ? "exercises" : goal.metric === "problems-solved" ? "problems" : "planItems"}`)} · {progress.completedCount}/{progress.targetCount}{goal.deadline ? ` · ${goal.deadline}` : ""}</small><div className="progress-track"><span style={{ width: `${progress.percent}%` }} /></div></div><button className="icon-button" title={t("planner.archive")} aria-label={t("planner.archive")} onClick={() => setSaveFailed(!archiveLearningGoal(goal.id))}><Archive size={15} /></button></li>; })}</ul> : <p>{t("planner.noGoals")}</p>}
-        <div className="planner-form"><label className="form-field"><span>{t("planner.goalTitle")}</span><input value={goalTitle} maxLength={160} onChange={(event) => setGoalTitle(event.target.value)} /></label><label className="form-field"><span>{t("planner.metric")}</span><select value={goalMetric} onChange={(event) => setGoalMetric(event.target.value as GoalMetric)}>{metrics.map((metric) => <option key={metric} value={metric}>{t(`planner.${metric === "lessons-completed" ? "lessons" : metric === "exercises-solved" ? "exercises" : metric === "problems-solved" ? "problems" : "planItems"}`)}</option>)}</select></label><label className="form-field"><span>{t("planner.goalTarget")}</span><input type="number" min="1" max="999" value={goalTarget} onChange={(event) => setGoalTarget(event.target.value)} /></label><label className="form-field"><span>{t("planner.deadline")}</span><input type="date" value={goalDeadline} onChange={(event) => setGoalDeadline(event.target.value)} /></label><button className="button-secondary" type="button" onClick={addGoal}><Plus size={15} />{t("planner.addGoal")}</button></div>
+        {activeGoals.length ? <ul className="goal-list">{activeGoals.map((goal) => { const progress = deriveGoalProgress(goal, learningEvents); return <li key={goal.id}><div><strong>{goal.title}</strong><small>{t(`planner.${goal.metric === "lessons-completed" ? "lessons" : goal.metric === "exercises-solved" ? "exercises" : goal.metric === "problems-solved" ? "problems" : "planItems"}`)} · {progress.completedCount}/{progress.targetCount}{goal.recurrence && goal.recurrence !== "none" ? ` · ${t(`planner.${goal.recurrence}`)}` : ""}{goal.deadline ? ` · ${goal.deadline}` : ""}</small><div className="progress-track"><span style={{ width: `${progress.percent}%` }} /></div></div><button className="icon-button" title={t("planner.archive")} aria-label={t("planner.archive")} onClick={() => setSaveFailed(!archiveLearningGoal(goal.id))}><Archive size={15} /></button></li>; })}</ul> : <p>{t("planner.noGoals")}</p>}
+        <div className="planner-form"><label className="form-field"><span>{t("planner.goalTitle")}</span><input value={goalTitle} maxLength={160} onChange={(event) => setGoalTitle(event.target.value)} /></label><label className="form-field"><span>{t("planner.metric")}</span><select value={goalMetric} onChange={(event) => setGoalMetric(event.target.value as GoalMetric)}>{metrics.map((metric) => <option key={metric} value={metric}>{t(`planner.${metric === "lessons-completed" ? "lessons" : metric === "exercises-solved" ? "exercises" : metric === "problems-solved" ? "problems" : "planItems"}`)}</option>)}</select></label><label className="form-field"><span>{t("planner.goalTarget")}</span><input type="number" min="1" max="999" value={goalTarget} onChange={(event) => setGoalTarget(event.target.value)} /></label><label className="form-field"><span>{t("planner.recurrence")}</span><select value={goalRecurrence} onChange={(event) => setGoalRecurrence(event.target.value as GoalRecurrence)}><option value="none">{t("planner.oneTime")}</option><option value="weekly">{t("planner.weekly")}</option><option value="monthly">{t("planner.monthly")}</option></select></label><label className="form-field"><span>{t("planner.deadline")}</span><input type="date" value={goalDeadline} onChange={(event) => setGoalDeadline(event.target.value)} /></label><button className="button-secondary" type="button" onClick={addGoal}><Plus size={15} />{t("planner.addGoal")}</button></div>
       </section>
       <section className="planner-section" aria-labelledby="planner-plans-title"><div className="panel-header"><h3 id="planner-plans-title"><ListChecks size={17} />{t("planner.studyPlans")}</h3></div>
         {activePlans.length ? <ul className="plan-list">{activePlans.flatMap((plan) => plan.items.map((item) => <li key={`${plan.id}:${item.id}`}><div><strong>{plan.title}</strong><Link href={item.href}>{item.title}</Link><small>{item.completedAt ? t("planner.completed") : item.scheduledFor ?? t("planner.noToday")}</small></div>{item.completedAt ? <CheckCircle2 className="complete-icon" size={17} /> : <div className="plan-item-actions"><label><span className="sr-only">{t("planner.reschedule")}</span><input type="date" value={item.scheduledFor ?? ""} onChange={(event) => reschedule(plan.id, item.id, event.target.value)} /></label><button className="icon-button" title={t("planner.complete")} aria-label={t("planner.complete")} onClick={() => complete(plan.id, item.id)}><CheckCircle2 size={16} /></button></div>}</li>))}</ul> : <p>{t("planner.noPlans")}</p>}

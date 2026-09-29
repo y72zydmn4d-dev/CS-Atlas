@@ -115,7 +115,7 @@ Depends on M2, M4, M5, M8, and M9.
 - [x] Define event and current-state models for lesson progress, exercise attempts, public problem evidence, mastery evidence, study goals, and plans.
 - [x] Separate mastery estimates from completion flags; document evidence, confidence, recency, decay, and future user correction behavior without exposing an opaque score.
 - [x] Derive current local progress dashboard and graph overlays from canonical Concept IDs through an adapter, preserving existing local state during migration.
-- [ ] Define study plan scheduling, timezone, recurring goals, due dates, and activity aggregation with user-owned privacy boundaries.
+- [x] Define local study-plan scheduling, timezone-aware recurring goals, due dates, and activity aggregation with user-owned privacy boundaries.
 - [x] Add idempotent migrations from topic status/exercise status/public Practice completion to explicitly marked evidence records with parity and rollback fixtures.
 
 ## M11 - Profile

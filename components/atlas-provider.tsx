@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { Bookmark, ExerciseStatus, ProgressStatus } from "@/lib/types";
-import type { GoalMetric, LearningEvent, LearningEventTarget, LearningEventType, LearningGoal, StudyPlan, StudyPlanItem } from "@/lib/domain/learning";
+import type { GoalMetric, GoalRecurrence, LearningEvent, LearningEventTarget, LearningEventType, LearningGoal, StudyPlan, StudyPlanItem } from "@/lib/domain/learning";
 import type { ExerciseAttempt } from "@/lib/domain/exercises";
 import { storage } from "@/lib/storage";
 import { mergeLearningEvents } from "@/lib/progress/migration";
@@ -23,7 +23,7 @@ interface AtlasContextValue {
   toggleBookmark: (bookmark: Omit<Bookmark, "createdAt">) => void;
   isBookmarked: (id: string, type: Bookmark["type"]) => boolean;
   recordLearningEvent: (event: { type: LearningEventType; conceptId: string; source: LearningEvent["source"]; sourceVersion?: number; target?: LearningEventTarget }) => void;
-  createLearningGoal: (input: { title: string; metric: GoalMetric; targetCount: number; conceptIds?: string[]; deadline?: string }) => boolean;
+  createLearningGoal: (input: { title: string; metric: GoalMetric; targetCount: number; conceptIds?: string[]; deadline?: string; recurrence?: GoalRecurrence }) => boolean;
   archiveLearningGoal: (id: string) => boolean;
   createStudyPlan: (input: { title: string; items: StudyPlanItem[] }) => boolean;
   completeStudyPlanItem: (planId: string, itemId: string) => boolean;
@@ -106,12 +106,12 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const createLearningGoal = useCallback((input: { title: string; metric: GoalMetric; targetCount: number; conceptIds?: string[]; deadline?: string }) => {
+  const createLearningGoal = useCallback((input: { title: string; metric: GoalMetric; targetCount: number; conceptIds?: string[]; deadline?: string; recurrence?: GoalRecurrence }) => {
     const title = input.title.trim();
     if (!title || title.length > 160 || !Number.isInteger(input.targetCount) || input.targetCount < 1) return false;
     const now = new Date().toISOString();
     const id = typeof crypto !== "undefined" && typeof crypto.randomUUID === "function" ? crypto.randomUUID() : `goal-${Date.now()}`;
-    const nextGoal: LearningGoal = { id, title, metric: input.metric, targetCount: input.targetCount, conceptIds: input.conceptIds ?? [], deadline: input.deadline || undefined, status: "active", createdAt: now, updatedAt: now };
+    const nextGoal: LearningGoal = { id, title, metric: input.metric, targetCount: input.targetCount, conceptIds: input.conceptIds ?? [], deadline: input.deadline || undefined, recurrence: input.recurrence ?? "none", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC", status: "active", createdAt: now, updatedAt: now };
     let saved = false;
     setLearningGoals((current) => {
       const next = [nextGoal, ...current].slice(0, 100);

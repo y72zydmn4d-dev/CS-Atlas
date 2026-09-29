@@ -541,4 +541,8 @@ export const vi = {
   "planner.reschedule": "Đổi lịch",
   "planner.saveFailed": "Trình duyệt không thể lưu thay đổi này.",
   "planner.localOnly": "Lưu cục bộ trong trình duyệt này",
+  "planner.recurrence": "Lặp lại",
+  "planner.oneTime": "Một lần",
+  "planner.weekly": "Hàng tuần",
+  "planner.monthly": "Hàng tháng",
 } as const satisfies Record<keyof typeof en, string>;

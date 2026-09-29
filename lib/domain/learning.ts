@@ -34,6 +34,7 @@ export interface LearningEvent {
 export const goalMetrics = ["lessons-completed", "exercises-solved", "problems-solved", "plan-items-completed"] as const;
 export type GoalMetric = (typeof goalMetrics)[number];
 export type GoalStatus = "active" | "completed" | "archived";
+export type GoalRecurrence = "none" | "weekly" | "monthly";
 
 export interface LearningGoal {
   id: string;
@@ -42,6 +43,8 @@ export interface LearningGoal {
   targetCount: number;
   conceptIds: ConceptId[];
   deadline?: string;
+  recurrence?: GoalRecurrence;
+  timezone?: string;
   status: GoalStatus;
   createdAt: string;
   updatedAt: string;
@@ -112,6 +115,8 @@ export function isLearningGoal(value: unknown): value is LearningGoal {
     && Array.isArray(goal.conceptIds)
     && goal.conceptIds.every((id) => typeof id === "string" && id.length > 0)
     && (goal.deadline === undefined || (typeof goal.deadline === "string" && isoDatePattern.test(goal.deadline)))
+    && (goal.recurrence === undefined || ["none", "weekly", "monthly"].includes(goal.recurrence as string))
+    && (goal.timezone === undefined || (typeof goal.timezone === "string" && goal.timezone.length > 0 && goal.timezone.length <= 100))
     && ["active", "completed", "archived"].includes(goal.status as string)
     && typeof goal.createdAt === "string"
     && !Number.isNaN(Date.parse(goal.createdAt))
@@ -146,8 +151,29 @@ function eventMatchesMetric(event: LearningEvent, metric: GoalMetric) {
   return event.type === "study-plan-item-completed";
 }
 
-export function deriveGoalProgress(goal: LearningGoal, events: LearningEvent[]): GoalProgress {
-  const matching = events.filter((event) => eventMatchesMetric(event, goal.metric) && (!goal.conceptIds.length || goal.conceptIds.includes(event.conceptId)));
+function calendarDate(date: Date, timezone: string) {
+  const parts = new Intl.DateTimeFormat("en-CA", { timeZone: timezone, year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(date);
+  const part = (type: "year" | "month" | "day") => parts.find((item) => item.type === type)?.value ?? "00";
+  return `${part("year")}-${part("month")}-${part("day")}`;
+}
+
+function recurringPeriodStart(recurrence: GoalRecurrence, timezone: string, now: Date) {
+  const today = calendarDate(now, timezone);
+  if (recurrence === "none") return null;
+  if (recurrence === "monthly") return `${today.slice(0, 8)}01`;
+  const [year, month, day] = today.split("-").map(Number);
+  const current = new Date(Date.UTC(year, month - 1, day));
+  const daysSinceMonday = (current.getUTCDay() + 6) % 7;
+  current.setUTCDate(current.getUTCDate() - daysSinceMonday);
+  return current.toISOString().slice(0, 10);
+}
+
+export function deriveGoalProgress(goal: LearningGoal, events: LearningEvent[], now = new Date()): GoalProgress {
+  const timezone = goal.timezone ?? "UTC";
+  const periodStart = recurringPeriodStart(goal.recurrence ?? "none", timezone, now);
+  const matching = events.filter((event) => eventMatchesMetric(event, goal.metric)
+    && (!goal.conceptIds.length || goal.conceptIds.includes(event.conceptId))
+    && (!periodStart || calendarDate(new Date(event.occurredAt), timezone) >= periodStart));
   const completedCount = new Set(matching.map((event) => event.target ? `${event.target.type}:${event.target.id}` : `${event.type}:${event.conceptId}`)).size;
   return {
     goalId: goal.id,
@@ -156,6 +182,24 @@ export function deriveGoalProgress(goal: LearningGoal, events: LearningEvent[]):
     percent: Math.min(100, Math.round((completedCount / goal.targetCount) * 100)),
     isComplete: completedCount >= goal.targetCount,
   };
+}
+
+export interface LearningActivityDay {
+  date: string;
+  total: number;
+  byType: Partial<Record<LearningEventType, number>>;
+}
+
+export function aggregateLearningActivity(events: LearningEvent[], timezone: string): LearningActivityDay[] {
+  const days = new Map<string, LearningActivityDay>();
+  for (const event of events) {
+    const date = calendarDate(new Date(event.occurredAt), timezone);
+    const day = days.get(date) ?? { date, total: 0, byType: {} };
+    day.total += 1;
+    day.byType[event.type] = (day.byType[event.type] ?? 0) + 1;
+    days.set(date, day);
+  }
+  return [...days.values()].sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export interface UserMastery {

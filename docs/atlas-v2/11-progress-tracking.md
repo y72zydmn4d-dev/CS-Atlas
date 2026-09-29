@@ -44,6 +44,8 @@ The current local `deriveLocalMastery` projection is deliberately categorical an
 
 The browser adapter now writes one additive `cs-atlas.learning-migration.v1` snapshot. It retains the validated legacy topic progress, exercise statuses, and public Practice completion records for rollback, then derives deterministic canonical Concept events at the migration timestamp. Reloads reuse the same snapshot and event IDs; original keys are never edited or deleted. A failed snapshot write returns no migrated evidence rather than claiming success. New dashboards project legacy topic state through canonical Concept IDs while the original status map remains authoritative during this compatibility window.
 
+Local goals may be one-time, weekly, or monthly. Recurring goal windows are calculated from calendar dates in the goal's recorded IANA timezone, and only unique matching targets within the active period count. Study-plan items retain their scheduled date and plan timezone. Activity aggregation groups evidence by local calendar date without uploading it or converting it into engagement points.
+
 ## Interfaces and privacy
 
 `LearningProgressService` exposes owner-scoped read projection, append event, update explicit user status/override, list goals/plans, and accept plan suggestion. Browser adapter can satisfy the same interface for local mode. Remote queries are owner-scoped and covered by authorization tests. Export/delete includes events and projections according to retention policy. Progress/mastery is personal data and must not be sent to AI/search by default.

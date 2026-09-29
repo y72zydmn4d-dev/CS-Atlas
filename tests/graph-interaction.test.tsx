@@ -70,7 +70,7 @@ describe("graph relationships", () => {
       id: "roadmap:test",
       kind: "roadmap",
       domainId: "test",
-      nodes: [{ id: "missing", label: "Missing", topicId: "missing", x: 0, y: 0 }],
+      nodes: [{ id: "missing", structuralLabel: "Missing", topicId: "missing", x: 0, y: 0 }],
       edges: [],
       unresolvedNodes: [{ nodeId: "missing", topicId: "missing" }],
     };

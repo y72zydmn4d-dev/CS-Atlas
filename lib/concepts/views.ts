@@ -1,26 +1,40 @@
 import { canonicalConceptIdForTopic, conceptRelations, resolveConcept } from "@/content/concepts/registry";
 import type { Domain, GraphEdge, GraphNode } from "@/lib/types";
+import type { LocalizedConceptText } from "@/lib/domain/concepts";
 
 export type ConceptGraphViewKind = "roadmap" | "mindmap";
 
-export interface ConceptGraphViewNode extends GraphNode {
+export interface ConceptGraphViewNode extends Omit<GraphNode, "label"> {
   conceptId?: string;
+  canonicalName?: LocalizedConceptText;
+  structuralLabel?: string;
+  href?: string;
 }
 
-export interface ConceptGraphView {
+interface ConceptGraphViewBase {
   id: string;
-  kind: ConceptGraphViewKind;
   domainId: string;
   nodes: ConceptGraphViewNode[];
   edges: GraphEdge[];
   unresolvedNodes: Array<{ nodeId: string; topicId: string }>;
 }
 
+export interface RoadmapRecord extends ConceptGraphViewBase { kind: "roadmap" }
+export interface MindMapRecord extends ConceptGraphViewBase { kind: "mindmap" }
+export type ConceptGraphView = RoadmapRecord | MindMapRecord;
+
+export function getConceptGraphView(domain: Domain, kind: "roadmap"): RoadmapRecord;
+export function getConceptGraphView(domain: Domain, kind: "mindmap"): MindMapRecord;
+export function getConceptGraphView(domain: Domain, kind: ConceptGraphViewKind): ConceptGraphView;
 export function getConceptGraphView(domain: Domain, kind: ConceptGraphViewKind): ConceptGraphView {
   const graph = kind === "roadmap" ? domain.roadmap : domain.mindMap;
-  const nodes = graph.nodes.map((node) => {
+  const nodes = graph.nodes.map((node): ConceptGraphViewNode => {
     const candidate = node.topicId ? canonicalConceptIdForTopic(node.topicId) : undefined;
-    return { ...node, conceptId: candidate && resolveConcept(candidate) ? candidate : undefined };
+    const concept = candidate ? resolveConcept(candidate) : null;
+    const { label, ...layout } = node;
+    return concept
+      ? { ...layout, conceptId: concept.id, canonicalName: concept.name, href: `/concepts/${concept.slug}` }
+      : { ...layout, structuralLabel: label, href: node.kind === "root" ? `/domains/${domain.slug}` : undefined };
   });
   return {
     id: `${kind}:${domain.id}`,
@@ -42,6 +56,7 @@ export function validateConceptGraphView(view: ConceptGraphView): string[] {
   for (const node of view.nodes) {
     if (!Number.isFinite(node.x) || !Number.isFinite(node.y)) errors.push(`${view.id} node ${node.id} has invalid layout coordinates`);
     if (node.topicId && !node.conceptId) errors.push(`${view.id} node ${node.id} cannot resolve topic ${node.topicId}`);
+    if (node.conceptId && (!node.canonicalName || !node.href)) errors.push(`${view.id} node ${node.id} is missing canonical presentation data`);
   }
   for (const edge of view.edges) {
     if (edgeIds.has(edge.id)) errors.push(`${view.id} contains duplicate edge ID ${edge.id}`);

@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { AlertTriangle, List, Network } from "lucide-react";
 import { Background, Controls, Handle, MiniMap, Position, ReactFlow, type Node, type NodeProps } from "@xyflow/react";
 import type { Domain, GraphNode } from "@/lib/types";
-import { resolveConcept } from "@/content";
 import { useAtlas } from "@/components/atlas-provider";
 import { buildAdjacencyMap, buildEntranceOrder, type GraphMode } from "@/lib/graph";
 import { getConceptGraphView } from "@/lib/concepts/views";
@@ -118,19 +117,18 @@ export function GraphExplorer({ domain, mode }: { domain: Domain; mode: GraphMod
   const adjacency = useMemo(() => buildAdjacencyMap(graph.nodes, graph.edges, mode), [graph.edges, graph.nodes, mode]);
   const entranceOrder = useMemo(() => buildEntranceOrder(graph.nodes, graph.edges, mode), [graph.edges, graph.nodes, mode]);
   const baseNodes = useMemo(() => graph.nodes.map((node) => {
-    const concept = node.conceptId ? resolveConcept(node.conceptId) : null;
     return {
       id: node.id,
       type: "atlas",
       position: { x: node.x, y: node.y },
-      label: concept ? concept.name[locale] : localizedLabel(node.label, locale),
-      href: concept ? `/concepts/${concept.slug}` : node.kind === "root" ? `/domains/${domain.slug}` : undefined,
+      label: node.canonicalName?.[locale] ?? localizedLabel(node.structuralLabel ?? node.id, locale),
+      href: node.href,
       kind: node.kind,
       topicId: node.topicId,
       conceptId: node.conceptId,
       entranceOrder: entranceOrder.get(node.id) ?? 0,
     };
-  }), [domain.slug, entranceOrder, graph.nodes, locale]);
+  }), [entranceOrder, graph.nodes, locale]);
   const baseEdges = useMemo(() => graph.edges.map((edge, index) => ({ ...edge, animated: false, type: "smoothstep", entranceOrder: index })), [graph.edges]);
   const canonicalProgress = useMemo(() => projectLegacyProgressToConcepts(progress), [progress]);
   const statuses = useMemo<Record<string, NodeStatus>>(() => Object.fromEntries(baseNodes.map((node) => [node.id, node.conceptId ? canonicalProgress[node.conceptId] ?? "not-started" : "not-started"])), [baseNodes, canonicalProgress]);

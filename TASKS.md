@@ -29,7 +29,7 @@ Depends on M1 route ownership decisions; must precede new Learn, Judge, and user
 
 - [x] Specify stable `Concept` IDs, slugs/aliases, localized names/descriptions, scope/status, provenance, and lifecycle rules.
 - [x] Define typed relation vocabulary and direction/cardinality semantics, including `PREREQUISITE_OF`, `RELATED_TO`, `PART_OF`, `USES`, `BUILDS_ON`, and `NEXT_TOPIC`.
-- [ ] Define separate records and links for `Lesson`, `Reference`, `Exercise`, `Problem`, `Roadmap`, `MindMap`, `Resource`, and `UserMastery`; use concept IDs as cross-feature anchors.
+- [x] Define separate records and links for `Lesson`, `Reference`, `Exercise`, `Problem`, `Roadmap`, `MindMap`, `Resource`, and `UserMastery`; use concept IDs as cross-feature anchors.
 - [x] Add runtime validation for IDs, relation endpoints, relation semantics, locale payloads, and cycles where the relation requires a DAG.
 - [x] Create a source-qualified old-ID to Concept-ID mapping for concept-backed topics/algorithms/techniques, retain domain/project/practice identities in their owning records, and document collisions/aliases.
 - [x] Add compatibility adapters so current `content/` types, Library relations, and current routes resolve through canonical IDs without breaking published content.
@@ -95,7 +95,7 @@ Depends on M2 and M3.
 - [x] Map current `Domain.roadmap` and `Domain.mindMap` node topic links to concepts, retaining structural nodes and domain overview meaning.
 - [x] Preserve existing graph routes and add deterministic list alternatives, progress overlays, and unresolved-node reporting.
 - [x] Add graph validation that checks roadmap prerequisite ordering independently from mind-map relation semantics.
-- [ ] Remove duplicated concept labels/URLs gradually only after parity tests and authoring workflow are in place.
+- [x] Remove duplicated concept labels/URLs from canonical learning-view projections after parity tests and the authoring workflow are in place; retain legacy graph fields only in their compatibility source.
 
 ## M9 - Personal Library
 

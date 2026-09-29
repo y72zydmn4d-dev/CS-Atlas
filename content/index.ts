@@ -13,8 +13,10 @@ import { exercises } from "@/content/exercises";
 import { problems } from "@/content/problems";
 import { validateProblemCatalog } from "@/lib/problems/catalog";
 import { validateLearnCatalog } from "@/lib/domain/learn";
+import { resources } from "@/content/resources";
+import { validateCanonicalResources } from "@/lib/domain/resources";
 
-export { algorithms, domains, projects, techniques, topics, sources, sourceById, concepts, conceptRelations, conceptValidationIssues, resolveConcept, courses, lessonBlocks, lessonExamples, lessonPlaygrounds, lessonReferences, lessons, exercises, problems };
+export { algorithms, domains, projects, techniques, topics, sources, sourceById, concepts, conceptRelations, conceptValidationIssues, resolveConcept, courses, lessonBlocks, lessonExamples, lessonPlaygrounds, lessonReferences, lessons, exercises, problems, resources };
 
 export const domainById = new Map(domains.map((item) => [item.id, item]));
 export const domainBySlug = new Map(domains.map((item) => [item.slug, item]));
@@ -127,6 +129,7 @@ export function validateContent() {
   }
   for (const issue of conceptValidationIssues) errors.push(`canonical concepts: ${issue.message}`);
   errors.push(...validateLearnCatalog({ lessons, blocks: lessonBlocks, references: lessonReferences, examples: lessonExamples, playgrounds: lessonPlaygrounds, conceptIds: new Set(concepts.map((concept) => concept.id)), sourceIds: new Set(sources.map((source) => source.id)) }));
+  errors.push(...validateCanonicalResources(resources, new Set(concepts.map((concept) => concept.id))));
   errors.push(...validateProblemCatalog(problems, new Set(concepts.map((concept) => concept.id))));
   return errors;
 }

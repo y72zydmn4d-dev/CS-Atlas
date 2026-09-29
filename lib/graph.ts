@@ -14,7 +14,7 @@ export function getGraphNodeHref(
   return node.kind === "root" ? `/domains/${domainSlug}` : undefined;
 }
 
-export function buildAdjacencyMap(nodes: GraphNode[], edges: GraphEdge[], mode: GraphMode) {
+export function buildAdjacencyMap(nodes: Array<Pick<GraphNode, "id">>, edges: GraphEdge[], mode: GraphMode) {
   const direct = new Map(nodes.map((node) => [node.id, new Set<string>([node.id])]));
   const parents = new Map(nodes.map((node) => [node.id, new Set<string>()]));
 
@@ -36,7 +36,7 @@ export function buildAdjacencyMap(nodes: GraphNode[], edges: GraphEdge[], mode: 
   return direct;
 }
 
-export function buildEntranceOrder(nodes: GraphNode[], edges: GraphEdge[], mode: GraphMode) {
+export function buildEntranceOrder(nodes: Array<Pick<GraphNode, "id" | "kind">>, edges: GraphEdge[], mode: GraphMode) {
   if (mode === "roadmap") return new Map(nodes.map((node, index) => [node.id, index]));
   const order = new Map<string, number>();
   const roots = nodes.filter((node) => node.kind === "root");

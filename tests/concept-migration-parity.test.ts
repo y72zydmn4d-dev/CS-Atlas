@@ -31,7 +31,12 @@ describe("canonical Concept migration parity", () => {
         const view = getConceptGraphView(domain, kind);
         expect(validateConceptGraphView(view)).toEqual([]);
         expect(validateRoadmapPrerequisiteOrder(view)).toEqual([]);
-        for (const node of view.nodes.filter((item) => item.topicId)) expect(resolveConcept(node.conceptId ?? "")).not.toBeNull();
+        for (const node of view.nodes.filter((item) => item.topicId)) {
+          expect(resolveConcept(node.conceptId ?? "")).not.toBeNull();
+          expect(node.canonicalName).toBeDefined();
+          expect(node.href).toMatch(/^\/concepts\//);
+          expect("label" in node).toBe(false);
+        }
       }
     }
     for (const exercise of exercises) for (const conceptId of exercise.conceptIds) expect(resolveConcept(conceptId)).not.toBeNull();

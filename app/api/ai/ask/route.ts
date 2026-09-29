@@ -1,4 +1,4 @@
-import { retrieveAtlasSources } from "@/lib/ai/context";
+import { retrieveAtlasSources, retrieveConceptSource } from "@/lib/ai/context";
 import { askGemini, GeminiError } from "@/lib/ai/gemini";
 
 export const runtime = "nodejs";
@@ -31,9 +31,15 @@ export async function POST(request: Request) {
   try { body = await readLimitedJson(request); }
   catch (error) { const large = error instanceof Error && error.message === "too-large"; return Response.json({ error: large ? "too-large" : "invalid" }, { status: large ? 413 : 400 }); }
   if (!body || typeof body !== "object") return Response.json({ error: "invalid" }, { status: 400 });
-  const { question, locale } = body as Record<string, unknown>;
+  const { question, locale, contextConceptId } = body as Record<string, unknown>;
   if (typeof question !== "string" || question.trim().length < 3 || question.length > 2_000 || (locale !== "en" && locale !== "vi")) return Response.json({ error: "invalid" }, { status: 400 });
-  const sources = retrieveAtlasSources(question);
+  if (contextConceptId !== undefined && (typeof contextConceptId !== "string" || contextConceptId.length > 160)) return Response.json({ error: "invalid" }, { status: 400 });
+  const explicitConceptSource = typeof contextConceptId === "string" ? retrieveConceptSource(contextConceptId) : null;
+  if (typeof contextConceptId === "string" && !explicitConceptSource) return Response.json({ error: "invalid" }, { status: 400 });
+  const sources = [explicitConceptSource, ...retrieveAtlasSources(question)]
+    .filter((source): source is NonNullable<typeof source> => Boolean(source))
+    .filter((source, index, items) => items.findIndex((item) => item.href === source.href) === index)
+    .slice(0, 5);
   if (!sources.length) return Response.json({ error: "no-context" }, { status: 422 });
   const now = Date.now();
   while (requests.length && requests[0] < now - 60_000) requests.shift();

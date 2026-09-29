@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { normalizeAiText, retrieveAtlasSources } from "@/lib/ai/context";
+import { normalizeAiText, retrieveAtlasSources, retrieveConceptSource } from "@/lib/ai/context";
 
 describe("Atlas AI context", () => {
   it("normalizes Vietnamese accents for retrieval", () => {
@@ -13,5 +13,9 @@ describe("Atlas AI context", () => {
   });
   it("limits the amount of context sent to Gemini", () => {
     expect(retrieveAtlasSources("machine learning", 3)).toHaveLength(3);
+  });
+  it("only resolves an explicitly requested public canonical concept", () => {
+    expect(retrieveConceptSource("algorithm:binary-search")).toMatchObject({ type: "Concept", href: "/concepts/algorithm-binary-search" });
+    expect(retrieveConceptSource("library:private-file")).toBeNull();
   });
 });

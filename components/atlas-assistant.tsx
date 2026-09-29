@@ -8,7 +8,7 @@ import type { AtlasSource } from "@/lib/ai/context";
 
 const exampleKeys = ["assistant.exampleGradient", "assistant.exampleSearch", "assistant.exampleTransformers"] as const;
 
-export function AtlasAssistant({ configured }: { configured: boolean }) {
+export function AtlasAssistant({ configured, contextConceptId, contextLabel }: { configured: boolean; contextConceptId?: string; contextLabel?: string }) {
   const { locale, t } = useI18n();
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -30,7 +30,7 @@ export function AtlasAssistant({ configured }: { configured: boolean }) {
     setAnswer("");
     setSources([]);
     try {
-      const response = await fetch("/api/ai/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: trimmed, locale }), signal: controller.current.signal });
+      const response = await fetch("/api/ai/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: trimmed, locale, ...(contextConceptId ? { contextConceptId } : {}) }), signal: controller.current.signal });
       const result: { answer?: string; sources?: AtlasSource[]; error?: string } = await response.json();
       if (!response.ok || !result.answer) throw new Error(result.error || "unavailable");
       setAnswer(result.answer);
@@ -46,6 +46,7 @@ export function AtlasAssistant({ configured }: { configured: boolean }) {
     <header className="page-header"><div><p className="kicker"><BrainCircuit size={14} /> {t("assistant.kicker")}</p><h1>{t("assistant.title")}</h1><p className="lede">{t("assistant.lede")}</p></div></header>
     <section className="assistant-panel" aria-label={t("assistant.title")}>
       <div className="assistant-intro"><span className="catalog-card-icon"><BrainCircuit size={19} /></span><div><strong>{t("assistant.grounded")}</strong><p>{t("assistant.groundedBody")}</p></div></div>
+      {contextLabel && <p className="assistant-context" role="status">{t("assistant.context", { concept: contextLabel })}</p>}
       {!configured && <div className="assistant-notice" role="status">{t("assistant.notConfigured")}</div>}
       {configured && !answer && !loading && <div className="assistant-examples"><span>{t("assistant.try")}</span>{exampleKeys.map((key) => <button key={key} type="button" onClick={() => { const example = t(key); setQuestion(example); void ask(example); }}>{t(key)}<ArrowRight size={14} /></button>)}</div>}
       {loading && <p className="assistant-loading" role="status">{t("assistant.thinking")}</p>}

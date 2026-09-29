@@ -1,9 +1,10 @@
 import { algorithms, domainById, domains, projects, techniques, topics } from "@/content";
+import { resolveConcept } from "@/content/concepts/registry";
 
 export interface AtlasSource {
   id: string;
   title: string;
-  type: "Domain" | "Topic" | "Algorithm" | "Technique" | "Project";
+  type: "Concept" | "Domain" | "Topic" | "Algorithm" | "Technique" | "Project";
   href: string;
   excerpt: string;
 }
@@ -35,4 +36,16 @@ export function retrieveAtlasSources(question: string, limit = 5): AtlasSource[]
     const score = exact + terms.reduce((total, term) => total + (title === term ? 12 : title.includes(term) ? 8 : body.includes(term) ? 2 : 0), 0);
     return { source, score };
   }).filter((entry) => entry.score > 0).sort((a, b) => b.score - a.score || a.source.title.localeCompare(b.source.title)).slice(0, limit).map((entry) => entry.source);
+}
+
+export function retrieveConceptSource(conceptId: string): AtlasSource | null {
+  const concept = resolveConcept(conceptId);
+  if (!concept || concept.status !== "active") return null;
+  return {
+    id: concept.id,
+    title: concept.name.en,
+    type: "Concept",
+    href: `/concepts/${concept.slug}`,
+    excerpt: `${concept.summary.en} Canonical kind: ${concept.kind}. This source is public Atlas-authored content.`,
+  };
 }

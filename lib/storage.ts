@@ -196,4 +196,15 @@ export const storage = {
   saveTranslationPopoverPreference(value: boolean) {
     writeJson(KEYS.translationPopover, value);
   },
+  clearLocalLearningData(): boolean {
+    if (typeof window === "undefined") return false;
+    try {
+      for (const key of [KEYS.progress, KEYS.bookmarks, KEYS.exercises, KEYS.exerciseAttempts, KEYS.practice, KEYS.learningEvents, KEYS.learningGoals, KEYS.studyPlans, KEYS.learningMigration]) window.localStorage.removeItem(key);
+      window.dispatchEvent(new Event("cs-atlas-practice"));
+      window.dispatchEvent(new Event("cs-atlas:learning-cleared"));
+      return true;
+    } catch {
+      return false;
+    }
+  },
 };

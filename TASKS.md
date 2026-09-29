@@ -122,10 +122,10 @@ Depends on M2, M4, M5, M8, and M9.
 
 Depends on M1 and M9 identity decision.
 
-- [ ] Select and document authentication provider or defer accounts; define session, account lifecycle, recovery, and privacy policy.
-- [ ] Define profile fields, visibility defaults, deletion/export behavior, locale/theme preferences, and public/private boundaries.
-- [ ] Add server-side authorization tests for every user-owned resource and prohibit client-asserted owner identity.
-- [ ] Preserve anonymous local use and provide explicit migration/linking for existing browser data if accounts are introduced.
+- [x] Defer accounts with an explicit decision record; define the session, lifecycle, recovery, and privacy requirements that gate any future provider selection.
+- [x] Define the anonymous local profile, private visibility defaults, deletion/export behavior, locale/theme preferences, and public/private boundaries.
+- [ ] Deferred until server-side user-owned resources exist: add authorization tests for every such resource and prohibit client-asserted owner identity.
+- [x] Preserve anonymous local use and define explicit review, conflict, rollback, and consent requirements for any future account-linking migration.
 
 ## M12 - Atlas AI
 

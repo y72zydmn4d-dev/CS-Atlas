@@ -1,6 +1,6 @@
 # CS Atlas
 
-CS Atlas is an interactive, local-first knowledge atlas for computer science and artificial intelligence. It connects domain overviews, syllabi, prerequisite roadmaps, conceptual mind maps, documentation-style topics, an algorithm encyclopedia, reusable techniques, projects, progress, bookmarks, and global search.
+CS Atlas is an interactive, local-first Computer Science learning platform. It connects canonical knowledge concepts to lessons, exercises, public-test programming problems, roadmaps, mind maps, Library resources, local learning evidence, Atlas AI, and global search.
 
 ## Screenshots
 
@@ -9,6 +9,8 @@ _Add screenshots of the home atlas, a domain roadmap, and an algorithm visualize
 ## Features
 
 - Technical Atlas Workspace: compact/expanded sidebar, command bar, readable light/dark surfaces, and a learning-first home with real local progress and bookmarks
+- CS-Atlas 2.0 entry points for Learn (`/learn`), canonical Concepts (`/concepts/[concept]`), Exercises (`/exercises`), Problems (`/problems`), Explore (`/explore`), and a local Profile (`/profile`), while preserving the original routes
+- Validated canonical topic/algorithm/technique Concepts with typed relationships, a bounded in-memory graph service, and an `/atlas` projection over those records
 - Cross-domain `/atlas` with lazy-loaded interactive graph, bilingual node search, field filtering, keyboard-friendly list alternative, and a knowledge inspector with personal Library resources
 - Domain next-step recommendations and anchored module sequences; Library list/grid preferences persist independently of document data
 - Practice mode: six bilingual DSA problems plus a deterministic Linear Regression exercise, Python 3 and JavaScript starters with separate drafts, real JavaScript public-test execution in a QuickJS WASM worker, hints, per-case feedback, local history, and knowledge links
@@ -69,7 +71,7 @@ npm run build
 
 ## Practice & Judge
 
-Open `/practice` and choose Python 3 or JavaScript. Each language has its own starter and locally saved draft. JavaScript `function solve(input)` can run the public tests in the browser with **Run public tests** (or Ctrl/Cmd+Enter); Python `solve(data)` is currently edit/save-only and is clearly labeled until an isolated Python runtime is configured. No API key is needed. The editor is a keyboard-friendly plain-text editor, not a full IDE. It supports Binary Search, BFS, Two Pointers, Sliding Window, Prefix Sum, 0/1 Knapsack, and an ML train/test regression audit.
+Open `/problems` for the v2 problem library or `/practice` for the original catalog. Each language has its own starter and locally saved draft. JavaScript `function solve(input)` can run the public tests in the browser with **Run public tests** (or Ctrl/Cmd+Enter); Python `solve(data)` is currently edit/save-only and is clearly labeled until an isolated Python runtime is configured. No API key is needed. The editor is a keyboard-friendly plain-text editor, not a full IDE. It supports Binary Search, BFS, Two Pointers, Sliding Window, Prefix Sum, 0/1 Knapsack, and an ML train/test regression audit.
 
 **Accepted means public tests passed, not hidden-test certification.** Submit is intentionally disabled. Code executes in a QuickJS WebAssembly interpreter inside a disposable browser Worker, never inside Next.js or through host `eval`/`Function`. No host APIs, network, filesystem, or credentials are exposed to learner code. This is a bounded local practice tool, not a security-audited public competition judge.
 

@@ -91,3 +91,19 @@ This file records decisions that constrain CS-Atlas architecture. New decisions 
 - **Rationale:** The product vision expands information architecture but does not call for discarding recognizable UX or accessibility investment.
 - **Alternatives considered:** Redesign every surface before domain migration; defer localization and accessibility until after launch.
 - **Consequences:** New route, entity, and state flows need paired messages and theme/responsive/accessibility verification.
+
+## ADR-0011: Type-qualify canonical Concept IDs during registry migration
+
+- **Status:** Accepted and implemented in the initial v2 slice.
+- **Context:** Existing topic, algorithm, and technique registries contain overlapping legacy IDs such as `two-pointers`. Treating one raw string as a global canonical identity would merge distinct educational records.
+- **Decision:** Use `topic:<id>`, `algorithm:<id>`, and `technique:<id>` canonical IDs. Keep legacy IDs and routes behind source-aware compatibility adapters, with explicit canonical presentation slugs.
+- **Rationale:** This preserves existing links while preventing accidental entity conflation during incremental migration.
+- **Consequences:** New cross-feature records store canonical IDs. Ambiguous raw IDs are never authoritative without source context.
+
+## ADR-0012: Ship only an unavailable Judge adapter until isolation is operated and reviewed
+
+- **Status:** Accepted and implemented in the initial v2 slice.
+- **Context:** The application has public browser Practice runs but no authenticated queue, hidden-test store, or independently reviewed remote execution boundary.
+- **Decision:** Define Judge contracts and provide an adapter that returns `unavailable` without interpreting source. Keep remote Submit disabled.
+- **Rationale:** A mock lifecycle allows UI/domain integration without weakening the execution boundary.
+- **Consequences:** Public browser results remain local evidence only. Enabling remote submission requires the M6/M14 service, threat-model, operations, and kill-switch gates.

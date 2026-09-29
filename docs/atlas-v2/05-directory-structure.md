@@ -81,3 +81,7 @@ docs/
 **Proposed state:** ownership by domain/use case/adapter becomes clearer while preserving Next route conventions and current feature styles.
 
 **Migration path:** add M2 contracts without moving current modules; introduce compatibility exports; move a module only when its callers and tests can update atomically; remove compatibility files only after `rg` import audit, full checks, and a documented deprecation window.
+
+## Initial implemented ownership
+
+The first v2 slice introduces `lib/domain/` for pure canonical contracts, `lib/concepts/` for graph reads, `lib/judge/` for the non-executing Judge adapter, `content/concepts/` plus lesson/exercise/problem adapters, and focused feature components/routes under `components/` and `app/`. Existing root-level feature modules remain in place during compatibility migration. No persistence repository or generated Practice artifact moved.

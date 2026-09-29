@@ -10,27 +10,27 @@ All M1-M14 work below is planned, not complete. Tasks become complete only after
 
 - [x] Audit existing routes, data, UX, APIs, browser storage, tests, deployment assumptions, risks, and security boundaries.
 - [x] Record current state, target boundaries, migration sequence, domain model, API/persistence proposals, risks, ADRs, and milestone dependencies in `docs/atlas-v2/` and root engineering documents.
-- [ ] Human review and approval of the architecture package before M1 implementation.
+- [x] Human review and approval of the architecture package before M1 implementation (owner-authorized implementation request, 2026-09-29).
 
 ## M1 - Atlas Core / app shell / navigation
 
 Depends on M0 review.
 
-- [ ] Define the canonical top-level navigation taxonomy and route ownership for Learn, Practice, Explore, Personal Learning, and Atlas AI while preserving existing route aliases.
+- [x] Define the canonical top-level navigation taxonomy and route ownership for Learn, Practice, Explore, Personal Learning, and Atlas AI while preserving existing route aliases.
 - [ ] Extract shared route metadata, breadcrumbs, page titles, not-found/loading/error behavior, and navigation configuration without changing feature semantics.
 - [ ] Consolidate app-shell theme, locale, and navigation preference ownership behind existing providers/storage contracts; add account-aware preference adapter only after identity is selected.
 - [ ] Implement responsive shell navigation with keyboard, screen-reader, reduced-motion, light/dark, and narrow viewport acceptance tests.
-- [ ] Create capability/feature registry for navigation and search; hide unavailable future features without dead routes.
-- [ ] Document route redirect and browser-state compatibility before any route rename.
+- [x] Create capability/feature registry for navigation and search; hide unavailable future features without dead routes.
+- [x] Document route redirect and browser-state compatibility before any route rename.
 
 ## M2 - Unified domain model
 
 Depends on M1 route ownership decisions; must precede new Learn, Judge, and user-data persistence schemas.
 
-- [ ] Specify stable `Concept` IDs, slugs/aliases, localized names/descriptions, scope/status, provenance, and lifecycle rules.
-- [ ] Define typed relation vocabulary and direction/cardinality semantics, including `PREREQUISITE_OF`, `RELATED_TO`, `PART_OF`, `USES`, `BUILDS_ON`, and `NEXT_TOPIC`.
+- [x] Specify stable `Concept` IDs, slugs/aliases, localized names/descriptions, scope/status, provenance, and lifecycle rules.
+- [x] Define typed relation vocabulary and direction/cardinality semantics, including `PREREQUISITE_OF`, `RELATED_TO`, `PART_OF`, `USES`, `BUILDS_ON`, and `NEXT_TOPIC`.
 - [ ] Define separate records and links for `Lesson`, `Reference`, `Exercise`, `Problem`, `Roadmap`, `MindMap`, `Resource`, and `UserMastery`; use concept IDs as cross-feature anchors.
-- [ ] Add runtime validation for IDs, relation endpoints, relation semantics, locale payloads, and cycles where the relation requires a DAG.
+- [x] Add runtime validation for IDs, relation endpoints, relation semantics, locale payloads, and cycles where the relation requires a DAG.
 - [ ] Create old-ID to concept-ID mapping for domains/topics/algorithms/techniques/projects/practice and document collisions/aliases.
 - [ ] Add compatibility adapters so current `content/` types and current routes resolve through canonical IDs without breaking published content.
 - [ ] Add content parity tests for entity count, IDs, citations, route destinations, graph references, and Practice relation integrity.
@@ -39,9 +39,9 @@ Depends on M1 route ownership decisions; must precede new Learn, Judge, and user
 
 Depends on M2.
 
-- [ ] Define graph read/query contracts over canonical records and typed relations; do not add a graph database absent measured query need.
-- [ ] Implement in-memory/content-backed graph adapter for concepts and existing prerequisite relationships.
-- [ ] Convert `/atlas` to a projection over canonical entities while retaining its filters, bilingual search, inspector, progress context, and keyboard list.
+- [x] Define graph read/query contracts over canonical records and typed relations; do not add a graph database absent measured query need.
+- [x] Implement in-memory/content-backed graph adapter for concepts and existing prerequisite relationships.
+- [x] Convert `/atlas` to a projection over canonical entities while retaining its filters, bilingual search, inspector, progress context, and keyboard list.
 - [ ] Establish relation validation, stable layout input IDs, pagination/limits, and safe handling of missing/deprecated concepts.
 - [ ] Add graph fixture tests for cross-domain prerequisites, deduplicated edges, relation direction, and graph/list parity.
 
@@ -50,8 +50,8 @@ Depends on M2.
 Depends on M2 and M3.
 
 - [ ] Define lesson/course/reference/example/playground metadata and typed lesson block schema with localization and provenance.
-- [ ] Port current typed topic blocks through a compatibility renderer; preserve existing deep lessons and legacy topic URLs.
-- [ ] Build course/lesson navigation and previous/next traversal from authored ordering plus concept prerequisites.
+- [x] Port current typed topic blocks through a compatibility renderer; preserve existing deep lessons and legacy topic URLs.
+- [x] Build course/lesson navigation and previous/next traversal from authored ordering plus concept prerequisites.
 - [ ] Introduce language/runtime capability metadata separately from syntax highlighting; never imply execution when runtime is unavailable.
 - [ ] Add authored starter vertical slices for programming foundations and one CS/AI curriculum; validate content and citations.
 - [ ] Define authoring/validation workflow and content review maturity so large datasets remain out of page components.
@@ -61,7 +61,7 @@ Depends on M2 and M3.
 Depends on M2; shares concepts with M4 and can proceed after its contract is stable.
 
 - [ ] Define `Exercise` separately from online-judge `Problem`, with answer modes, hints, feedback, attempts, rubric, and concept relations.
-- [ ] Migrate embedded topic exercises using stable IDs, explicit version rules, and a compatibility adapter.
+- [x] Migrate embedded topic exercises using stable IDs, explicit version rules, and a compatibility adapter.
 - [ ] Add non-code exercise renderers and local completion state with accessible input and honest persistence labels.
 - [ ] Define common exercise list/filter/topic views and link them from Learn without copying lesson text.
 - [ ] Add tests for hint progression, attempt state, version changes, locale fallbacks, and concept links.
@@ -91,8 +91,8 @@ Depends on M2, M3, and M6 problem contracts.
 
 Depends on M2 and M3.
 
-- [ ] Define roadmap and mind-map authored view schemas over canonical concept IDs, with distinct semantics and separate layout/edge data.
-- [ ] Map current `Domain.roadmap` and `Domain.mindMap` node topic links to concepts, retaining structural nodes and domain overview meaning.
+- [x] Define roadmap and mind-map authored view schemas over canonical concept IDs, with distinct semantics and separate layout/edge data.
+- [x] Map current `Domain.roadmap` and `Domain.mindMap` node topic links to concepts, retaining structural nodes and domain overview meaning.
 - [ ] Preserve existing graph routes and add deterministic list alternatives, progress overlays, and unresolved-node reporting.
 - [ ] Add graph validation that checks roadmap prerequisite ordering independently from mind-map relation semantics.
 - [ ] Remove duplicated concept labels/URLs gradually only after parity tests and authoring workflow are in place.

@@ -4,6 +4,11 @@ Last updated: 2026-09-29
 
 ## Implemented
 
+- Initial CS-Atlas 2.0 migration slice: capability-level shell navigation; additive Learn, Concept, Exercise, Problem, Explore, and local Profile routes; existing URLs and browser data preserved.
+- Canonical type-qualified Concept registry and validated typed relation graph over Topics, Algorithms, and Techniques. `/atlas` now projects canonical topic relations while Roadmap and Mind Map retain separate authored layouts.
+- Lesson, Exercise, and public-only Problem adapters connect current content to Concepts. Public browser exercise/problem activity contributes local evidence only; it is not a remote Judge result or public profile.
+- Explicit public Concept context for Atlas AI, canonical Concept/Exercise/Problem search projection, and a non-destructive Library relation adapter. Library content remains excluded from AI context.
+
 - Technical Atlas Workspace overhaul: quieter light/dark surfaces, smaller headings, consistent spacing and restrained entry/hover/focus transitions; noisy image background removed from rendering.
 - Desktop sidebar with persisted 240px/72px modes; mobile drawer with inert background, focus containment/restoration and desktop-resize recovery; top search/context/locale/theme bar.
 - Learning-first homepage with real active topics, prerequisite-aware deterministic next-topic selection, newest bookmarks, onboarding and a data-derived navigable map preview. No fake activity metrics.

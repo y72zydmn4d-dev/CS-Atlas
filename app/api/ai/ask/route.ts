@@ -1,6 +1,7 @@
 import { retrieveAtlasSources, retrieveConceptSource } from "@/lib/ai/context";
 import { askGemini, GeminiError } from "@/lib/ai/gemini";
 import { validateAtlasAiRequest } from "@/lib/domain/ai";
+import { hasJsonContentType, isSameOriginRequest } from "@/lib/http/request-security";
 
 export const runtime = "nodejs";
 
@@ -22,11 +23,8 @@ async function readLimitedJson(request: Request): Promise<unknown> {
 }
 
 export async function POST(request: Request) {
-  const origin = request.headers.get("origin");
-  if (origin) {
-    try { if (new URL(origin).host !== request.headers.get("host")) return Response.json({ error: "forbidden" }, { status: 403 }); }
-    catch { return Response.json({ error: "forbidden" }, { status: 403 }); }
-  }
+  if (!isSameOriginRequest(request)) return Response.json({ error: "forbidden" }, { status: 403 });
+  if (!hasJsonContentType(request)) return Response.json({ error: "invalid" }, { status: 415 });
   if (!process.env.GEMINI_API_KEY) return Response.json({ error: "not-configured" }, { status: 503 });
   let body: unknown;
   try { body = await readLimitedJson(request); }

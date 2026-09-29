@@ -14,6 +14,12 @@ describe("optional practice feedback boundary", () => {
     expect((await POST(request(input))).status).toBe(503);
     expect(askGemini).not.toHaveBeenCalled();
   });
+  it("rejects non-JSON media before provider invocation", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "test-key-not-real");
+    const response = await POST(new Request("http://localhost:3000/api/practice/feedback", { method: "POST", headers: { "Content-Type": "text/plain" }, body: "{}" }));
+    expect(response.status).toBe(415);
+    expect(askGemini).not.toHaveBeenCalled();
+  });
   it("rejects unknown cases and oversized request bodies before provider invocation", async () => {
     vi.stubEnv("GEMINI_API_KEY", "test-key-not-real");
     expect((await POST(request({ ...input, failedTestIds: ["secret-test"] }))).status).toBe(400);

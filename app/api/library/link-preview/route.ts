@@ -1,4 +1,5 @@
 import { fetchLinkPreview } from "@/lib/library/link-preview-server";
+import { hasJsonContentType, isSameOriginRequest } from "@/lib/http/request-security";
 
 export const runtime = "nodejs";
 
@@ -21,6 +22,8 @@ async function readSmallJson(request: Request): Promise<unknown> {
 }
 
 export async function POST(request: Request) {
+  if (!isSameOriginRequest(request)) return Response.json({ errorCode: "forbidden" }, { status: 403, headers: { "Cache-Control": "no-store" } });
+  if (!hasJsonContentType(request)) return Response.json({ errorCode: "invalid-request" }, { status: 415, headers: { "Cache-Control": "no-store" } });
   const now = Date.now();
   if (globalWindow.resetAt <= now) globalWindow = { count: 0, resetAt: now + 60_000 };
   if (globalWindow.count >= 120) return Response.json({ errorCode: "rate-limited" }, { status: 429, headers: { "Cache-Control": "no-store" } });

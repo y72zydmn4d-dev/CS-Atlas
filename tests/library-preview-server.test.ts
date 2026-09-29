@@ -32,6 +32,14 @@ describe("server-side preview fetch boundaries", () => {
     expect((await response.json()).errorCode).toBe("unsafe-host");
   });
 
+  it("rejects foreign origins and non-JSON requests", async () => {
+    const foreign = await POST(new Request("http://localhost/api/library/link-preview", { method: "POST", headers: { Origin: "https://evil.example", "Content-Type": "application/json" }, body: "{}" }));
+    const media = await POST(new Request("http://localhost/api/library/link-preview", { method: "POST", headers: { "Content-Type": "text/plain" }, body: "{}" }));
+    expect(foreign.status).toBe(403);
+    expect(media.status).toBe(415);
+    expect(foreign.headers.get("Cache-Control")).toBe("no-store");
+  });
+
   it("rejects oversized request bodies before parsing them", async () => {
     const response = await POST(new Request("http://localhost/api/library/link-preview", {
       method: "POST",

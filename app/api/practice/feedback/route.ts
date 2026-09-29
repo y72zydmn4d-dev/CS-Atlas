@@ -3,12 +3,13 @@ import { askGemini } from "@/lib/ai/gemini";
 import { retrieveAtlasSources } from "@/lib/ai/context";
 import { PRACTICE_LIMITS } from "@/lib/practice/types";
 import { isPracticeLanguage } from "@/lib/practice/languages";
+import { hasJsonContentType, isSameOriginRequest } from "@/lib/http/request-security";
 export const runtime = "nodejs";
 const requests: number[] = [];
 
 export async function POST(request: Request) {
-  const origin = request.headers.get("origin");
-  if (origin && origin !== new URL(request.url).origin) return Response.json({ error: "forbidden" }, { status: 403 });
+  if (!isSameOriginRequest(request)) return Response.json({ error: "forbidden" }, { status: 403 });
+  if (!hasJsonContentType(request)) return Response.json({ error: "invalid" }, { status: 415 });
   if (!process.env.GEMINI_API_KEY) return Response.json({ error: "not-configured" }, { status: 503 });
   let body: Record<string, unknown>;
   try {

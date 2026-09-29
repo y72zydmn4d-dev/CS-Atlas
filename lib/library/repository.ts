@@ -1,5 +1,6 @@
 import { openDB, type DBSchema, type IDBPDatabase } from "idb";
 import { LIBRARY_CONFIG } from "@/lib/library/config";
+import { matchesLibraryEntity } from "@/lib/library/concept-relations";
 import { searchLibraryItems } from "@/lib/library/search";
 import { LIBRARY_SCHEMA_VERSION, type CreateLibraryItemInput, type LibraryExport, type LibraryImportResult, type LibraryItem, type LibraryQuery, type LibraryRepository, type LibrarySearchResult, type UpdateLibraryItemInput } from "@/lib/library/types";
 import { migrateLibraryItem, validateLibraryExport, validateLibraryItem } from "@/lib/library/validation";
@@ -43,7 +44,10 @@ function matches(item: LibraryItem, query?: LibraryQuery) {
   if (query.type && query.type !== "all" && item.type !== query.type) return false;
   if (query.format && query.format !== "all" && item.fileFormat !== query.format) return false;
   if (query.tag && !item.tags.includes(query.tag)) return false;
-  if (query.entityId && !item.relatedEntities.some((relation) => relation.entityId === query.entityId && (!query.entityType || relation.entityType === query.entityType))) return false;
+  const entityId = query.entityId;
+  if (entityId && !item.relatedEntities.some((relation) => query.entityType
+    ? matchesLibraryEntity(relation, { entityType: query.entityType, entityId })
+    : relation.entityId === entityId)) return false;
   return true;
 }
 

@@ -73,6 +73,15 @@ describe("IndexedDB library repository", () => {
     expect((await repository.list()).length).toBe(2);
   });
 
+  it("queries canonical concepts through legacy relations and legacy pages through canonical relations", async () => {
+    const repository = new IndexedDbLibraryRepository();
+    const legacy = await repository.create(linkInput);
+    const canonical = await repository.create({ ...linkInput, title: "Canonical arrays", canonicalUrl: "https://example.com/canonical-arrays", url: "https://example.com/canonical-arrays", relatedEntities: [{ entityType: "concept", entityId: "topic:arrays", relation: "reference" }] });
+    await repository.update(legacy.id, { relatedEntities: [{ entityType: "topic", entityId: "arrays", relation: "reference" }] });
+    expect((await repository.list({ entityType: "concept", entityId: "topic:arrays" })).map((item) => item.id).sort()).toEqual([canonical.id, legacy.id].sort());
+    expect((await repository.list({ entityType: "topic", entityId: "arrays" })).map((item) => item.id).sort()).toEqual([canonical.id, legacy.id].sort());
+  });
+
   it("recovers by removing corrupted metadata records", async () => {
     const repository = new IndexedDbLibraryRepository(); await repository.create(linkInput); await resetLibraryDatabaseForTests();
     const database = await openDB(LIBRARY_CONFIG.databaseName, LIBRARY_CONFIG.databaseVersion); await database.put("items", { id: "broken", title: 42 }); database.close();

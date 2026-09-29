@@ -19,6 +19,10 @@ export const libraryEntityOptions: LibraryEntityOption[] = [
   ...domains.flatMap((domain) => domain.syllabus.map((module) => ({ id: module.id, type: "module" as const, label: module.title, hierarchy: `${domain.name} · Module`, hierarchyVi: `${domainTranslationsVi[domain.id]?.name ?? domain.name} · Học phần` }))),
 ];
 
+// New relations use canonical Concepts. Legacy topic/algorithm/technique
+// options remain in libraryEntityOptions so existing metadata still resolves.
+export const libraryRelationAuthoringOptions = libraryEntityOptions.filter((item) => !["topic", "algorithm", "technique"].includes(item.type));
+
 const entityMap = new Map(libraryEntityOptions.map((item) => [`${item.type}:${item.id}`, item]));
 
 export function resolveLibraryRelation(relation: LibraryRelation, locale: Locale = "en") {

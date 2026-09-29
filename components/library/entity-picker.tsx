@@ -3,7 +3,7 @@
 import { Search, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useI18n } from "@/components/locale-provider";
-import { libraryEntityOptions, resolveLibraryRelation } from "@/lib/library/entities";
+import { libraryRelationAuthoringOptions, resolveLibraryRelation } from "@/lib/library/entities";
 import { normalizeLibraryText } from "@/lib/library/search";
 import type { LibraryRelation, LibraryRelationKind } from "@/lib/library/types";
 
@@ -26,7 +26,7 @@ export function EntityPicker({ value, onChange }: { value: LibraryRelation[]; on
   const triggerRef = useRef<HTMLButtonElement>(null);
   const results = useMemo(() => {
     const term = normalizeLibraryText(query);
-    return libraryEntityOptions.filter((item) => !value.some((relation) => relation.entityId === item.id && relation.entityType === item.type)).filter((item) => !term || normalizeLibraryText(`${item.label} ${item.labelVi ?? ""} ${item.hierarchy} ${item.hierarchyVi ?? ""}`).includes(term)).slice(0, 30);
+    return libraryRelationAuthoringOptions.filter((item) => !value.some((relation) => relation.entityId === item.id && relation.entityType === item.type)).filter((item) => !term || normalizeLibraryText(`${item.label} ${item.labelVi ?? ""} ${item.hierarchy} ${item.hierarchyVi ?? ""}`).includes(term)).slice(0, 30);
   }, [query, value]);
   const close = () => { setOpen(false); setQuery(""); requestAnimationFrame(() => triggerRef.current?.focus()); };
   useEffect(() => {

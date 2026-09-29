@@ -53,3 +53,11 @@ Library source metadata and original files remain usable with no AI dependency. 
 **Proposed state:** typed task/context/provider interfaces, per-source authorization and consent, durable quotas, response provenance, evaluation suite.
 
 **Migration path:** preserve current public Q&A as the first adapter; wrap retrieval and request limits in services; add auth/cost controls for public hosting; add one context source at a time after source ownership rules; only then consider Library ingestion/RAG. No AI system implementation is part of M0.
+
+## Implemented safe context slice
+
+`lib/domain/ai.ts` now declares source policies for page, Concept, Lesson, Problem, selected code, Roadmap, progress/mastery, and Library items. Only public Concept context is active. Selected code, progress/mastery, and Library items are sensitive/personal, require an explicit user action, and remain unavailable to the current endpoint; requests attempting to smuggle these fields are rejected. Typed tasks include ask, explain, tutor, hint, debug, review, quiz, exercise draft, summarize, and study plan. All outputs are plain suggestions and have no mutation capability.
+
+The server-only Gemini adapter constructs a system/user separation that labels excerpts as untrusted data, caps output, and validates provider response shape. Server-resolved source records provide provenance; model-written citations are not accepted independently. Tests cover private-source exclusion, malicious excerpt instructions, provenance assembly, malformed output, and output limits. Durable auth/rate/cost controls remain a deployment prerequisite.
+
+`lib/ai/ingestion.ts` defines optional derived ingestion, chunk, embedding, job, and deletion records keyed to Library item checksum/source version and processing versions. No job implementation, upload, embedding provider, or vector store is configured. Source files and Library metadata remain fully usable without these records.

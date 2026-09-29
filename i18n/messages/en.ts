@@ -435,6 +435,8 @@ export const en = {
   "assistant.modeExplain": "Explain",
   "assistant.modeTutor": "Tutor",
   "assistant.modeHint": "Hint",
+  "assistant.modeDebug": "Debug",
+  "assistant.modeReview": "Review",
   "assistant.modeQuiz": "Quiz",
   "assistant.modeGenerateExercise": "Generate exercise",
   "assistant.modeSummarize": "Summarize",

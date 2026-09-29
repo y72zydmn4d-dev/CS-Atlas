@@ -8,8 +8,8 @@ import type { AtlasSource } from "@/lib/ai/context";
 import type { AtlasAiTask } from "@/lib/domain/ai";
 
 const exampleKeys = ["assistant.exampleGradient", "assistant.exampleSearch", "assistant.exampleTransformers"] as const;
-const modes: Array<{ task: AtlasAiTask; label: "assistant.modeAsk" | "assistant.modeExplain" | "assistant.modeTutor" | "assistant.modeHint" | "assistant.modeQuiz" | "assistant.modeGenerateExercise" | "assistant.modeSummarize" | "assistant.modeStudyPlan" }> = [
-  { task: "ask", label: "assistant.modeAsk" }, { task: "explain", label: "assistant.modeExplain" }, { task: "tutor", label: "assistant.modeTutor" }, { task: "hint", label: "assistant.modeHint" }, { task: "quiz", label: "assistant.modeQuiz" }, { task: "generate-exercise", label: "assistant.modeGenerateExercise" }, { task: "summarize", label: "assistant.modeSummarize" }, { task: "study-plan", label: "assistant.modeStudyPlan" },
+const modes: Array<{ task: AtlasAiTask; label: "assistant.modeAsk" | "assistant.modeExplain" | "assistant.modeTutor" | "assistant.modeHint" | "assistant.modeDebug" | "assistant.modeReview" | "assistant.modeQuiz" | "assistant.modeGenerateExercise" | "assistant.modeSummarize" | "assistant.modeStudyPlan" }> = [
+  { task: "ask", label: "assistant.modeAsk" }, { task: "explain", label: "assistant.modeExplain" }, { task: "tutor", label: "assistant.modeTutor" }, { task: "hint", label: "assistant.modeHint" }, { task: "debug", label: "assistant.modeDebug" }, { task: "review", label: "assistant.modeReview" }, { task: "quiz", label: "assistant.modeQuiz" }, { task: "generate-exercise", label: "assistant.modeGenerateExercise" }, { task: "summarize", label: "assistant.modeSummarize" }, { task: "study-plan", label: "assistant.modeStudyPlan" },
 ];
 
 export function AtlasAssistant({ configured, contextConceptId, contextLabel }: { configured: boolean; contextConceptId?: string; contextLabel?: string }) {

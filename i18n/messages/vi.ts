@@ -436,6 +436,8 @@ export const vi = {
   "assistant.modeExplain": "Giải thích",
   "assistant.modeTutor": "Gia sư",
   "assistant.modeHint": "Gợi ý",
+  "assistant.modeDebug": "Gỡ lỗi",
+  "assistant.modeReview": "Đánh giá",
   "assistant.modeQuiz": "Câu hỏi ôn tập",
   "assistant.modeGenerateExercise": "Tạo bài tập",
   "assistant.modeSummarize": "Tóm tắt",

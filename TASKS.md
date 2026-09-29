@@ -131,12 +131,12 @@ Depends on M1 and M9 identity decision.
 
 Depends on M2, M4, M5, M9, and M10 context contracts; RAG is a separate later capability.
 
-- [ ] Define context-source interfaces for current page, concept, lesson, problem, selected code, roadmap, progress/mastery, and explicitly authorized Library retrieval.
-- [ ] Define consent, per-source inclusion controls, retention/logging, provider selection, cost limits, prompt injection defenses, and deletion behavior.
-- [ ] Preserve current server-only Gemini adapter as the first provider implementation and its current public Atlas-only context path.
-- [ ] Build tutor/explanation/hint/debug/review/quiz/generation workflows as typed tasks with provenance and user confirmation for generated changes.
-- [ ] Design Library ingestion metadata/chunks/embeddings as optional derived records linked to source/version; keep canonical files and metadata usable without RAG.
-- [ ] Add AI evaluation fixtures for grounding, privacy exclusion, malicious document instructions, citation provenance, output limits, and provider failure.
+- [x] Define context-source interfaces and sensitivity policies for page, Concept, Lesson, Problem, selected code, Roadmap, progress/mastery, and explicitly authorized Library retrieval.
+- [x] Define consent, per-source availability and size controls, retention/logging, provider selection, cost limits, prompt-injection defenses, and deletion behavior; keep private sources disabled.
+- [x] Preserve the server-only Gemini adapter as the first provider implementation and its public Atlas-only active context path.
+- [x] Build tutor/explanation/hint/debug/review/quiz/generation workflows as typed, provenance-linked tasks that cannot apply generated changes.
+- [x] Design optional Library ingestion, chunk, embedding, and deletion-job records linked to source/version while keeping canonical files and metadata independent of RAG.
+- [x] Add AI evaluation fixtures for grounding, private-source exclusion, malicious instructions, server-issued provenance, output limits, and malformed provider responses.
 
 ## M13 - Global Search
 

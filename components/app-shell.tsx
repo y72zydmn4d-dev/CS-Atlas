@@ -3,23 +3,29 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { BookOpen, Braces, Bookmark, BrainCircuit, ChartNoAxesCombined, Compass, FolderKanban, GitFork, Home, Menu, Moon, Network, PanelLeftClose, PanelLeftOpen, Search, Settings, Sparkles, Sun, X } from "lucide-react";
+import { BookOpen, Braces, ChartNoAxesCombined, Compass, FolderKanban, Home, Menu, Moon, PanelLeftClose, PanelLeftOpen, Search, Settings, Sparkles, Sun, UserRound, X } from "lucide-react";
 import { storage } from "@/lib/storage";
 import { cn } from "@/lib/utils";
+import { capabilities, capabilityForPath, type CapabilityIcon } from "@/lib/capabilities";
 import { SearchDialog } from "@/components/search-dialog";
 import { useTheme } from "@/components/theme-provider";
 import { AmbientBackground } from "@/components/ambient-background";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useI18n } from "@/components/locale-provider";
-import type { MessageKey } from "@/i18n/get-message";
 
-const groups: Array<{ label: MessageKey; items: Array<[string, MessageKey, typeof Home]> }> = [
-  { label: "navigation.explore", items: [
-    ["/atlas", "workspace.atlas", Network],
-    ["/", "navigation.home", Home], ["/domains", "navigation.domains", Compass], ["/practice", "navigation.practice", Braces], ["/roadmaps", "navigation.roadmaps", GitFork], ["/mind-maps", "navigation.mindMaps", Network], ["/algorithms", "navigation.algorithms", Braces], ["/techniques", "navigation.techniques", BrainCircuit], ["/projects", "navigation.projects", FolderKanban],
-  ] },
-  { label: "navigation.personal", items: [["/library", "navigation.library", BookOpen], ["/assistant", "navigation.assistant", Sparkles], ["/progress", "navigation.progress", ChartNoAxesCombined], ["/bookmarks", "navigation.bookmarks", Bookmark]] },
-];
+const icons: Record<CapabilityIcon, typeof Home> = {
+  home: Home,
+  book: BookOpen,
+  code: Braces,
+  compass: Compass,
+  folder: FolderKanban,
+  chart: ChartNoAxesCombined,
+  sparkles: Sparkles,
+  user: UserRound,
+  settings: Settings,
+};
+
+const primaryCapabilities = capabilities.filter((capability) => capability.id !== "profile" && capability.id !== "settings");
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -73,7 +79,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     requestAnimationFrame(() => closeButtonRef.current?.focus());
     return () => { document.body.style.overflow = previous; window.removeEventListener("keydown", handleKeyDown); };
   }, [mobileOpen]);
-  const isActive = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const activeCapability = capabilityForPath(pathname);
   return (
     <div className={cn("app-frame workspace-frame", collapsed && "sidebar-collapsed")}>
       <AmbientBackground />
@@ -90,17 +96,23 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <button ref={closeButtonRef} className="icon-button mobile-only" onClick={() => { setMobileOpen(false); menuButtonRef.current?.focus(); }} aria-label={t("navigation.close")}><X /></button>
         </div>
         <button className="search-trigger" onClick={() => setSearchOpen(true)}><Search size={17} /><span>{t("actions.searchAtlas")}</span><kbd>⌘ K</kbd></button>
-        <nav className="nav-groups">
-          {groups.map((group) => <div key={group.label} className="nav-group"><p>{t(group.label)}</p>{group.items.map(([href, label, Icon]) => <Link key={href} href={href} title={t(label)} aria-label={t(label)} aria-current={isActive(href) ? "page" : undefined} onClick={() => setMobileOpen(false)} className={cn("nav-link", isActive(href) && "active")}><Icon size={18} /><span>{t(label)}</span></Link>)}</div>)}
+        <nav className="nav-groups" aria-label={t("navigation.explore")}>
+          <div className="nav-group">
+            {primaryCapabilities.map((capability) => {
+              const Icon = icons[capability.icon];
+              return <Link key={capability.id} href={capability.href} title={t(capability.label)} aria-label={t(capability.label)} aria-current={activeCapability.id === capability.id ? "page" : undefined} onClick={() => setMobileOpen(false)} className={cn("nav-link", activeCapability.id === capability.id && "active")}><Icon size={18} /><span>{t(capability.label)}</span></Link>;
+            })}
+          </div>
         </nav>
         <div className="sidebar-bottom">
-          <Link className="nav-link" href="/settings" title={t("navigation.settings")} aria-label={t("navigation.settings")} onClick={() => setMobileOpen(false)}><Settings size={18} /><span>{t("navigation.settings")}</span></Link>
+          <Link className={cn("nav-link", activeCapability.id === "profile" && "active")} href="/profile" title={t("navigation.profile")} aria-label={t("navigation.profile")} onClick={() => setMobileOpen(false)}><UserRound size={18} /><span>{t("navigation.profile")}</span></Link>
+          <Link className={cn("nav-link", activeCapability.id === "settings" && "active")} href="/settings" title={t("navigation.settings")} aria-label={t("navigation.settings")} onClick={() => setMobileOpen(false)}><Settings size={18} /><span>{t("navigation.settings")}</span></Link>
           <button className="nav-link sidebar-toggle" onClick={toggleSidebar} title={t(collapsed ? "workspace.expand" : "workspace.collapse")} aria-label={t(collapsed ? "workspace.expand" : "workspace.collapse")} aria-expanded={!collapsed}>{collapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}<span>{t("workspace.collapse")}</span></button>
         </div>
       </aside>
       <div className="workspace-body" inert={mobileOpen}>
         <header className="workspace-topbar">
-          <span className="workspace-context">CS Atlas <span>/</span> {t(groups.flatMap((group) => group.items).find(([href]) => isActive(href))?.[1] ?? (pathname.startsWith("/topics/") ? "common.topic" : pathname === "/search" ? "actions.searchAtlas" : pathname === "/settings" ? "navigation.settings" : "workspace.atlas"))}</span>
+          <span className="workspace-context">CS Atlas <span>/</span> {pathname === "/search" ? t("actions.searchAtlas") : t(activeCapability.label)}</span>
           <button className="command-button" onClick={() => setSearchOpen(true)}><Search size={16} /><span>{t("actions.searchAtlas")}</span><kbd>⌘ / Ctrl K</kbd></button>
           <div className="workspace-tools"><LanguageSwitcher /><button className="icon-button" onClick={toggle} aria-label={t(theme === "dark" ? "theme.light" : "theme.dark")} title={t(theme === "dark" ? "theme.light" : "theme.dark")}>{theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}</button></div>
         </header>

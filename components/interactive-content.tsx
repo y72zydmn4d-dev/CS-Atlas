@@ -6,6 +6,7 @@ import type { ExerciseBlock } from "@/lib/types";
 import { useAtlas } from "@/components/atlas-provider";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/components/locale-provider";
+import { conceptIdForTopic } from "@/lib/domain/concepts";
 
 export function CopyCodeBlock({ code, language }: { code: string; language: string }) {
   const [copied, setCopied] = useState(false);
@@ -14,13 +15,17 @@ export function CopyCodeBlock({ code, language }: { code: string; language: stri
 }
 
 export function ExercisePanel({ topicId, block }: { topicId: string; block: ExerciseBlock }) {
-  const { exercises, setExerciseStatus } = useAtlas();
+  const { exercises, setExerciseStatus, recordLearningEvent } = useAtlas();
   const { t } = useI18n();
   const [updated, setUpdated] = useState(false);
   const progressId = `${topicId}:${block.id}`;
   const status = exercises[progressId] ?? "not-attempted";
   const updateStatus = (next: typeof status) => {
-    setExerciseStatus(progressId, next); setUpdated(false);
+    setExerciseStatus(progressId, next);
+    if (next !== "not-attempted") {
+      recordLearningEvent({ type: next === "solved" ? "exercise-solved" : "exercise-attempted", conceptId: conceptIdForTopic(topicId), source: "browser-local" });
+    }
+    setUpdated(false);
     requestAnimationFrame(() => setUpdated(true));
     window.setTimeout(() => setUpdated(false), 520);
   };

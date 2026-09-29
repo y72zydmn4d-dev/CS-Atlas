@@ -4,16 +4,25 @@ import { Bookmark } from "lucide-react";
 import { useState } from "react";
 import { useAtlas } from "@/components/atlas-provider";
 import type { Bookmark as BookmarkType, ProgressStatus } from "@/lib/types";
+import type { LearningEvent } from "@/lib/domain/learning";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/components/locale-provider";
 
-export function StatusSelect({ id, label = "Learning status" }: { id: string; label?: string }) {
-  const { getStatus, setStatus } = useAtlas();
+export function StatusSelect({ id, label = "Learning status", conceptId }: { id: string; label?: string; conceptId?: string }) {
+  const { getStatus, setStatus, recordLearningEvent } = useAtlas();
   const { t } = useI18n();
   const value = getStatus(id);
   const [updated, setUpdated] = useState(false);
   const update = (next: ProgressStatus) => {
-    setStatus(id, next); setUpdated(false);
+    setStatus(id, next);
+    if (conceptId) {
+      recordLearningEvent({
+        type: next === "completed" ? "lesson-completed" : "lesson-status-changed",
+        conceptId,
+        source: "browser-local" as LearningEvent["source"],
+      });
+    }
+    setUpdated(false);
     requestAnimationFrame(() => setUpdated(true));
     window.setTimeout(() => setUpdated(false), 520);
   };

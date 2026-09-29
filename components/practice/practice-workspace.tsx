@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, Code2, Play, RotateCcw, Sparkles, Square } from "lucide-react";
 import { algorithmById, techniqueById, topicById } from "@/content";
 import { useI18n } from "@/components/locale-provider";
+import { useOptionalAtlas } from "@/components/atlas-provider";
+import { conceptIdForAlgorithm } from "@/lib/domain/concepts";
 import { localizeTopic } from "@/i18n/content";
 import { storage } from "@/lib/storage";
 import { BrowserPracticeRunner } from "@/lib/practice/runner";
@@ -12,6 +14,7 @@ import { PRACTICE_LIMITS, type JudgeResult, type PracticeLanguage, type Practice
 
 export function PracticeWorkspace({ problem, aiConfigured }: { problem: PracticeProblem; aiConfigured: boolean }) {
   const { locale, t } = useI18n();
+  const atlas = useOptionalAtlas();
   const [language, setLanguage] = useState<PracticeLanguage>("python");
   const [code, setCode] = useState(problem.starters.python);
   const [state, setState] = useState<PracticeState>({ schemaVersion: 2, preferredLanguage: "python", attempts: [], drafts: {} });
@@ -77,6 +80,9 @@ export function PracticeWorkspace({ problem, aiConfigured }: { problem: Practice
       const outcome = await runner.current.run(problem, code, abort.current.signal);
       if (abort.current.signal.aborted) { setResult(outcome); return; }
       setResult(outcome);
+      for (const algorithmId of problem.algorithmIds) {
+        atlas?.recordLearningEvent({ type: "problem-public-run", conceptId: conceptIdForAlgorithm(algorithmId), source: "browser-public", sourceVersion: problem.version });
+      }
       const current = storage.loadPractice().state;
       const next: PracticeState = { ...current, preferredLanguage: language, drafts: { ...current.drafts, [practiceDraftKey(problem.id, language)]: latestDraft.current.draft }, attempts: [...current.attempts, { id: crypto.randomUUID(), problemId: problem.id, problemVersion: problem.version, language, code, createdAt: new Date().toISOString(), result: outcome }].slice(-PRACTICE_LIMITS.maxAttempts) };
       setState(next); setSaveFailed(!storage.savePractice(next));

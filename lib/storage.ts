@@ -1,4 +1,5 @@
 import type { Bookmark, ExerciseStatus, Locale, ProgressStatus } from "@/lib/types";
+import type { LearningEvent, LearningEventType } from "@/lib/domain/learning";
 import { sanitizeProgress } from "@/lib/progress";
 import { sanitizePracticeState } from "@/lib/practice/validation";
 import type { PracticeState } from "@/lib/practice/types";
@@ -13,6 +14,7 @@ const KEYS = {
   locale: "cs-atlas.locale.v1",
   translationPopover: "cs-atlas.translation-popover.v1",
   practice: "cs-atlas.practice.v1",
+  learningEvents: "cs-atlas.learning-events.v1",
 } as const;
 
 function readJson(key: string): unknown {
@@ -87,6 +89,30 @@ export const storage = {
   },
   saveExercises(value: Record<string, ExerciseStatus>) {
     writeJson(KEYS.exercises, value);
+  },
+  loadLearningEvents(): LearningEvent[] {
+    const value = readJson(KEYS.learningEvents);
+    if (!Array.isArray(value)) return [];
+    const eventTypes = new Set<LearningEventType>(["lesson-completed", "lesson-status-changed", "exercise-attempted", "exercise-solved", "problem-public-run", "problem-solved"]);
+    return value
+      .filter((item): item is LearningEvent => Boolean(
+        item && typeof item === "object" && !Array.isArray(item)
+        && typeof (item as Record<string, unknown>).id === "string"
+        && typeof (item as Record<string, unknown>).conceptId === "string"
+        && typeof (item as Record<string, unknown>).occurredAt === "string"
+        && ((item as Record<string, unknown>).source === "browser-local" || (item as Record<string, unknown>).source === "browser-public")
+        && eventTypes.has((item as Record<string, unknown>).type as LearningEventType),
+      ))
+      .slice(-500);
+  },
+  saveLearningEvents(value: LearningEvent[]): boolean {
+    if (typeof window === "undefined") return false;
+    try {
+      window.localStorage.setItem(KEYS.learningEvents, JSON.stringify(value.slice(-500)));
+      return true;
+    } catch {
+      return false;
+    }
   },
   loadTheme(): "light" | "dark" | null {
     if (typeof window === "undefined") return null;

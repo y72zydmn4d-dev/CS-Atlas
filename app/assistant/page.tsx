@@ -1,8 +1,9 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { AtlasAssistant } from "@/components/atlas-assistant";
 import { resolveConcept } from "@/content/concepts/registry";
+import { metadataForRoute } from "@/lib/routes";
 
-export const metadata = { title: "AI Assistant" };
+export const metadata = metadataForRoute("assistant");
 export const dynamic = "force-dynamic";
 
 export default async function AssistantPage({ searchParams }: { searchParams: Promise<{ concept?: string }> }) {

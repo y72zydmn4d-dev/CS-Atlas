@@ -7,6 +7,7 @@ import { AtlasProvider } from "@/components/atlas-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LocaleProvider } from "@/components/locale-provider";
 import { SelectionTranslator } from "@/components/selection-translator";
+import { WorkspacePreferencesProvider } from "@/components/workspace-preferences-provider";
 
 export const metadata: Metadata = {
   title: { default: "CS Atlas", template: "%s · CS Atlas" },
@@ -21,7 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="darkreader-lock" />
       </head>
       <body>
-        <ThemeProvider><LocaleProvider><AtlasProvider><AppShell>{children}</AppShell><SelectionTranslator /></AtlasProvider></LocaleProvider></ThemeProvider>
+        <ThemeProvider><LocaleProvider><WorkspacePreferencesProvider><AtlasProvider><AppShell>{children}</AppShell><SelectionTranslator /></AtlasProvider></WorkspacePreferencesProvider></LocaleProvider></ThemeProvider>
       </body>
     </html>
   );

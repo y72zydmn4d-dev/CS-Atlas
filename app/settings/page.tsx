@@ -2,8 +2,9 @@ import { HardDrive, Keyboard, Languages, MoonStar, ShieldCheck } from "lucide-re
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { Message } from "@/components/locale-provider";
+import { metadataForRoute } from "@/lib/routes";
 
-export const metadata = { title: "Settings" };
+export const metadata = metadataForRoute("settings");
 
 export default function SettingsPage() {
   return <div className="page narrow"><Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Settings" }]} /><header className="page-header"><div><p className="kicker"><Message k="settings.kicker" /></p><h1><Message k="settings.title" /></h1><p className="lede"><Message k="settings.lede" /></p></div></header><div className="stack">

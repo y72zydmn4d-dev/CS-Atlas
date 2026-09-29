@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BookOpen, Braces, ChartNoAxesCombined, Compass, FolderKanban, Home, Menu, Moon, PanelLeftClose, PanelLeftOpen, Search, Settings, Sparkles, Sun, UserRound, X } from "lucide-react";
-import { storage } from "@/lib/storage";
 import { cn } from "@/lib/utils";
 import { capabilities, capabilityForPath, type CapabilityIcon } from "@/lib/capabilities";
 import { SearchDialog } from "@/components/search-dialog";
@@ -12,6 +11,8 @@ import { useTheme } from "@/components/theme-provider";
 import { AmbientBackground } from "@/components/ambient-background";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useI18n } from "@/components/locale-provider";
+import { useWorkspacePreferences } from "@/components/workspace-preferences-provider";
+import { routePresentationForPath } from "@/lib/routes";
 
 const icons: Record<CapabilityIcon, typeof Home> = {
   home: Home,
@@ -31,19 +32,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const closeSearch = useCallback(() => setSearchOpen(false), []);
   const closeNavigation = useCallback(() => { setMobileOpen(false); requestAnimationFrame(() => menuButtonRef.current?.focus()); }, []);
   const { theme, toggle } = useTheme();
   const { t } = useI18n();
-  useEffect(() => {
-    // Reconcile browser preferences after the deterministic server render.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setCollapsed(storage.loadSidebarCollapsed());
-  }, []);
-  const toggleSidebar = () => setCollapsed((current) => { storage.saveSidebarCollapsed(!current); return !current; });
+  const { sidebarCollapsed: collapsed, toggleSidebar } = useWorkspacePreferences();
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") { event.preventDefault(); setMobileOpen(false); setSearchOpen(true); }
@@ -80,6 +75,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     return () => { document.body.style.overflow = previous; window.removeEventListener("keydown", handleKeyDown); };
   }, [mobileOpen]);
   const activeCapability = capabilityForPath(pathname);
+  const routePresentation = routePresentationForPath(pathname);
   return (
     <div className={cn("app-frame workspace-frame", collapsed && "sidebar-collapsed")}>
       <AmbientBackground />
@@ -112,7 +108,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </aside>
       <div className="workspace-body" inert={mobileOpen}>
         <header className="workspace-topbar">
-          <span className="workspace-context">CS Atlas <span>/</span> {pathname === "/search" ? t("actions.searchAtlas") : t(activeCapability.label)}</span>
+          <span className="workspace-context">CS Atlas <span>/</span> {routePresentation ? t(routePresentation.label) : t(activeCapability.label)}</span>
           <button className="command-button" onClick={() => setSearchOpen(true)}><Search size={16} /><span>{t("actions.searchAtlas")}</span><kbd>⌘ / Ctrl K</kbd></button>
           <div className="workspace-tools"><LanguageSwitcher /><button className="icon-button" onClick={toggle} aria-label={t(theme === "dark" ? "theme.light" : "theme.dark")} title={t(theme === "dark" ? "theme.light" : "theme.dark")}>{theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}</button></div>
         </header>

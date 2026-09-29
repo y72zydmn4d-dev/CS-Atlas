@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LearningDashboard } from "@/components/workspace-home";
 import { AtlasWorkspace } from "@/components/atlas/atlas-workspace";
 import { AppShell } from "@/components/app-shell";
+import { WorkspacePreferencesProvider } from "@/components/workspace-preferences-provider";
 import { storage } from "@/lib/storage";
 import type { ReactNode } from "react";
 
@@ -13,7 +14,7 @@ vi.mock("next/navigation", () => ({ usePathname: () => "/" }));
 vi.mock("next/dynamic", () => ({ default: () => function CanvasPlaceholder() { return <div data-testid="lazy-canvas" />; } }));
 vi.mock("@/components/library/library-resources", () => ({ LibraryResources: () => <section>Linked library resources</section> }));
 vi.mock("@/components/search-dialog", () => ({ SearchDialog: ({ open }: { open: boolean }) => open ? <div role="dialog">Search</div> : null }));
-function Providers({ children }: { children: ReactNode }) { return <ThemeProvider><LocaleProvider><AtlasProvider>{children}</AtlasProvider></LocaleProvider></ThemeProvider>; }
+function Providers({ children }: { children: ReactNode }) { return <ThemeProvider><LocaleProvider><WorkspacePreferencesProvider><AtlasProvider>{children}</AtlasProvider></WorkspacePreferencesProvider></LocaleProvider></ThemeProvider>; }
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 beforeEach(() => {
   localStorage.clear();

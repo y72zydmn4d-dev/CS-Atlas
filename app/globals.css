@@ -295,6 +295,7 @@ h3 { margin-bottom: 7px; font-size: 1rem; line-height: 1.35; letter-spacing: -.0
 .ambient-background-noise { opacity: var(--topology-noise-opacity); background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb,var(--text) 18%,transparent) .5px, transparent .7px), radial-gradient(circle at 2px 3px, color-mix(in srgb,var(--text) 10%,transparent) .4px, transparent .6px); background-size: 7px 7px, 11px 11px; mix-blend-mode: soft-light; }
 .ambient-vignette { background: radial-gradient(ellipse at 52% 38%, transparent 0 48%, color-mix(in srgb,var(--bg) 16%,transparent) 76%, color-mix(in srgb,var(--bg) 58%,transparent) 100%); }
 .route-stage { min-height: 100vh; animation: route-enter var(--motion-slow) var(--ease-emphasis) both; }
+.route-fallback{min-height:45vh;display:grid;place-content:center;justify-items:center;gap:12px;text-align:center;color:var(--muted)}.route-fallback h1{margin:0;color:var(--text)}.loading-indicator{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
 @keyframes route-enter { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
 
 /* Navigation motion */
@@ -437,7 +438,7 @@ h3 { margin-bottom: 7px; font-size: 1rem; line-height: 1.35; letter-spacing: -.0
   .graph-legend{right:12px}.graph-legend span{padding:4px 6px;font-size:9px}
 }
 @media (prefers-reduced-motion: reduce) {
-  .route-stage,.intro-copy .kicker,.intro-copy h1,.intro-copy .lede,.intro-actions,.atlas-map-preview,.map-connection,.map-orbit,.map-node,.domain-card,.progress-fill,.flow-node-surface,.atlas-flow .atlas-edge .react-flow__edge-path,.flow-node-surface.in-progress .flow-state,.graph-viz-line.active::after,.step-caption { animation: none !important; }
+  .route-stage,.loading-indicator,.intro-copy .kicker,.intro-copy h1,.intro-copy .lede,.intro-actions,.atlas-map-preview,.map-connection,.map-orbit,.map-node,.domain-card,.progress-fill,.flow-node-surface,.atlas-flow .atlas-edge .react-flow__edge-path,.flow-node-surface.in-progress .flow-state,.graph-viz-line.active::after,.step-caption { animation: none !important; }
   .map-node { margin-top: 0; }
   .route-stage,.domain-card,.flow-node-surface { opacity:1;transform:none; }
   .atlas-flow .atlas-edge .react-flow__edge-path{stroke-dasharray:none;stroke-dashoffset:0}

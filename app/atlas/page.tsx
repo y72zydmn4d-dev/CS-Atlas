@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
 import { AtlasWorkspace } from "@/components/atlas/atlas-workspace";
-export const metadata: Metadata = { title: "Knowledge Atlas · CS Atlas" };
+import { metadataForRoute } from "@/lib/routes";
+export const metadata = metadataForRoute("atlas");
 export default function AtlasPage() { return <AtlasWorkspace />; }

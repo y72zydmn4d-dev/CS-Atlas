@@ -17,9 +17,9 @@ All M1-M14 work below is planned, not complete. Tasks become complete only after
 Depends on M0 review.
 
 - [x] Define the canonical top-level navigation taxonomy and route ownership for Learn, Practice, Explore, Personal Learning, and Atlas AI while preserving existing route aliases.
-- [ ] Extract shared route metadata, breadcrumbs, page titles, not-found/loading/error behavior, and navigation configuration without changing feature semantics.
-- [ ] Consolidate app-shell theme, locale, and navigation preference ownership behind existing providers/storage contracts; add account-aware preference adapter only after identity is selected.
-- [ ] Implement responsive shell navigation with keyboard, screen-reader, reduced-motion, light/dark, and narrow viewport acceptance tests.
+- [x] Extract shared route metadata, breadcrumbs, page titles, not-found/loading/error behavior, and navigation configuration without changing feature semantics.
+- [x] Consolidate app-shell theme, locale, and navigation preference ownership behind existing providers/storage contracts; defer an account-aware adapter until identity is selected.
+- [x] Implement responsive shell navigation with keyboard, screen-reader, reduced-motion, light/dark, and narrow viewport acceptance tests.
 - [x] Create capability/feature registry for navigation and search; hide unavailable future features without dead routes.
 - [x] Document route redirect and browser-state compatibility before any route rename.
 

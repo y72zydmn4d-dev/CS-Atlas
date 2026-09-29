@@ -23,7 +23,7 @@ export type LibraryFileFormat = "pdf" | "docx" | "markdown" | "text" | "other";
 export type LibraryLanguage = "en" | "vi" | "mixed" | "unknown";
 export type LibraryStatus = "ready" | "processing" | "failed" | "unsupported";
 export type ExtractionStatus = "not-needed" | "pending" | "complete" | "partial" | "failed" | "unsupported";
-export type LibraryEntityType = "domain" | "topic" | "algorithm" | "technique" | "project" | "module";
+export type LibraryEntityType = "concept" | "domain" | "topic" | "algorithm" | "technique" | "project" | "module";
 export type LibraryRelationKind = "primary" | "prerequisite" | "supplementary" | "example" | "exercise" | "reference";
 export type LibraryErrorCode = "corrupt-file" | "encrypted-pdf" | "extraction-timeout" | "quota" | "storage" | "unsupported" | "unknown";
 
@@ -61,6 +61,7 @@ export interface LibraryItem {
   extractedText?: string;
   excerpt?: string;
   notes?: string;
+  collection?: string;
   errorCode?: LibraryErrorCode;
   relatedEntities: LibraryRelation[];
 }
@@ -108,5 +109,19 @@ export interface LibraryRepository {
   putFile(id: string, file: Blob): Promise<void>;
   search(query: string, limit?: number): Promise<LibrarySearchResult[]>;
   findDuplicate(input: { canonicalUrl?: string; fileFingerprint?: string; contentHash?: string }): Promise<LibraryItem | null>;
-  exportMetadata(): Promise<{ schemaVersion: number; exportedAt: string; items: LibraryItem[] }>;
+  exportMetadata(): Promise<LibraryExport>;
+  importMetadata(value: unknown): Promise<LibraryImportResult>;
+}
+
+export interface LibraryExport {
+  schemaVersion: typeof LIBRARY_SCHEMA_VERSION;
+  exportedAt: string;
+  items: LibraryItem[];
+}
+
+export interface LibraryImportResult {
+  created: number;
+  skipped: number;
+  invalid: number;
+  filesNeedingReimport: number;
 }

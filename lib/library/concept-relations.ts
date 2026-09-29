@@ -11,7 +11,9 @@ export type CanonicalLibraryRelation =
  * relation, so invalid historical references remain exportable and repairable.
  */
 export function resolveCanonicalLibraryRelation(relation: LibraryRelation): CanonicalLibraryRelation {
-  const conceptId = relation.entityType === "topic"
+  const conceptId = relation.entityType === "concept"
+    ? relation.entityId
+    : relation.entityType === "topic"
     ? conceptIdForTopic(relation.entityId)
     : relation.entityType === "algorithm"
       ? conceptIdForAlgorithm(relation.entityId)

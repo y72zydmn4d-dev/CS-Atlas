@@ -1,4 +1,5 @@
 import { algorithms, domains, projects, techniques, topics } from "@/content";
+import { concepts } from "@/content/concepts/registry";
 import { domainTranslationsVi, topicTranslationsVi } from "@/content/translations/vi";
 import type { Locale } from "@/lib/types";
 import type { LibraryEntityType, LibraryRelation } from "@/lib/library/types";
@@ -9,6 +10,7 @@ const domainName = new Map(domains.map((domain) => [domain.id, domain.name]));
 const domainNameVi = new Map(domains.map((domain) => [domain.id, domainTranslationsVi[domain.id]?.name ?? domain.name]));
 
 export const libraryEntityOptions: LibraryEntityOption[] = [
+  ...concepts.map((item) => ({ id: item.id, type: "concept" as const, label: item.name.en, labelVi: item.name.vi, hierarchy: `Canonical ${item.kind}`, hierarchyVi: `Khái niệm chuẩn · ${item.kind}` })),
   ...domains.map((item) => ({ id: item.id, type: "domain" as const, label: item.name, labelVi: domainTranslationsVi[item.id]?.name, hierarchy: "Domain", hierarchyVi: "Lĩnh vực" })),
   ...topics.map((item) => ({ id: item.id, type: "topic" as const, label: item.title, labelVi: topicTranslationsVi[item.id]?.title, hierarchy: `${domainName.get(item.domainId) ?? "Atlas"} · Topic`, hierarchyVi: `${domainNameVi.get(item.domainId) ?? "Atlas"} · Chủ đề` })),
   ...algorithms.map((item) => ({ id: item.id, type: "algorithm" as const, label: item.name, hierarchy: `${item.category} · Algorithm`, hierarchyVi: `${item.category} · Thuật toán` })),

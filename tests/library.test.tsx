@@ -11,7 +11,7 @@ import { detectFileFormat, fileFingerprint, safeFileName } from "@/lib/library/f
 import { IndexedDbLibraryRepository, resetLibraryDatabaseForTests } from "@/lib/library/repository";
 import { searchLibraryItems } from "@/lib/library/search";
 import { LIBRARY_SCHEMA_VERSION, type LibraryItem } from "@/lib/library/types";
-import { canonicalizeUrl, sanitizeLibraryItems, validateFileSize, validateLibraryItem } from "@/lib/library/validation";
+import { canonicalizeUrl, sanitizeLibraryItems, validateFileSize, validateLibraryExport, validateLibraryItem } from "@/lib/library/validation";
 import { renderWithLocale } from "@/tests/test-utils";
 
 async function clearDatabase() {
@@ -94,6 +94,20 @@ describe("IndexedDB library repository", () => {
     const after = await openDB(LIBRARY_CONFIG.databaseName, LIBRARY_CONFIG.databaseVersion);
     expect((await after.get("items", created.id)).schemaVersion).toBe(LIBRARY_SCHEMA_VERSION);
     after.close();
+  });
+
+  it("exports portable metadata and restores files as explicit reimport records", async () => {
+    const source = new IndexedDbLibraryRepository();
+    const file = new NodeBlob(["private local source"], { type: "text/plain" }) as unknown as Blob;
+    const created = await source.create({ type: "file", title: "Private source", fileFormat: "text", fileName: "source.txt", mimeType: "text/plain", fileSize: file.size, fileLastModified: 1, fileFingerprint: "source.txt::20::1", tags: [], collection: "ML", language: "en", status: "ready", extractionStatus: "complete", extractedText: "private local source", relatedEntities: [{ entityType: "concept", entityId: "topic:gradient-descent", relation: "reference" }], file });
+    const exported = await source.exportMetadata();
+    expect(validateLibraryExport(exported)).toBe(true);
+    expect(JSON.stringify(exported)).not.toContain("private local source");
+    await clearDatabase();
+    const destination = new IndexedDbLibraryRepository();
+    await expect(destination.importMetadata(exported)).resolves.toMatchObject({ created: 1, filesNeedingReimport: 1 });
+    expect(await destination.getFile(created.id)).toBeNull();
+    expect(await destination.get(created.id)).toMatchObject({ collection: "ML", status: "failed", errorCode: "storage", relatedEntities: [{ entityType: "concept", entityId: "topic:gradient-descent" }] });
   });
 });
 

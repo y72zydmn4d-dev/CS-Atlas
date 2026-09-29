@@ -2,7 +2,7 @@ import { LIBRARY_CONFIG } from "@/lib/library/config";
 import { LIBRARY_SCHEMA_VERSION, type LibraryFileFormat, type LibraryItem, type LibraryRelation, type LinkPreviewMetadata } from "@/lib/library/types";
 
 const formats = new Set<LibraryFileFormat>(["pdf", "docx", "markdown", "text", "other"]);
-const relationTypes = new Set(["domain", "topic", "algorithm", "technique", "project", "module"]);
+const relationTypes = new Set(["concept", "domain", "topic", "algorithm", "technique", "project", "module"]);
 const relationKinds = new Set(["primary", "prerequisite", "supplementary", "example", "exercise", "reference"]);
 
 export function canonicalizeUrl(value: string): string | null {
@@ -31,6 +31,7 @@ export function validateLibraryItem(value: unknown): value is LibraryItem {
   if (typeof item.title !== "string" || !item.title.trim() || item.title.length > 300) return false;
   if (typeof item.importedAt !== "string" || typeof item.updatedAt !== "string") return false;
   if (!Array.isArray(item.tags) || !item.tags.every((tag) => typeof tag === "string" && tag.length <= 80)) return false;
+  if (item.collection !== undefined && (typeof item.collection !== "string" || item.collection.length > 120)) return false;
   if (!Array.isArray(item.relatedEntities) || !item.relatedEntities.every(validateRelation)) return false;
   if (!["ready", "processing", "failed", "unsupported"].includes(String(item.status))) return false;
   if (!["not-needed", "pending", "complete", "partial", "failed", "unsupported"].includes(String(item.extractionStatus))) return false;
@@ -64,6 +65,15 @@ export function migrateLibraryItem(value: unknown): LibraryItem | null {
 export function sanitizeLibraryItems(value: unknown): LibraryItem[] {
   if (!Array.isArray(value)) return [];
   return value.filter(validateLibraryItem);
+}
+
+export function validateLibraryExport(value: unknown): value is { schemaVersion: number; exportedAt: string; items: unknown[] } {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const data = value as Record<string, unknown>;
+  return data.schemaVersion === LIBRARY_SCHEMA_VERSION
+    && typeof data.exportedAt === "string"
+    && !Number.isNaN(Date.parse(data.exportedAt))
+    && Array.isArray(data.items);
 }
 
 export function normalizeTags(value: string | string[]): string[] {

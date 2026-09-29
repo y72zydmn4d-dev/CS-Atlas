@@ -1,8 +1,8 @@
 import { openDB, type DBSchema, type IDBPDatabase } from "idb";
 import { LIBRARY_CONFIG } from "@/lib/library/config";
 import { searchLibraryItems } from "@/lib/library/search";
-import { LIBRARY_SCHEMA_VERSION, type CreateLibraryItemInput, type LibraryItem, type LibraryQuery, type LibraryRepository, type LibrarySearchResult, type UpdateLibraryItemInput } from "@/lib/library/types";
-import { migrateLibraryItem, validateLibraryItem } from "@/lib/library/validation";
+import { LIBRARY_SCHEMA_VERSION, type CreateLibraryItemInput, type LibraryExport, type LibraryImportResult, type LibraryItem, type LibraryQuery, type LibraryRepository, type LibrarySearchResult, type UpdateLibraryItemInput } from "@/lib/library/types";
+import { migrateLibraryItem, validateLibraryExport, validateLibraryItem } from "@/lib/library/validation";
 
 interface LibraryDatabase extends DBSchema {
   items: { key: string; value: LibraryItem; indexes: { "by-updated": string; "by-canonical-url": string; "by-fingerprint": string; "by-hash": string } };
@@ -115,7 +115,40 @@ export class IndexedDbLibraryRepository implements LibraryRepository {
     return null;
   }
 
-  async exportMetadata() { return { schemaVersion: LIBRARY_SCHEMA_VERSION, exportedAt: new Date().toISOString(), items: await this.list() }; }
+  async exportMetadata(): Promise<LibraryExport> {
+    const items = (await this.list()).map((item) => {
+      // A metadata transfer deliberately excludes extracted file text and its
+      // excerpt. Those are derived from private source bytes and require an
+      // explicit file re-import on the receiving browser.
+      if (item.type !== "file") return item;
+      const metadata = { ...item };
+      delete metadata.extractedText;
+      delete metadata.excerpt;
+      return metadata;
+    });
+    return { schemaVersion: LIBRARY_SCHEMA_VERSION, exportedAt: new Date().toISOString(), items };
+  }
+
+  async importMetadata(value: unknown): Promise<LibraryImportResult> {
+    if (!validateLibraryExport(value)) throw new Error("invalid-library-export");
+    const database = await getDatabase();
+    const result: LibraryImportResult = { created: 0, skipped: 0, invalid: 0, filesNeedingReimport: 0 };
+    for (const rawItem of value.items) {
+      const item = migrateLibraryItem(rawItem);
+      if (!item) { result.invalid += 1; continue; }
+      if (await database.get("items", item.id)) { result.skipped += 1; continue; }
+      // A metadata export intentionally has no blob. Preserve its record and
+      // extraction metadata, but make the missing original explicit.
+      const restored = item.type === "file"
+        ? { ...item, status: "failed" as const, errorCode: "storage" as const, extractionStatus: item.extractionStatus === "unsupported" ? "unsupported" as const : "failed" as const, extractedText: undefined, excerpt: item.excerpt ?? "Original file must be imported again after metadata restore." }
+        : item;
+      await database.put("items", restored);
+      result.created += 1;
+      if (restored.type === "file") result.filesNeedingReimport += 1;
+    }
+    notifyChanged();
+    return result;
+  }
 }
 
 export const libraryRepository: LibraryRepository = new IndexedDbLibraryRepository();

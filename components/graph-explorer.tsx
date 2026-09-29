@@ -12,6 +12,7 @@ import { getConceptGraphView } from "@/lib/concepts/views";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/components/locale-provider";
 import { localizedLabel } from "@/i18n/content";
+import { projectLegacyProgressToConcepts } from "@/lib/progress/projection";
 
 type NodeStatus = "not-started" | "in-progress" | "completed";
 
@@ -126,11 +127,13 @@ export function GraphExplorer({ domain, mode }: { domain: Domain; mode: GraphMod
       href: concept ? `/concepts/${concept.slug}` : node.kind === "root" ? `/domains/${domain.slug}` : undefined,
       kind: node.kind,
       topicId: node.topicId,
+      conceptId: node.conceptId,
       entranceOrder: entranceOrder.get(node.id) ?? 0,
     };
   }), [domain.slug, entranceOrder, graph.nodes, locale]);
   const baseEdges = useMemo(() => graph.edges.map((edge, index) => ({ ...edge, animated: false, type: "smoothstep", entranceOrder: index })), [graph.edges]);
-  const statuses = useMemo<Record<string, NodeStatus>>(() => Object.fromEntries(baseNodes.map((node) => [node.id, node.topicId ? progress[node.topicId] ?? "not-started" : "not-started"])), [baseNodes, progress]);
+  const canonicalProgress = useMemo(() => projectLegacyProgressToConcepts(progress), [progress]);
+  const statuses = useMemo<Record<string, NodeStatus>>(() => Object.fromEntries(baseNodes.map((node) => [node.id, node.conceptId ? canonicalProgress[node.conceptId] ?? "not-started" : "not-started"])), [baseNodes, canonicalProgress]);
 
   useEffect(() => {
     if (!ready) return;

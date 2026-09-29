@@ -5,6 +5,7 @@ import type { Bookmark, ExerciseStatus, ProgressStatus } from "@/lib/types";
 import type { GoalMetric, LearningEvent, LearningEventTarget, LearningEventType, LearningGoal, StudyPlan, StudyPlanItem } from "@/lib/domain/learning";
 import type { ExerciseAttempt } from "@/lib/domain/exercises";
 import { storage } from "@/lib/storage";
+import { mergeLearningEvents } from "@/lib/progress/migration";
 
 interface AtlasContextValue {
   ready: boolean;
@@ -48,7 +49,8 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
     setBookmarks(storage.loadBookmarks());
     setExercises(storage.loadExercises());
     setExerciseAttempts(storage.loadExerciseAttempts());
-    setLearningEvents(storage.loadLearningEvents());
+    const migration = storage.loadOrCreateLegacyLearningMigration();
+    setLearningEvents(mergeLearningEvents(migration?.events ?? [], storage.loadLearningEvents()));
     setLearningGoals(storage.loadLearningGoals());
     setStudyPlans(storage.loadStudyPlans());
     setReady(true);

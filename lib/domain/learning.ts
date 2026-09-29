@@ -7,12 +7,13 @@ export const learningEventTypes = [
   "exercise-solved",
   "problem-public-run",
   "problem-solved",
+  "problem-public-completion-imported",
   "study-plan-item-completed",
 ] as const;
 
 export type LearningEventType = (typeof learningEventTypes)[number];
 export type LearningEntityType = "concept" | "lesson" | "exercise" | "problem" | "roadmap" | "resource";
-export type LearningEvidenceSource = "browser-local" | "browser-public" | "local-study-plan";
+export type LearningEvidenceSource = "browser-local" | "browser-public" | "local-study-plan" | "legacy-local-snapshot";
 
 export interface LearningEventTarget {
   type: LearningEntityType;
@@ -92,7 +93,7 @@ export function isLearningEvent(value: unknown): value is LearningEvent {
     && typeof event.occurredAt === "string"
     && !Number.isNaN(Date.parse(event.occurredAt))
     && learningEventTypes.includes(event.type as LearningEventType)
-    && ["browser-local", "browser-public", "local-study-plan"].includes(event.source as LearningEvidenceSource)
+    && ["browser-local", "browser-public", "local-study-plan", "legacy-local-snapshot"].includes(event.source as LearningEvidenceSource)
     && (event.sourceVersion === undefined || (typeof event.sourceVersion === "number" && Number.isInteger(event.sourceVersion) && event.sourceVersion > 0))
     && hasValidTarget;
 }
@@ -141,7 +142,7 @@ export function isStudyPlan(value: unknown): value is StudyPlan {
 function eventMatchesMetric(event: LearningEvent, metric: GoalMetric) {
   if (metric === "lessons-completed") return event.type === "lesson-completed";
   if (metric === "exercises-solved") return event.type === "exercise-solved";
-  if (metric === "problems-solved") return event.type === "problem-solved";
+  if (metric === "problems-solved") return event.type === "problem-solved" || event.type === "problem-public-completion-imported";
   return event.type === "study-plan-item-completed";
 }
 
@@ -162,14 +163,22 @@ export interface UserMastery {
   state: "not-started" | "developing" | "practicing" | "confident";
   evidenceCount: number;
   confidence: "low" | "medium" | "high";
+  recency: "none" | "recent" | "aging" | "stale";
+  lastEvidenceAt?: string;
   modelVersion: 1;
 }
 
-export function deriveLocalMastery(conceptId: ConceptId, events: LearningEvent[]): UserMastery {
+export function deriveLocalMastery(conceptId: ConceptId, events: LearningEvent[], now = new Date()): UserMastery {
   const relevant = events.filter((event) => event.conceptId === conceptId);
-  const hasSolved = relevant.some((event) => event.type === "exercise-solved" || event.type === "problem-solved");
-  const hasPractice = relevant.some((event) => event.type === "exercise-attempted" || event.type === "problem-public-run");
+  const demonstrated = relevant.filter((event) => event.source !== "legacy-local-snapshot");
+  const hasSolved = demonstrated.some((event) => event.type === "exercise-solved" || event.type === "problem-solved");
+  const hasPractice = relevant.some((event) => event.type === "exercise-attempted" || event.type === "problem-public-run" || event.type === "problem-public-completion-imported");
   const hasLesson = relevant.some((event) => event.type === "lesson-completed" || event.type === "lesson-status-changed");
   const state = hasSolved ? "confident" : hasPractice ? "practicing" : hasLesson ? "developing" : "not-started";
-  return { conceptId, state, evidenceCount: relevant.length, confidence: hasSolved && relevant.length > 1 ? "medium" : relevant.length ? "low" : "low", modelVersion: 1 };
+  const lastEvidenceAt = relevant.map((event) => event.occurredAt).sort().at(-1);
+  const ageDays = lastEvidenceAt ? Math.max(0, (now.getTime() - Date.parse(lastEvidenceAt)) / 86_400_000) : Number.POSITIVE_INFINITY;
+  const recency = !lastEvidenceAt ? "none" : ageDays <= 30 ? "recent" : ageDays <= 120 ? "aging" : "stale";
+  const distinctSolvedTargets = new Set(demonstrated.filter((event) => event.type === "exercise-solved" || event.type === "problem-solved").map((event) => event.target ? `${event.target.type}:${event.target.id}` : event.id)).size;
+  const confidence = hasSolved && distinctSolvedTargets > 1 && recency === "recent" ? "medium" : "low";
+  return { conceptId, state, evidenceCount: relevant.length, confidence, recency, lastEvidenceAt, modelVersion: 1 };
 }

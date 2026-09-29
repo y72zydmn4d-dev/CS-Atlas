@@ -31,6 +31,8 @@ Recommended separation:
 
 Do not ship a single opaque numerical mastery score as soon as events exist. First collect transparent completion/attempt evidence and define how each event contributes, decays, conflicts, and is corrected. A Practice public-test pass is evidence of public cases only. A remote AC is evidence for a specific problem revision. Reading a page is not proof of concept mastery. Self-report is useful but distinct from judged performance.
 
+The current local `deriveLocalMastery` projection is deliberately categorical and versioned, not a score. Lesson evidence yields `developing`, attempts and public-case evidence yield `practicing`, and current non-migrated solved exercise/problem evidence may yield `confident`. Confidence remains low unless at least two distinct solved targets are recent; evidence recency is reported as recent (up to 30 days), aging (up to 120 days), or stale. Legacy snapshot evidence never promotes a learner to `confident`, and a public completion never becomes a hidden-Judge verdict. No correction/override control is exposed yet; when added, it must remain a separate user-authored record and must not rewrite historical evidence.
+
 ## Migration of local state
 
 - Keep current storage keys readable until a tested migration has exported/snapshotted local values.
@@ -39,6 +41,8 @@ Do not ship a single opaque numerical mastery score as soon as events exist. Fir
 - Map Practice attempts as local-public evidence with provenance `browser-public`; never upgrade verdict scope during migration.
 - Preserve timestamps where known. Do not fabricate historical events from aggregate state; mark imported snapshots with migration time/source.
 - Make migration repeatable/idempotent and keep a recovery export if quota/write fails.
+
+The browser adapter now writes one additive `cs-atlas.learning-migration.v1` snapshot. It retains the validated legacy topic progress, exercise statuses, and public Practice completion records for rollback, then derives deterministic canonical Concept events at the migration timestamp. Reloads reuse the same snapshot and event IDs; original keys are never edited or deleted. A failed snapshot write returns no migrated evidence rather than claiming success. New dashboards project legacy topic state through canonical Concept IDs while the original status map remains authoritative during this compatibility window.
 
 ## Interfaces and privacy
 

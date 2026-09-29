@@ -67,7 +67,7 @@ Library remains browser-local and private. `lib/library/concept-relations.ts` re
 
 ## 16. Progress / Profile status
 
-Local exercise and Practice events can create bounded, validated Concept evidence under a new additive localStorage key. The Profile route presents local learning activity without claiming an account or a public profile. Existing progress and bookmark data are unchanged.
+Local exercise and Practice events create bounded, validated Concept evidence under an additive localStorage key. Topic progress is projected through canonical Concept IDs. A separate idempotent migration snapshot preserves the validated legacy topic/exercise/public-Practice aggregates for rollback and derives explicitly marked snapshot evidence without changing original keys or upgrading public results to Judge verdicts. Mastery remains a transparent categorical projection with confidence and recency, not a numeric score. The Profile route presents local learning activity without claiming an account or a public profile.
 
 ## 17. Atlas AI status
 

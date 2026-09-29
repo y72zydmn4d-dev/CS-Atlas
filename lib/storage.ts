@@ -4,6 +4,7 @@ import { sanitizeProgress } from "@/lib/progress";
 import { sanitizePracticeState } from "@/lib/practice/validation";
 import type { PracticeState } from "@/lib/practice/types";
 import { isExerciseAttempt, type ExerciseAttempt } from "@/lib/domain/exercises";
+import { createLegacyLearningMigration, isLegacyLearningMigration, type LegacyLearningMigration } from "@/lib/progress/migration";
 
 const KEYS = {
   sidebar: "cs-atlas.sidebar-collapsed.v1",
@@ -19,6 +20,7 @@ const KEYS = {
   learningEvents: "cs-atlas.learning-events.v1",
   learningGoals: "cs-atlas.learning-goals.v1",
   studyPlans: "cs-atlas.study-plans.v1",
+  learningMigration: "cs-atlas.learning-migration.v1",
 } as const;
 
 function readJson(key: string): unknown {
@@ -120,6 +122,23 @@ export const storage = {
       return true;
     } catch {
       return false;
+    }
+  },
+  loadOrCreateLegacyLearningMigration(): LegacyLearningMigration | null {
+    const existing = readJson(KEYS.learningMigration);
+    if (isLegacyLearningMigration(existing)) return existing;
+    if (typeof window === "undefined") return null;
+    const migration = createLegacyLearningMigration({
+      progress: sanitizeProgress(readJson(KEYS.progress)),
+      exercises: this.loadExercises(),
+      practice: this.loadPractice().state,
+      migratedAt: new Date().toISOString(),
+    });
+    try {
+      window.localStorage.setItem(KEYS.learningMigration, JSON.stringify(migration));
+      return migration;
+    } catch {
+      return null;
     }
   },
   loadLearningGoals(): LearningGoal[] {

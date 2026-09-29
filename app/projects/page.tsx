@@ -1,0 +1,6 @@
+import { CheckCircle2, FolderKanban } from "lucide-react";
+import { domainById, projects, topicById } from "@/content";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { Message } from "@/components/locale-provider";
+export const metadata={title:"Projects"};
+export default function ProjectsPage(){return <div className="page"><Breadcrumbs items={[{label:"Home",href:"/"},{label:"Projects"}]}/><header className="page-header"><div><p className="kicker"><Message k="projects.kicker" /></p><h1><Message k="projects.title" /></h1><p className="lede"><Message k="projects.lede" /></p></div></header><div className="catalog-grid">{projects.map((project)=><article id={project.slug} className="catalog-card" key={project.id}><span className="catalog-card-icon"><FolderKanban size={18}/></span><span className="chip" style={{margin:"12px 0 8px"}}>{domainById.get(project.domainId)?.shortName} · {project.difficulty}</span><h3>{project.title}</h3><p>{project.summary}</p><ul className="list-clean" style={{marginTop:"auto"}}>{project.deliverables.map((item)=><li key={item}><CheckCircle2 size={14}/>{item}</li>)}</ul><div style={{display:"flex",flexWrap:"wrap",gap:5,marginTop:12}}>{project.skillIds.slice(0,3).map((id)=><span className="chip" key={id}>{topicById.get(id)?.title??id}</span>)}</div></article>)}</div></div>}

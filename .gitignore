@@ -1,0 +1,12 @@
+node_modules
+public/practice-engine/
+.next
+.next-production
+out
+coverage
+.DS_Store
+*.log
+*.tsbuildinfo
+.env*
+!.env.example
+.sites-runtime

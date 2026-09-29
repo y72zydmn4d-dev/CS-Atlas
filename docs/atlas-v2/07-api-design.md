@@ -2,15 +2,16 @@
 
 ## Current APIs
 
-Three Next.js Node route handlers exist:
+Four Next.js Node route handlers exist:
 
 | Endpoint | Current behavior | Important current limit |
 |---|---|---|
 | `POST /api/ai/ask` | Bounded JSON question/locale; retrieves public Atlas excerpts; Gemini call server-side | No auth; process-local 12/min cap; public content only |
 | `POST /api/practice/feedback` | Validates problem/language/code/verdict/case IDs; explicit Gemini feedback request | No auth; process-local 8/min cap; client-reported results are untrusted; no Library access |
 | `POST /api/library/link-preview` | Fetches metadata from a validated public HTTP(S) URL with DNS/IP/redirect/time/size restrictions | No auth; process-local limits; Node runtime required; contacts target website |
+| `POST/GET/DELETE /api/judge/submissions` | Validates the future submission/status/cancel wire contract and delegates only to an unavailable adapter | No auth or durable ownership; always unavailable for creation; never executes source; not a production submission service |
 
-There is no general REST/GraphQL backend, account API, persistence API, judge submission endpoint, or generated OpenAPI contract.
+There is no general REST/GraphQL backend, account API, persistence API, operational Judge service, or generated OpenAPI contract.
 
 ## API principles
 

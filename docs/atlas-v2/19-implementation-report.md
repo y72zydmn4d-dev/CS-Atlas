@@ -51,7 +51,7 @@ Embedded topic exercise blocks are adapted to versioned Exercise records and lis
 
 ## 12. Judge status
 
-Judge contracts define language, submission state, and AC/WA/TLE/MLE/RE/CE vocabulary. `UnavailableJudgeClient` never evaluates source and keeps Submit unavailable. A separately operated, independently reviewed isolated execution service, authenticated API, hidden-test storage, durable quotas, monitoring, and kill switch are required before remote judging can be enabled.
+Judge contracts define language runtimes, immutable public/hidden suite references, submission events/transitions, measured usage, and AC/WA/TLE/MLE/RE/CE vocabulary. The UI covers queued/running/finished/failed/cancelled/unavailable and terminal verdict states. `UnavailableJudgeClient` never evaluates or retains source and keeps Submit unavailable; request-boundary tests exercise origin, content type, size, shape, version, and language checks. A separately operated, independently reviewed isolated execution service, authenticated API, hidden-test storage, durable quotas, monitoring, and kill switch are still required before remote judging can be enabled.
 
 ## 13. Problem Library
 

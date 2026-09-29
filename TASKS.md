@@ -70,12 +70,12 @@ Depends on M2; shares concepts with M4 and can proceed after its contract is sta
 
 Depends on M2 and M5; security threat model and isolated-service interface must be approved before code execution service work.
 
-- [ ] Define Problem, language, submission, test-suite, verdict, resource-usage, and judge-event contracts; keep public and hidden cases distinct.
+- [x] Define Problem, language, submission, public/hidden test-suite reference, verdict, resource-usage, and Judge-event contracts.
 - [ ] Define authenticated submission API, idempotency, queue state, cancellation, polling/webhook contract, quotas, and retention policy.
 - [ ] Specify isolated execution service boundary and independently review threat model, sandbox lifecycle, kernel/microVM controls, no-network policy, secrets isolation, output caps, CPU/memory/process limits, and audit policy.
-- [ ] Build a mock judge adapter and UI state machine first; do not execute user code in Next.js or its application worker pool.
+- [x] Build an unavailable Judge adapter, validated lifecycle state machine, and status UI without executing user code in Next.js or its application worker pool.
 - [ ] Build a separately operated sandbox service only after M14 security review and operational ownership are in place.
-- [ ] Implement verdict UX for AC/WA/TLE/MLE/RE/CE plus queued/running/cancelled/unavailable; report measurements accurately.
+- [x] Implement verdict UX for AC/WA/TLE/MLE/RE/CE plus queued/running/failed/cancelled/unavailable and optional service measurements.
 - [ ] Add adversarial tests, service contract tests, isolation tests, abuse limits, operational alerts, and a kill switch before enabling Submit.
 
 ## M7 - Problem Library

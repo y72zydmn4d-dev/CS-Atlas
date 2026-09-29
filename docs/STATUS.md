@@ -13,6 +13,7 @@ Last updated: 2026-09-30
 - Progress dashboards and graph overlays project preserved topic state through canonical Concept IDs. An idempotent local migration snapshot retains rollback data and imports topic/exercise/public-Practice evidence without altering legacy keys or claiming hidden-Judge mastery.
 - Local goals support one-time, weekly, and monthly windows in the recorded browser timezone; study items retain due dates, and activity can be aggregated by local calendar day without leaving the device.
 - The Problem Library now validates ratings, tags, constraints, public examples, provenance, publication visibility, and canonical links to prerequisites, lessons, exercises, and roadmaps; filters cover localized text, topic, tag, rating, difficulty, status, and language capability.
+- Judge application contracts now distinguish public/hidden suite references, validated lifecycle events, terminal verdicts, and measured usage. The UI covers every lifecycle/verdict state, while the only server adapter remains explicitly unavailable and adversarial route tests confirm source is never executed.
 
 - Technical Atlas Workspace overhaul: quieter light/dark surfaces, smaller headings, consistent spacing and restrained entry/hover/focus transitions; noisy image background removed from rendering.
 - Desktop sidebar with persisted 240px/72px modes; mobile drawer with inert background, focus containment/restoration and desktop-resize recovery; top search/context/locale/theme bar.

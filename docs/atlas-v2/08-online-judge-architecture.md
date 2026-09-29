@@ -78,6 +78,10 @@ Languages are backend runtime capabilities, not just editor modes. Each language
 
 **Migration path:** retain current Worker unchanged; define Problem revisions and remote contracts; implement mocked queue state and UI; threat-model/independently review infrastructure; deploy isolated service separately; run shadow/conformance/adversarial checks; enable Submit behind a feature gate only when all gates pass. Existing attempts remain local/public-only and are not uploaded without explicit consent.
 
+## Implemented application-side slice
+
+The application now defines immutable public/hidden test-suite references, pinned runtime metadata, bounded resource usage, safe Judge events, and validated queued/running/terminal transitions. The UI can present queued, running, finished, failed, cancelled, unavailable, AC, WA, TLE, MLE, RE, and CE states plus service-reported time/memory values. The route handler rejects cross-origin, unsupported-media, oversized, malformed, stale-version, and unsupported-language requests before calling an adapter. The only configured adapter returns `unavailable`, retains no source, and never evaluates it. Submit remains disabled because authentication, durable ownership/quota, an operated queue, isolated workers, monitoring, and an approved kill switch do not exist.
+
 ## Risks and gates
 
 Primary risks are sandbox escape, resource exhaustion, network/cloud metadata access, hidden test leakage, source privacy, queue abuse, image supply-chain compromise, confusing system error with learner verdict, and mislabeling public tests. M6 may define interfaces and UI without enabling execution. M14 security review is a release gate for any active judge.

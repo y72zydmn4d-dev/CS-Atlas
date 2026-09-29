@@ -320,6 +320,7 @@ h3 { line-height:1.45; letter-spacing:-.015em; }
 .catalog-toolbar .form-field,.problem-filters .form-field { gap:5px; }
 .catalog-toolbar .form-field span,.problem-filters .form-field span { color:var(--faint); font-size:.76rem; }
 .judge-boundary { margin:0 0 16px; padding:10px 12px; border-left:3px solid var(--warning); background:var(--surface-2); color:var(--muted); font-size:.86rem; }
+.problem-rating{display:block;margin-top:4px;color:var(--faint);font:10px var(--font-mono)}
 .exercise-index { display:grid; border-top:1px solid var(--border); max-width:920px; }
 .exercise-index>a { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:12px; min-height:58px; padding:10px 6px; border-bottom:1px solid var(--border); }
 .exercise-index>a:hover { background:var(--surface-2); }

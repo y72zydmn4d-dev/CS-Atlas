@@ -11,6 +11,7 @@ import { concepts, conceptRelations, conceptValidationIssues, resolveConcept } f
 import { courses, lessons } from "@/content/lessons";
 import { exercises } from "@/content/exercises";
 import { problems } from "@/content/problems";
+import { validateProblemCatalog } from "@/lib/problems/catalog";
 
 export { algorithms, domains, projects, techniques, topics, sources, sourceById, concepts, conceptRelations, conceptValidationIssues, resolveConcept, courses, lessons, exercises, problems };
 
@@ -124,5 +125,6 @@ export function validateContent() {
     }
   }
   for (const issue of conceptValidationIssues) errors.push(`canonical concepts: ${issue.message}`);
+  errors.push(...validateProblemCatalog(problems, new Set(concepts.map((concept) => concept.id))));
   return errors;
 }

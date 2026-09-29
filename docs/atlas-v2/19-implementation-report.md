@@ -55,7 +55,7 @@ Judge contracts define language, submission state, and AC/WA/TLE/MLE/RE/CE vocab
 
 ## 13. Problem Library
 
-`/problems` exposes current Practice definitions as public-only Problem records with search, difficulty, topic, and local public-case status. `/problems/[problem]` links each record back to Concepts and the existing Practice workflow. Browser QuickJS runs are local evidence only, never Judge certification.
+`/problems` exposes current Practice definitions as validated public Problem records with localized search, difficulty, topic, tag, rating, status, and language-capability filters. Records include constraints, public example IDs, provenance, explicit publication visibility, and stable links to Concepts, prerequisites, Lessons, Exercises, and Roadmaps. `/problems/[problem]` retains the existing Practice workspace. Browser QuickJS runs are local evidence only, never Judge certification; reference solutions remain server-only and discussions remain explicitly unavailable.
 
 ## 14. Roadmap / Mind Map status
 

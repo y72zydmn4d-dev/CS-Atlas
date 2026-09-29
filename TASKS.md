@@ -82,10 +82,10 @@ Depends on M2 and M5; security threat model and isolated-service interface must 
 
 Depends on M2, M3, and M6 problem contracts.
 
-- [ ] Expand authored problem metadata, topic/tag/rating/difficulty filters, public examples, constraints, and source/provenance validation.
-- [ ] Add editorial, progressive hints, solutions, and discussion references with explicit publication/visibility policy.
-- [ ] Relate problems to canonical concepts, lessons, exercises, roadmap nodes, and prerequisite concepts using stable IDs.
-- [ ] Add problem search facets and tests for locale, tags, canonical links, visibility, and unavailable language/runtime combinations.
+- [x] Expand authored Problem metadata, topic/tag/rating/difficulty filters, public examples, constraints, and source/provenance validation.
+- [x] Add public progressive hints and complexity guidance plus explicit server-only reference-solution and unavailable-discussion publication policies.
+- [x] Relate Problems to canonical Concepts, Lessons, Exercises, Roadmaps, and prerequisite Concepts using stable IDs.
+- [x] Add Problem search facets and tests for locale, tags, canonical links, visibility, and public-runtime/editor-only language combinations.
 
 ## M8 - Roadmap + Mind Map integration
 

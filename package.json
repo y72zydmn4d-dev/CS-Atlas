@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --incremental false",
     "test": "vitest run --configLoader runner",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "audit:build": "node scripts/measure-build.mjs"
   },
   "dependencies": {
     "@jitl/quickjs-singlefile-browser-release-sync": "0.32.0",

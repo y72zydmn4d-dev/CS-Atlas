@@ -1,14 +1,160 @@
 import type { ConceptId } from "@/lib/domain/concepts";
 
-export type LearningEventType = "lesson-completed" | "lesson-status-changed" | "exercise-attempted" | "exercise-solved" | "problem-public-run" | "problem-solved";
+export const learningEventTypes = [
+  "lesson-completed",
+  "lesson-status-changed",
+  "exercise-attempted",
+  "exercise-solved",
+  "problem-public-run",
+  "problem-solved",
+  "study-plan-item-completed",
+] as const;
+
+export type LearningEventType = (typeof learningEventTypes)[number];
+export type LearningEntityType = "concept" | "lesson" | "exercise" | "problem" | "roadmap" | "resource";
+export type LearningEvidenceSource = "browser-local" | "browser-public" | "local-study-plan";
+
+export interface LearningEventTarget {
+  type: LearningEntityType;
+  id: string;
+}
 
 export interface LearningEvent {
   id: string;
   type: LearningEventType;
   conceptId: ConceptId;
   occurredAt: string;
-  source: "browser-local" | "browser-public";
+  source: LearningEvidenceSource;
   sourceVersion?: number;
+  /** Optional so the additive v1 event store remains readable. */
+  target?: LearningEventTarget;
+}
+
+export const goalMetrics = ["lessons-completed", "exercises-solved", "problems-solved", "plan-items-completed"] as const;
+export type GoalMetric = (typeof goalMetrics)[number];
+export type GoalStatus = "active" | "completed" | "archived";
+
+export interface LearningGoal {
+  id: string;
+  title: string;
+  metric: GoalMetric;
+  targetCount: number;
+  conceptIds: ConceptId[];
+  deadline?: string;
+  status: GoalStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface StudyPlanItem {
+  id: string;
+  target: LearningEventTarget;
+  conceptId: ConceptId;
+  title: string;
+  href: string;
+  scheduledFor?: string;
+  completedAt?: string;
+}
+
+export interface StudyPlan {
+  id: string;
+  title: string;
+  timezone: string;
+  items: StudyPlanItem[];
+  status: "active" | "completed" | "archived";
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface GoalProgress {
+  goalId: string;
+  completedCount: number;
+  targetCount: number;
+  percent: number;
+  isComplete: boolean;
+}
+
+const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/;
+
+export function isLearningEvent(value: unknown): value is LearningEvent {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const event = value as Record<string, unknown>;
+  const target = event.target;
+  const hasValidTarget = target === undefined || Boolean(
+    target && typeof target === "object" && !Array.isArray(target)
+    && typeof (target as Record<string, unknown>).id === "string"
+    && ["concept", "lesson", "exercise", "problem", "roadmap", "resource"].includes((target as Record<string, unknown>).type as string),
+  );
+  return typeof event.id === "string"
+    && event.id.length > 0
+    && typeof event.conceptId === "string"
+    && event.conceptId.length > 0
+    && typeof event.occurredAt === "string"
+    && !Number.isNaN(Date.parse(event.occurredAt))
+    && learningEventTypes.includes(event.type as LearningEventType)
+    && ["browser-local", "browser-public", "local-study-plan"].includes(event.source as LearningEvidenceSource)
+    && (event.sourceVersion === undefined || (typeof event.sourceVersion === "number" && Number.isInteger(event.sourceVersion) && event.sourceVersion > 0))
+    && hasValidTarget;
+}
+
+export function isLearningGoal(value: unknown): value is LearningGoal {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const goal = value as Record<string, unknown>;
+  return typeof goal.id === "string"
+    && typeof goal.title === "string"
+    && goal.title.trim().length > 0
+    && goal.title.length <= 160
+    && goalMetrics.includes(goal.metric as GoalMetric)
+    && typeof goal.targetCount === "number"
+    && Number.isInteger(goal.targetCount)
+    && goal.targetCount > 0
+    && Array.isArray(goal.conceptIds)
+    && goal.conceptIds.every((id) => typeof id === "string" && id.length > 0)
+    && (goal.deadline === undefined || (typeof goal.deadline === "string" && isoDatePattern.test(goal.deadline)))
+    && ["active", "completed", "archived"].includes(goal.status as string)
+    && typeof goal.createdAt === "string"
+    && !Number.isNaN(Date.parse(goal.createdAt))
+    && typeof goal.updatedAt === "string"
+    && !Number.isNaN(Date.parse(goal.updatedAt));
+}
+
+export function isStudyPlan(value: unknown): value is StudyPlan {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const plan = value as Record<string, unknown>;
+  if (typeof plan.id !== "string" || typeof plan.title !== "string" || !plan.title.trim() || plan.title.length > 160 || typeof plan.timezone !== "string" || !plan.timezone.trim() || !Array.isArray(plan.items) || !["active", "completed", "archived"].includes(plan.status as string) || typeof plan.createdAt !== "string" || Number.isNaN(Date.parse(plan.createdAt)) || typeof plan.updatedAt !== "string" || Number.isNaN(Date.parse(plan.updatedAt))) return false;
+  return plan.items.every((item) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) return false;
+    const candidate = item as Record<string, unknown>;
+    const target = candidate.target;
+    return typeof candidate.id === "string"
+      && typeof candidate.conceptId === "string"
+      && typeof candidate.title === "string"
+      && typeof candidate.href === "string"
+      && target && typeof target === "object" && !Array.isArray(target)
+      && typeof (target as Record<string, unknown>).id === "string"
+      && ["concept", "lesson", "exercise", "problem", "roadmap", "resource"].includes((target as Record<string, unknown>).type as string)
+      && (candidate.scheduledFor === undefined || (typeof candidate.scheduledFor === "string" && isoDatePattern.test(candidate.scheduledFor)))
+      && (candidate.completedAt === undefined || (typeof candidate.completedAt === "string" && !Number.isNaN(Date.parse(candidate.completedAt))));
+  });
+}
+
+function eventMatchesMetric(event: LearningEvent, metric: GoalMetric) {
+  if (metric === "lessons-completed") return event.type === "lesson-completed";
+  if (metric === "exercises-solved") return event.type === "exercise-solved";
+  if (metric === "problems-solved") return event.type === "problem-solved";
+  return event.type === "study-plan-item-completed";
+}
+
+export function deriveGoalProgress(goal: LearningGoal, events: LearningEvent[]): GoalProgress {
+  const matching = events.filter((event) => eventMatchesMetric(event, goal.metric) && (!goal.conceptIds.length || goal.conceptIds.includes(event.conceptId)));
+  const completedCount = new Set(matching.map((event) => event.target ? `${event.target.type}:${event.target.id}` : `${event.type}:${event.conceptId}`)).size;
+  return {
+    goalId: goal.id,
+    completedCount,
+    targetCount: goal.targetCount,
+    percent: Math.min(100, Math.round((completedCount / goal.targetCount) * 100)),
+    isComplete: completedCount >= goal.targetCount,
+  };
 }
 
 export interface UserMastery {

@@ -1,5 +1,5 @@
 import type { Bookmark, ExerciseStatus, Locale, ProgressStatus } from "@/lib/types";
-import type { LearningEvent, LearningEventType } from "@/lib/domain/learning";
+import { isLearningEvent, isLearningGoal, isStudyPlan, type LearningEvent, type LearningGoal, type StudyPlan } from "@/lib/domain/learning";
 import { sanitizeProgress } from "@/lib/progress";
 import { sanitizePracticeState } from "@/lib/practice/validation";
 import type { PracticeState } from "@/lib/practice/types";
@@ -15,6 +15,8 @@ const KEYS = {
   translationPopover: "cs-atlas.translation-popover.v1",
   practice: "cs-atlas.practice.v1",
   learningEvents: "cs-atlas.learning-events.v1",
+  learningGoals: "cs-atlas.learning-goals.v1",
+  studyPlans: "cs-atlas.study-plans.v1",
 } as const;
 
 function readJson(key: string): unknown {
@@ -93,22 +95,39 @@ export const storage = {
   loadLearningEvents(): LearningEvent[] {
     const value = readJson(KEYS.learningEvents);
     if (!Array.isArray(value)) return [];
-    const eventTypes = new Set<LearningEventType>(["lesson-completed", "lesson-status-changed", "exercise-attempted", "exercise-solved", "problem-public-run", "problem-solved"]);
-    return value
-      .filter((item): item is LearningEvent => Boolean(
-        item && typeof item === "object" && !Array.isArray(item)
-        && typeof (item as Record<string, unknown>).id === "string"
-        && typeof (item as Record<string, unknown>).conceptId === "string"
-        && typeof (item as Record<string, unknown>).occurredAt === "string"
-        && ((item as Record<string, unknown>).source === "browser-local" || (item as Record<string, unknown>).source === "browser-public")
-        && eventTypes.has((item as Record<string, unknown>).type as LearningEventType),
-      ))
-      .slice(-500);
+    // v1 records have no target; retain them as evidence instead of inventing it.
+    return value.filter(isLearningEvent).slice(-500);
   },
   saveLearningEvents(value: LearningEvent[]): boolean {
     if (typeof window === "undefined") return false;
     try {
       window.localStorage.setItem(KEYS.learningEvents, JSON.stringify(value.slice(-500)));
+      return true;
+    } catch {
+      return false;
+    }
+  },
+  loadLearningGoals(): LearningGoal[] {
+    const value = readJson(KEYS.learningGoals);
+    return Array.isArray(value) ? value.filter(isLearningGoal).slice(-100) : [];
+  },
+  saveLearningGoals(value: LearningGoal[]): boolean {
+    if (typeof window === "undefined") return false;
+    try {
+      window.localStorage.setItem(KEYS.learningGoals, JSON.stringify(value.filter(isLearningGoal).slice(-100)));
+      return true;
+    } catch {
+      return false;
+    }
+  },
+  loadStudyPlans(): StudyPlan[] {
+    const value = readJson(KEYS.studyPlans);
+    return Array.isArray(value) ? value.filter(isStudyPlan).slice(-50) : [];
+  },
+  saveStudyPlans(value: StudyPlan[]): boolean {
+    if (typeof window === "undefined") return false;
+    try {
+      window.localStorage.setItem(KEYS.studyPlans, JSON.stringify(value.filter(isStudyPlan).slice(-50)));
       return true;
     } catch {
       return false;

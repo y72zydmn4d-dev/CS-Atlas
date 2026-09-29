@@ -20,6 +20,7 @@ function translatedExercise(block: ExerciseBlock, topicId: string): Exercise {
     estimatedMinutes: block.estimatedMinutes,
     href: `/learn/${topics.find((topic) => topic.id === topicId)?.slug ?? topicId}#${block.id}`,
     assessment: { kind: "self-directed" },
+    rubric: { kind: "self-assessment", criteria: [{ en: "Complete the prompt and compare your reasoning with the lesson.", vi: "Hoàn thành yêu cầu và đối chiếu lập luận với bài học." }] },
     execution: "none",
   };
 }
@@ -39,6 +40,7 @@ const nativeExercises: Exercise[] = [
       { id: "b", text: { en: "Every element before low is greater than the target.", vi: "Mọi phần tử trước low đều lớn hơn phần tử đích." } },
       { id: "c", text: { en: "The middle index never changes.", vi: "Chỉ số giữa không bao giờ thay đổi." } },
     ], correctOptionId: "a", feedback: { en: "The interval represents exactly the remaining candidates.", vi: "Khoảng biểu diễn chính xác các ứng viên còn lại." } },
+    rubric: { kind: "automatic", criteria: [{ en: "Identify the invariant that preserves every remaining candidate.", vi: "Xác định bất biến giữ lại mọi ứng viên còn lại." }] },
   },
   {
     id: "exercise:array-linear-scan", version: 1, lessonId: "lesson:arrays", conceptIds: [canonicalConceptIdForTopic("arrays")], mode: "fill_code", difficulty: "easy", estimatedMinutes: 5, href: "/exercises/exercise:array-linear-scan", execution: "none",
@@ -46,6 +48,7 @@ const nativeExercises: Exercise[] = [
     prompt: { en: "Complete the Python condition that returns the first matching index: `if values[index] ___ target:`", vi: "Hoàn thành điều kiện Python trả về chỉ số khớp đầu tiên: `if values[index] ___ target:`" },
     hints: [{ en: "Equality compares two values.", vi: "Phép bằng so sánh hai giá trị." }],
     assessment: { kind: "exact-answer", acceptedAnswers: ["=="], inputLabel: { en: "Missing operator", vi: "Toán tử còn thiếu" }, feedback: { en: "A linear scan checks equality at each position.", vi: "Quét tuyến tính kiểm tra bằng nhau tại từng vị trí." } },
+    rubric: { kind: "automatic", criteria: [{ en: "Use the equality operator without changing the surrounding expression.", vi: "Dùng toán tử bằng mà không thay đổi biểu thức xung quanh." }] },
   },
   {
     id: "exercise:numpy-axis-mean", version: 1, lessonId: "lesson:numpy", conceptIds: [canonicalConceptIdForTopic("numpy")], mode: "numpy", difficulty: "easy", estimatedMinutes: 5, href: "/exercises/exercise:numpy-axis-mean", execution: "none",
@@ -53,6 +56,7 @@ const nativeExercises: Exercise[] = [
     prompt: { en: "For a two-dimensional NumPy array `scores`, write the expression that computes one mean for each column.", vi: "Với mảng NumPy hai chiều `scores`, hãy viết biểu thức tính một giá trị trung bình cho mỗi cột." },
     hints: [{ en: "Columns vary down the first axis.", vi: "Các cột biến thiên theo trục đầu tiên." }],
     assessment: { kind: "exact-answer", acceptedAnswers: ["scores.mean(axis=0)", "np.mean(scores, axis=0)"], inputLabel: { en: "NumPy expression", vi: "Biểu thức NumPy" }, feedback: { en: "Reducing axis 0 leaves one value per column.", vi: "Giảm trục 0 để lại một giá trị cho mỗi cột." } },
+    rubric: { kind: "automatic", criteria: [{ en: "Reduce axis 0 and retain one result per column.", vi: "Giảm trục 0 và giữ một kết quả cho mỗi cột." }] },
   },
   {
     id: "exercise:pandas-filter", version: 1, lessonId: "lesson:pandas", conceptIds: [canonicalConceptIdForTopic("pandas")], mode: "pandas", difficulty: "easy", estimatedMinutes: 5, href: "/exercises/exercise:pandas-filter", execution: "none",
@@ -60,6 +64,7 @@ const nativeExercises: Exercise[] = [
     prompt: { en: "Complete the expression that keeps rows with a score of at least 80: `frame[frame[\"score\"] ___ 80]`", vi: "Hoàn thành biểu thức giữ các hàng có điểm ít nhất 80: `frame[frame[\"score\"] ___ 80]`" },
     hints: [{ en: "The comparison should include 80.", vi: "Phép so sánh cần bao gồm 80." }],
     assessment: { kind: "exact-answer", acceptedAnswers: [">="], inputLabel: { en: "Missing operator", vi: "Toán tử còn thiếu" }, feedback: { en: "The boolean mask is true for scores at or above the threshold.", vi: "Mặt nạ boolean đúng với điểm bằng hoặc cao hơn ngưỡng." } },
+    rubric: { kind: "automatic", criteria: [{ en: "Include the threshold value in the boolean mask.", vi: "Bao gồm giá trị ngưỡng trong mặt nạ boolean." }] },
   },
 ];
 

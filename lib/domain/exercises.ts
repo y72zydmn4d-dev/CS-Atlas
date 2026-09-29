@@ -9,6 +9,11 @@ export type ExerciseAssessment =
   | { kind: "multiple-choice"; options: Array<{ id: string; text: LocalizedConceptText }>; correctOptionId: string; feedback: LocalizedConceptText }
   | { kind: "exact-answer"; acceptedAnswers: string[]; feedback: LocalizedConceptText; inputLabel: LocalizedConceptText };
 
+export interface ExerciseRubric {
+  kind: "automatic" | "self-assessment";
+  criteria: LocalizedConceptText[];
+}
+
 export interface ExerciseAttempt {
   id: string;
   exerciseId: string;
@@ -36,9 +41,9 @@ export function isExerciseAttempt(value: unknown): value is ExerciseAttempt {
 
 export interface Exercise {
   id: string;
-  version: 1;
+  version: number;
   lessonId: string;
-  conceptIds: ConceptId[];
+  conceptIds: [ConceptId, ...ConceptId[]];
   mode: ExerciseMode;
   difficulty: "easy" | "medium" | "hard";
   title: LocalizedConceptText;
@@ -47,7 +52,16 @@ export interface Exercise {
   estimatedMinutes: number;
   href: string;
   assessment: ExerciseAssessment;
+  rubric: ExerciseRubric;
   execution: "none" | "browser-public";
+}
+
+export function localizeExerciseText(text: LocalizedConceptText, locale: keyof LocalizedConceptText) {
+  return text[locale]?.trim() || text.en;
+}
+
+export function attemptsForExerciseVersion(attempts: ExerciseAttempt[], exercise: Pick<Exercise, "id" | "version">) {
+  return attempts.filter((attempt) => attempt.exerciseId === exercise.id && attempt.exerciseVersion === exercise.version);
 }
 
 function normalized(value: string) {

@@ -60,11 +60,11 @@ Depends on M2 and M3.
 
 Depends on M2; shares concepts with M4 and can proceed after its contract is stable.
 
-- [ ] Define `Exercise` separately from online-judge `Problem`, with answer modes, hints, feedback, attempts, rubric, and concept relations.
+- [x] Define `Exercise` separately from online-judge `Problem`, with answer modes, hints, feedback, attempts, rubric, and concept relations.
 - [x] Migrate embedded topic exercises using stable IDs, explicit version rules, and a compatibility adapter.
-- [ ] Add non-code exercise renderers and local completion state with accessible input and honest persistence labels.
-- [ ] Define common exercise list/filter/topic views and link them from Learn without copying lesson text.
-- [ ] Add tests for hint progression, attempt state, version changes, locale fallbacks, and concept links.
+- [x] Add non-code exercise renderers and local completion state with accessible input and honest persistence labels.
+- [x] Define common exercise list/filter/topic views and link them from Learn without copying lesson text.
+- [x] Add tests for hint progression, attempt state, version changes, locale fallbacks, and concept links.
 
 ## M6 - Online Judge
 

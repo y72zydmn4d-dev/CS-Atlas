@@ -2,7 +2,7 @@ import { openDB, type DBSchema, type IDBPDatabase } from "idb";
 import { LIBRARY_CONFIG } from "@/lib/library/config";
 import { matchesLibraryEntity } from "@/lib/library/concept-relations";
 import { searchLibraryItems } from "@/lib/library/search";
-import { LIBRARY_SCHEMA_VERSION, type CreateLibraryItemInput, type LibraryExport, type LibraryImportResult, type LibraryItem, type LibraryQuery, type LibraryRepository, type LibrarySearchResult, type UpdateLibraryItemInput } from "@/lib/library/types";
+import { LIBRARY_SCHEMA_VERSION, LibraryStorageError, LOCAL_LIBRARY_OWNER, type CreateLibraryItemInput, type LibraryExport, type LibraryImportResult, type LibraryItem, type LibraryQuery, type LibraryRepository, type LibrarySearchResult, type UpdateLibraryItemInput } from "@/lib/library/types";
 import { migrateLibraryItem, validateLibraryExport, validateLibraryItem } from "@/lib/library/validation";
 
 interface LibraryDatabase extends DBSchema {
@@ -52,6 +52,8 @@ function matches(item: LibraryItem, query?: LibraryQuery) {
 }
 
 export class IndexedDbLibraryRepository implements LibraryRepository {
+  readonly ownerScope = LOCAL_LIBRARY_OWNER;
+
   async list(options?: LibraryQuery) {
     const database = await getDatabase();
     const values: unknown[] = await database.getAll("items");
@@ -80,10 +82,14 @@ export class IndexedDbLibraryRepository implements LibraryRepository {
     const { file, id: inputId, ...fields } = input;
     const metadata: LibraryItem = { ...fields, schemaVersion: LIBRARY_SCHEMA_VERSION, id: inputId ?? makeId(), importedAt: now, updatedAt: now };
     if (!validateLibraryItem(metadata)) throw new Error("invalid-library-item");
-    const transaction = database.transaction(["items", "files"], "readwrite");
-    await transaction.objectStore("items").add(metadata);
-    if (file) await transaction.objectStore("files").put(file, metadata.id);
-    await transaction.done;
+    try {
+      const transaction = database.transaction(["items", "files"], "readwrite");
+      await transaction.objectStore("items").add(metadata);
+      if (file) await transaction.objectStore("files").put(file, metadata.id);
+      await transaction.done;
+    } catch (error) {
+      throw normalizeLibraryStorageError(error);
+    }
     notifyChanged();
     return metadata;
   }
@@ -108,7 +114,7 @@ export class IndexedDbLibraryRepository implements LibraryRepository {
   }
 
   async getFile(id: string) { return (await getDatabase()).get("files", id).then((value) => value ?? null); }
-  async putFile(id: string, file: Blob) { await (await getDatabase()).put("files", file, id); notifyChanged(); }
+  async putFile(id: string, file: Blob) { try { await (await getDatabase()).put("files", file, id); notifyChanged(); } catch (error) { throw normalizeLibraryStorageError(error); } }
   async search(query: string, limit = LIBRARY_CONFIG.searchResultLimit): Promise<LibrarySearchResult[]> { return searchLibraryItems(query, await this.list(), limit); }
 
   async findDuplicate(input: { canonicalUrl?: string; fileFingerprint?: string; contentHash?: string }) {
@@ -153,6 +159,12 @@ export class IndexedDbLibraryRepository implements LibraryRepository {
     notifyChanged();
     return result;
   }
+}
+
+export function normalizeLibraryStorageError(error: unknown) {
+  if (error instanceof LibraryStorageError) return error;
+  const name = error instanceof DOMException ? error.name : error && typeof error === "object" && "name" in error ? String(error.name) : "";
+  return new LibraryStorageError(name === "QuotaExceededError" ? "quota" : "storage", { cause: error });
 }
 
 export const libraryRepository: LibraryRepository = new IndexedDbLibraryRepository();

@@ -5,12 +5,13 @@ import { Blob as NodeBlob } from "node:buffer";
 import { beforeEach, describe, expect, it } from "vitest";
 import { LibraryList } from "@/components/library/library-list";
 import { LIBRARY_CONFIG } from "@/lib/library/config";
+import { collectionForLibraryItems, fileObjectForLibraryItem, noteForLibraryItem, resourceLinkForLibraryItem } from "@/lib/library/contracts";
 import { isValidLibraryRelation } from "@/lib/library/entities";
 import { extractDocument } from "@/lib/library/extraction";
 import { detectFileFormat, fileFingerprint, safeFileName } from "@/lib/library/files";
-import { IndexedDbLibraryRepository, resetLibraryDatabaseForTests } from "@/lib/library/repository";
+import { IndexedDbLibraryRepository, normalizeLibraryStorageError, resetLibraryDatabaseForTests } from "@/lib/library/repository";
 import { searchLibraryItems } from "@/lib/library/search";
-import { LIBRARY_SCHEMA_VERSION, type LibraryItem } from "@/lib/library/types";
+import { LIBRARY_SCHEMA_VERSION, LibraryStorageError, LOCAL_LIBRARY_OWNER, type LibraryItem } from "@/lib/library/types";
 import { canonicalizeUrl, sanitizeLibraryItems, validateFileSize, validateLibraryExport, validateLibraryItem } from "@/lib/library/validation";
 import { renderWithLocale } from "@/tests/test-utils";
 
@@ -51,6 +52,22 @@ describe("library validation and detection", () => {
     expect(isValidLibraryRelation({ entityType: "topic", entityId: "gradient-descent", relation: "supplementary" })).toBe(true);
     expect(isValidLibraryRelation({ entityType: "topic", entityId: "removed-topic", relation: "supplementary" })).toBe(false);
   });
+
+  it("projects explicit private owner, file, note, collection, and resource-link contracts", () => {
+    const link: LibraryItem = { ...linkInput, schemaVersion: LIBRARY_SCHEMA_VERSION, id: "link", notes: "Private note", collection: "Research", importedAt: "2026-09-30T00:00:00.000Z", updatedAt: "2026-09-30T00:00:00.000Z" };
+    const file: LibraryItem = { ...link, id: "file", type: "file", url: undefined, canonicalUrl: undefined, linkPreview: undefined, fileName: "paper.pdf", fileFormat: "pdf", fileSize: 100, status: "ready", extractionStatus: "pending" };
+    expect(noteForLibraryItem(link)).toMatchObject({ itemId: "link", owner: LOCAL_LIBRARY_OWNER, visibility: "private" });
+    expect(collectionForLibraryItems("Research", [link, file])).toMatchObject({ itemIds: ["link", "file"], visibility: "private" });
+    expect(resourceLinkForLibraryItem(link)).toMatchObject({ itemId: "link", url: link.url });
+    expect(fileObjectForLibraryItem(file)).toMatchObject({ blobKey: "file", storage: "indexeddb", size: 100 });
+  });
+
+  it("maps browser quota failures to a recoverable repository error", () => {
+    const error = normalizeLibraryStorageError(new DOMException("full", "QuotaExceededError"));
+    expect(error).toBeInstanceOf(LibraryStorageError);
+    expect(error).toMatchObject({ code: "quota", message: "library-storage-quota-exceeded" });
+    expect(normalizeLibraryStorageError(new Error("transaction failed"))).toMatchObject({ code: "storage" });
+  });
 });
 
 describe("IndexedDB library repository", () => {
@@ -58,6 +75,7 @@ describe("IndexedDB library repository", () => {
 
   it("creates, reads, updates, searches, and removes metadata plus blobs", async () => {
     const repository = new IndexedDbLibraryRepository(); const file = new NodeBlob(["local notes"], { type: "text/plain" }) as unknown as Blob;
+    expect(repository.ownerScope).toEqual(LOCAL_LIBRARY_OWNER);
     const created = await repository.create({ type: "file", title: "Ghi chú Gradient Descent", fileFormat: "text", fileName: "notes.txt", mimeType: "text/plain", fileSize: file.size, fileLastModified: 1, fileFingerprint: "notes.txt::11::1", tags: ["toi-uu"], language: "vi", status: "ready", extractionStatus: "complete", extractedText: "dao ham va huong ha doc", relatedEntities: [{ entityType: "topic", entityId: "gradient-descent", relation: "supplementary" }], file });
     expect((await repository.getFile(created.id))?.size).toBe(file.size);
     expect((await repository.search("ha doc"))[0]?.item.id).toBe(created.id);

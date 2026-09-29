@@ -101,12 +101,12 @@ Depends on M2 and M3.
 
 Depends on M1 and M2; account sync is not a prerequisite for preserving local-only use.
 
-- [ ] Define user-owned Library item, file object, note, collection, resource link, and canonical concept relation contracts.
-- [ ] Preserve browser IndexedDB repository behind its interface; add export/import and explicit schema migration before introducing remote sync.
-- [ ] Decide identity, encryption, file-size/quota, deletion, export, sync conflict, retention, and privacy semantics before remote storage implementation.
-- [ ] Add repository adapters and ownership checks if cloud sync is approved; preserve offline/local mode with observable sync states.
-- [ ] Keep extraction separate from metadata/binary storage; define future background ingestion job interface without embeddings or RAG coupling.
-- [ ] Test invalid files/URLs, duplicate handling, migration, quota failure, export privacy, ownership, and deletion across metadata and blobs.
+- [x] Define user-owned Library item, file object, note, collection, resource link, and canonical concept relation contracts.
+- [x] Preserve browser IndexedDB repository behind its interface; add export/import and explicit schema migration before introducing remote sync.
+- [x] Decide identity, encryption, file-size/quota, deletion, export, sync conflict, retention, and privacy semantics before remote storage implementation.
+- [ ] Deferred until cloud sync is approved: add remote repository adapters and server-derived ownership checks; preserve offline/local mode with observable sync states.
+- [x] Keep extraction separate from metadata/binary storage; define future background ingestion job interface without embeddings or RAG coupling.
+- [x] Test invalid files/URLs, duplicate handling, migration, quota failure, export privacy, ownership, and deletion across metadata and blobs.
 
 ## M10 - Progress / Mastery / Study Plans
 

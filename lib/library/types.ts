@@ -27,6 +27,50 @@ export type LibraryEntityType = "concept" | "domain" | "topic" | "algorithm" | "
 export type LibraryRelationKind = "primary" | "prerequisite" | "supplementary" | "example" | "exercise" | "reference";
 export type LibraryErrorCode = "corrupt-file" | "encrypted-pdf" | "extraction-timeout" | "quota" | "storage" | "unsupported" | "unknown";
 
+export interface LocalLibraryOwnerScope {
+  kind: "local-browser";
+  principal: "current-browser";
+  visibility: "private";
+}
+
+export const LOCAL_LIBRARY_OWNER: LocalLibraryOwnerScope = { kind: "local-browser", principal: "current-browser", visibility: "private" };
+
+export interface LibraryFileObject {
+  itemId: string;
+  owner: LocalLibraryOwnerScope;
+  storage: "indexeddb";
+  blobKey: string;
+  size: number;
+  mimeType?: string;
+  contentHash?: string;
+}
+
+export interface LibraryNote {
+  id: string;
+  itemId: string;
+  owner: LocalLibraryOwnerScope;
+  body: string;
+  visibility: "private";
+  schemaVersion: 1;
+}
+
+export interface LibraryCollection {
+  id: string;
+  owner: LocalLibraryOwnerScope;
+  title: string;
+  itemIds: string[];
+  visibility: "private";
+  schemaVersion: 1;
+}
+
+export interface LibraryResourceLink {
+  id: string;
+  itemId: string;
+  owner: LocalLibraryOwnerScope;
+  url: string;
+  canonicalUrl?: string;
+}
+
 export interface LibraryRelation {
   entityType: LibraryEntityType;
   entityId: string;
@@ -100,6 +144,7 @@ export interface DocumentExtractor {
 }
 
 export interface LibraryRepository {
+  readonly ownerScope: LocalLibraryOwnerScope;
   list(options?: LibraryQuery): Promise<LibraryItem[]>;
   get(id: string): Promise<LibraryItem | null>;
   create(input: CreateLibraryItemInput): Promise<LibraryItem>;
@@ -111,6 +156,13 @@ export interface LibraryRepository {
   findDuplicate(input: { canonicalUrl?: string; fileFingerprint?: string; contentHash?: string }): Promise<LibraryItem | null>;
   exportMetadata(): Promise<LibraryExport>;
   importMetadata(value: unknown): Promise<LibraryImportResult>;
+}
+
+export class LibraryStorageError extends Error {
+  constructor(readonly code: Extract<LibraryErrorCode, "quota" | "storage">, options?: { cause?: unknown }) {
+    super(code === "quota" ? "library-storage-quota-exceeded" : "library-storage-failed", options);
+    this.name = "LibraryStorageError";
+  }
 }
 
 export interface LibraryExport {

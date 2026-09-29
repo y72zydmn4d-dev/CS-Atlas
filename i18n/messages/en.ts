@@ -450,6 +450,7 @@ export const en = {
   "learn.noLessons": "No lessons match this curriculum filter.",
   "learn.read": "Read lesson",
   "learn.openExercises": "Browse concept exercises",
+  "learn.codeDisplayOnly": "{language} syntax example · display only · no runtime",
   "learn.sequence": "Sequence",
   "explore.title": "Explore the knowledge system",
   "explore.lede": "Use a roadmap for sequence, a mind map for association, or the Atlas for cross-domain exploration.",

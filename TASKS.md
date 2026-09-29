@@ -49,12 +49,12 @@ Depends on M2.
 
 Depends on M2 and M3.
 
-- [ ] Define lesson/course/reference/example/playground metadata and typed lesson block schema with localization and provenance.
+- [x] Define lesson/course/reference/example/playground metadata and typed lesson block schema with localization and provenance.
 - [x] Port current typed topic blocks through a compatibility renderer; preserve existing deep lessons and legacy topic URLs.
 - [x] Build course/lesson navigation and previous/next traversal from authored ordering plus concept prerequisites.
-- [ ] Introduce language/runtime capability metadata separately from syntax highlighting; never imply execution when runtime is unavailable.
-- [ ] Add authored starter vertical slices for programming foundations and one CS/AI curriculum; validate content and citations.
-- [ ] Define authoring/validation workflow and content review maturity so large datasets remain out of page components.
+- [x] Introduce language/runtime capability metadata separately from syntax highlighting; never imply execution when runtime is unavailable.
+- [x] Add authored starter vertical slices for programming foundations and one CS/AI curriculum; validate content and citations.
+- [x] Define authoring/validation workflow and content review maturity so large datasets remain out of page components.
 
 ## M5 - Exercise platform
 

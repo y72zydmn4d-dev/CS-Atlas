@@ -451,6 +451,7 @@ export const vi = {
   "learn.noLessons": "Không có bài học phù hợp với bộ lọc này.",
   "learn.read": "Đọc bài học",
   "learn.openExercises": "Xem bài tập theo khái niệm",
+  "learn.codeDisplayOnly": "Ví dụ cú pháp {language} · chỉ hiển thị · không có môi trường chạy",
   "learn.sequence": "Trình tự",
   "explore.title": "Khám phá hệ thống tri thức",
   "explore.lede": "Dùng roadmap cho trình tự, mind map cho liên tưởng, hoặc Atlas để khám phá xuyên lĩnh vực.",

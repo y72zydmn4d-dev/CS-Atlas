@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { algorithms, domains, searchIndex, sources, techniques, topics, validateContent } from "@/content";
+import { algorithms, domains, lessonBlocks, lessonExamples, lessonPlaygrounds, lessonReferences, lessons, searchIndex, sources, techniques, topics, validateContent } from "@/content";
 
 describe("content registry", () => {
   it("has valid relationships", () => expect(validateContent()).toEqual([]));
@@ -25,5 +25,36 @@ describe("content registry", () => {
       expect(topic?.content.length).toBeGreaterThanOrEqual(12);
       expect(topic?.content.filter((block) => block.type === "exercise").length).toBeGreaterThanOrEqual(3);
     }
+  });
+
+  it("projects governed Lesson metadata from the programming and AI starter curricula", () => {
+    for (const topicId of ["complexity-analysis", "gradient-descent", "linear-regression"]) {
+      const lesson = lessons.find((item) => item.topicId === topicId);
+      expect(lesson).toMatchObject({ maturity: "Reference-quality", translationStatus: "complete", provenance: { source: "topic-registry", sourceId: topicId } });
+      expect(lesson?.blockIds.length).toBeGreaterThanOrEqual(12);
+      expect(lesson?.provenance.sourceIds.length).toBeGreaterThan(0);
+      expect(lesson?.exampleIds.length).toBeGreaterThan(0);
+      expect(lesson?.referenceIds.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("keeps syntax display capability separate from unavailable execution", () => {
+    expect(lessonPlaygrounds.length).toBeGreaterThan(0);
+    for (const playground of lessonPlaygrounds) {
+      expect(playground.syntaxLanguage).toBeTruthy();
+      expect(playground).toMatchObject({ runtime: "none", availability: "unavailable" });
+    }
+  });
+
+  it("links references, examples, and block locale metadata to Lessons", () => {
+    const blockIds = new Set(lessonBlocks.map((block) => block.id));
+    const lessonIds = new Set(lessons.map((lesson) => lesson.id));
+    expect(lessonReferences.length).toBeGreaterThan(0);
+    expect(lessonExamples.length).toBeGreaterThan(0);
+    for (const record of [...lessonReferences, ...lessonExamples]) {
+      expect(lessonIds.has(record.lessonId)).toBe(true);
+      expect(blockIds.has(record.blockId)).toBe(true);
+    }
+    expect(lessonBlocks.every((block) => block.availableLocales.includes("en"))).toBe(true);
   });
 });

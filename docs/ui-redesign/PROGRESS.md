@@ -1,5 +1,29 @@
 # UI redesign — resumable checkpoint
 
+STATUS: ANIMATED LANDING BACKGROUND — IN PROGRESS.
+
+## Atmospheric background live checkpoint
+
+COMPLETED:
+
+- Verified CS-Atlas / atlas-v2, baselined6218d1; only unrelated next-env.d.ts differs, preserved blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6. No branch/remote operation.
+- Read engineering rules, TASKS/DECISIONS, Task4/5 contracts and current shell/CSS/theme/entry components. Scope is one decorative layer, not renewed composition or graph work.
+- Browser discovery returned no apps/browsers with native pipe startup failure. No native user-window workaround; rendered sign-off remains manual.
+
+FILES CHANGED: components/landing/landing-atmosphere.tsx; public-landing-shell.tsx; app/landing.css; tests/landing.test.tsx; this checkpoint.
+
+VALIDATION: A typecheck/lint and focused landing9 tests pass; diff whitespace check passes. Server-only decorative component has no interactive/focusable children and does not contain main/Guest content.
+
+KEY DECISIONS: Small Server Component, two radial aurora planes, static peripheral SVG contours. No graph coupling, traces, video, filter animation or dependency. Root isolation + decorative z0 / content z1; only decorative subtree clips overflow. Preserve canvas and opaque panel. Motion comes later after static composition.
+
+KNOWN ISSUES: Actual visual intensity, contrast, compositor cost and slow motion cannot be certified with current browser tools.
+
+STATIC A COMPLETE: Two gradient planes and six static peripheral curves. Four scoped role recipes use existing accent/relationship/muted tokens with deliberately low opacity and a vertical mask quieting header/lower navigation. Paint bounded to2400×1200 maximum; only atmosphere clips, not content/focus. Layout sizes unchanged. Existing panel and graph-label backings remain opaque.
+
+EXACT NEXT ACTION: Commit staticA locally. B then adds only independent slow transform cycles and four faint1–1.4px SVG markers (one rare opacity variation). Contours static; traces/interaction echo skipped. Explicit reduced-motion/print/forced-colors rules; no JS animation or new client boundary.
+
+## Task 5 retained implementation record
+
 STATUS: TASK 5 — COMPLETE. Landing visual redesign frozen pending human sign-off; implementation and required automated validation complete, no rendered browser pass claimed.
 
 ## Task 5 live checkpoint

@@ -15,6 +15,16 @@ beforeEach(() => {
 function landing() { return render(<ThemeProvider><LocaleProvider><LandingPage /></LocaleProvider></ThemeProvider>); }
 
 describe("public entry", () => {
+  it("keeps a single decorative atmosphere outside the content and keyboard structure", () => {
+    const { container } = landing();
+    const atmosphere = container.querySelector(".landing-atmosphere");
+    expect(container.querySelectorAll(".landing-atmosphere")).toHaveLength(1);
+    expect(atmosphere).toHaveAttribute("aria-hidden","true");
+    expect(atmosphere?.querySelector("a,button,input,[tabindex],title,foreignObject")).toBeNull();
+    expect(atmosphere?.querySelector("svg")).toHaveAttribute("focusable","false");
+    expect(atmosphere?.contains(screen.getByRole("main"))).toBe(false);
+    expect(screen.getByRole("link", { name:/Continue as guest/ })).toHaveAttribute("href","/home");
+  });
   it("renders a serious public identity and a functional guest destination without workspace controls", () => {
     landing();
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Understand the connections.");

@@ -3,9 +3,10 @@ import { LandingHeader } from "./landing-header";
 import { LandingHero } from "./landing-hero";
 import { AuthPanel } from "./auth-panel";
 import { CapabilityStrip } from "./capability-strip";
+import { LandingAtmosphere } from "./landing-atmosphere";
 
 export function PublicLandingShell({ visual }: { visual?: ReactNode }) {
-  return <div className="public-landing"><div className="landing-frame">
+  return <div className="public-landing"><LandingAtmosphere /><div className="landing-frame">
     <LandingHeader />
     <main id="main-content" className="landing-main">
       <LandingHero />

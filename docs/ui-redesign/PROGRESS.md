@@ -10,7 +10,7 @@ COMPLETED: Inspected actual attached PNG at /var/folders/x3/2pcc7d551qxbj9t8hh1v
 
 DECISIONS: Use attached artwork, not regeneration. Preserve exact PNG reference outside public, optimize single same-dimension WebP. Dark layer uses artwork at full opacity with localized transparent readability treatment. Remove dark procedural contours/points/aurora; light uses a simple static paper-safe gradient fallback, no dark-image request. Server-only decorative layer; existing motion state/graph/layout/Guest/routes unchanged.
 
-CURRENT MILESTONE: B — single-layer artwork motion, static A committede4dc45b.
+CURRENT MILESTONE: C — artwork responsive/theme treatment; A e4dc45b and B motion committed (resolve `feat(landing): animate approved atmospheric artwork` in log).
 
 FILES CHANGED: This checkpoint initially; planned approved reference + public WebP, atmosphere component, landing-specific CSS/tests,13 QA and asset smoke script; next-env excluded.
 
@@ -24,7 +24,11 @@ B IMPLEMENTED: Single64s ease-in-out alternate traversal (-16s phase), scale1.03
 
 VALIDATION B: Typecheck/lint and full52 files/288 tests pass, search36.91ms against unchanged100ms budget; diff whitespace passes. Existing pause/reduced-motion tests cover shared signals, CSS animation rendering remains manual. No pointer/focus or form changes.
 
-EXACT NEXT ACTION: Commit coherent B after recording final full-suite result. C then tune cover crop/viewport bounds/tablet-mobile reading treatment; D full checks/asset smoke/13 QA.
+C IMPLEMENTED: Canvas height min(100svh,1200px), absolute/no layout ownership; open relationships or long page no longer stretch cover framing. At1920×1080/1600×900 source≈16:9 ratio retains both energy edges;1440×900 crops≈10% horizontal,1280×900≈20% before restrained scale;50% centered cover keeps both broad regions. ≤1279 transforms/motion off, ≤1023 simpler static vertical readability, phone54% center crop favors darker source region. Reduced motion explicitly removes transform while retaining image. Light theme uses only pale native gradients, no artwork as its computed background; SSR starts dark and can initiate image fetch before saved light preference restores—no theme architecture/loading state added. Source pixel sampling found secondary-text risk in initial desktop reading shield; upper-only ellipse now82→75% alpha through70% radius, then transparent. This is not image opacity/full-page flat veil; lower field stays materially visible. Recalculate before C commit; sampled models are not real browser contrast certification.
+
+VALIDATION C: Typecheck/lint and focused3 files/18 tests pass; diff whitespace passes. Re-sampled desktop intro envelope (x fromframe-left to700px,y210–345,2px steps,three motion keyframes, approximate sRGB alpha model) yields secondary minima1920×1080:5.96,1600×900:5.27,1440×900:5.17,1280×900:5.79. Not full page/all-time/browser contrast certification.
+
+EXACT NEXT ACTION: Commit coherent C. D add asset serving/hash/ETag checks to existing local smoke, create13 QA, run final full checks/build/audit/smoke, preserve original next-env blob.
 
 ## Final atmospheric tuning retained checkpoint
 

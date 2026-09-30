@@ -1,8 +1,10 @@
 import type { en } from "@/i18n/messages/en";
 import { practiceVi } from "@/i18n/messages/practice";
 import { workspaceVi } from "@/i18n/messages/workspace";
+import { landingVi } from "@/i18n/messages/landing";
 
 export const vi = {
+  ...landingVi,
   ...workspaceVi,
   ...practiceVi,
   "language.label": "Ngôn ngữ",

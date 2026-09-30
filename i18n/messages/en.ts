@@ -1,7 +1,9 @@
 import { practiceEn } from "@/i18n/messages/practice";
 import { workspaceEn } from "@/i18n/messages/workspace";
+import { landingEn } from "@/i18n/messages/landing";
 
 export const en = {
+  ...landingEn,
   ...workspaceEn,
   ...practiceEn,
   "language.label": "Language",

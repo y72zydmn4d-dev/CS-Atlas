@@ -10,6 +10,7 @@ describe("route presentation registry", () => {
   });
 
   it("uses the most specific presentation for nested routes", () => {
+    expect(routePresentationForPath("/")?.id).toBe("landing");
     expect(routePresentationForPath("/home")?.id).toBe("home");
     expect(capabilities.find((item) => item.id === "home")?.href).toBe("/home");
     expect(routePresentationForPath("/learn/python")?.id).toBe("learn");

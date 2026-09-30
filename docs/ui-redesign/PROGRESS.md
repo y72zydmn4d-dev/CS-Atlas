@@ -1,6 +1,6 @@
 # UI redesign — Task 1 checkpoint
 
-STATUS: TASK 2 — IN PROGRESS. Milestone A complete; milestone B next (2026-09-30).
+STATUS: TASK 2 — IN PROGRESS. Milestones A/B complete; milestone C next (2026-09-30).
 
 ## Task 2 live checkpoint
 
@@ -9,22 +9,25 @@ COMPLETED:
 - Read all seven Task 1 documents and repository rules. Task 1 remains the design contract.
 - Existing `next-env.d.ts` modification is unrelated; baseline blob `a419cbe4e3a5e8d4b481b851dbf4ac767de069e6`, exclude from every task commit.
 - A: extracted the single workspace Home composition to components/home and exposed it at /home. Public / is a temporary minimal shell until B. RouteShell lazily mounts workspace providers only on non-root routes; deep URLs remain ungated. Sidebar/brand/footer Home links use /home; legacy Home breadcrumb literals normalize centrally without touching saved records.
+- A committed as 27b2da6. B: implemented bilingual public header/hero, unavailable manual-activation account tabs, functional guest link, native local-data disclosures, capability strip/footer and scoped responsive light/dark styles. No credential fields, provider buttons, form submissions or fake auth.
 
 FILES CHANGED:
 - A: app/layout.tsx, app/page.tsx, app/home/page.tsx; components/route-shell.tsx, workspace-providers-shell.tsx, app-shell.tsx, breadcrumbs.tsx, home/workspace-home-page.tsx, home/author-footer.tsx; lib/capabilities.ts, lib/routes.ts; tests/route-shell.test.tsx, routes.test.ts, workspace-ui.test.tsx, author-footer.test.tsx; this checkpoint.
+- B: components/landing/{public-landing-shell,landing-header,landing-hero,auth-panel,local-data-disclosure,capability-strip}.tsx; app/landing.css, app/layout.tsx, app/page.tsx; i18n/messages/{landing,en,vi}.ts; lib/routes.ts; tests/{landing,routes}.test.*; this checkpoint.
 
 VALIDATION PASSED:
 - A: npm run typecheck, npm run lint, npm test (46 files /238 tests) passed. Task 1 commit confirmed.
+- B: typecheck, lint, tests passed (47 files /242 tests), including unavailable mode switching, keyboard focus, locale, guest href, credential absence and preserved progress.
 
 KNOWN ISSUES:
 - No production auth. Per02/05, unavailable modes collect no credentials; password visibility/validation tests are not applicable until a real auth milestone. Test absence of credential collection instead.
-- Public / deliberately temporary until B; browser/bundle QA remains E.
+- Knowledge visual pending C; browser/bundle QA remains E.
 
 UNRESOLVED:
 - Real auth/password/provider/sync policy remains outside Task 2.
 
 EXACT NEXT ACTION:
-- Commit A; implement B: bilingual public header/hero, honest unavailable account tabs, guest /home link, capability strip/footer and responsive landing styles. No credential/provider forms.
+- Commit B, then C: resolve the specified 12 canonical concepts and13 real relationships server-side, add SVG/HTML visual with native list alternative and static-by-default motion enhancement.
 
 ## Task 1 retained design record
 

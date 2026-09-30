@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { CapabilityId } from "@/lib/capabilities";
 import type { MessageKey } from "@/i18n/get-message";
 
-export type RouteId = "home" | "learn" | "exercises" | "problems" | "practice" | "explore" | "atlas" | "roadmaps" | "mindMaps" | "library" | "libraryImport" | "progress" | "bookmarks" | "assistant" | "profile" | "settings" | "domains" | "algorithms" | "techniques" | "projects" | "search";
+export type RouteId = "landing" | "home" | "learn" | "exercises" | "problems" | "practice" | "explore" | "atlas" | "roadmaps" | "mindMaps" | "library" | "libraryImport" | "progress" | "bookmarks" | "assistant" | "profile" | "settings" | "domains" | "algorithms" | "techniques" | "projects" | "search";
 
 export interface RoutePresentation {
   id: RouteId;
@@ -14,6 +14,7 @@ export interface RoutePresentation {
 }
 
 export const routePresentations: RoutePresentation[] = [
+  { id: "landing", path: "/", capability: "home", label: "landing.title", title: "CS Atlas", description: "Learn computer science through connected concepts, lessons and practice." },
   { id: "home", path: "/home", capability: "home", label: "navigation.home", title: "Home" },
   { id: "learn", path: "/learn", capability: "learn", label: "navigation.learn", title: "Learn", description: "Structured CS Atlas lessons connected to canonical concepts." },
   { id: "exercises", path: "/exercises", capability: "practice", label: "exercise.title", title: "Exercises", description: "Short exercises connected to CS Atlas lessons and concepts." },

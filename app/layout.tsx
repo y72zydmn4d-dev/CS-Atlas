@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./practice.css";
 import "./workspace.css";
+import "./landing.css";
 import { RouteShell } from "@/components/route-shell";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LocaleProvider } from "@/components/locale-provider";

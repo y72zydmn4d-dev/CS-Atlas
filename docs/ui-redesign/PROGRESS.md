@@ -1,8 +1,45 @@
 # UI redesign — resumable checkpoint
 
-STATUS: TASK 2 — IMPLEMENTATION COMPLETE; AUTOMATED VALIDATION PASSED. Manual browser sign-off remains explicitly outstanding (2026-09-30).
+STATUS: TASK 3 — COMPLETE. Visual audit and implementation-ready polish specification; documentation-only handoff.
 
-## Task 2 live checkpoint
+## Task 3 live checkpoint
+
+COMPLETED:
+- Verified repository/atlas-v2, HEAD915d15f and completed Task2 milestone commits. Current origin points to the same HEAD; no remote operation performed.
+- Preserved unrelated next-env.d.ts baseline blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6.
+- Read AGENTS/TASKS/DECISIONS/README, all00–06 design/QA documents and actual landing CSS, components, projection, motion hook, messages and capability destinations.
+- Created07 source-backed audit with6 P0,7 P1 and2 optional P2 items; no production edits.
+- Created08 exact polish specification and09 Task4 milestones/QA plan. Defined frame/fold budget,12/8/6-node coordinate sets, rank/edge/neighbor states, static depth, guest-first panel, capability navigation and responsive behavior.
+- Self-reviewed07–09 for implementation scope, precedence over old visual values, responsive geometry, unavailable auth, accessibility and performance. Local Markdown links resolve; nominal node envelopes at1440/1600/1280/1024/tablet have≥12px inset/pairwise clearance. This arithmetic does not certify rendered font wrapping or edge paths.
+- Documentation diff whitespace check passed. Production tests/lint/typecheck/build intentionally not rerun for documentation-only Task3;06 remains historical evidence. next-env.d.ts baseline hash unchanged. One local documentation commit is the final checkpoint, identifiable by subject `docs(ui): define landing visual polish direction`.
+
+KEY FINDINGS:
+- Uniform4×3 graph geometry, near-equal ranks and absent neighbor emphasis weaken the knowledge metaphor. Account explanations precede the functional guest action; surface hierarchy is flat.
+- Task2's remaining browser matrix is not signed off. New browser discovery returned no controllable browsers; native active-window control was not used. No fresh screenshots claimed.
+- Preserve existing concepts/copy/routes/auth boundary. Refine hierarchy, not architecture: four graph anchors, two bridges, curved box-aware edges; Guest before account tabs. Default motion remains off; optional whole-layer32s drift only.
+
+P0 ITEMS:
+- P0-1 composition/fold budget; P0-2 graph ranks/coordinates; P0-3 curved box-aware edges; P0-4 direct-neighbor emphasis; P0-5 guest-led entry panel; P0-6 scoped depth hierarchy.
+
+P1 ITEMS:
+- Typography, header utility balance, capability navigation band, duplicate footer disclosure, consolidated graph utilities, narrow-layout alignment and restrained opt-in motion.
+
+UNRESOLVED:
+- Rendered label/path clearance, final theme contrast and responsive screenshots must be verified during Task4 in an isolated browser. No auth or routing decision is needed for this polish.
+
+FILES CREATED:
+- docs/ui-redesign/07-visual-polish-audit.md
+- docs/ui-redesign/08-landing-polish-spec.md
+- docs/ui-redesign/09-task-4-implementation-plan.md
+- Updated docs/ui-redesign/PROGRESS.md.
+
+NEXT EXACT TASK:
+- Task4: verify current branch/status/log and read this checkpoint plus07–09. Start milestoneA in app/landing.css:08 §2–3 headline-aligned panel,16px hero-to-graph gap, scoped typography/header/surface roles. Keep graph geometry and entry ordering for milestonesB/C; validate and persist after each milestone. Do not implement auth or change routes.
+
+## Task 2 retained implementation record
+
+STATUS: IMPLEMENTATION COMPLETE; AUTOMATED VALIDATION PASSED. Manual browser sign-off remains explicitly outstanding (2026-09-30).
+
 
 COMPLETED:
 - Verified Task 1 commit `95ffbc4`, branch `atlas-v2`, and repository root. No branch switch.

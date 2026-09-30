@@ -126,9 +126,13 @@
   .landing-hero h1 { font-size:32px; }
   .landing-eyebrow { font-size:12px; }
   .landing-auth { padding:20px; }
+  .landing-main { gap:20px; }
+  .landing-auth-subtitle { margin-bottom:16px; }
+  .landing-account-notice { margin-top:16px; }
+  .landing-mode-content { min-height:52px; }
   .landing-auth h2 { font-size:22px; }
   .landing-footer { gap:12px; }
 }
-@media (max-width:359px) { .landing-frame { padding-inline:16px; } .landing-tools { gap:0; } .landing-brand strong { font-size:14px; } .public-landing .language-switcher button { min-width:36px; } }
+@media (max-width:359px) { .landing-frame { padding-inline:16px; } .landing-tools { gap:0; } .landing-brand strong { font-size:14px; } }
 @media (min-width:1024px) and (max-height:719px) { .landing-main { padding-block:24px; } }
 @media (prefers-reduced-motion:reduce) { .public-landing *, .public-landing *::before, .public-landing *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }

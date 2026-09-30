@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { KnowledgeAtlasVisual } from "@/components/landing/knowledge-atlas-visual";
 import { LocaleProvider } from "@/components/locale-provider";
 import { knowledgePreview } from "@/content/landing/knowledge-preview";
@@ -7,7 +7,7 @@ import { conceptGraphService } from "@/lib/concepts/service";
 import { buildLandingProjection } from "@/lib/concepts/landing-projection";
 
 const projection = buildLandingProjection(conceptGraphService,knowledgePreview);
-afterEach(cleanup);
+afterEach(() => { cleanup(); vi.unstubAllGlobals(); Reflect.deleteProperty(document,"hidden"); });
 beforeEach(() => {
   localStorage.clear();
   vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() })));
@@ -46,5 +46,21 @@ describe("supplementary knowledge preview", () => {
     if (details) { details.open = true; fireEvent(details,new Event("toggle")); }
     fireEvent.click(screen.getByRole("button", { name: "Python" }));
     await waitFor(() => expect(container.querySelector(".knowledge-graphic")).toHaveAttribute("data-paused","true"));
+  });
+  it("pauses opted-in motion while the document is hidden or the figure is offscreen", async () => {
+    vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: true, addEventListener: vi.fn(), removeEventListener: vi.fn() })));
+    let visibility: ((entries: Array<{ isIntersecting: boolean }>) => void) | undefined;
+    vi.stubGlobal("IntersectionObserver", class { constructor(callback: typeof visibility) { visibility = callback; } observe() {} disconnect() {} });
+    const { container } = preview();
+    fireEvent.click(await screen.findByRole("button", { name: "Enable gentle motion" }));
+    fireEvent(document,new Event("visibilitychange"));
+    Object.defineProperty(document,"hidden",{ configurable:true, value:true });
+    fireEvent(document,new Event("visibilitychange"));
+    expect(container.querySelector(".knowledge-graphic")).toHaveAttribute("data-paused","true");
+    Object.defineProperty(document,"hidden",{ configurable:true, value:false });
+    fireEvent(document,new Event("visibilitychange"));
+    act(() => visibility?.([{ isIntersecting:false }]));
+    await waitFor(() => expect(container.querySelector(".knowledge-graphic")).toHaveAttribute("data-paused","true"));
+    vi.unstubAllGlobals();
   });
 });

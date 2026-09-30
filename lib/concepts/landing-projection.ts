@@ -65,5 +65,6 @@ export function landingEdgePath(source: Point, target: Point, layout: LandingLay
   }
   if (sx === tx) { const direction = ty > sy ? 1 : -1; return `M ${sx} ${sy+28*direction} V ${ty-28*direction}`; }
   const corridor = layout === "wide" ? (Math.min(sy,ty) < 100 ? 92 : 208) : layout === "compact" ? (Math.min(sy,ty) < 100 ? 82 : 176) : 110;
-  return `M ${sx} ${sy+(corridor > sy ? 28 : -28)} V ${corridor} H ${tx} V ${ty+(corridor > ty ? 28 : -28)}`;
+  if (Math.abs(tx-sx) > 300) return `M ${sx} ${sy+(corridor > sy ? 28 : -28)} V ${corridor} H ${tx} V ${ty+(corridor > ty ? 28 : -28)}`;
+  return `M ${sx} ${sy+(corridor > sy ? 28 : -28)} C ${sx} ${corridor} ${tx} ${corridor} ${tx} ${ty+(corridor > ty ? 28 : -28)}`;
 }

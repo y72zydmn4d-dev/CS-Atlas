@@ -24,7 +24,7 @@ export function AuthPanel() {
   return <section className="landing-auth" aria-labelledby="entry-title" data-auth-capability="unavailable">
     <h2 id="entry-title">{t("landing.enter")}</h2>
     <p className="landing-auth-subtitle">{t("landing.subtitle")}</p>
-    <div className="landing-auth-tabs" role="tablist" aria-label={t("landing.modes")}>
+    <div className="landing-auth-tabs" role="tablist" aria-label={t("landing.modes")} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocusedMode(mode); }}>
       {modes.map((item, index) => <button key={item} ref={(element) => { tabs.current[index] = element; }} type="button" role="tab" id={`auth-tab-${item}`} aria-selected={mode === item} aria-controls={`auth-panel-${item}`} tabIndex={focusedMode === item ? 0 : -1} onFocus={() => setFocusedMode(item)} onKeyDown={(event) => moveFocus(event, index)} onClick={() => setMode(item)}>{t(item === "signIn" ? "landing.signIn" : "landing.create")}</button>)}
     </div>
     <p className="landing-account-notice">{t("landing.unavailable")}</p>

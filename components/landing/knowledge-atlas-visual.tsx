@@ -59,6 +59,7 @@ export function KnowledgeAtlasVisual({ projection }: { projection: LandingProjec
     <details className="knowledge-connections" onToggle={(event) => setOpen(event.currentTarget.open)}>
       <summary>{t("landing.connections")}</summary>
       <p className="knowledge-list-hint">{t("landing.graphHint")}</p>
+      <p className="knowledge-list-hint">{t("landing.sliceNote")}</p>
       <ul className="knowledge-node-list">{projection.nodes.map((item) => <li key={item.id}><button type="button" aria-pressed={selected === item.id} onClick={() => select(item.id,true)}>{item.name[locale]}</button></li>)}</ul>
       {selectedNode && <div className="knowledge-selected-detail"><h3>{selectedNode.name[locale]}</h3><p>{selectedNode.summary[locale]}</p><ul>{projection.edges.filter((edge) => edge.source === selected || edge.target === selected).map((edge) => {
         const neighbor = projection.nodes.find((item) => item.id === (edge.source === selected ? edge.target : edge.source));

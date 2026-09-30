@@ -70,7 +70,7 @@ export function AuthorFooter({ imageSrc }: AuthorFooterProps) {
       </div>
 
       <div className="author-footer-meta">
-        <Link className="author-brand" href="/" aria-label="CS Atlas home">
+        <Link className="author-brand" href="/home" aria-label="CS Atlas home">
           <span className="brand-mark" aria-hidden="true">CA</span>
           <span><strong>CS Atlas</strong><small>Learn · Build · Explore</small></span>
         </Link>

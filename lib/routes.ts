@@ -14,7 +14,7 @@ export interface RoutePresentation {
 }
 
 export const routePresentations: RoutePresentation[] = [
-  { id: "home", path: "/", capability: "home", label: "navigation.home", title: "CS Atlas" },
+  { id: "home", path: "/home", capability: "home", label: "navigation.home", title: "Home" },
   { id: "learn", path: "/learn", capability: "learn", label: "navigation.learn", title: "Learn", description: "Structured CS Atlas lessons connected to canonical concepts." },
   { id: "exercises", path: "/exercises", capability: "practice", label: "exercise.title", title: "Exercises", description: "Short exercises connected to CS Atlas lessons and concepts." },
   { id: "problems", path: "/problems", capability: "practice", label: "problems.title", title: "Problems", description: "CS Atlas programming problem library." },

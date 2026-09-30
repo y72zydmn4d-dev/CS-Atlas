@@ -12,7 +12,7 @@ export interface Capability {
 }
 
 export const capabilities: Capability[] = [
-  { id: "home", href: "/", label: "navigation.home", icon: "home", aliases: [] },
+  { id: "home", href: "/home", label: "navigation.home", icon: "home", aliases: [] },
   { id: "learn", href: "/learn", label: "navigation.learn", icon: "book", aliases: ["/topics", "/algorithms", "/techniques", "/domains"] },
   { id: "practice", href: "/problems", label: "navigation.practice", icon: "code", aliases: ["/practice", "/exercises"] },
   { id: "explore", href: "/explore", label: "navigation.explore", icon: "compass", aliases: ["/atlas", "/roadmaps", "/mind-maps"] },

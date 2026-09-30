@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./practice.css";
 import "./workspace.css";
-import { AppShell } from "@/components/app-shell";
-import { AtlasProvider } from "@/components/atlas-provider";
+import { RouteShell } from "@/components/route-shell";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LocaleProvider } from "@/components/locale-provider";
-import { SelectionTranslator } from "@/components/selection-translator";
-import { WorkspacePreferencesProvider } from "@/components/workspace-preferences-provider";
 
 export const metadata: Metadata = {
   title: { default: "CS Atlas", template: "%s · CS Atlas" },
@@ -22,7 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="darkreader-lock" />
       </head>
       <body>
-        <ThemeProvider><LocaleProvider><WorkspacePreferencesProvider><AtlasProvider><AppShell>{children}</AppShell><SelectionTranslator /></AtlasProvider></WorkspacePreferencesProvider></LocaleProvider></ThemeProvider>
+        <ThemeProvider><LocaleProvider><RouteShell>{children}</RouteShell></LocaleProvider></ThemeProvider>
       </body>
     </html>
   );

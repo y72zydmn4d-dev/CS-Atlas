@@ -1,6 +1,32 @@
 # UI redesign — Task 1 checkpoint
 
-STATUS: COMPLETE — audit and implementation-ready design package, documentation only (2026-09-30).
+STATUS: TASK 2 — IN PROGRESS. Milestone A complete; milestone B next (2026-09-30).
+
+## Task 2 live checkpoint
+
+COMPLETED:
+- Verified Task 1 commit `95ffbc4`, branch `atlas-v2`, and repository root. No branch switch.
+- Read all seven Task 1 documents and repository rules. Task 1 remains the design contract.
+- Existing `next-env.d.ts` modification is unrelated; baseline blob `a419cbe4e3a5e8d4b481b851dbf4ac767de069e6`, exclude from every task commit.
+- A: extracted the single workspace Home composition to components/home and exposed it at /home. Public / is a temporary minimal shell until B. RouteShell lazily mounts workspace providers only on non-root routes; deep URLs remain ungated. Sidebar/brand/footer Home links use /home; legacy Home breadcrumb literals normalize centrally without touching saved records.
+
+FILES CHANGED:
+- A: app/layout.tsx, app/page.tsx, app/home/page.tsx; components/route-shell.tsx, workspace-providers-shell.tsx, app-shell.tsx, breadcrumbs.tsx, home/workspace-home-page.tsx, home/author-footer.tsx; lib/capabilities.ts, lib/routes.ts; tests/route-shell.test.tsx, routes.test.ts, workspace-ui.test.tsx, author-footer.test.tsx; this checkpoint.
+
+VALIDATION PASSED:
+- A: npm run typecheck, npm run lint, npm test (46 files /238 tests) passed. Task 1 commit confirmed.
+
+KNOWN ISSUES:
+- No production auth. Per02/05, unavailable modes collect no credentials; password visibility/validation tests are not applicable until a real auth milestone. Test absence of credential collection instead.
+- Public / deliberately temporary until B; browser/bundle QA remains E.
+
+UNRESOLVED:
+- Real auth/password/provider/sync policy remains outside Task 2.
+
+EXACT NEXT ACTION:
+- Commit A; implement B: bilingual public header/hero, honest unavailable account tabs, guest /home link, capability strip/footer and responsive landing styles. No credential/provider forms.
+
+## Task 1 retained design record
 
 COMPLETED:
 - Verified repository `/Users/trinhgiahuy/Documents/CS-Atlas`, branch `atlas-v2`, baseline HEAD `0d48165`.

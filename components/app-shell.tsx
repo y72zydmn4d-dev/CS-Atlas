@@ -82,13 +82,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <a className="skip-link" href="#main-content">{t("navigation.skip")}</a>
       <header className="mobile-header" inert={mobileOpen}>
         <button ref={menuButtonRef} className="icon-button" onClick={() => setMobileOpen(true)} aria-label={t("navigation.open")} aria-expanded={mobileOpen} aria-controls="primary-sidebar"><Menu /></button>
-        <Link className="brand compact" href="/"><span className="brand-mark">CA</span><strong>CS Atlas</strong></Link>
+        <Link className="brand compact" href="/home"><span className="brand-mark">CA</span><strong>CS Atlas</strong></Link>
         <button className="icon-button" onClick={() => setSearchOpen(true)} aria-label={t("actions.searchAtlas")}><Search /></button>
       </header>
       {mobileOpen && <button className="sidebar-scrim" onClick={closeNavigation} aria-label={t("navigation.close")} tabIndex={-1} />}
       <aside id="primary-sidebar" className={cn("sidebar", mobileOpen && "open")} role={mobileOpen ? "dialog" : undefined} aria-modal={mobileOpen || undefined} aria-label={t("navigation.explore")}>
         <div className="sidebar-top">
-          <Link className="brand" href="/" aria-label="CS Atlas" onClick={() => setMobileOpen(false)}><span className="brand-mark">CA</span><span className="brand-label"><strong>CS Atlas</strong><small>{t("app.knowledgeNavigator")}</small></span></Link>
+          <Link className="brand" href="/home" aria-label="CS Atlas" onClick={() => setMobileOpen(false)}><span className="brand-mark">CA</span><span className="brand-label"><strong>CS Atlas</strong><small>{t("app.knowledgeNavigator")}</small></span></Link>
           <button ref={closeButtonRef} className="icon-button mobile-only" onClick={() => { setMobileOpen(false); menuButtonRef.current?.focus(); }} aria-label={t("navigation.close")}><X /></button>
         </div>
         <button className="search-trigger" onClick={() => setSearchOpen(true)}><Search size={17} /><span>{t("actions.searchAtlas")}</span><kbd>⌘ K</kbd></button>

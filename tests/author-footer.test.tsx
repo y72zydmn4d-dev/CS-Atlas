@@ -61,6 +61,8 @@ describe("home author footer", () => {
       .filter((path) => readFileSync(path, "utf8").includes("<AuthorFooter"))
       .map((path) => relative(process.cwd(), path));
 
-    expect(mounts).toEqual(["app/page.tsx"]);
+    expect(mounts).toEqual([]);
+    expect(readFileSync(join(process.cwd(), "components/home/workspace-home-page.tsx"), "utf8")).toContain("<AuthorFooter");
+    expect(readFileSync(join(appRoot, "home/page.tsx"), "utf8")).toContain("<WorkspaceHomePage");
   });
 });

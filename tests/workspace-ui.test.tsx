@@ -10,7 +10,7 @@ import { WorkspacePreferencesProvider } from "@/components/workspace-preferences
 import { storage } from "@/lib/storage";
 import type { ReactNode } from "react";
 
-vi.mock("next/navigation", () => ({ usePathname: () => "/" }));
+vi.mock("next/navigation", () => ({ usePathname: () => "/home" }));
 vi.mock("next/dynamic", () => ({ default: () => function CanvasPlaceholder() { return <div data-testid="lazy-canvas" />; } }));
 vi.mock("@/components/library/library-resources", () => ({ LibraryResources: () => <section>Linked library resources</section> }));
 vi.mock("@/components/search-dialog", () => ({ SearchDialog: ({ open }: { open: boolean }) => open ? <div role="dialog">Search</div> : null }));
@@ -52,6 +52,7 @@ describe("workspace interactions", () => {
   });
   it("persists sidebar collapse, opens command search and returns mobile focus", async () => {
     const { container, unmount } = render(<Providers><AppShell><p>Content</p></AppShell></Providers>);
+    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/home");
     fireEvent.click(screen.getByRole("button", { name: "Collapse sidebar" }));
     expect(storage.loadSidebarCollapsed()).toBe(true);
     expect(container.querySelector(".workspace-frame")).toHaveClass("sidebar-collapsed");

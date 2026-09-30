@@ -20,7 +20,9 @@ COMPOSITION DECISIONS: ≥1440 frame cap1600 instead1440, panel416 instead400, g
 
 B DECISIONS: Only Programming Fundamentals and Machine Learning Fundamentals are focal; landing-authored optional focal flag travels in existing server projection, not client ID literals/full registry. Wide≥1440/height≥720 uses180px label boxes,18px650 labels,12px cores. Others retain Task4 sizes. Conservative180×88px fallback for those two avoids initial edge-through-label; one existing ResizeObserver still owns real sizes. Resting background/direct-focal/active edge opacity .65/.9/1 (related .45/.75/1), preserving dashes/arrows and active/dimmed specificity. Python→ML only: controls406,116; join560,124;608,126.5;646,168 (near-collinear join tangents), avoiding Recursion and larger focal box. No canonical or node coordinate changes.
 
-EXACT NEXT ACTION: Commit B locally. C then adds only link hover/focus wells/directional affordance and tighter wide caption/main-to-band spacing. No new sections/mobile architecture; validate and persist before local commit.
+COMPLETED C/D: B committed166164a. C adds64px padded capability link targets,15px labels/right-aligned18px arrows and surface-2 hover/focus wells; no resting cards. Wide caption minimum56, main bottom16 and band padding12 tighten utility-to-band rhythm. Typecheck/lint pass. D source/geometry review retains1280/1024/tablet/mobile grid/type/stage rules; no additional responsive fix identified. Browser sign-off unavailable, not claimed passed. Created11-task-5-final-landing-qa.md with seven-objective and manual matrix evidence.
+
+EXACT NEXT ACTION: Commit C CSS/checkpoint/QA locally. Then final typecheck/lint/isolated tests/build/audit:build and task-owned local route/asset smoke. Preserve next-env baseline after Next regeneration. Record exact performance/results, freeze pending human sign-off and create final QA checkpoint commit; no new polish wishlist.
 
 ## Task 4 retained implementation record
 

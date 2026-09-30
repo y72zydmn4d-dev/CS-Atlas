@@ -114,10 +114,11 @@
 @media print { .knowledge-graphic,.knowledge-motion-control { display:none; } }
 .landing-capabilities { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px 24px; list-style:none; padding:16px 0; margin:0; border-top:1px solid var(--landing-rule); }
 .landing-capabilities li { min-width:0; }
-.landing-capabilities a { display:flex; flex-direction:column; justify-content:center; gap:4px; min-height:48px; font-size:14px; }
-.landing-capability-title { display:flex; align-items:center; gap:8px; }
+.landing-capabilities a { display:flex; flex-direction:column; justify-content:center; gap:4px; min-height:64px; padding:8px 12px; border-radius:var(--radius-sm); font-size:15px; transition:background var(--motion-fast); }
+.landing-capabilities a:hover,.landing-capabilities a:focus-visible { background:var(--surface-2); }
+.landing-capability-title { display:flex; align-items:center; justify-content:space-between; gap:8px; }
 .landing-capabilities strong { font-weight:600; }
-.landing-capability-title>span { font-size:16px; color:var(--muted); }
+.landing-capability-title>span { font-size:18px; color:var(--muted); }
 .landing-capability-detail { font-size:13px; line-height:1.45; color:var(--muted); }
 .landing-capabilities a:hover strong,.landing-capabilities a:focus-visible strong { color:var(--accent); text-decoration:underline; text-underline-offset:4px; }
 .landing-capabilities a:hover .landing-capability-title>span { color:var(--accent); }
@@ -127,9 +128,11 @@
 /* Human-reviewed desktop presence; narrower study layouts keep their existing scale. */
 @media (min-width:1440px) {
   .landing-frame { max-width:1600px; }
-  .landing-main { grid-template-columns:minmax(0,1fr) 416px; column-gap:48px; padding-top:40px; }
+  .landing-main { grid-template-columns:minmax(0,1fr) 416px; column-gap:48px; padding-top:40px; padding-bottom:16px; }
   .landing-hero h1 { font-size:64px; }
   .knowledge-graphic { height:clamp(400px,46svh,450px); }
+  .knowledge-caption { min-height:56px; }
+  .landing-capabilities { padding-block:12px; }
 }
 @media (min-width:1600px) { .landing-hero h1 { font-size:68px; } }
 @media (min-width:1440px) and (min-height:720px) {

@@ -10,7 +10,7 @@ COMPLETED: Inspected actual attached PNG at /var/folders/x3/2pcc7d551qxbj9t8hh1v
 
 DECISIONS: Use attached artwork, not regeneration. Preserve exact PNG reference outside public, optimize single same-dimension WebP. Dark layer uses artwork at full opacity with localized transparent readability treatment. Remove dark procedural contours/points/aurora; light uses a simple static paper-safe gradient fallback, no dark-image request. Server-only decorative layer; existing motion state/graph/layout/Guest/routes unchanged.
 
-CURRENT MILESTONE: A — static asset/architecture only, before image motion.
+CURRENT MILESTONE: B — single-layer artwork motion, static A committede4dc45b.
 
 FILES CHANGED: This checkpoint initially; planned approved reference + public WebP, atmosphere component, landing-specific CSS/tests,13 QA and asset smoke script; next-env excluded.
 
@@ -20,7 +20,11 @@ KNOWN ISSUES: No fresh browser visual/motion/contrast certification possible. Ar
 
 STATIC A IMPLEMENTED: Exact PNG retained underdocs/ui-redesign/references; production/public/backgrounds/cs-atlas-aurora.webp1672×941/154,548B, Sharp WebP quality94/effort6/smartSubsample, no resize/recolor (92.3% size reduction). Optimized image directly inspected: approved cyan/indigo/contours retained, no obvious banding at inspected scale; not composed browser QA. PNG SHA2561ce15b99bc384177de967ceaf27dfed52469d15edba5e1708c7b27d7f125b88b; WebPceef58e90ef0777ba868ff77c1dcc077c77d9ef66fc4e928b94b1d9877b9a9c1. Server component now two decorative div layers; all procedural SVG points/curves and aurora/keyframes removed. Artwork full-opacity dark-only CSS URL/cover; localized reading gradients, no full-page flat navy veil. Light static pale fallback; no dark URL when light. Foreground positions/surfaces/motion state unchanged.
 
-EXACT NEXT ACTION: Commit coherent static A. Then B image-only transform/scale drift under existing default-on/pause eligibility; C responsive crop/readability; D full checks/asset smoke/13 QA.
+B IMPLEMENTED: Single64s ease-in-out alternate traversal (-16s phase), scale1.035→1.055→1.04, translations+.35/.2%→-.5/-.3%→+.6/.4%. Existing atmosphere-enabled/data-paused signal and entry focus gate share control/hidden/offscreen/selection pause; no hook or graph modification. Light paper-gradient fallback moved into same layer so pause control remains meaningful in both themes without requesting dark art. Reduced-motion global rule disables animation; ≤1279 remains static. No duplicated image, video/frame loop/animated blur.
+
+VALIDATION B: Typecheck/lint and full52 files/288 tests pass, search36.91ms against unchanged100ms budget; diff whitespace passes. Existing pause/reduced-motion tests cover shared signals, CSS animation rendering remains manual. No pointer/focus or form changes.
+
+EXACT NEXT ACTION: Commit coherent B after recording final full-suite result. C then tune cover crop/viewport bounds/tablet-mobile reading treatment; D full checks/asset smoke/13 QA.
 
 ## Final atmospheric tuning retained checkpoint
 

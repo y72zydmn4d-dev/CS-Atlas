@@ -4,7 +4,7 @@ STATUS: TASK 4 — VISUAL POLISH IMPLEMENTATION IN PROGRESS.
 
 ## Task 4 live checkpoint
 
-CURRENT MILESTONE: D implemented; validate/commit then E responsive/theme review.
+CURRENT MILESTONE: E complete; F next — production build, performance/route audit and QA handoff.
 
 COMPLETED:
 - Verified CS-Atlas, atlas-v2 and Task3 commit18ac2b9 at HEAD. Only unrelated next-env.d.ts differs; preserve its baseline blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6.
@@ -14,18 +14,19 @@ COMPLETED:
 - B includes direct-neighbor hover/focus/selection emphasis, consolidated native details/motion utility row, pointer pause and32s optional3px/2px whole-layer drift. Static default and existing accessibility/pause semantics retained.
 - B committedec961a1. C implemented: Guest immediately follows introduction, complete local-scope/disclosure precede subordinate account group, one mode-specific unavailable message with paired EN/VI; manual tabs retain focus/activation behavior. No credential/backend behavior introduced.
 - C committed5176e3a. D: quieter theme control and selected-locale underline with44px targets, compact mobile brand,64px tablet header; registry-resolved four-link capability band, four columns at1280+, copyright-only footer and one complete panel disclosure.
+- D committedbf13db9. E: corrected compact anchor-ring state cascade, intentional light/dark resting ring roles, label reflow protection and scoped forced-colors semantics; breakpoint rules keep12/8/6 desktop/tablet slices and omit graphic on phones. Added mixed-size geometry fixtures.
 
-FILES CHANGED: A/B/C as above. D: components/landing/{capability-strip,public-landing-shell}.tsx, app/landing.css, i18n/messages/landing.ts, tests/landing.test.tsx, this checkpoint.
+FILES CHANGED: A–D as above. E: app/landing.css, tests/landing-geometry.test.ts, docs/ui-redesign/10-task-4-qa.md, this checkpoint.
 
-VALIDATION PASSED: A typecheck/lint;50 files/253 tests. B typecheck/lint;51 files/266 tests. C typecheck/lint;51 files/267 tests. D typecheck/lint;51 files/268 tests. Geometry samples verify five desktop/tablet width fixtures with reserved and shorter label envelopes; actual font/rendered contrast remain browser checks. No known failing tests.
+VALIDATION PASSED: A typecheck/lint;50 files/253 tests. B typecheck/lint;51 files/266 tests. C typecheck/lint;51 files/267 tests. D typecheck/lint;51 files/268 tests. E typecheck/lint;51 files/273 tests. Geometry samples verify five desktop/tablet width fixtures with reserved/short/mixed envelopes. Guest text calculated normal/hover/pressed contrast≥4.94:1 both themes; panel secondary≥6.36:1. Actual font/rendered contrast remain browser checks. No known failing tests.
 
-VISUAL CHANGES: A/B/C as above; D compact actionable navigation band, minimal copyright row and visually quieter header tools. Full local-data detail retained once besideGuest.
+VISUAL CHANGES: A–D as above; E preserves cyan neighbor/active state in compact maps, stronger light-theme ink/ring relationships, forced-colors outlines/surfaces and readable long labels.
 
-KNOWN ISSUES: Final responsive/contrast review awaitsE/F. Browser discovery returned no controllable browsers; no native user-window control or rendered screenshots claimed.
+KNOWN ISSUES: Browser discovery returned no controllable browsers; no native user-window control or rendered screenshots claimed. Manual screenshot/font-wrap/keyboard/screen-reader/forced-colors sign-off remains. Build and initial public JS delta pendingF.
 
 UNRESOLVED: Rendered responsive/theme QA and final public bundle delta.
 
-EXACT NEXT ACTION: RecordD validation and commit locally. Then review CSS breakpoint/state cascade, contrast arithmetic, forced colors, label reflow and mixed-size geometry fixtures; finishE and run final build/audits inF.
+EXACT NEXT ACTION: CommitE locally. Run final typecheck/lint/test/build and audit:build; preserve next-env.d.ts baseline if Next regenerates it. Start only a task-owned local production server on3010; run audit-public-entry, compare public JS delta, inspect final diff and updateQA/STATUS/checkpoint before final commit.
 
 ## Task 3 retained design record
 

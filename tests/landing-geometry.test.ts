@@ -5,13 +5,14 @@ import { landingBox, landingCurves, landingCurvePath, type LandingPoint } from "
 
 describe("landing relationship geometry", () => {
   for (const [layout,actualWidth] of [["wide",880],["wide",848],["wide",768],["compact",552],["tablet",440]] as const) {
-    for (const envelope of ["reserved","short"] as const) {
+    for (const envelope of ["reserved","short","mixed"] as const) {
       it(`keeps ${layout}/${actualWidth}/${envelope} curves clear of label rectangles`, () => {
         const reference = landingDimensions[layout];
         const nodes = knowledgePreview.nodes.flatMap((node) => {
           const point = node[layout];
           if (!point) return [];
-          const size: LandingPoint = [layout === "wide" ? node.rank === "anchor" ? 164 : 148 : layout === "compact" ? 140 : 128,envelope === "reserved" ? layout === "wide" && node.rank === "anchor" ? 72 : 64 : node.rank === "anchor" ? 56 : 48];
+          const tall = envelope === "reserved" || envelope === "mixed" && node.id === "topic:ml-fundamentals";
+          const size: LandingPoint = [layout === "wide" ? node.rank === "anchor" ? 164 : 148 : layout === "compact" ? 140 : 128,tall ? layout === "wide" && node.rank === "anchor" ? 72 : 64 : node.rank === "anchor" ? 56 : 48];
           return [{ id:node.id, box:landingBox(point,size,[actualWidth,reference[1]],reference) }];
         });
         for (const relation of knowledgePreview.relations) {

@@ -4,24 +4,26 @@ STATUS: TASK 4 — VISUAL POLISH IMPLEMENTATION IN PROGRESS.
 
 ## Task 4 live checkpoint
 
-CURRENT MILESTONE: A complete; B next — knowledge hierarchy and geometry.
+CURRENT MILESTONE: B complete; C next — guest-first entry panel.
 
 COMPLETED:
 - Verified CS-Atlas, atlas-v2 and Task3 commit18ac2b9 at HEAD. Only unrelated next-env.d.ts differs; preserve its baseline blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6.
 - Reviewed Task3 polish contract and current landing composition. Earlier design/security/QA constraints remain in force.
 - A implemented: shared CSS subgrid eyebrow/headline tracks align entry with headline without JS/position transforms; tighter hero rhythm, restrained tracking, aligned440px tablet column and scoped surface/field roles. Existing graph data/entry order unchanged inA.
+- A committed8ab870d. B implemented:4 anchors/2 bridges/6 supports; staggered12/8/6 coordinates; authored cubic routing over unchanged13 canonical selectors; pure box/port helper with CSS→SVG conversion, single resize observer and server fallback envelopes.
+- B includes direct-neighbor hover/focus/selection emphasis, consolidated native details/motion utility row, pointer pause and32s optional3px/2px whole-layer drift. Static default and existing accessibility/pause semantics retained.
 
-FILES CHANGED: A: app/landing.css, components/landing/landing-hero.tsx, this checkpoint.
+FILES CHANGED: A as above. B: app/landing.css; content/landing/knowledge-preview.ts; lib/concepts/{landing-projection,landing-geometry}.ts; components/landing/{knowledge-atlas-visual,use-knowledge-geometry}.tsx/.ts; tests/{landing-projection,landing-geometry,knowledge-preview}.test.*; this checkpoint.
 
-VALIDATION PASSED: A typecheck/lint;50 test files/253 tests. Diff whitespace check before commit.
+VALIDATION PASSED: A typecheck/lint;50 files/253 tests. B typecheck/lint;51 files/266 tests. Geometry samples verify five desktop/tablet width fixtures with reserved and shorter label envelopes; actual font/rendered contrast remain browser checks. Initial curve-clearance failures corrected, no known failing tests.
 
-VISUAL CHANGES: Headline-aligned entry,16px introduction-to-map gap,56px desktop type with−.03em tracking,48ch support, stronger brand and opaque panel edge/shadow; local indigo field in both themes.
+VISUAL CHANGES: A as above; B360px desktop graph, visibly distinct anchor cores/rings/type, curved cross-field relationships, neighborhood emphasis and one44px utility row instead of stacked controls.
 
-KNOWN ISSUES: Graph/entry hierarchy awaitsB/C. Browser discovery returned no controllable browsers; no native user-window control or rendered screenshots claimed.
+KNOWN ISSUES: Entry hierarchy awaitsC; capability/footer refinement awaitsD; final responsive/contrast review awaitsE/F. Browser discovery returned no controllable browsers; no native user-window control or rendered screenshots claimed.
 
 UNRESOLVED: Rendered responsive/theme QA and final public bundle delta.
 
-EXACT NEXT ACTION: CommitA locally, then implementB:08 graph ranks/coordinates, curved box-aware edges and one-hop neighborhood states; retain12 IDs/13 relations and native list.
+EXACT NEXT ACTION: CommitB locally, then reorderAuthPanel according to08 §7, consolidate unavailable messages in both locales, preserve manual tabs and local disclosure, update meaningful landing tests and validateC.
 
 ## Task 3 retained design record
 

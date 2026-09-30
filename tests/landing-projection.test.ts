@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { knowledgePreview } from "@/content/landing/knowledge-preview";
 import { conceptGraphService } from "@/lib/concepts/service";
-import { buildLandingProjection, landingEdgePath } from "@/lib/concepts/landing-projection";
+import { buildLandingProjection } from "@/lib/concepts/landing-projection";
 
 describe("bounded public knowledge projection", () => {
   it("resolves all names, URLs and semantic edges from canonical records", () => {
@@ -23,13 +23,12 @@ describe("bounded public knowledge projection", () => {
       { ...knowledgePreview, nodes: [...knowledgePreview.nodes.slice(0,11), knowledgePreview.nodes[0]] },
       { ...knowledgePreview, nodes: [{ id: "topic:missing", rank: "anchor" as const, wide: [42,42] as const }] },
       { ...knowledgePreview, relations: [knowledgePreview.relations[0], knowledgePreview.relations[0]] },
-      { ...knowledgePreview, relations: [{ source: "topic:python", target: "topic:python", type: "RELATED_TO" as const }] },
-      { ...knowledgePreview, relations: [{ source: "topic:arrays", target: "topic:linear-algebra", type: "PREREQUISITE_OF" as const }] },
+      { ...knowledgePreview, relations: [{ source: "topic:python", target: "topic:python", type: "RELATED_TO" as const, routes: {} }] },
+      { ...knowledgePreview, relations: [{ source: "topic:arrays", target: "topic:linear-algebra", type: "PREREQUISITE_OF" as const, routes: {} }] },
+      { ...knowledgePreview, relations: [{ ...knowledgePreview.relations[0], routes: {} }] },
+      { ...knowledgePreview, relations: [{ ...knowledgePreview.relations[0], routes: { wide: { sourceSide: "right" as const, targetSide: "left" as const, controls: [[-1,24],[200,24]] as const } } }] },
       { ...knowledgePreview, nodes: [{ ...knowledgePreview.nodes[0], wide: [-10,42] as const }] },
     ];
     for (const presentation of invalid) expect(() => buildLandingProjection(conceptGraphService,presentation)).toThrow();
-  });
-  it("routes the long cross-field edge through the free corridor", () => {
-    expect(landingEdgePath([112,148],[686,42],"wide")).toBe("M 112 120 V 92 H 686 V 70");
   });
 });

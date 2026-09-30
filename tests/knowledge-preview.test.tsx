@@ -35,6 +35,59 @@ describe("supplementary knowledge preview", () => {
     expect(screen.queryByRole("button", { name: /gentle motion/ })).not.toBeInTheDocument();
     expect(container.querySelector(".knowledge-graphic")).toHaveAttribute("data-motion","disabled");
   });
+  it("emphasizes direct neighbors for hover/focus and restores persistent selection", () => {
+    const { container } = preview();
+    const details = container.querySelector("details");
+    if (details) { details.open = true; fireEvent(details,new Event("toggle")); }
+    fireEvent.click(screen.getByRole("button", { name: "Python" }));
+    const node = (id: string) => container.querySelector(`.knowledge-wide [data-concept="topic:${id}"]`);
+    expect(node("python")).toHaveClass("active");
+    expect(node("ml-fundamentals")).toHaveClass("neighbor");
+    expect(node("programming-fundamentals")).toHaveClass("neighbor");
+    expect(node("neural-networks")).toHaveClass("unrelated");
+    const neural = node("neural-networks");
+    if (neural) fireEvent.pointerEnter(neural);
+    expect(node("neural-networks")).toHaveClass("active");
+    expect(node("linear-algebra")).toHaveClass("neighbor");
+    const graphic = container.querySelector(".knowledge-graphic");
+    if (graphic) fireEvent.pointerLeave(graphic);
+    expect(node("python")).toHaveClass("active");
+    fireEvent.focus(screen.getByRole("button", { name:"Linear Algebra" }));
+    expect(node("linear-algebra")).toHaveClass("active");
+    expect(node("neural-networks")).toHaveClass("neighbor");
+    fireEvent.blur(screen.getByRole("button", { name:"Linear Algebra" }));
+    expect(node("python")).toHaveClass("active");
+  });
+  it("freezes opted-in motion while the pointer is over the graph", async () => {
+    vi.stubGlobal("matchMedia", vi.fn(() => ({ matches:true, addEventListener:vi.fn(), removeEventListener:vi.fn() })));
+    const { container } = preview();
+    fireEvent.click(await screen.findByRole("button", { name:"Enable gentle motion" }));
+    const graphic = container.querySelector(".knowledge-graphic");
+    if (graphic) fireEvent.pointerEnter(graphic);
+    expect(graphic).toHaveAttribute("data-paused","true");
+    if (graphic) fireEvent.pointerLeave(graphic);
+    expect(graphic).toHaveAttribute("data-paused","false");
+  });
+  it("recalculates ports from measured label boxes with one resize observer", () => {
+    let resize: (() => void) | undefined;
+    const disconnect = vi.fn();
+    vi.stubGlobal("ResizeObserver",class { constructor(callback: () => void) { resize=callback; } observe() {} disconnect=disconnect; });
+    const { container,unmount } = preview();
+    const wide = container.querySelector<HTMLElement>(".knowledge-wide");
+    if (!wide) throw new Error("Missing wide graph");
+    Object.defineProperty(wide,"offsetWidth",{ configurable:true,value:880 });
+    Object.defineProperty(wide,"offsetHeight",{ configurable:true,value:360 });
+    for (const node of wide.querySelectorAll<HTMLElement>(".knowledge-node")) {
+      Object.defineProperty(node,"offsetWidth",{ configurable:true,value:node.classList.contains("rank-anchor") ? 164 : 148 });
+      Object.defineProperty(node,"offsetHeight",{ configurable:true,value:node.classList.contains("rank-anchor") ? 72 : 64 });
+    }
+    const before = wide.querySelector(".knowledge-edge")?.getAttribute("d");
+    act(() => resize?.());
+    expect(wide.querySelector(".knowledge-edge")?.getAttribute("d")).not.toBe(before);
+    expect(wide.querySelectorAll(".knowledge-edge.related[marker-end]")).toHaveLength(0);
+    unmount();
+    expect(disconnect).toHaveBeenCalled();
+  });
   it("starts static, enables optional desktop motion, and pauses for selection", async () => {
     vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: true, addEventListener: vi.fn(), removeEventListener: vi.fn() })));
     const { container } = preview();

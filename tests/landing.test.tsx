@@ -4,6 +4,8 @@ import LandingPage from "@/app/page";
 import { LocaleProvider } from "@/components/locale-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { storage } from "@/lib/storage";
+import { capabilities } from "@/lib/capabilities";
+import { within } from "@testing-library/react";
 
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 beforeEach(() => {
@@ -36,6 +38,16 @@ describe("public entry", () => {
     const disclosure = guest.closest("section")?.querySelector("details");
     expect(disclosure?.compareDocumentPosition(tabs) && disclosure.compareDocumentPosition(tabs) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(screen.getByText(/No account sync or cloud backup/)).toBeInTheDocument();
+  });
+  it("provides capability navigation using existing destinations and one complete data disclosure", () => {
+    landing();
+    const nav = screen.getByRole("navigation", { name:"Learning tools" });
+    for (const id of ["learn","practice","explore","library"]) {
+      const capability = capabilities.find((item) => item.id === id);
+      expect(within(nav).getAllByRole("link").some((link) => link.getAttribute("href") === capability?.href)).toBe(true);
+    }
+    expect(screen.getAllByText("About local data")).toHaveLength(1);
+    expect(screen.getByText(/Clearing site data/)).toHaveTextContent("Library exports contain metadata, not original files.");
   });
   it("supports manual keyboard tab activation and native local-data disclosure", () => {
     landing();

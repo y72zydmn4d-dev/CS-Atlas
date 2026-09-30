@@ -21,7 +21,8 @@ describe("public entry", () => {
     expect(container.querySelectorAll(".landing-atmosphere")).toHaveLength(1);
     expect(atmosphere).toHaveAttribute("aria-hidden","true");
     expect(atmosphere?.querySelector("a,button,input,[tabindex],title,foreignObject")).toBeNull();
-    expect(atmosphere?.querySelector("svg")).toHaveAttribute("focusable","false");
+    expect(atmosphere?.querySelector(".landing-artwork")).not.toBeNull();
+    expect(atmosphere?.querySelector("svg")).toBeNull();
     expect(atmosphere?.contains(screen.getByRole("main"))).toBe(false);
     expect(screen.getByRole("link", { name:/Continue as guest/ })).toHaveAttribute("href","/home");
   });

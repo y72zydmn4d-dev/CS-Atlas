@@ -1,10 +1,28 @@
 # UI redesign — resumable checkpoint
 
-STATUS: ATMOSPHERIC PRESENCE TUNING — COMPLETE.
+STATUS: APPROVED AURORA ARTWORK — INTEGRATION IN PROGRESS.
 
-LANDING — FROZEN PENDING HUMAN SIGN-OFF.
+LANDING — FROZEN EXCEPT APPROVED BACKGROUND ASSET INTEGRATION.
 
-## Final atmospheric tuning live checkpoint
+## Approved artwork live checkpoint
+
+COMPLETED: Inspected actual attached PNG at /var/folders/x3/2pcc7d551qxbj9t8hh1vw4yh0000gn/T/codex-clipboard-7ZzpqI.png:1672×941,2,016,126B, sRGB. Verified CS-Atlas/atlas-v2 atf69bd4e, only unrelated next-env change. No matching approved reference in repo; existing knowledge-topology assets belong to workspace and will remain untouched. Read rules/task/decision and landing history/source/motion/theme boundaries. Sharp already available via installed stack; no dependency needed. Browser discovery again has no surfaces (native pipe failure).
+
+DECISIONS: Use attached artwork, not regeneration. Preserve exact PNG reference outside public, optimize single same-dimension WebP. Dark layer uses artwork at full opacity with localized transparent readability treatment. Remove dark procedural contours/points/aurora; light uses a simple static paper-safe gradient fallback, no dark-image request. Server-only decorative layer; existing motion state/graph/layout/Guest/routes unchanged.
+
+CURRENT MILESTONE: A — static asset/architecture only, before image motion.
+
+FILES CHANGED: This checkpoint initially; planned approved reference + public WebP, atmosphere component, landing-specific CSS/tests,13 QA and asset smoke script; next-env excluded.
+
+VALIDATION: Source/optimized WebP directly inspected. Static A typecheck/lint and focused3 files/18 tests pass, including reference fingerprint/intrinsic-size/250KB-budget test. Diff whitespace passes. Prior records below historical only.
+
+KNOWN ISSUES: No fresh browser visual/motion/contrast certification possible. Artwork sample/optimization quality will be inspected directly; composed viewport sign-off remains manual.
+
+STATIC A IMPLEMENTED: Exact PNG retained underdocs/ui-redesign/references; production/public/backgrounds/cs-atlas-aurora.webp1672×941/154,548B, Sharp WebP quality94/effort6/smartSubsample, no resize/recolor (92.3% size reduction). Optimized image directly inspected: approved cyan/indigo/contours retained, no obvious banding at inspected scale; not composed browser QA. PNG SHA2561ce15b99bc384177de967ceaf27dfed52469d15edba5e1708c7b27d7f125b88b; WebPceef58e90ef0777ba868ff77c1dcc077c77d9ef66fc4e928b94b1d9877b9a9c1. Server component now two decorative div layers; all procedural SVG points/curves and aurora/keyframes removed. Artwork full-opacity dark-only CSS URL/cover; localized reading gradients, no full-page flat navy veil. Light static pale fallback; no dark URL when light. Foreground positions/surfaces/motion state unchanged.
+
+EXACT NEXT ACTION: Commit coherent static A. Then B image-only transform/scale drift under existing default-on/pause eligibility; C responsive crop/readability; D full checks/asset smoke/13 QA.
+
+## Final atmospheric tuning retained checkpoint
 
 COMPLETED: Verified atlas-v2 atcbd5e00; only unrelated next-env.d.ts modification, baseline hash a419cbe4e3a5e8d4b481b851dbf4ac767de069e6 preserved. Read12 QA/earlier checkpoint, current atmosphere/CSS and existing motion hook/control/tests. Browser discovery again returns no apps/browsers (native pipe failure); rendered verification unavailable.
 

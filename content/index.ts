@@ -15,8 +15,11 @@ import { validateProblemCatalog } from "@/lib/problems/catalog";
 import { validateLearnCatalog } from "@/lib/domain/learn";
 import { resources } from "@/content/resources";
 import { validateCanonicalResources } from "@/lib/domain/resources";
+import { learnLessons, learnRouteAliases, learnSubjects } from "@/content/learn/registry";
+import { learnExamples, learnLessonContent, learnQuizQuestions, learnReferences } from "@/content/learn/lesson-content";
+import { validateLearnPlatform } from "@/lib/domain/learn-platform";
 
-export { algorithms, domains, projects, techniques, topics, sources, sourceById, concepts, conceptRelations, conceptValidationIssues, resolveConcept, courses, lessonBlocks, lessonExamples, lessonPlaygrounds, lessonReferences, lessons, exercises, problems, resources };
+export { algorithms, domains, projects, techniques, topics, sources, sourceById, concepts, conceptRelations, conceptValidationIssues, resolveConcept, courses, lessonBlocks, lessonExamples, lessonPlaygrounds, lessonReferences, lessons, exercises, problems, resources, learnSubjects, learnLessons, learnRouteAliases, learnExamples, learnLessonContent, learnQuizQuestions, learnReferences };
 
 export const domainById = new Map(domains.map((item) => [item.id, item]));
 export const domainBySlug = new Map(domains.map((item) => [item.slug, item]));
@@ -44,6 +47,10 @@ export const searchIndex: SearchResult[] = [
   ...concepts.map((item) => ({ id: item.id, canonicalId: item.id, title: item.name.en, titleVi: item.name.vi, type: "Concept" as const, hierarchy: `Canonical ${item.kind}`, hierarchyVi: `Khái niệm chuẩn · ${item.kind}`, href: `/concepts/${item.slug}`, keywords: `${item.summary.en} ${item.summary.vi} ${item.aliases.join(" ")}` })),
   ...problems.map((item) => ({ id: `problem:${item.id}`, title: item.title.en, titleVi: item.title.vi, type: "Problem" as const, hierarchy: "Programming problems", hierarchyVi: "Bài toán lập trình", href: item.href, keywords: `${item.summary.en} ${item.summary.vi} ${item.difficulty} ${item.conceptIds.join(" ")}` })),
   ...exercises.map((item) => ({ id: item.id, title: item.title.en, titleVi: item.title.vi, type: "Exercise" as const, hierarchy: "Topic exercises", hierarchyVi: "Bài tập theo chủ đề", href: item.href, keywords: `${item.prompt.en} ${item.prompt.vi} ${item.mode} ${item.difficulty}` })),
+  ...learnSubjects.map((item) => ({ id: `subject:${item.id}`, canonicalId: item.conceptIds[0], title: item.title.en, titleVi: item.title.vi, type: "Subject" as const, hierarchy: "Learn", hierarchyVi: "Learn", href: `/learn/${item.slug}`, keywords: `${item.description.en} ${item.category} ${item.status}` })),
+  ...learnSubjects.flatMap((subject) => subject.sections.map((section) => ({ id: section.id, canonicalId: subject.conceptIds[0], title: section.title.en, titleVi: section.title.vi, type: "Section" as const, hierarchy: `Learn · ${subject.title.en}`, hierarchyVi: `Learn · ${subject.title.vi}`, href: `/learn/${subject.slug}/tutorial#${section.id}`, keywords: section.lessons.map((lesson) => `${lesson.title.en} ${lesson.slug}`).join(" ") }))),
+  ...learnLessons.map((item) => ({ id: item.id, canonicalId: item.conceptIds[0], title: item.title.en, titleVi: item.title.vi, type: "Lesson" as const, hierarchy: `Learn · ${learnSubjects.find((subject) => subject.id === item.subjectId)?.title.en ?? item.subjectId}`, hierarchyVi: "Learn", href: `/learn/${item.subjectId}/${item.slug}`, keywords: `${item.description.en} ${item.conceptIds.join(" ")} ${item.status}` })),
+  ...learnReferences.map((item) => ({ id: item.id, canonicalId: item.conceptIds[0], title: item.name, type: "Reference" as const, hierarchy: `Learn · ${learnSubjects.find((subject) => subject.id === item.subjectId)?.title.en ?? item.subjectId} · Reference`, hierarchyVi: "Learn · Reference", href: `/learn/${item.subjectId}/reference/${item.slug}`, keywords: `${item.signature ?? ""} ${item.description.en} ${item.conceptIds.join(" ")}` })),
 ];
 
 export function validateContent() {
@@ -131,5 +138,16 @@ export function validateContent() {
   errors.push(...validateLearnCatalog({ lessons, blocks: lessonBlocks, references: lessonReferences, examples: lessonExamples, playgrounds: lessonPlaygrounds, conceptIds: new Set(concepts.map((concept) => concept.id)), sourceIds: new Set(sources.map((source) => source.id)) }));
   errors.push(...validateCanonicalResources(resources, new Set(concepts.map((concept) => concept.id))));
   errors.push(...validateProblemCatalog(problems, new Set(concepts.map((concept) => concept.id))));
+  errors.push(...validateLearnPlatform({
+    subjects: learnSubjects,
+    lessonContent: learnLessonContent,
+    examples: learnExamples,
+    references: learnReferences,
+    quizQuestions: learnQuizQuestions,
+    aliases: learnRouteAliases,
+    conceptIds: new Set(concepts.map((concept) => concept.id)),
+    exerciseIds: new Set(exercises.map((exercise) => exercise.id)),
+    problemIds: new Set(problems.map((problem) => problem.id)),
+  }));
   return errors;
 }

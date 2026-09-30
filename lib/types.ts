@@ -166,7 +166,7 @@ export interface Resource {
   note: string;
 }
 
-export type SearchResultType = "Concept" | "Domain" | "Topic" | "Algorithm" | "Technique" | "Project" | "Exercise" | "Problem" | "Roadmap" | "MindMap" | "Source" | "Library";
+export type SearchResultType = "Subject" | "Section" | "Lesson" | "Reference" | "Concept" | "Domain" | "Topic" | "Algorithm" | "Technique" | "Project" | "Exercise" | "Problem" | "Roadmap" | "MindMap" | "Source" | "Library";
 export interface SearchResult {
   id: string;
   title: string;
@@ -181,7 +181,7 @@ export interface SearchResult {
 
 export interface Bookmark {
   id: string;
-  type: "topic" | "algorithm" | "technique" | "resource" | "library";
+  type: "topic" | "lesson" | "reference" | "algorithm" | "technique" | "resource" | "library";
   title: string;
   href: string;
   context: string;

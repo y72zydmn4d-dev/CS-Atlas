@@ -1,6 +1,7 @@
 import type { ConceptId } from "@/lib/domain/concepts";
 
 export const learningEventTypes = [
+  "lesson-started",
   "lesson-completed",
   "lesson-status-changed",
   "exercise-attempted",
@@ -9,10 +10,11 @@ export const learningEventTypes = [
   "problem-solved",
   "problem-public-completion-imported",
   "study-plan-item-completed",
+  "quiz-completed",
 ] as const;
 
 export type LearningEventType = (typeof learningEventTypes)[number];
-export type LearningEntityType = "concept" | "lesson" | "exercise" | "problem" | "roadmap" | "resource";
+export type LearningEntityType = "concept" | "lesson" | "exercise" | "problem" | "quiz" | "roadmap" | "resource";
 export type LearningEvidenceSource = "browser-local" | "browser-public" | "local-study-plan" | "legacy-local-snapshot";
 
 export interface LearningEventTarget {
@@ -87,7 +89,7 @@ export function isLearningEvent(value: unknown): value is LearningEvent {
   const hasValidTarget = target === undefined || Boolean(
     target && typeof target === "object" && !Array.isArray(target)
     && typeof (target as Record<string, unknown>).id === "string"
-    && ["concept", "lesson", "exercise", "problem", "roadmap", "resource"].includes((target as Record<string, unknown>).type as string),
+    && ["concept", "lesson", "exercise", "problem", "quiz", "roadmap", "resource"].includes((target as Record<string, unknown>).type as string),
   );
   return typeof event.id === "string"
     && event.id.length > 0
@@ -138,7 +140,7 @@ export function isStudyPlan(value: unknown): value is StudyPlan {
       && typeof candidate.href === "string"
       && target && typeof target === "object" && !Array.isArray(target)
       && typeof (target as Record<string, unknown>).id === "string"
-      && ["concept", "lesson", "exercise", "problem", "roadmap", "resource"].includes((target as Record<string, unknown>).type as string)
+      && ["concept", "lesson", "exercise", "problem", "quiz", "roadmap", "resource"].includes((target as Record<string, unknown>).type as string)
       && (candidate.scheduledFor === undefined || (typeof candidate.scheduledFor === "string" && isoDatePattern.test(candidate.scheduledFor)))
       && (candidate.completedAt === undefined || (typeof candidate.completedAt === "string" && !Number.isNaN(Date.parse(candidate.completedAt))));
   });

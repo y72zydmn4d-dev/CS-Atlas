@@ -21,6 +21,7 @@ const KEYS = {
   learningGoals: "cs-atlas.learning-goals.v1",
   studyPlans: "cs-atlas.study-plans.v1",
   learningMigration: "cs-atlas.learning-migration.v1",
+  learnNavigation: "cs-atlas.learn-navigation.v1",
 } as const;
 
 function readJson(key: string): unknown {
@@ -42,6 +43,23 @@ function writeJson(key: string, value: unknown) {
 }
 
 export const storage = {
+  loadLearnNavigation(subjectId: string): { scrollTop: number; collapsedSectionIds: string[]; hasStoredState: boolean } {
+    const value = readJson(KEYS.learnNavigation);
+    if (!value || typeof value !== "object" || Array.isArray(value)) return { scrollTop: 0, collapsedSectionIds: [], hasStoredState: false };
+    const selected = (value as Record<string, unknown>)[subjectId];
+    if (!selected || typeof selected !== "object" || Array.isArray(selected)) return { scrollTop: 0, collapsedSectionIds: [], hasStoredState: false };
+    const record = selected as Record<string, unknown>;
+    return {
+      scrollTop: typeof record.scrollTop === "number" && Number.isFinite(record.scrollTop) && record.scrollTop >= 0 ? record.scrollTop : 0,
+      collapsedSectionIds: Array.isArray(record.collapsedSectionIds) ? record.collapsedSectionIds.filter((id): id is string => typeof id === "string").slice(0, 100) : [],
+      hasStoredState: true,
+    };
+  },
+  saveLearnNavigation(subjectId: string, state: { scrollTop: number; collapsedSectionIds: string[] }) {
+    const current = readJson(KEYS.learnNavigation);
+    const records = current && typeof current === "object" && !Array.isArray(current) ? current as Record<string, unknown> : {};
+    writeJson(KEYS.learnNavigation, { ...records, [subjectId]: { scrollTop: Math.max(0, Math.round(state.scrollTop)), collapsedSectionIds: state.collapsedSectionIds.slice(0, 100) } });
+  },
   loadLibraryView(): "list" | "grid" { return readJson(KEYS.libraryView) === "grid" ? "grid" : "list"; },
   saveLibraryView(value: "list" | "grid") { writeJson(KEYS.libraryView, value); },
   loadSidebarCollapsed(): boolean { return readJson(KEYS.sidebar) === true; },

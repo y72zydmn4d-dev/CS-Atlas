@@ -12,8 +12,8 @@
   --landing-anchor-ring:color-mix(in srgb,var(--accent) 35%,transparent);
   --landing-atmosphere-indigo:color-mix(in srgb,var(--accent) 5%,transparent);
   --landing-atmosphere-cyan:color-mix(in srgb,var(--landing-relationship) 3%,transparent);
-  --landing-contour:color-mix(in srgb,var(--muted) 28%,transparent);
-  --landing-point:color-mix(in srgb,var(--landing-relationship) 45%,transparent);
+  --landing-contour:color-mix(in srgb,var(--muted) 10%,transparent);
+  --landing-point:color-mix(in srgb,var(--landing-relationship) 20%,transparent);
   position:relative;
   isolation:isolate;
   min-height:100svh;
@@ -29,7 +29,7 @@
 .landing-atmosphere-contours { stroke:var(--landing-contour); stroke-width:1; opacity:.55; }
 .landing-atmosphere-contours path { vector-effect:non-scaling-stroke; }
 .landing-contour-secondary { opacity:.55; }
-.landing-atmosphere-points { fill:var(--landing-point); opacity:.4; }
+.landing-atmosphere-points { fill:var(--landing-point); opacity:.25; }
 .landing-point-echo { opacity:.65; }
 /* Motion shares the existing opt-in/pause control; no second state owner or frame loop. */
 @keyframes landing-aurora-indigo { from { transform:translate(0,0); } to { transform:translate(12px,-8px); } }

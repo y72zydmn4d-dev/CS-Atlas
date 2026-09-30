@@ -4,6 +4,8 @@ Last updated: 2026-10-01
 
 ## Implemented
 
+- Public landing scientific atmosphere: two bounded radial-gradient planes, static peripheral contours and four faint markers; slow CSS-only motion shares existing desktop opt-in/pause control. Intentional light/dark recipes, simplified static mobile/reduced-motion modes and hidden non-interactive decoration preserve the frozen composition. Client JS sizes unchanged; required automated/build/route checks pass. Human rendered sign-off remains outstanding in `docs/ui-redesign/12-animated-background-qa.md`.
+
 - Task 5 final human-review-driven landing refinements: larger bounded wide-desktop composition and viewport-responsive map, two existing focal anchors, restrained relationship depth and clearer capability-link affordance. Narrow layouts, Guest-first flow, routes/data/auth boundaries unchanged. Required automated checks pass; landing visual redesign frozen pending human sign-off in `docs/ui-redesign/11-task-5-final-landing-qa.md`.
 
 - Task 4 public landing polish: headline-aligned guest-first entry panel, four-anchor/two-bridge knowledge hierarchy, box-aware curved relationships and direct-neighbor hover/list-focus/selection emphasis. Scoped light/dark depth, quieter header, registry-resolved capability navigation and responsive 12/8/6-node samples retain existing routes, local data and static/reduced-motion behavior. No auth backend or dependency added. Automated/build evidence and outstanding isolated-browser visual/accessibility sign-off are recorded in `docs/ui-redesign/10-task-4-qa.md`.

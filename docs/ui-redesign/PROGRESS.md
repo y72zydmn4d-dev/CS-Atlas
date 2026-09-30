@@ -1,6 +1,8 @@
 # UI redesign — resumable checkpoint
 
-STATUS: ANIMATED LANDING BACKGROUND — IN PROGRESS.
+STATUS: ANIMATED LANDING BACKGROUND — COMPLETE.
+
+LANDING — FROZEN PENDING HUMAN SIGN-OFF.
 
 ## Atmospheric background live checkpoint
 
@@ -10,11 +12,11 @@ COMPLETED:
 - Read engineering rules, TASKS/DECISIONS, Task4/5 contracts and current shell/CSS/theme/entry components. Scope is one decorative layer, not renewed composition or graph work.
 - Browser discovery returned no apps/browsers with native pipe startup failure. No native user-window workaround; rendered sign-off remains manual.
 
-FILES CHANGED: components/landing/landing-atmosphere.tsx; public-landing-shell.tsx; app/landing.css; tests/landing.test.tsx; this checkpoint.
+FILES CHANGED: components/landing/{landing-atmosphere,public-landing-shell}.tsx; app/landing.css; tests/landing.test.tsx; docs/STATUS.md; docs/ui-redesign/{12-animated-background-qa,PROGRESS}.md. next-env.d.ts excluded; original unrelated blob preserved. Exact inventory: `git diff d6218d1..HEAD --name-only` after final local QA commit.
 
 VALIDATION: A typecheck/lint and focused landing9 tests pass. B typecheck/lint/full51 files/286 tests pass (search66.72ms against unchanged100ms budget); diff whitespace check passes. Server-only decorative component has no interactive/focusable children and does not contain main/Guest content. Existing tests cover static default/desktop opt-in/reduced-motion eligibility/hidden-page and offscreen/interaction pause signals; CSS rendering remains manual.
 
-KEY DECISIONS: Small Server Component, two radial aurora planes, static peripheral SVG contours. No graph coupling, traces, video, filter animation or dependency. Root isolation + decorative z0 / content z1; only decorative subtree clips overflow. Preserve canvas and opaque panel. Motion comes later after static composition.
+KEY DECISIONS: Small Server Component, two radial aurora planes, static peripheral SVG contours. No graph interaction echo, traces, video, filter animation or dependency. Root isolation + decorative z0 / content z1; only decorative subtree clips overflow. Preserve canvas and opaque panel. Static baseline established before motion; existing opt-in/pause signals reused only in CSS.
 
 KNOWN ISSUES: Actual visual intensity, contrast, compositor cost and slow motion cannot be certified with current browser tools.
 
@@ -26,7 +28,13 @@ C IMPLEMENTED: B committed737586c. At1440+ six peripheral curves/four markers;12
 
 VALIDATION C: Typecheck/lint pass; focused landing/knowledge-preview16 tests pass; diff whitespace passes. Final texture-bound adjustment is CSS-only; full final commands follow inD.
 
-EXACT NEXT ACTION: Commit C. D runs final full checks/build/audit/local HTTP smoke, documents manual browser limitations and verifies preserved next-env blob.
+D COMPLETE: C committedb415150. Final CSS attenuation: light contour10% muted; points20% relationship × .25 group opacity. Conservative full-layer overlap gives main/secondary light10.78/4.66:1 and dark9.34/5.61:1 (calculation, not rendered certification). Final typecheck/lint and51 files/286 tests pass, search45.48ms. Build736 pages and audit:build pass:99 chunks916,550B gzip, largest148,115B, largest route10,447B. Public-entry16 routes plus/problems return200;9 scripts168,906B/root5,113B. All JS byte counts identical toTask5. Source CSS gzip+694B, not emitted transfer benchmark. Local HTML checks root one atmosphere and/home,/learn zero; task-owned3010 server stopped. Typecheck re-passes after restoring only generated next-env import changes to preserved original hash. No dependency/vendor/route/data/auth changes; no push/merge.
+
+LOCAL MILESTONES: A3095f66 static atmosphere; B737586c restrained ambient motion; Cb415150 themes/responsive. Final D attenuation/evidence checkpoint identifiable by `fix(landing): protect atmospheric contrast and finalize qa` in local history. All local only.
+
+VALIDATION FINAL: All required commands/HTTP checks above pass; diff whitespace passes.12-animated-background-qa.md records layer behavior, bounds and exact manual matrix. Browser discovery unavailable; no fresh rendered/keyboard/console/slow-motion/thermal certification claimed.
+
+EXACT NEXT ACTION: Human isolated-browser sign-off from12-animated-background-qa.md:1600×900 dark first;1440/1920/1280/1024/tablet/430/390,1600 light, opt-in motion observed≥15–30s/pause/hidden-tab, reduced motion, real overflow/contrast/keyboard and/home,/learn. Prefer reducing intensity if necessary. Otherwise keep landing frozen; do not open new redesign/auth/architecture work. Preserve real browser data and unrelated next-env blob.
 
 ## Task 5 retained implementation record
 

@@ -2,6 +2,12 @@
 
 CS-Atlas Learn is a projection over canonical Concepts, shared Exercises and Problems, and local learning evidence. A lesson must reference those records; it must not redefine their authoritative metadata.
 
+## Studio inspection / manual authoring
+
+Milestone A adds a **read-only** local `/studio` for canonical health counts, subject/curriculum filters and selected lesson/block inspection. Run `AUTHORING_STUDIO_ENABLED=true npm run dev -- --hostname 127.0.0.1`; production remains unavailable. See [Studio workflow](authoring-studio/01-author-workflow.md) and [security boundary](authoring-studio/02-security-boundary.md).
+
+Studio cannot edit/save/create/reorder yet. Manual authoring below remains the only write workflow; current TypeScript sources have not migrated or gained a parallel persisted model. COMPLETE counts are manifest declarations and Studio validation is not scanned. Future safe authoring follows the [file contract](authoring-studio/03-content-file-contract.md), not regex rewriting of source.
+
 ## Add a subject
 
 1. Add a `SubjectManifest` in `content/learn/registry.ts` with a stable kebab-case `id`/`slug`, unique positive `navigationOrder`, category, honest content status, localization status, and canonical Concept IDs. The Learn subject bar is derived from these manifests; do not maintain a second subject list in UI code.

@@ -20,4 +20,10 @@ describe("public/workspace boundary", () => {
     render(<RouteShell><p>Feature content</p></RouteShell>);
     expect(screen.getByRole("region", { name: "Workspace shell" })).toHaveTextContent("Feature content");
   });
+  it("keeps Studio outside eager learner/search registry and persistence services", () => {
+    path.current = "/studio";
+    render(<RouteShell><h1>Content Studio</h1></RouteShell>);
+    expect(screen.getByRole("heading", { name: "Content Studio" })).toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Workspace shell" })).not.toBeInTheDocument();
+  });
 });

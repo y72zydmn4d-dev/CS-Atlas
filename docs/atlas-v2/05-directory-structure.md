@@ -85,6 +85,8 @@ docs/
 
 ## Initial implemented ownership
 
+Studio Milestone A adds `app/studio/` (guarded read-only Server Component and scoped CSS), `components/studio/` (inspection shell + filtering/localization islands), `lib/studio/` (server-only guarded readers/loaders and canonical-derived DTOs), paired `i18n/messages/studio.ts`, `tests/studio-*` and GET-only `scripts/audit-studio.mjs`. Root `proxy.ts` matches only `/studio/:path*` to hard404 disabled requests before the shared loading boundary; route/readers enforce the guard independently. RouteShell passes exact /studio through without eager learner/Search services; Studio reuses root theme/locale and existing LanguageSwitcher. Existing learner paths/providers remain unchanged. No Studio capability/nav entry, API, action, content migration, new persistence or writer. See `docs/authoring-studio/02-security-boundary.md`.
+
 The first v2 slice introduces `lib/domain/` for pure canonical contracts, `lib/concepts/` for graph reads, `lib/judge/` for the non-executing Judge adapter, `content/concepts/` plus lesson/exercise/problem adapters, and focused feature components/routes under `components/` and `app/`. Existing root-level feature modules remain in place during compatibility migration. No persistence repository or generated Practice artifact moved.
 
 The Learn v2 slice adds `lib/domain/learn-platform.ts` for manifest/content contracts, `content/learn/` for authored Learn records, `components/learn/` for catalog/subject/workspace renderers, and manifest-derived routes below `app/learn/[subject]/`. These records reference canonical Concepts and shared Exercise/Problem registries; they are not a parallel knowledge graph.

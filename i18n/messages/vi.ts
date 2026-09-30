@@ -2,8 +2,10 @@ import type { en } from "@/i18n/messages/en";
 import { practiceVi } from "@/i18n/messages/practice";
 import { workspaceVi } from "@/i18n/messages/workspace";
 import { landingVi } from "@/i18n/messages/landing";
+import { studioVi } from "@/i18n/messages/studio";
 
 export const vi = {
+  ...studioVi,
   ...landingVi,
   ...workspaceVi,
   ...practiceVi,

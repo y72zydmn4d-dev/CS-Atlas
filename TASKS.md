@@ -159,3 +159,9 @@ Runs continuously; final release gate depends on M1-M13 scope included in the re
 - [ ] Test supported browser/device matrix, keyboard/screen-reader paths, reduced motion, both themes/locales, and mobile layouts.
 - [ ] Rehearse content/data migrations, export/import, backups/restore where applicable, rollback, and incident/kill-switch operation.
 - [ ] Run lint, strict typecheck, unit/integration/e2e suite, and production build; publish a release checklist and residual-risk record.
+
+## Content Authoring Studio — separate scoped checkpoints
+
+- [x] Milestone0: canonical content audit and future file/write contract (`168f760`).
+- [x] MilestoneA: guarded development-only read-only Studio, real health, metadata explorers, selected inspector, guard/loader/UI tests and local production404 smoke. No filesystem mutations. Independent visual QA remains manual; see `docs/authoring-studio/06-qa.md`.
+- [ ] B–K: transient editor, pickers, validation, real-renderer preview, safe canonical persistence, creation/ordering/health workflow and final security QA. Follow `docs/authoring-studio/03-content-file-contract.md`; do not infer these from A completion.

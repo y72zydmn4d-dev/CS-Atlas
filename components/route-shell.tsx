@@ -9,8 +9,8 @@ const WorkspaceProvidersShell = dynamic(() => import("@/components/workspace-pro
   loading: () => <main id="main-content" className="page" aria-busy="true"><p role="status"><Message k="workspace.loading" /></p></main>,
 });
 
-/** Only workspace URLs mount local learning, search and translation services. */
+/** Public entry and internal Studio do not mount learner/Search services. */
 export function RouteShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  return pathname === "/" ? children : <WorkspaceProvidersShell>{children}</WorkspaceProvidersShell>;
+  return pathname === "/" || pathname === "/studio" ? children : <WorkspaceProvidersShell>{children}</WorkspaceProvidersShell>;
 }

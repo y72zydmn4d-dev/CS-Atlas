@@ -1,8 +1,10 @@
 import { practiceEn } from "@/i18n/messages/practice";
 import { workspaceEn } from "@/i18n/messages/workspace";
 import { landingEn } from "@/i18n/messages/landing";
+import { studioEn } from "@/i18n/messages/studio";
 
 export const en = {
+  ...studioEn,
   ...landingEn,
   ...workspaceEn,
   ...practiceEn,

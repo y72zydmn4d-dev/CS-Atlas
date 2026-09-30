@@ -21,11 +21,21 @@ function ScientificContours() {
   </g>;
 }
 
+function SparsePointField() {
+  return <g className="landing-atmosphere-points">
+    <circle cx="160" cy="770" r="1" />
+    <circle className="landing-point-echo" cx="1474" cy="300" r="1.4" />
+    <circle className="landing-point-secondary" cx="1538" cy="696" r="1.1" />
+    <circle className="landing-point-secondary" cx="76" cy="470" r=".8" />
+  </g>;
+}
+
 export function LandingAtmosphere() {
   return <div className="landing-atmosphere" aria-hidden="true">
     <AuroraField />
     <svg className="landing-atmosphere-geometry" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" focusable="false">
       <ScientificContours />
+      <SparsePointField />
     </svg>
   </div>;
 }

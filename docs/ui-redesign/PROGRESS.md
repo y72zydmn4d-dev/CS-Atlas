@@ -12,7 +12,7 @@ COMPLETED:
 
 FILES CHANGED: components/landing/landing-atmosphere.tsx; public-landing-shell.tsx; app/landing.css; tests/landing.test.tsx; this checkpoint.
 
-VALIDATION: A typecheck/lint and focused landing9 tests pass; diff whitespace check passes. Server-only decorative component has no interactive/focusable children and does not contain main/Guest content.
+VALIDATION: A typecheck/lint and focused landing9 tests pass. B typecheck/lint/full51 files/286 tests pass (search66.72ms against unchanged100ms budget); diff whitespace check passes. Server-only decorative component has no interactive/focusable children and does not contain main/Guest content. Existing tests cover static default/desktop opt-in/reduced-motion eligibility/hidden-page and offscreen/interaction pause signals; CSS rendering remains manual.
 
 KEY DECISIONS: Small Server Component, two radial aurora planes, static peripheral SVG contours. No graph coupling, traces, video, filter animation or dependency. Root isolation + decorative z0 / content z1; only decorative subtree clips overflow. Preserve canvas and opaque panel. Motion comes later after static composition.
 
@@ -20,7 +20,9 @@ KNOWN ISSUES: Actual visual intensity, contrast, compositor cost and slow motion
 
 STATIC A COMPLETE: Two gradient planes and six static peripheral curves. Four scoped role recipes use existing accent/relationship/muted tokens with deliberately low opacity and a vertical mask quieting header/lower navigation. Paint bounded to2400×1200 maximum; only atmosphere clips, not content/focus. Layout sizes unchanged. Existing panel and graph-label backings remain opaque.
 
-EXACT NEXT ACTION: Commit staticA locally. B then adds only independent slow transform cycles and four faint1–1.4px SVG markers (one rare opacity variation). Contours static; traces/interaction echo skipped. Explicit reduced-motion/print/forced-colors rules; no JS animation or new client boundary.
+B IMPLEMENTED: Static A committed3095f66. Two independent89s/137s alternate transform cycles (12/-8px and-10/6px); four .8–1.4px peripheral markers, one113s restrained opacity echo. Contours remain static. Motion uses the existing opt-in/pause control through scoped CSS :has only: no graph-state modification, new lifecycle or client code. Initial/non-JS state deliberately static; hidden-document/graph interaction/entry focus pause reuses existing signals. Below1280 static; reduced motion disables animation, print/forced colors omit decoration.
+
+EXACT NEXT ACTION: Commit B locally; C then simplify peripheral geometry on tablet and remove geometry/cyan plane on mobile. No new content/composition/graph behavior.
 
 ## Task 5 retained implementation record
 

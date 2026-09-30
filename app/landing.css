@@ -13,6 +13,7 @@
   --landing-atmosphere-indigo:color-mix(in srgb,var(--accent) 5%,transparent);
   --landing-atmosphere-cyan:color-mix(in srgb,var(--landing-relationship) 3%,transparent);
   --landing-contour:color-mix(in srgb,var(--muted) 28%,transparent);
+  --landing-point:color-mix(in srgb,var(--landing-relationship) 45%,transparent);
   position:relative;
   isolation:isolate;
   min-height:100svh;
@@ -28,6 +29,20 @@
 .landing-atmosphere-contours { stroke:var(--landing-contour); stroke-width:1; opacity:.55; }
 .landing-atmosphere-contours path { vector-effect:non-scaling-stroke; }
 .landing-contour-secondary { opacity:.55; }
+.landing-atmosphere-points { fill:var(--landing-point); opacity:.4; }
+.landing-point-echo { opacity:.65; }
+/* Motion shares the existing opt-in/pause control; no second state owner or frame loop. */
+@keyframes landing-aurora-indigo { from { transform:translate(0,0); } to { transform:translate(12px,-8px); } }
+@keyframes landing-aurora-cyan { from { transform:translate(0,0); } to { transform:translate(-10px,6px); } }
+@keyframes landing-point-echo { 0%,88%,100% { opacity:.65; } 94% { opacity:1; } }
+@media (min-width:1280px) and (prefers-reduced-motion:no-preference) {
+  .landing-aurora-indigo { animation:landing-aurora-indigo 89s ease-in-out infinite alternate paused; }
+  .landing-aurora-cyan { animation:landing-aurora-cyan 137s ease-in-out infinite alternate paused; }
+  .landing-point-echo { animation:landing-point-echo 113s ease-in-out infinite paused; }
+  .public-landing:has(.knowledge-graphic[data-motion="enabled"][data-paused="false"]):not(:has(.landing-auth:focus-within)) .landing-aurora,
+  .public-landing:has(.knowledge-graphic[data-motion="enabled"][data-paused="false"]):not(:has(.landing-auth:focus-within)) .landing-point-echo { animation-play-state:running; }
+}
+@media print, (forced-colors:active) { .landing-atmosphere { display:none; } }
 :root[data-theme="dark"] .public-landing { --landing-atmosphere-indigo:color-mix(in srgb,var(--accent) 10%,transparent); --landing-atmosphere-cyan:color-mix(in srgb,var(--landing-relationship) 5%,transparent); --landing-contour:color-mix(in srgb,var(--landing-relationship) 20%,transparent); }
 .landing-header { display:flex; align-items:center; min-height:72px; gap:24px; border-bottom:1px solid var(--landing-rule); }
 .landing-brand { display:flex; align-items:center; gap:10px; min-height:44px; white-space:nowrap; }

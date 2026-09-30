@@ -1,5 +1,27 @@
 # UI redesign — resumable checkpoint
 
+STATUS: TASK 5 — FINAL LANDING POLISH IN PROGRESS.
+
+## Task 5 live checkpoint
+
+COMPLETED:
+
+- Verified CS-Atlas / atlas-v2, baseline009875f and unchanged pre-existing next-env.d.ts blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6. No branch or remote operation.
+- Read Task3/4 contract and current CSS, graph projection/geometry, shell and QA. Human review authorizes only seven targeted composition refinements; historical documents remain unchanged.
+- Safe browser discovery returned no apps/browsers (native pipe startup failed). No rendered verification claimed; use source/automated geometry checks and record exact manual sign-off matrix.
+
+FILES CHANGED: app/landing.css; this checkpoint.
+
+VALIDATION: MilestoneA typecheck/lint pass; diff reviewed. Changes limited to≥1440px; existing1280/1024/tablet/mobile overrides retain their geometry.
+
+KNOWN ISSUES: Rendered wide-desktop balance, label/path bounds and responsive/theme/accessibility sign-off cannot be verified with current browser tools. Preserve no-auth/local-first behavior and existing graph interactions.
+
+COMPOSITION DECISIONS: ≥1440 frame cap1600 instead1440, panel416 instead400, gap48 instead64, shared headline baseline retained. Headlines64px/68px at1440/1600 versus56/60 (+13–14%). Graph clamp400px/46svh/450px:414 at900h (+15%),450 at1080h (+25%); short desktop≤719h retains360. At1600 graph column1008 versus848 (+19%);1440 remains880. No transform scaling, new content, stretched panel or additional glow. Main top40px instead32; graph itself uses extra height rather than an empty min-height spacer.
+
+EXACT NEXT ACTION: Commit coherentA locally, thenB: strengthen only Programming Fundamentals and Machine Learning Fundamentals on wide desktop; preserve12 concepts/13 relations and coordinates/state. Add measured-size geometry regression fixtures for new stage sizes, refine existing edge depth classes, validate typecheck/lint/tests.
+
+## Task 4 retained implementation record
+
 STATUS: TASK 4 — COMPLETE. Production implementation and required automated validation complete; isolated-browser visual/accessibility sign-off remains outstanding, not claimed passed.
 
 ## Task 4 live checkpoint

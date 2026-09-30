@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { Locale } from "@/lib/types";
-import { storage } from "@/lib/storage";
+import { browserPreferences } from "@/lib/storage/preferences";
 import { getMessage, type MessageKey, type MessageValues } from "@/i18n/get-message";
 
 interface LocaleContextValue {
@@ -17,7 +17,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
-    const stored = storage.loadLocale();
+    const stored = browserPreferences.loadLocale();
     // Browser persistence becomes available only after hydration.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setLocaleState(stored);
@@ -27,7 +27,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
-    storage.saveLocale(next);
+    browserPreferences.saveLocale(next);
     document.documentElement.lang = next;
     document.documentElement.dataset.locale = next;
   }, []);

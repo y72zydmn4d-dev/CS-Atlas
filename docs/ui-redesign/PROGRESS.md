@@ -1,6 +1,6 @@
-# UI redesign — Task 1 checkpoint
+# UI redesign — resumable checkpoint
 
-STATUS: TASK 2 — IN PROGRESS. A/B/C/D implementation complete; E performance/regression handoff in progress (2026-09-30).
+STATUS: TASK 2 — IMPLEMENTATION COMPLETE; AUTOMATED VALIDATION PASSED. Manual browser sign-off remains explicitly outstanding (2026-09-30).
 
 ## Task 2 live checkpoint
 
@@ -14,6 +14,8 @@ COMPLETED:
 - C committed as b726ac8. D: compacted mobile entry spacing, kept44px language targets at320px, clarified graph subset semantics, separated short curved edges from shared long corridors, restored selected-tab entry focus after leaving unactivated tabs, tested document-hidden/offscreen motion pauses.
 - Native Chrome QA: inspected dark English1440×900 and light Vietnamese1600×900 (plus initial ~1154px compact layout), no obvious overlap;1440 DOM measured scrollWidth1440 and guest top413px. Console had no application errors. Tab browser APIs unavailable; native focus subsequently switched to unrelated user window. Stopped native interaction to avoid interfering. Remaining matrix must be manually reviewed; not claimed passed.
 - E discovery: initial public requests included a83,953-byte gzip learning-record chunk through shared providers importing the full storage facade. Extracted preference-only storage leaf preserving exact legacy keys/encoding, updated providers and added compatibility/restricted-storage tests; these E files are uncommitted until final audit.
+- D committed as48f42b1. E complete: lightweight preference leaf removes canonical learning records from initial public scripts; metadata and a real workspace-chunk loading fallback added; graph observes its actual graphic for offscreen pause;44px brand target and bounded graph label blocks. Ownership/status/discovery docs updated; reproducible local-only route/asset audit added.
+- Final checks and self-review complete. No real auth, data migration, dependency addition, full app redesign, push, merge or branch switch. Only this task's QA server was stopped; dedicated native QA window may remain open.
 
 FILES CHANGED:
 - A: app/layout.tsx, app/page.tsx, app/home/page.tsx; components/route-shell.tsx, workspace-providers-shell.tsx, app-shell.tsx, breadcrumbs.tsx, home/workspace-home-page.tsx, home/author-footer.tsx; lib/capabilities.ts, lib/routes.ts; tests/route-shell.test.tsx, routes.test.ts, workspace-ui.test.tsx, author-footer.test.tsx; this checkpoint.
@@ -21,23 +23,31 @@ FILES CHANGED:
 - C: content/landing/knowledge-preview.ts, lib/concepts/landing-projection.ts, components/landing/{knowledge-atlas-visual,use-landing-motion}.tsx/.ts, app/page.tsx, app/landing.css, tests/{landing-projection,knowledge-preview}.test.*; this checkpoint.
 - D: app/landing.css, components/landing/{auth-panel,knowledge-atlas-visual}.tsx, i18n/messages/landing.ts, lib/concepts/landing-projection.ts, tests/knowledge-preview.test.tsx, this checkpoint.
 - E currently modified: app/page.tsx (landing metadata), components/{locale-provider,theme-provider}.tsx, lib/storage.ts, lib/storage/preferences.ts, tests/browser-preferences.test.ts. next-env.d.ts baseline restored after Next build regeneration; do not stage.
+- E commit files also include app/landing.css, components/{route-shell,landing/knowledge-atlas-visual}.tsx, tests/landing.test.tsx, scripts/audit-public-entry.mjs, docs/{ARCHITECTURE,STATUS}.md, docs/atlas-v2/05-directory-structure.md, docs/ui-redesign/{05-implementation-plan,06-task-2-qa,PROGRESS}.md. Full A–E changed-file inventory is available from git diff95ffbc4..HEAD; exclude next-env.d.ts.
 
 VALIDATION PASSED:
 - A: npm run typecheck, npm run lint, npm test (46 files /238 tests) passed. Task 1 commit confirmed.
 - B: typecheck, lint, tests passed (47 files /242 tests), including unavailable mode switching, keyboard focus, locale, guest href, credential absence and preserved progress.
 - C: typecheck/lint passed; tests passed (49 files /248 tests). Initial lint ref-object taint fixed by destructuring callback/state; canonical Python slug test corrected to topic-python. One existing search timing-budget test transiently exceeded100ms while commands overlapped; isolated full rerun passed. No budget relaxed.
 - D/E worktree: typecheck, lint, tests (50 files /251 tests), production build (736 generated pages) and audit:build passed. Build total915,766B gzip; largest148,115B; largest route10,447B. Recheck after final QA fixes.
+- FINAL: typecheck, lint, tests50 files /253 tests, production build736 pages, audit:build all passed. Final build total915,862B gzip, largest148,115B, largest route10,447B. No failed command hidden; earlier transient search timing test passed on isolated rerun without threshold change.
+- FINAL HTTP/asset audit:16 routes200; / public without workspace shell/credentials; /home and deep routes retain SSR workspace. Modern initial JS10 files /168,400B gzip including shared framework/providers; root route4,386B. Initial asset marker checks exclude full canonical content and React Flow/QuickJS/PDF.js/Mammoth.
+- Final typecheck re-passed after restoring original unrelated next-env.d.ts blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6. Generated Practice vendor/package manifests unchanged. git diff --check passed. Token contrast arithmetic recorded in06; not a browser contrast certification.
 
 KNOWN ISSUES:
 - No production auth. Per02/05, unavailable modes collect no credentials; password visibility/validation tests are not applicable until a real auth milestone. Test absence of credential collection instead.
 - Manual viewport/keyboard/reduced-motion/zoom/screen-reader matrix partially unverified because browser automation has no isolated tab control. Only the observed desktop checks above are passed.
-- Fresh public asset/route audit still required after preference split. Dedicated production QA server currently port3010, exec session24615 (stop only this task server after checks). No dependencies added.
+- Final public asset/route audit passed; task-owned server stopped. No dependencies added. Real auth/sync intentionally absent, not a fake success flow.
 
 UNRESOLVED:
 - Real auth/password/provider/sync policy remains outside Task 2.
 
+REMAINING:
+- No implementation or automated validation remains for A–E. Manual browser/assistive-technology sign-off remains: final1280/1024/tablet430/390/320/landscape/zoom, both themes/locales, keyboard, reduced motion, guest client navigation and fresh network/console review. See06 for exact matrix. Earlier desktop observations do not certify final mobile code.
+- Real credentials/providers/recovery/sync/account ownership remain a separately approved milestone. Do not begin them from this checkpoint.
+
 EXACT NEXT ACTION:
-- Commit only D files. E: add reproducible local-only public entry/asset smoke audit, run against port3010; verify excluded heavy assets and direct routes. Update ownership/status/implementation-discovery docs and exact QA gaps, rerun all final checks, restore next-env baseline, commit E locally. No push/merge.
+- Create the local E commit perf(landing): isolate preferences and verify public entry; verify HEAD/status and exclude next-env.d.ts. If resuming, inspect git log first: if that subject is already committed, do not repeat it. Then begin06's manual sign-off in an isolated controllable browser context (no user-window interference), starting390×844 Vietnamese/light guest reachability. Run npm run start -- --port3010 after a build and node scripts/audit-public-entry.mjs http://localhost:3010. Record verified results/fix only landing regressions before broader UI work.
 
 ## Task 1 retained design record
 

@@ -1,4 +1,5 @@
-import type { Bookmark, ExerciseStatus, Locale, ProgressStatus } from "@/lib/types";
+import type { Bookmark, ExerciseStatus, ProgressStatus } from "@/lib/types";
+import { browserPreferences } from "@/lib/storage/preferences";
 import { isLearningEvent, isLearningGoal, isStudyPlan, type LearningEvent, type LearningGoal, type StudyPlan } from "@/lib/domain/learning";
 import { sanitizeProgress } from "@/lib/progress";
 import { sanitizePracticeState } from "@/lib/practice/validation";
@@ -13,8 +14,6 @@ const KEYS = {
   bookmarks: "cs-atlas.bookmarks.v1",
   exercises: "cs-atlas.exercises.v1",
   exerciseAttempts: "cs-atlas.exercise-attempts.v1",
-  theme: "cs-atlas.theme.v1",
-  locale: "cs-atlas.locale.v1",
   translationPopover: "cs-atlas.translation-popover.v1",
   practice: "cs-atlas.practice.v1",
   learningEvents: "cs-atlas.learning-events.v1",
@@ -43,6 +42,7 @@ function writeJson(key: string, value: unknown) {
 }
 
 export const storage = {
+  ...browserPreferences,
   loadLearnNavigation(subjectId: string): { scrollTop: number; collapsedSectionIds: string[]; hasStoredState: boolean } {
     const value = readJson(KEYS.learnNavigation);
     if (!value || typeof value !== "object" || Array.isArray(value)) return { scrollTop: 0, collapsedSectionIds: [], hasStoredState: false };
@@ -184,29 +184,6 @@ export const storage = {
     } catch {
       return false;
     }
-  },
-  loadTheme(): "light" | "dark" | null {
-    if (typeof window === "undefined") return null;
-    try {
-      const value = window.localStorage.getItem(KEYS.theme);
-      return value === "light" || value === "dark" ? value : null;
-    } catch { return null; }
-  },
-  saveTheme(value: "light" | "dark") {
-    try { if (typeof window !== "undefined") window.localStorage.setItem(KEYS.theme, value); } catch { /* Keep the current in-memory theme when persistence is unavailable. */ }
-  },
-  loadLocale(): Locale {
-    if (typeof window === "undefined") return "en";
-    try {
-      const value = window.localStorage.getItem(KEYS.locale);
-      return value === "vi" || value === "en" ? value : "en";
-    } catch {
-      return "en";
-    }
-  },
-  saveLocale(value: Locale) {
-    if (typeof window === "undefined") return;
-    try { window.localStorage.setItem(KEYS.locale, value); } catch { /* Storage may be restricted. */ }
   },
   loadTranslationPopoverPreference(): boolean {
     return readJson(KEYS.translationPopover) !== false;

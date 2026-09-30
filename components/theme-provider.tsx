@@ -1,14 +1,14 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { storage } from "@/lib/storage";
+import { browserPreferences } from "@/lib/storage/preferences";
 
 const ThemeContext = createContext({ theme: "dark" as "light" | "dark", toggle: () => {} });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   useEffect(() => {
-    const saved = storage.loadTheme();
+    const saved = browserPreferences.loadTheme();
     const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     const initial = saved ?? preferred;
     // Theme preference is browser-only and can only be reconciled after hydration.
@@ -19,7 +19,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const toggle = () => setTheme((current) => {
     const next = current === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
-    storage.saveTheme(next);
+    browserPreferences.saveTheme(next);
     return next;
   });
   return <ThemeContext.Provider value={useMemo(() => ({ theme, toggle }), [theme])}>{children}</ThemeContext.Provider>;

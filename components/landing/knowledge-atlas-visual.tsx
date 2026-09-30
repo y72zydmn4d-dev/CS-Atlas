@@ -25,8 +25,8 @@ export function KnowledgeAtlasVisual({ projection }: { projection: LandingProjec
       setAnnouncement(concept ? `${concept.name[locale]}. ${concept.summary[locale]}` : t("landing.graphHint"));
     }
   }
-  return <section ref={setElement} className="knowledge-preview" aria-label={t("landing.graphTitle")} onKeyDown={(event) => { if (event.key === "Escape") { setSelected(null); setHovered(null); setAnnouncement(t("landing.graphHint")); } }}>
-    <div className="knowledge-graphic" aria-hidden="true" onPointerLeave={() => setHovered(null)} data-motion={enabled ? "enabled" : "disabled"} data-paused={paused}>
+  return <section className="knowledge-preview" aria-label={t("landing.graphTitle")} onKeyDown={(event) => { if (event.key === "Escape") { setSelected(null); setHovered(null); setAnnouncement(t("landing.graphHint")); } }}>
+    <div ref={setElement} className="knowledge-graphic" aria-hidden="true" onPointerLeave={() => setHovered(null)} data-motion={enabled ? "enabled" : "disabled"} data-paused={paused}>
       <div className="knowledge-drift-layer">
         {(["wide", "compact", "tablet"] as const).map((layout: LandingLayout) => {
           const [width,height] = landingDimensions[layout];

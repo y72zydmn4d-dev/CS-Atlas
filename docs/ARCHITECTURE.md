@@ -1,5 +1,11 @@
 # Architecture
 
+## Public entry boundary (2026-09-30)
+
+`/` is the server-composed public landing; `/home` mounts the single extracted workspace Home composition. Other feature, canonical and legacy URLs remain ungated. Root ThemeProvider/LocaleProvider are shared; RouteShell dynamically mounts WorkspaceProvidersShell (preferences → Atlas → AppShell + translator) only on non-root URLs, retaining SSR. Public links into the workspace disable automatic prefetch. Accounts are unavailable: explanatory tabs collect no credentials, and the guest link is ordinary navigation, not a session.
+
+`app/landing.css` scopes public presentation over existing workspace tokens. The bounded landing projection resolves public canonical Concepts/relations on the server; SVG/HTML interaction never imports the full content registry or learning state. The preference-only adapter `lib/storage/preferences.ts` shares legacy theme/locale keys and is composed into the existing `storage` facade. This keeps global theme/locale consumers from importing learning migrations on the public page; no stored data/schema changes.
+
 ## Technical Atlas Workspace (2026-09-29)
 
 `app/workspace.css` is the shared product-surface layer, imported after foundational and Practice styles in the root layout. Semantic light/dark tokens cover text, muted text, surfaces, borders, accent, spacing, radii, shadow, motion and stacking. Existing feature styles remain available; the home hero was replaced rather than layered underneath a second hero. The ambient component now renders only a decorative edge-weighted grid and restrained radial color. No background images or continuous canvas loop are loaded.
@@ -74,7 +80,7 @@ The assistant route has no dependency on `lib/library/repository.ts` or IndexedD
 
 ## State and storage
 
-`AtlasProvider` exposes topic progress, bookmarks, and exercise status operations. `LocaleProvider` exposes the current locale and typed message lookup. `lib/storage.ts` is the only layer that touches `localStorage`; progress, bookmarks, exercise state, language choice, and translation preferences use validated keys with safe fallbacks when storage is unavailable or corrupt. A future database adapter can implement the same operations without changing feature components.
+`AtlasProvider` exposes topic progress, bookmarks, and exercise status operations. `LocaleProvider` exposes the current locale and typed message lookup. The `lib/storage.ts` adapter and its preference-only leaf `lib/storage/preferences.ts` own `localStorage`; progress, bookmarks, exercise state, language choice, and translation preferences use validated keys with safe fallbacks when storage is unavailable or corrupt. A future database adapter can implement the same operations without changing feature components.
 
 ### Document Library
 

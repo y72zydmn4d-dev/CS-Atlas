@@ -110,6 +110,14 @@ Keep phase checkpoints as work progresses so an interruption can resume from the
 
 ## Deferred decisions and safe defaults
 
+### Task 2 implementation discoveries (2026-09-30)
+
+- Implemented the route-gate approach above; no route groups/prefix migration needed. Home is composed once under components/home and exposed at /home. Legacy Home breadcrumb literals normalize centrally; stored bookmark hrefs are untouched.
+- Shared providers initially pulled learning records through the full storage facade (public initial JS225,583B gzip in native Chrome). Extracted `lib/storage/preferences.ts` as the same adapter's lightweight leaf and composed its methods into `storage`; exact keys/encoding and public API retained. Final post-split modern HTML script census168,400B gzip, root page chunk4,386B. No full canonical records, React Flow, QuickJS, PDF.js or Mammoth markers in public initial scripts. See06 for measurement limits; this is not a field CWV claim.
+- Unavailable auth modes are implemented as explanatory manual-activation tabs, not future credential forms. Password visibility/loading/validation/provider/backend tests are intentionally inapplicable to this release.
+- Browser-tab APIs unavailable; native Chrome desktop checks were stopped when focus returned to a user window. Full remaining QA matrix is tracked in06. Never infer browser sign-off from build/tests.
+
+
 | Decision | Owner / default until resolved |
 |---|---|
 | Auth provider, session, password policy, verification/recovery, MFA, account privacy/legal, abuse controls | Separate auth ADR/milestone; capability unavailable, no credential collection |

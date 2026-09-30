@@ -5,7 +5,7 @@ import { LocaleProvider } from "@/components/locale-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { storage } from "@/lib/storage";
 
-afterEach(cleanup);
+afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 beforeEach(() => {
   localStorage.clear();
   vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() })));
@@ -47,5 +47,25 @@ describe("public entry", () => {
     await waitFor(() => expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Hiểu những mối liên hệ."));
     expect(screen.getByRole("link", { name: /Tiếp tục với tư cách khách/ })).toHaveAttribute("href", "/home");
     expect(storage.loadProgress()).toEqual({ python: "in-progress" });
+  });
+  it("keeps the selected account tab as the entry tab stop when unactivated focus leaves", () => {
+    landing();
+    const signIn = screen.getByRole("tab", { name: "Sign in" });
+    const create = screen.getByRole("tab", { name: "Create account" });
+    signIn.focus();
+    fireEvent.keyDown(signIn,{ key:"End" });
+    expect(create).toHaveFocus();
+    fireEvent.blur(create,{ relatedTarget:screen.getByRole("link", { name:/Continue as guest/ }) });
+    expect(signIn).toHaveAttribute("tabindex","0");
+    expect(create).toHaveAttribute("tabindex","-1");
+  });
+  it("reuses working locale/theme preferences without changing learning data", () => {
+    landing();
+    fireEvent.click(screen.getByRole("button", { name: "VI" }));
+    expect(screen.getByRole("heading", { level:1 })).toHaveTextContent("Hiểu những mối liên hệ.");
+    expect(storage.loadLocale()).toBe("vi");
+    fireEvent.click(screen.getByRole("button", { name: "Giao diện tối" }));
+    expect(document.documentElement.dataset.theme).toBe("dark");
+    expect(storage.loadTheme()).toBe("dark");
   });
 });

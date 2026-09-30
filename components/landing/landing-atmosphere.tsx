@@ -10,8 +10,8 @@ function ScientificContours() {
   return <g className="landing-atmosphere-contours" fill="none">
     <g className="landing-contour-primary">
       <path d="M-240 280 C220 220 330 390 140 550 S-180 690 240 860" />
-      <path d="M-270 324 C172 266 272 410 104 554 S-198 712 196 890" />
-      <path d="M-296 370 C124 312 214 432 68 560 S-220 734 152 920" />
+      <path className="landing-contour-detail" d="M-270 324 C172 266 272 410 104 554 S-198 712 196 890" />
+      <path className="landing-contour-detail" d="M-296 370 C124 312 214 432 68 560 S-220 734 152 920" />
       <path d="M1780 116 C1400 120 1204 280 1410 424 S1800 532 1560 782" />
     </g>
     <g className="landing-contour-secondary">

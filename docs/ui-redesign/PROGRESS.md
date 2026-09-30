@@ -22,7 +22,11 @@ STATIC A COMPLETE: Two gradient planes and six static peripheral curves. Four sc
 
 B IMPLEMENTED: Static A committed3095f66. Two independent89s/137s alternate transform cycles (12/-8px and-10/6px); four .8–1.4px peripheral markers, one113s restrained opacity echo. Contours remain static. Motion uses the existing opt-in/pause control through scoped CSS :has only: no graph-state modification, new lifecycle or client code. Initial/non-JS state deliberately static; hidden-document/graph interaction/entry focus pause reuses existing signals. Below1280 static; reduced motion disables animation, print/forced colors omit decoration.
 
-EXACT NEXT ACTION: Commit B locally; C then simplify peripheral geometry on tablet and remove geometry/cyan plane on mobile. No new content/composition/graph behavior.
+C IMPLEMENTED: B committed737586c. At1440+ six peripheral curves/four markers;1280–1439 four curves/four markers;768–1279 two curves/two markers and quieter washes. Below768 (also short tablet≤1023×700) only one static low-contrast indigo wash, no cyan/geometry/points. Light uses paper/ink-derived contour and5%/3% accent recipes; dark uses navy/cyan-derived contour and10%/5% accent recipes. Washes narrowed to62% width/max1400px on opposite edges instead of two full-width animated textures; outer container bounded2400×1200. Existing text/graph/panel tokens and layout remain unchanged.
+
+VALIDATION C: Typecheck/lint pass; focused landing/knowledge-preview16 tests pass; diff whitespace passes. Final texture-bound adjustment is CSS-only; full final commands follow inD.
+
+EXACT NEXT ACTION: Commit C. D runs final full checks/build/audit/local HTTP smoke, documents manual browser limitations and verifies preserved next-env blob.
 
 ## Task 5 retained implementation record
 

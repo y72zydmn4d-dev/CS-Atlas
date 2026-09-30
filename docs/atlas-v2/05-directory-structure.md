@@ -19,6 +19,7 @@ components/
   shared/                       truly cross-feature presentation primitives
 content/
   concepts/                     authored canonical concept registry or generated data
+  learn/                        subject manifests, structured lessons, examples, references and quizzes
   lessons/                      structured lesson/course payloads
   problems/                     authored public problem metadata and server-only references
   resources/                    public resource registry/provenance
@@ -85,3 +86,5 @@ docs/
 ## Initial implemented ownership
 
 The first v2 slice introduces `lib/domain/` for pure canonical contracts, `lib/concepts/` for graph reads, `lib/judge/` for the non-executing Judge adapter, `content/concepts/` plus lesson/exercise/problem adapters, and focused feature components/routes under `components/` and `app/`. Existing root-level feature modules remain in place during compatibility migration. No persistence repository or generated Practice artifact moved.
+
+The Learn v2 slice adds `lib/domain/learn-platform.ts` for manifest/content contracts, `content/learn/` for authored Learn records, `components/learn/` for catalog/subject/workspace renderers, and manifest-derived routes below `app/learn/[subject]/`. These records reference canonical Concepts and shared Exercise/Problem registries; they are not a parallel knowledge graph.

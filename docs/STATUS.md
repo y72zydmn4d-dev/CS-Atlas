@@ -4,6 +4,8 @@ Last updated: 2026-09-30
 
 ## Implemented
 
+- Learn v2 knowledge and tutorial architecture: a compact grouped catalog, 13 validated subject manifests with 428 ordered curriculum entries, subject homes, a responsive three-column tutorial workspace, typed lesson blocks, reusable examples, shared Exercises/Problems, quizzes, dense References, unified Search, existing local evidence/bookmarks, bounded Atlas AI links, and deterministic legacy route handling. Python and DSA are honestly PARTIAL with 9 reviewed full lessons total; all other lesson entries remain visibly SKELETON. Research and implementation boundaries are documented under `docs/research/w3schools-learn-audit/`, `docs/learn-authoring.md`, and `docs/atlas-v2/learn-overhaul-report.md`.
+
 - Initial CS-Atlas 2.0 migration slice: capability-level shell navigation; additive Learn, Concept, Exercise, Problem, Explore, and local Profile routes; existing URLs and browser data preserved.
 - Canonical type-qualified Concept registry and validated typed relation graph over Topics, Algorithms, and Techniques. `/atlas` now projects canonical topic relations while Roadmap and Mind Map retain separate authored layouts.
 - Lesson, Exercise, and public-only Problem adapters connect current content to Concepts. Public browser exercise/problem activity contributes local evidence only; it is not a remote Judge result or public profile.

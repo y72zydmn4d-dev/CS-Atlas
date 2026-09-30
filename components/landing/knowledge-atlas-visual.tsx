@@ -57,7 +57,7 @@ export function KnowledgeAtlasVisual({ projection }: { projection: LandingProjec
             {nodes.map((item) => {
               const point = item[layout];
               if (!point) return null;
-              return <span key={item.id} data-concept={item.id} className={`knowledge-node rank-${item.rank} ${active === item.id ? "active" : active && neighbors.has(item.id) ? "neighbor" : active ? "unrelated" : ""}`} style={{ left:`${point[0]/width*100}%`, top:`${point[1]/height*100}%` }} onPointerEnter={() => setHovered(item.id)} onClick={() => select(item.id,false)}><i /><span>{item.name[locale]}</span></span>;
+              return <span key={item.id} data-concept={item.id} className={`knowledge-node rank-${item.rank} ${active === item.id ? "active" : active && neighbors.has(item.id) ? "neighbor" : active ? "unrelated" : ""}`} style={{ left:`${point[0]/width*100}%`, top:`${point[1]/height*100}%` }} onPointerEnter={() => setHovered(item.id)} onPointerLeave={() => setHovered(null)} onClick={() => select(item.id,false)}><i /><span>{item.name[locale]}</span></span>;
             })}
           </div>;
         })}

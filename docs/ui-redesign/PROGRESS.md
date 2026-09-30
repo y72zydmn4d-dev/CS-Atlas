@@ -1,12 +1,13 @@
 # UI redesign — resumable checkpoint
 
-STATUS: TASK 4 — VISUAL POLISH IMPLEMENTATION IN PROGRESS.
+STATUS: TASK 4 — COMPLETE. Production implementation and required automated validation complete; isolated-browser visual/accessibility sign-off remains outstanding, not claimed passed.
 
 ## Task 4 live checkpoint
 
-CURRENT MILESTONE: E complete; F next — production build, performance/route audit and QA handoff.
+CURRENT MILESTONE: A–F complete; final F checkpoint/hover fix committed under `fix(landing): restore hover exit and finalize polish qa` (resolve hash from local history).
 
 COMPLETED:
+
 - Verified CS-Atlas, atlas-v2 and Task3 commit18ac2b9 at HEAD. Only unrelated next-env.d.ts differs; preserve its baseline blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6.
 - Reviewed Task3 polish contract and current landing composition. Earlier design/security/QA constraints remain in force.
 - A implemented: shared CSS subgrid eyebrow/headline tracks align entry with headline without JS/position transforms; tighter hero rhythm, restrained tracking, aligned440px tablet column and scoped surface/field roles. Existing graph data/entry order unchanged inA.
@@ -15,18 +16,19 @@ COMPLETED:
 - B committedec961a1. C implemented: Guest immediately follows introduction, complete local-scope/disclosure precede subordinate account group, one mode-specific unavailable message with paired EN/VI; manual tabs retain focus/activation behavior. No credential/backend behavior introduced.
 - C committed5176e3a. D: quieter theme control and selected-locale underline with44px targets, compact mobile brand,64px tablet header; registry-resolved four-link capability band, four columns at1280+, copyright-only footer and one complete panel disclosure.
 - D committedbf13db9. E: corrected compact anchor-ring state cascade, intentional light/dark resting ring roles, label reflow protection and scoped forced-colors semantics; breakpoint rules keep12/8/6 desktop/tablet slices and omit graphic on phones. Added mixed-size geometry fixtures.
+- E committed167dcc4. F source critique corrected node hover exit into graph whitespace, with regression assertion; reran all final checks/build/audits after that fix. Wrote10-task-4-qa and updateddocs/STATUS. Stopped only both task-owned port3010 QA server sessions. No push, merge, rebase, branch switch, dependency, storage migration or real auth.
 
-FILES CHANGED: A–D as above. E: app/landing.css, tests/landing-geometry.test.ts, docs/ui-redesign/10-task-4-qa.md, this checkpoint.
+FILES CHANGED: app/landing.css; components/landing/{landing-hero,auth-panel,knowledge-atlas-visual,use-knowledge-geometry,capability-strip,public-landing-shell}.tsx/.ts; content/landing/knowledge-preview.ts; lib/concepts/{landing-projection,landing-geometry}.ts; i18n/messages/landing.ts; tests/{landing,knowledge-preview,landing-projection,landing-geometry}.test.*; docs/STATUS.md; docs/ui-redesign/{10-task-4-qa,PROGRESS}.md. Exact inventory: `git diff 18ac2b9..HEAD --name-only`. next-env.d.ts excluded, original blob verified unchanged.
 
-VALIDATION PASSED: A typecheck/lint;50 files/253 tests. B typecheck/lint;51 files/266 tests. C typecheck/lint;51 files/267 tests. D typecheck/lint;51 files/268 tests. E typecheck/lint;51 files/273 tests. Geometry samples verify five desktop/tablet width fixtures with reserved/short/mixed envelopes. Guest text calculated normal/hover/pressed contrast≥4.94:1 both themes; panel secondary≥6.36:1. Actual font/rendered contrast remain browser checks. No known failing tests.
+VALIDATION PASSED: Final npm run typecheck, npm run lint, npm test (51 files/273 tests), npm run build (736 pages), npm run audit:build and local audit-public-entry all pass. Build916,521B gzip, largest148,115B, largest route10,447B; all unchanged budgets pass. Public modern JS9 files/168,877B, +477B versusTask2, within≤5KiB polish target; root5,084B. Sixteen audited routes plus `/problems` return200. Final typecheck after original next-env restoration and git diff --check pass. Geometry samples verify five desktop/tablet widths with reserved/short/mixed envelopes; calculated Guest contrast≥4.94:1 and secondary≥6.36:1. These are not rendered contrast/overflow certifications.
 
-VISUAL CHANGES: A–D as above; E preserves cyan neighbor/active state in compact maps, stronger light-theme ink/ring relationships, forced-colors outlines/surfaces and readable long labels.
+VISUAL CHANGES: All five mandatory P0s plus scoped depth implemented: connected headline/map/panel composition; obvious4/2/6 visual ranks; authored cubic relationships; clear one-hop neighborhood; Guest-led primary action. Header/capability band/opaque entry surface refined without route or auth changes. Both themes, reduced motion,44px targets/native relationship alternative retained; mobile omits graphic and prioritizes Guest.
 
-KNOWN ISSUES: Browser discovery returned no controllable browsers; no native user-window control or rendered screenshots claimed. Manual screenshot/font-wrap/keyboard/screen-reader/forced-colors sign-off remains. Build and initial public JS delta pendingF.
+KNOWN ISSUES: Browser discovery returned no controllable browsers; no native user-window control or fresh rendered screenshots claimed. Manual screenshot/font-wrap/keyboard/screen-reader/forced-colors sign-off remains. One concurrent test run measured search100.163ms against unchanged100ms threshold; isolated reruns passed62.77ms and52.87ms. No threshold weakened or final validation failure hidden.
 
-UNRESOLVED: Rendered responsive/theme QA and final public bundle delta.
+UNRESOLVED: Human rendered responsive/theme/accessibility review only; no new architecture/auth/product decision needed. Field performance and mobile thermals unmeasured. Historical00–09 contract documents unchanged.
 
-EXACT NEXT ACTION: CommitE locally. Run final typecheck/lint/test/build and audit:build; preserve next-env.d.ts baseline if Next regenerates it. Start only a task-owned local production server on3010; run audit-public-entry, compare public JS delta, inspect final diff and updateQA/STATUS/checkpoint before final commit.
+EXACT NEXT ACTION: In a dedicated isolated browser/origin, run the exact manual matrix in10-task-4-qa.md:1600/1440/1280/1024/820/430/390 plus320/zoom, both themes/locales, actual scrollWidth/label/path bounds, Guest≤600px mobile target, keyboard/list/manual tabs, reduced motion, forced colors and console. Do not reset real user data. Record results and fix only confirmed landing regressions; do not restart Task4 or implement auth. Before any continuation verifyatlas-v2/status/local history and preserved next-env blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6.
 
 ## Task 3 retained design record
 

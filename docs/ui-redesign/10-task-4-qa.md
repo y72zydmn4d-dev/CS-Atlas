@@ -21,12 +21,29 @@ P2 entrance/calibration ticks omitted; no added font, image, runtime or dependen
 
 ## Validation checkpoint
 
-- A–E typecheck/lint passed; latest full suite51 files/273 tests.
+- A–F typecheck/lint passed; final full suite51 files/273 tests. Final typecheck also passed after restoring the exact pre-existing next-env.d.ts content following Next regeneration.
 - Projection retains12 canonical IDs,13 verified relations and12/8/6 subsets; serialized projection remains below12KiB.
 - Geometry fixtures sample curves at reference-wide actual widths880/848/768 (1440/1600/1280 viewports), compact552 (1024) and tablet440 (820), with reserved/short/mixed label heights. Curves finite and inside12-unit safe inset, avoid tested label rectangles with≥5px sampled clearance. Designed port clearance6px +3px arrow gap. This is arithmetic over nominal/measured-size fixtures, not a font-rendering or screenshot proof.
 - Resize-observer test verifies measured width changes ports and cleanup; all labels retain fixed CSS font size. Single observer on graph/layout nodes, no animation measurements.
 - UI coverage includes guest href/order, explanatory modes/manual activation, paired locale/theme, unchanged local progress, capability destinations, single full data disclosure, graph selection/hover/focus/Escape, hidden/offscreen/pointer pause and reduced-motion-sensitive eligibility.
-- Final production build, route smoke and performance totals **pending milestoneF**; update this section before handoff.
+- Final source critique fixed node hover remaining active in empty graph space: node-level pointer leave now restores persistent selection immediately, with a focused regression assertion. No additional visual effects added.
+
+### Final commands and performance
+
+| Command / check | Final outcome |
+|---|---|
+|`npm run typecheck` |Pass, including after original next-env restoration |
+|`npm run lint` |Pass |
+|`npm test` |51 files /273 tests pass; search timing52.87ms against100ms budget |
+|`npm run build` |Pass;736 generated pages |
+|`npm run audit:build` |Pass;99 JS chunks,916,521B aggregate gzip; largest148,115B; largest route10,447B |
+|`node scripts/audit-public-entry.mjs http://localhost:3010` |16 routes200; public root without workspace shell/credentials, workspace Home and deep routes retain shell; heavy-runtime/canonical-content asset markers absent |
+|Local `/problems` GET |200, existing capability-registry destination; `/practice` also passes route audit |
+|`git diff --check` |Pass; no new dependencies, package changes or Practice vendor changes |
+
+Aggregate budgets remain1,500,000B /200,000B largest /100,000B largest route. Compared with Task2's final915,862B aggregate, Task4 increases659B. Initial modern public scripts9 /168,877B gzip versus168,400B: **+477B**, within Task3's≤5KiB target. Root page chunk5,084B versus4,386B: +698B, below existing30KiB public-entry budget. Script census includes shared framework/providers; it is not a hydration, CPU or network-timing benchmark. No per-frame loops or added runtime/font/image dependency.
+
+One concurrent final test run briefly failed the unchanged search timing budget at100.163ms. Isolated rerun passed62.77ms; after the final hover fix the entire suite passed again at52.87ms. No test/budget weakened. Production build/audits were rerun after that fix. Only task-owned port3010 servers were started and stopped; no user browser window or user storage was reset.
 
 ## Theme / accessibility evidence
 
@@ -62,10 +79,11 @@ Check no-JS Guest/Browse navigation, graph omission, direct/home and feature lin
 
 ## Local commits / handoff
 
--8ab870d composition/hierarchy
--ec961a1 graph hierarchy/geometry/interaction
--5176e3a Guest-led entry panel
--bf13db9 navigation/capability band
--E/F hashes available in local history; final handoff adds exact completed validation/performance evidence here.
+- 8ab870d composition/hierarchy
+- ec961a1 graph hierarchy/geometry/interaction
+- 5176e3a Guest-led entry panel
+- bf13db9 navigation/capability band
+- 167dcc4 responsive/theme/forced-colors refinement and expanded geometry fixtures
+- Final F commit is identifiable by `fix(landing): restore hover exit and finalize polish qa`; its hash is available in local history after this checkpoint is committed.
 
-No push, merge, rebase or branch switch. Pre-existing next-env.d.ts baseline blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6 must remain unstaged/preserved. Final file inventory is available from `git diff18ac2b9..HEAD --name-only` (use a space between diff and the revision range when running the command).
+Implementation and required automated validation complete; rendered visual/accessibility sign-off remains the explicit human checklist above. No push, merge, rebase or branch switch. Pre-existing next-env.d.ts baseline blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6 verified unchanged, unstaged. Next's build-generated import delta alone was restored to the previously recorded dev-type imports; no unrelated user edit reverted. Final Task4 file inventory: `git diff 18ac2b9..HEAD --name-only`; only the landing boundary, its authored presentation/projection/geometry, paired messages, focused tests and status/QA documentation.

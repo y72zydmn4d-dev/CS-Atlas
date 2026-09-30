@@ -49,8 +49,8 @@ describe("supplementary knowledge preview", () => {
     if (neural) fireEvent.pointerEnter(neural);
     expect(node("neural-networks")).toHaveClass("active");
     expect(node("linear-algebra")).toHaveClass("neighbor");
-    const graphic = container.querySelector(".knowledge-graphic");
-    if (graphic) fireEvent.pointerLeave(graphic);
+    // Leaving the node into empty graph space restores selection, not only leaving the figure.
+    if (neural) fireEvent.pointerLeave(neural);
     expect(node("python")).toHaveClass("active");
     fireEvent.focus(screen.getByRole("button", { name:"Linear Algebra" }));
     expect(node("linear-algebra")).toHaveClass("active");

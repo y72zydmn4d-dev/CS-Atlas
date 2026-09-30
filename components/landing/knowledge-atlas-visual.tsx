@@ -20,7 +20,7 @@ export function KnowledgeAtlasVisual({ projection }: { projection: LandingProjec
   const active = hovered ?? focused ?? selected;
   const node = projection.nodes.find((item) => item.id === active);
   const selectedNode = projection.nodes.find((item) => item.id === selected);
-  const { setElement, eligible, enabled, setEnabled, paused } = useLandingMotion(selected !== null || open || pointerInside);
+  const { setElement, eligible, enabled, atmosphereEnabled, setEnabled, paused } = useLandingMotion(selected !== null || open || pointerInside);
   const { layerRef, measurements } = useKnowledgeGeometry(locale);
   function select(id: string, announce: boolean) {
     const next = selected === id ? null : id;
@@ -31,7 +31,7 @@ export function KnowledgeAtlasVisual({ projection }: { projection: LandingProjec
     }
   }
   return <section className="knowledge-preview" aria-label={t("landing.graphTitle")} onKeyDown={(event) => { if (event.key === "Escape") { setSelected(null); setHovered(null); setFocused(null); setAnnouncement(t("landing.graphHint")); } }}>
-    <div ref={setElement} className="knowledge-graphic" aria-hidden="true" onPointerEnter={() => setPointerInside(true)} onPointerLeave={() => { setHovered(null); setPointerInside(false); }} data-motion={enabled ? "enabled" : "disabled"} data-paused={paused}>
+    <div ref={setElement} className="knowledge-graphic" aria-hidden="true" onPointerEnter={() => setPointerInside(true)} onPointerLeave={() => { setHovered(null); setPointerInside(false); }} data-motion={enabled ? "enabled" : "disabled"} data-atmosphere-motion={atmosphereEnabled ? "enabled" : "disabled"} data-paused={paused}>
       <div ref={layerRef} className="knowledge-drift-layer">
         {(["wide", "compact", "tablet"] as const).map((layout: LandingLayout) => {
           const [width,height] = landingDimensions[layout];
@@ -81,7 +81,7 @@ export function KnowledgeAtlasVisual({ projection }: { projection: LandingProjec
       })}</ul><Link href={selectedNode.href} prefetch={false}>{t("landing.openConcept")} <span aria-hidden="true">↗</span></Link></div>}
       </div>
     </details>
-    {eligible && <button type="button" className="knowledge-motion-control" aria-pressed={enabled} onClick={() => setEnabled(!enabled)}>{t(enabled ? "landing.pauseMotion" : "landing.enableMotion")}</button>}
+    {eligible && <button type="button" className="knowledge-motion-control" aria-pressed={atmosphereEnabled} onClick={() => setEnabled(!atmosphereEnabled)}>{t(atmosphereEnabled ? "landing.pauseMotion" : "landing.enableMotion")}</button>}
     </div>
     <span className="sr-only" role="status" aria-live="polite">{announcement}</span>
   </section>;

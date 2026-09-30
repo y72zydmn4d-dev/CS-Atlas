@@ -1,6 +1,37 @@
 # Animated landing background QA
 
-Status: ANIMATED LANDING BACKGROUND — COMPLETE. LANDING — FROZEN PENDING HUMAN SIGN-OFF. Required automated/build checks pass; rendered sign-off outstanding.
+Status: FINAL HUMAN-REQUESTED ATMOSPHERIC TUNING — COMPLETE. LANDING — FROZEN PENDING HUMAN SIGN-OFF. Required automated/build checks pass; rendered sign-off outstanding.
+
+## Latest tuning — source of truth
+
+Human review found the original aurora too faint/peripheral and effectively static. This section supersedes original intensity/position/motion values below, **only on desktop≥1280px**. Layout, edge paths/point count, Knowledge Atlas data/geometry/interactions, Guest/auth/routes/band unchanged.
+
+| Background treatment | Current target |
+|---|---|
+| Primary dark wash |15% accent × .75 opacity =11.25% peak before falloff/mask; ellipse center40%/62%, inward and lower behind map. |
+| Secondary dark wash |12% relationship × .7 =8.4% peak; ellipse center64%/48%, toward inter-column space, opaque panel stays isolated. |
+| Central depth |One additional **static** broad indigo ellipse,4% × .65 =2.6% peak;54%-wide/max1000px plane, no spotlight/glow/animation. |
+| Edge contours / points |Exact existing geometry/count retained; dark main contour12% × .55 =6.6% peak; points24% × .25 =6% peak, no halos. |
+| Light adaptation |Primary3%, secondary1.75%, core .65% effective peaks, light contour/points unchanged. Not dark opacity copied onto paper. |
+| Responsive |Both moving planes78%-wide/max1600px; outer paint bounds remain2400×1200. Tablet/mobile original reduced-opacity/static rules unchanged, central plane omitted. |
+
+- Motion defaults **on for background**, after desktop/no-reduced-motion eligibility; graph drift retains its static initial state. Minimal shared-control/data-attribute wiring only, no graph rendering or state-machine rewrite.
+- “Pause motion” stops atmosphere and any opted-in graph drift; “Enable gentle motion” resumes both (preserving the prior explicit graph opt-in). Existing selected/list/hover/offscreen/document-hidden and entry-focus pause signals retained. Pauses stay respected after eligibility/reduced-motion changes.
+- Primary56s,36px/-20px excursion; secondary83s,-28px/16px; ease-in-out alternate, -14s/-37s phase offsets avoid a motionless/synchronized startup. No animated filter, scale, size or React frames. Central field/contours static, tiny marker113s cycle unchanged.
+- Reduced motion remains completely static; phone/tablet remain static, no added animation complexity. Decoration remains hidden/non-focusable/pointer-transparent; opaque graph-label backings and panel unchanged.
+- Conservative all-layer maximum overlap (base+both washes+core+one primary contour+brightest marker) gives main/secondary contrast **dark7.77/4.66:1; light10.71/4.63:1** using current theme tokens. Ignores mask/radial falloff; not a rendered contrast certificate. No essential foreground colors brightened to fight atmosphere.
+- Source/DOM tests cover background default-on vs graph default-off, pause/resume, pointer/selection/hidden/offscreen pause and dynamic reduced-motion change with explicit pause retained. Actual CSS timing/visual intensity remains manual.
+
+### Latest validation and remaining sign-off
+
+- `npm run typecheck`, `npm run lint`, `npm test` pass:51 files/287 tests, search44.73ms under unchanged100ms budget. Typecheck re-passed after restoring only build-generated changes to unrelated next-env's original hash a419cbe4e3a5e8d4b481b851dbf4ac767de069e6.
+- `npm run build`736 pages; `npm run audit:build`99 chunks/916,587B gzip, largest148,115B, largest route10,447B: all unchanged budgets pass. Aggregate +37B versuscbd5e00. Public initial9 scripts168,943B/root5,150B: +37B each. CSS source +1,421B/gzip+207B (not emitted network measurement). No dependencies or added lifecycle/frame loop; central field static, same two animated planes now wider but capped1600px. GPU/thermal cost unmeasured.
+- Existing `audit-public-entry.mjs` passes16 route/asset/boundary checks; `/problems`200. Local HTML: one atmosphere atroot, zero at/home,/learn. Only task-owned3010 server used/stopped. These are HTTP/HTML checks, not rendered browser navigation. `git diff --check` passes, unrelated next-env excluded from staging; no push/merge.
+- Safe browser discovery again failed (no apps/browsers, native pipe startup failure). No new rendered screenshot/console/overflow/motion verification claimed.
+- Human check:1600×900 dark first,1440×900 dark,1280 dark. Observe **10–15s without activating motion**; verify immediate atmospheric depth, slowly perceptible change, map/Guest dominance and readable body copy. Test pause/resume, tab hide/return, graph/entry focus and reduced motion. Then1600 light and430/390 regression. Confirm unchanged/home,/learn workspace and no horizontal overflow.
+- Stop at this bounded intensity; no further increase without specific human evidence. No dependencies, video, WebGL, frame loop, routing/auth/content changes.
+
+## Original implementation record (retained, superseded by latest tuning above)
 
 ## Scope and architecture
 

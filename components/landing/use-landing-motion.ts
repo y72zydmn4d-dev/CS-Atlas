@@ -10,7 +10,8 @@ function subscribe(callback: () => void) {
 }
 export function useLandingMotion(blocked: boolean) {
   const eligible = useSyncExternalStore(subscribe, () => window.matchMedia(query).matches, () => false);
-  const [enabled, setEnabled] = useState(false);
+  const [enabled, setGraphEnabled] = useState(false);
+  const [atmosphereEnabled, setAtmosphereEnabled] = useState(true);
   const [visible, setVisible] = useState(true);
   const [documentVisible, setDocumentVisible] = useState(true);
   const [element, setElement] = useState<HTMLElement | null>(null);
@@ -23,5 +24,10 @@ export function useLandingMotion(blocked: boolean) {
     if (element) observer?.observe(element);
     return () => { document.removeEventListener("visibilitychange", onVisibility); observer?.disconnect(); };
   }, [eligible, element]);
-  return { setElement, eligible, enabled, setEnabled, paused: blocked || !eligible || !visible || !documentVisible };
+  function setEnabled(next: boolean) {
+    // Background starts automatically; graph drift still requires an explicit resume.
+    setAtmosphereEnabled(next);
+    setGraphEnabled(next);
+  }
+  return { setElement, eligible, enabled, atmosphereEnabled: eligible && atmosphereEnabled, setEnabled, paused: blocked || !eligible || !visible || !documentVisible };
 }

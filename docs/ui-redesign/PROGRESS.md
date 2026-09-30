@@ -1,10 +1,30 @@
 # UI redesign — resumable checkpoint
 
-STATUS: ANIMATED LANDING BACKGROUND — COMPLETE.
+STATUS: ATMOSPHERIC PRESENCE TUNING — COMPLETE.
 
 LANDING — FROZEN PENDING HUMAN SIGN-OFF.
 
-## Atmospheric background live checkpoint
+## Final atmospheric tuning live checkpoint
+
+COMPLETED: Verified atlas-v2 atcbd5e00; only unrelated next-env.d.ts modification, baseline hash a419cbe4e3a5e8d4b481b851dbf4ac767de069e6 preserved. Read12 QA/earlier checkpoint, current atmosphere/CSS and existing motion hook/control/tests. Browser discovery again returns no apps/browsers (native pipe failure); rendered verification unavailable.
+
+SCOPE: Increase desktop aurora presence/central depth first, then shorten independent drift cycles and enable background by default. No landing layout, graph data/geometry/interaction/default drift, entry/Guest, routes or band changes. Existing shared pause control needs minimal binding changes to distinguish default-on background from still-opt-in graph drift. No dependency/frame loop.
+
+FILES CHANGED: app/landing.css; components/landing/{landing-atmosphere,knowledge-atlas-visual,use-landing-motion}.tsx/.ts; tests/knowledge-preview.test.tsx; docs/ui-redesign/{12-animated-background-qa,PROGRESS}.md; docs/STATUS.md (current capability note only). next-env excluded and preserved. Exact task inventory: `git diff cbd5e00..HEAD --name-only` after local commit.
+
+VALIDATION: Final typecheck/lint/full51 files/287 tests pass, search44.73ms. Build736 pages and audit:build pass:99 chunks916,587B gzip (+37B), largest148,115B/largest route10,447B unchanged. Initial public9 scripts168,943B/root5,150B (+37B each).16 audited routes/assets plus/problems200, root one atmosphere and/home,/learn zero. CSS source gzip+207B (not emitted transfer benchmark). Conservative maximum overlap including central field yields main/secondary dark7.77/4.66:1/light10.71/4.63:1; not rendered certification. Typecheck re-passes after restoring only generated next-env imports to original baseline hash; diff whitespace passes. Task-owned3010 server stopped. No dependency/vendor/data/route/auth/layout change; no push/merge.
+
+KNOWN ISSUES: Human reports original effect too faint/peripheral/slow/static. No fresh browser rendering available, so intensity/motion visibility must be explicitly re-reviewed by a human after automated checks.
+
+STATIC TUNING IMPLEMENTED: ≥1280 only: dark primary15% token × .75 opacity (11.25% peak), secondary12% × .7 (8.4% peak), new static central core4% × .65 (2.6%). Move ellipse centers inward to40%/64% of78%-wide planes; primary sits lower behind map, not copy. Core is broad/soft and omitted below1280. Preserve six edge paths/point count; dark contour peak6.6%, points6%. Light independently restrained (3%/1.75%/.65% peaks). Tablet/mobile original treatments unchanged.
+
+MOTION IMPLEMENTED:56s/83s independent alternate cycles;36/-20px and-28/16px excursions, -14s/-37s phase offsets avoid synchronized/effectively frozen startup. Central wash static; point cycle unchanged. Background on after desktop/no-reduced-motion eligibility, graph drift still initially off. Existing control pauses both; explicit resume retains prior graph opt-in behavior. Hook adds one background preference state, no new listener/frame loop; visual changes limited to shared-control label/pressed binding and a data attribute. Existing hover/list/selection/hidden/offscreen/entry-focus pause signals preserved.
+
+LOCAL COMMIT: One coherent task commit identifiable by `fix(landing): increase atmospheric background presence` in local history; no remote operation.
+
+EXACT NEXT ACTION: Human visual sign-off only:1600×900 dark,1440×900 dark,1280 dark for10–15s immediately after load (no activation needed); then pause/resume/reduced motion,1600 light and430/390 regression. Confirm deeper visible map field, restrained motion, readable text and unchanged map/Guest dominance. Browser unavailable here: no rendered/console/real-overflow/thermal certification claimed. Do not keep increasing intensity or reopen landing architecture; preserve real data and unrelated next-env blob.
+
+## Original atmospheric background retained checkpoint
 
 COMPLETED:
 

@@ -3,6 +3,7 @@ function AuroraField() {
   return <div className="landing-aurora-field">
     <span className="landing-aurora landing-aurora-indigo" />
     <span className="landing-aurora landing-aurora-cyan" />
+    <span className="landing-aurora landing-aurora-core" />
   </div>;
 }
 

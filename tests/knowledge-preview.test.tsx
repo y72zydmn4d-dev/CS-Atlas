@@ -32,8 +32,9 @@ describe("supplementary knowledge preview", () => {
   });
   it("omits ambient motion controls under reduced motion / non-desktop conditions", () => {
     const { container } = preview();
-    expect(screen.queryByRole("button", { name: /gentle motion/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /motion/ })).not.toBeInTheDocument();
     expect(container.querySelector(".knowledge-graphic")).toHaveAttribute("data-motion","disabled");
+    expect(container.querySelector(".knowledge-graphic")).toHaveAttribute("data-atmosphere-motion","disabled");
   });
   it("emphasizes direct neighbors for hover/focus and restores persistent selection", () => {
     const { container } = preview();
@@ -58,10 +59,10 @@ describe("supplementary knowledge preview", () => {
     fireEvent.blur(screen.getByRole("button", { name:"Linear Algebra" }));
     expect(node("python")).toHaveClass("active");
   });
-  it("freezes opted-in motion while the pointer is over the graph", async () => {
+  it("freezes default atmospheric motion while the pointer is over the graph", async () => {
     vi.stubGlobal("matchMedia", vi.fn(() => ({ matches:true, addEventListener:vi.fn(), removeEventListener:vi.fn() })));
     const { container } = preview();
-    fireEvent.click(await screen.findByRole("button", { name:"Enable gentle motion" }));
+    await screen.findByRole("button", { name:"Pause motion" });
     const graphic = container.querySelector(".knowledge-graphic");
     if (graphic) fireEvent.pointerEnter(graphic);
     expect(graphic).toHaveAttribute("data-paused","true");
@@ -88,24 +89,34 @@ describe("supplementary knowledge preview", () => {
     unmount();
     expect(disconnect).toHaveBeenCalled();
   });
-  it("starts static, enables optional desktop motion, and pauses for selection", async () => {
+  it("starts atmosphere automatically without graph drift, supports pause/resume, and pauses for selection", async () => {
     vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: true, addEventListener: vi.fn(), removeEventListener: vi.fn() })));
     const { container } = preview();
-    const toggle = await screen.findByRole("button", { name: "Enable gentle motion" });
-    expect(toggle).toHaveAttribute("aria-pressed","false");
+    const toggle = await screen.findByRole("button", { name: "Pause motion" });
+    const graphic = container.querySelector(".knowledge-graphic");
+    expect(toggle).toHaveAttribute("aria-pressed","true");
+    expect(graphic).toHaveAttribute("data-motion","disabled");
+    expect(graphic).toHaveAttribute("data-atmosphere-motion","enabled");
+    expect(graphic).toHaveAttribute("data-paused","false");
     fireEvent.click(toggle);
+    expect(screen.getByRole("button", { name:"Enable gentle motion" })).toHaveAttribute("aria-pressed","false");
+    expect(graphic).toHaveAttribute("data-atmosphere-motion","disabled");
+    expect(graphic).toHaveAttribute("data-motion","disabled");
+    fireEvent.click(screen.getByRole("button", { name:"Enable gentle motion" }));
     expect(screen.getByRole("button", { name: "Pause motion" })).toHaveAttribute("aria-pressed","true");
+    expect(graphic).toHaveAttribute("data-atmosphere-motion","enabled");
+    expect(graphic).toHaveAttribute("data-motion","enabled");
     const details = container.querySelector("details");
     if (details) { details.open = true; fireEvent(details,new Event("toggle")); }
     fireEvent.click(screen.getByRole("button", { name: "Python" }));
     await waitFor(() => expect(container.querySelector(".knowledge-graphic")).toHaveAttribute("data-paused","true"));
   });
-  it("pauses opted-in motion while the document is hidden or the figure is offscreen", async () => {
+  it("pauses default atmospheric motion while the document is hidden or the figure is offscreen", async () => {
     vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: true, addEventListener: vi.fn(), removeEventListener: vi.fn() })));
     let visibility: ((entries: Array<{ isIntersecting: boolean }>) => void) | undefined;
     vi.stubGlobal("IntersectionObserver", class { constructor(callback: typeof visibility) { visibility = callback; } observe() {} disconnect() {} });
     const { container } = preview();
-    fireEvent.click(await screen.findByRole("button", { name: "Enable gentle motion" }));
+    await screen.findByRole("button", { name: "Pause motion" });
     fireEvent(document,new Event("visibilitychange"));
     Object.defineProperty(document,"hidden",{ configurable:true, value:true });
     fireEvent(document,new Event("visibilitychange"));
@@ -115,5 +126,23 @@ describe("supplementary knowledge preview", () => {
     act(() => visibility?.([{ isIntersecting:false }]));
     await waitFor(() => expect(container.querySelector(".knowledge-graphic")).toHaveAttribute("data-paused","true"));
     vi.unstubAllGlobals();
+  });
+  it("disables atmosphere on a live reduced-motion change and preserves an explicit pause on return", async () => {
+    let matches = true;
+    let notify: (() => void) | undefined;
+    vi.stubGlobal("matchMedia", vi.fn(() => ({ get matches() { return matches; }, addEventListener: (_: string, callback: () => void) => { notify = callback; }, removeEventListener: vi.fn() })));
+    const { container } = preview();
+    const graphic = container.querySelector(".knowledge-graphic");
+    await screen.findByRole("button", { name:"Pause motion" });
+    act(() => { matches = false; notify?.(); });
+    expect(graphic).toHaveAttribute("data-atmosphere-motion","disabled");
+    expect(screen.queryByRole("button", { name:/motion/ })).not.toBeInTheDocument();
+    act(() => { matches = true; notify?.(); });
+    fireEvent.click(screen.getByRole("button", { name:"Pause motion" }));
+    act(() => { matches = false; notify?.(); });
+    act(() => { matches = true; notify?.(); });
+    expect(screen.getByRole("button", { name:"Enable gentle motion" })).toHaveAttribute("aria-pressed","false");
+    expect(graphic).toHaveAttribute("data-atmosphere-motion","disabled");
+    expect(graphic).toHaveAttribute("data-motion","disabled");
   });
 });

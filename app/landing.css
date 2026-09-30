@@ -12,6 +12,7 @@
   --landing-anchor-ring:color-mix(in srgb,var(--accent) 35%,transparent);
   --landing-atmosphere-indigo:color-mix(in srgb,var(--accent) 5%,transparent);
   --landing-atmosphere-cyan:color-mix(in srgb,var(--landing-relationship) 3%,transparent);
+  --landing-atmosphere-core:color-mix(in srgb,var(--accent) 1%,transparent);
   --landing-contour:color-mix(in srgb,var(--muted) 10%,transparent);
   --landing-point:color-mix(in srgb,var(--landing-relationship) 20%,transparent);
   position:relative;
@@ -26,24 +27,34 @@
 .landing-aurora { position:absolute; top:8%; bottom:12%; width:62%; max-width:1400px; opacity:.65; }
 .landing-aurora-indigo { left:-4%; background:radial-gradient(ellipse at 6% 48%,var(--landing-atmosphere-indigo),transparent 62%); }
 .landing-aurora-cyan { right:-4%; background:radial-gradient(ellipse at 96% 28%,var(--landing-atmosphere-cyan),transparent 60%); opacity:.55; }
+.landing-aurora-core { display:none; }
 .landing-atmosphere-contours { stroke:var(--landing-contour); stroke-width:1; opacity:.55; }
 .landing-atmosphere-contours path { vector-effect:non-scaling-stroke; }
 .landing-contour-secondary { opacity:.55; }
 .landing-atmosphere-points { fill:var(--landing-point); opacity:.25; }
 .landing-point-echo { opacity:.65; }
-/* Motion shares the existing opt-in/pause control; no second state owner or frame loop. */
-@keyframes landing-aurora-indigo { from { transform:translate(0,0); } to { transform:translate(12px,-8px); } }
-@keyframes landing-aurora-cyan { from { transform:translate(0,0); } to { transform:translate(-10px,6px); } }
+/* Default-on atmosphere shares the pause control; graph drift remains opt-in. */
+@keyframes landing-aurora-indigo { from { transform:translate(0,0); } to { transform:translate(36px,-20px); } }
+@keyframes landing-aurora-cyan { from { transform:translate(0,0); } to { transform:translate(-28px,16px); } }
 @keyframes landing-point-echo { 0%,88%,100% { opacity:.65; } 94% { opacity:1; } }
 @media (min-width:1280px) and (prefers-reduced-motion:no-preference) {
-  .landing-aurora-indigo { animation:landing-aurora-indigo 89s ease-in-out infinite alternate paused; }
-  .landing-aurora-cyan { animation:landing-aurora-cyan 137s ease-in-out infinite alternate paused; }
+  .landing-aurora-indigo { animation:landing-aurora-indigo 56s ease-in-out -14s infinite alternate paused; }
+  .landing-aurora-cyan { animation:landing-aurora-cyan 83s ease-in-out -37s infinite alternate paused; }
   .landing-point-echo { animation:landing-point-echo 113s ease-in-out infinite paused; }
-  .public-landing:has(.knowledge-graphic[data-motion="enabled"][data-paused="false"]):not(:has(.landing-auth:focus-within)) .landing-aurora,
-  .public-landing:has(.knowledge-graphic[data-motion="enabled"][data-paused="false"]):not(:has(.landing-auth:focus-within)) .landing-point-echo { animation-play-state:running; }
+  .public-landing:has(.knowledge-graphic[data-atmosphere-motion="enabled"][data-paused="false"]):not(:has(.landing-auth:focus-within)) .landing-aurora,
+  .public-landing:has(.knowledge-graphic[data-atmosphere-motion="enabled"][data-paused="false"]):not(:has(.landing-auth:focus-within)) .landing-point-echo { animation-play-state:running; }
 }
 @media print, (forced-colors:active) { .landing-atmosphere { display:none; } }
 :root[data-theme="dark"] .public-landing { --landing-atmosphere-indigo:color-mix(in srgb,var(--accent) 10%,transparent); --landing-atmosphere-cyan:color-mix(in srgb,var(--landing-relationship) 5%,transparent); --landing-contour:color-mix(in srgb,var(--landing-relationship) 20%,transparent); }
+/* Human-requested presence: move broad light into the map field, not the text block. */
+@media (min-width:1280px) {
+  .public-landing { --landing-atmosphere-indigo:color-mix(in srgb,var(--accent) 4%,transparent); --landing-atmosphere-cyan:color-mix(in srgb,var(--landing-relationship) 2.5%,transparent); }
+  :root[data-theme="dark"] .public-landing { --landing-atmosphere-indigo:color-mix(in srgb,var(--accent) 15%,transparent); --landing-atmosphere-cyan:color-mix(in srgb,var(--landing-relationship) 12%,transparent); --landing-atmosphere-core:color-mix(in srgb,var(--accent) 4%,transparent); --landing-contour:color-mix(in srgb,var(--landing-relationship) 12%,transparent); --landing-point:color-mix(in srgb,var(--landing-relationship) 24%,transparent); }
+  .landing-aurora { width:78%; max-width:1600px; }
+  .landing-aurora-indigo { opacity:.75; background:radial-gradient(ellipse at 40% 62%,var(--landing-atmosphere-indigo),transparent 72%); }
+  .landing-aurora-cyan { opacity:.7; background:radial-gradient(ellipse at 64% 48%,var(--landing-atmosphere-cyan),transparent 74%); }
+  .landing-aurora-core { display:block; left:24%; top:16%; bottom:34%; width:54%; max-width:1000px; background:radial-gradient(ellipse at 38% 58%,var(--landing-atmosphere-core),transparent 72%); }
+}
 /* Peripheral geometry recedes before it can compete with stacked content. */
 @media (max-width:1439px) { .landing-contour-secondary { display:none; } }
 @media (max-width:1279px) {

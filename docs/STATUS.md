@@ -4,7 +4,7 @@ Last updated: 2026-10-01
 
 ## Implemented
 
-- Public landing scientific atmosphere: two bounded moving radial-gradient planes and a static central wash, peripheral contours and four faint markers; default-on desktop CSS motion shares the pause control while graph drift stays opt-in. Intentional light/dark recipes, simplified static mobile/reduced-motion modes and hidden non-interactive decoration preserve the frozen composition. Required automated/build/route checks pass, client JS gzip+37B for default/pause wiring. Human rendered sign-off remains outstanding in `docs/ui-redesign/12-animated-background-qa.md`.
+- Public landing approved aurora artwork: actual approved PNG optimized to1672×941/154,548B WebP, full-opacity dark image with localized readability treatment replaces procedural aurora/contours/points. Default-on64s desktop CSS drift shares the existing pause control; mobile/tablet and reduced motion are static, light uses a pale native-gradient fallback. Frozen composition, Guest/routes and non-interactive decoration preserved. Required automated/build/route/static-image checks pass; client JS unchanged from the previous atmospheric tuning. Human rendered sign-off remains outstanding in `docs/ui-redesign/13-approved-artwork-integration-qa.md`.
 
 - Task 5 final human-review-driven landing refinements: larger bounded wide-desktop composition and viewport-responsive map, two existing focal anchors, restrained relationship depth and clearer capability-link affordance. Narrow layouts, Guest-first flow, routes/data/auth boundaries unchanged. Required automated checks pass; landing visual redesign frozen pending human sign-off in `docs/ui-redesign/11-task-5-final-landing-qa.md`.
 

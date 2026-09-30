@@ -1,0 +1,48 @@
+# 00 — Current UI audit
+
+Task 1, 2026-09-30. Baseline: `atlas-v2`, `0d48165`. Source audit, not a new browser/device certification. References below identify current code; layout risks inferred from CSS require Task 2 browser verification. No production changes were made.
+
+## Current strengths to preserve
+
+- Shared semantic themes, indigo actions, opaque reading surfaces, peripheral grid and short CSS motion: `app/workspace.css:3–40`, `components/ambient-background.tsx`.
+- Capability navigation and route metadata have one owner: `lib/capabilities.ts`, `lib/routes.ts`. Shell supports 240px/72px sidebar, mobile focus containment, Escape, inert background and focus restoration: `components/app-shell.tsx:31–118`.
+- Learn has subject manifests, persistent curriculum, separate tutorials/examples/exercises/quiz/reference, bounded reader, adjacent navigation and evidence/bookmark adapters: `components/learn/`, `content/learn/`, `lib/domain/learn-platform.ts`.
+- Atlas, roadmap and mind map retain distinct meanings and keyboard list alternatives. React Flow is lazy: `components/atlas/atlas-workspace.tsx`, `components/graph-explorer.tsx`.
+- Useful local-first behavior, explicit failures and export boundaries: `components/library/library-list.tsx:52–68`, `components/profile/local-profile.tsx:26–40`, `lib/storage.ts`, `lib/library/repository.ts`.
+- Practice distinguishes JavaScript public execution, Python editing, and unavailable remote judging: `components/practice/practice-workspace.tsx:119–132`.
+- AI shows context, provenance and privacy and cannot mutate learning state: `components/atlas-assistant.tsx:51–62`, `lib/ai/`.
+- Bilingual UI, meaningful authored metadata and honest incomplete curriculum status. Do not advertise manifest counts as completed courses.
+
+## Prioritized findings
+
+P1 = resolve in the front-door design or preserve as a specific regression constraint. P2 = application follow-up, not Task 2 scope.
+
+| # / priority | Observation and repository evidence | Why it matters | Principle to apply later |
+|---|---|---|---|
+| 1 / P1 | `/` is a personalized workspace, not an introductory public entry. Root layout mounts all workspace providers, AppShell and SelectionTranslator for every page (`app/layout.tsx:23–25`; `app/page.tsx:11–18`). | Visitors receive navigation and local-state dashboard before a concise product explanation; adding auth inside this shell would retain workspace chrome and search loading. | Separate public entry composition from workspace; preserve feature deep links. |
+| 2 / P1 | Token and selector definitions are layered: `globals.css` defines surfaces, headings, buttons/cards; `workspace.css:3–38` overrides them, then adds feature rules. `practice.css` sits between these imports (`app/layout.tsx:2–4`). | The apparent component contract depends on stylesheet order; a global hero/token edit can affect hundreds of learning pages. | Scope landing styles; use existing semantic roles; later consolidate ownership incrementally. |
+| 3 / P1 | Learn labels range from 8px status to 9px curriculum headings and 10px uppercase subject links (`workspace.css:369,381,390,404`). | Important maturity/navigation information becomes hard to scan, especially in Vietnamese or at narrow widths. | Minimum 12px meaningful metadata; 13–14px navigation; compact layout through rhythm, not shrinking type. |
+| 4 / P1 | Learn search inputs remove outlines without a matching focus/focus-within rule (`workspace.css:378`; compare Library `.form-field` focus in `globals.css:461`). | Keyboard focus can disappear on catalog/curriculum searches despite the global focus style. | Each input and composite field must have a tested visible focus ring. |
+| 5 / P1 | At widths just above 1180px, Learn has `264 + 520 + 224 + 56` gap pixels and `56` padding pixels (1120px minimum), inside a workspace reduced by 240px sidebar (`workspace.css:400,422–425`, `:41–58`). | At 1280px, available width is 1040px. The three-column minimum exceeds it by 80px; clipping is plausible because outer CSS hides horizontal overflow. This is arithmetic, not an observed screenshot failure. | Decide columns from available content width, collapse tools before squeezing prose; never hide overflow to conceal layout defects. |
+| 6 / P2 | Mobile has a search icon in the brand/menu row and a command search in the next row (`app-shell.tsx:83–86,110–113`; `workspace.css:267–271`). | Repeated access consumes vertical space before lessons; global, subject and curriculum navigation already form multiple layers. | One global search entry per viewport; retain local filtering with explicit scope labels. |
+| 7 / P2 | Home recommendations and saved links resolve legacy topics only (`workspace-home.tsx:19–28`); Learn Continue uses new lesson events (`learn-home.tsx:28–42`). | New lesson activity can appear in Learn but not in Home's resume list; saved lesson names lack the same localization path. | One evidence-aware resume projection and consistent label resolution across views. |
+| 8 / P1 | Preview chooses graph nodes by array positions `[0,2,4,5,8,9]` and then filters connecting edges (`knowledge-atlas-preview.tsx:10–13`). | Registry ordering can change the story or leave a weakly connected preview without explicit intent. | A named, validated, bounded public Concept slice; deterministic coordinates and meaningful relationships. |
+| 9 / P2 | Explore presents three equally weighted, minimum-154px cards and no resume/context (`app/explore/page.tsx:9`; `workspace.css:471–476`). | The semantics are explained, but newcomers must choose among similar visual weights without guidance. | Short task distinctions and one recommended starting path; preserve roadmap/map/Atlas separation. |
+| 10 / P2 | Practice's editor includes runtime help, save state, limits, disabled Submit explanation AND unavailable status, then additional review/AI/history panels (`practice-workspace.tsx:121–133`). | Correct capability disclosure competes with editing/results and repeats availability information. | Keep one persistent concise capability line; disclose details nearby; preserve every security limitation. |
+| 11 / P2 | Library has useful collapsed filters, but the summary names only type/format although collection/relation/tag/sort are inside, and no active-filter summary/reset is rendered (`library-list.tsx:39,66–68`). | Zero results can be caused by hidden selections; it is harder to recover and inspect current scope. | Visible active-filter count/chips and one clear-all action; keep list/grid preference. |
+| 12 / P2 | Progress's headline percentage only aggregates legacy Topics; its “recently completed” list is registry-order reversal, not timestamp order (`progress-dashboard.tsx:19–23`). | New Learn evidence is not represented in that number; a recency label overstates what this projection knows. | Label evidence scope explicitly, use recorded timestamps for recency, never equate completion with mastery. |
+| 13 / P2 | AI exposes ten peer task modes, including debug/review/study plan, while the current context slice is public-only (`atlas-assistant.tsx:11–12,60`; `docs/atlas-v2/10-ai-architecture.md`). | Mode names can suggest code/private personalization beyond available context; decision burden precedes writing a question. | Default Ask; group advanced intents with capability hints; explain selected context in learner language. |
+| 14 / P2 | Learner-facing copy includes “canonical Concept”, raw IDs converted to labels, `browser-*`-style event terms and unlocalized surface labels (`lesson-workspace.tsx:38–40,48`; `local-profile.tsx:40`; `subject-curriculum-sidebar.tsx:13–17,92`). | Architectural precision leaks into product language and breaks locale continuity. | Resolve human labels through owners; explain local scope plainly; keep implementation names out of primary flows. |
+| 15 / P2 | Settings Appearance shows a light/dark chip and explanatory text, while the actual toggle is in the shell (`app/settings/page.tsx:12`; `app-shell.tsx:113`). | The expected setting is a status display rather than a direct control. | Place controls at the point users expect; reuse the same provider, not new preference state. |
+
+## Auth and completeness inventory
+
+**NO PRODUCTION AUTH.** Complete route/file inventory plus searches of `app/`, `components/`, `lib/` and `package.json` found no sign-in/signup/reset routes, session implementation, auth middleware/proxy or auth SDK. `lib/profile/local-profile.ts` exports `anonymous-local/current-browser`; `docs/atlas-v2/21-identity-profile.md` explicitly defers accounts. Gemini credential failures are provider configuration, not learner sign-in.
+
+`content/learn/` and `docs/atlas-v2/learn-overhaul-report.md` distinguish 13 subjects / 428 manifest entries / 9 reviewed full lessons. TypeScript is product roadmap context, not a verified current subject manifest. Do not promise comprehensive teaching, cloud sync, hidden judging, offline reload, or automatic Library AI.
+
+## Later phases
+
+Task 2 addresses entry hierarchy, graph preview and entry panel only, with the minimal shell/route work defined in [02](02-landing-auth-ux-spec.md) and [05](05-implementation-plan.md). AppShell, Home, Learn, Practice, Explore, Library, Progress and AI density rules are directions for later independent slices. Do not fix audit findings as incidental Task 1 changes.
+
+Keep legacy URLs, IDs, search destinations, local records, locale/theme persistence, auth/AI/judge privacy constraints, generated Practice loader and Home creator footer. Move the current Home composition intact to the proposed `/home` only in Task 2; do not remove its footer or original portrait.

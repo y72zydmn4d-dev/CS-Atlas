@@ -1,5 +1,30 @@
 # UI redesign — resumable checkpoint
 
+STATUS: TASK 4 — VISUAL POLISH IMPLEMENTATION IN PROGRESS.
+
+## Task 4 live checkpoint
+
+CURRENT MILESTONE: A complete; B next — knowledge hierarchy and geometry.
+
+COMPLETED:
+- Verified CS-Atlas, atlas-v2 and Task3 commit18ac2b9 at HEAD. Only unrelated next-env.d.ts differs; preserve its baseline blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6.
+- Reviewed Task3 polish contract and current landing composition. Earlier design/security/QA constraints remain in force.
+- A implemented: shared CSS subgrid eyebrow/headline tracks align entry with headline without JS/position transforms; tighter hero rhythm, restrained tracking, aligned440px tablet column and scoped surface/field roles. Existing graph data/entry order unchanged inA.
+
+FILES CHANGED: A: app/landing.css, components/landing/landing-hero.tsx, this checkpoint.
+
+VALIDATION PASSED: A typecheck/lint;50 test files/253 tests. Diff whitespace check before commit.
+
+VISUAL CHANGES: Headline-aligned entry,16px introduction-to-map gap,56px desktop type with−.03em tracking,48ch support, stronger brand and opaque panel edge/shadow; local indigo field in both themes.
+
+KNOWN ISSUES: Graph/entry hierarchy awaitsB/C. Browser discovery returned no controllable browsers; no native user-window control or rendered screenshots claimed.
+
+UNRESOLVED: Rendered responsive/theme QA and final public bundle delta.
+
+EXACT NEXT ACTION: CommitA locally, then implementB:08 graph ranks/coordinates, curved box-aware edges and one-hop neighborhood states; retain12 IDs/13 relations and native list.
+
+## Task 3 retained design record
+
 STATUS: TASK 3 — COMPLETE. Visual audit and implementation-ready polish specification; documentation-only handoff.
 
 ## Task 3 live checkpoint

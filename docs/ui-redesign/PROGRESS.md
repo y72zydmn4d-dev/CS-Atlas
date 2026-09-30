@@ -1,6 +1,6 @@
 # UI redesign — resumable checkpoint
 
-STATUS: TASK 5 — FINAL LANDING POLISH IN PROGRESS.
+STATUS: TASK 5 — COMPLETE. Landing visual redesign frozen pending human sign-off; implementation and required automated validation complete, no rendered browser pass claimed.
 
 ## Task 5 live checkpoint
 
@@ -10,11 +10,11 @@ COMPLETED:
 - Read Task3/4 contract and current CSS, graph projection/geometry, shell and QA. Human review authorizes only seven targeted composition refinements; historical documents remain unchanged.
 - Safe browser discovery returned no apps/browsers (native pipe startup failed). No rendered verification claimed; use source/automated geometry checks and record exact manual sign-off matrix.
 
-FILES CHANGED: A app/landing.css/checkpoint. B also components/landing/knowledge-atlas-visual.tsx, content/landing/knowledge-preview.ts, lib/concepts/landing-projection.ts and tests/landing-geometry.test.ts.
+FILES CHANGED: app/landing.css; components/landing/knowledge-atlas-visual.tsx; content/landing/knowledge-preview.ts; lib/concepts/landing-projection.ts; tests/landing-geometry.test.ts; docs/ui-redesign/{11-task-5-final-landing-qa,PROGRESS}.md; docs/STATUS.md. Exact inventory: `git diff 009875f..HEAD --name-only`. next-env.d.ts excluded/preserved.
 
-VALIDATION: MilestoneA typecheck/lint pass; committed61613a4. B final typecheck/lint and51 files/285 tests pass. Initial expanded tests exposed Python→ML fallback corner clearance; a smooth-join trial exposed Recursion clearance. Final refinement passes all28 geometry checks at old and expanded stages, including conservative1280 fallback. No assertions/budgets weakened. Diff whitespace check passes.
+VALIDATION: A61613a4, B166164a, C6461fff coherent local commits. Final typecheck/lint pass;51 files/285 tests pass, all28 geometry tests, search42.84ms. Build736 pages and audit:build pass:916,550B gzip, largest148,115B, largest route10,447B. Public-entry audit16 routes plus `/problems` return200;9 initial scripts168,906B, root5,113B, +29B each versusTask4. Typecheck re-passed after original next-env restoration; baseline hash unchanged. Intermediate geometry failures corrected without weakened assertions/budgets. No new dependency/package/vendor output change; git diff --check passes.
 
-KNOWN ISSUES: Rendered wide-desktop balance, label/path bounds and responsive/theme/accessibility sign-off cannot be verified with current browser tools. Preserve no-auth/local-first behavior and existing graph interactions.
+KNOWN ISSUES: Rendered wide-desktop balance, label/path bounds and responsive/theme/accessibility sign-off cannot be verified with current browser tools. No actual screenshot/overflow/focus/console/contrast certification claimed. Field CWV/thermals unmeasured. No known failing final validation. No-auth/local-first and graph interactions preserved; historical documents untouched.
 
 COMPOSITION DECISIONS: ≥1440 frame cap1600 instead1440, panel416 instead400, gap48 instead64, shared headline baseline retained. Headlines64px/68px at1440/1600 versus56/60 (+13–14%). Graph clamp400px/46svh/450px:414 at900h (+15%),450 at1080h (+25%); short desktop≤719h retains360. At1600 graph column1008 versus848 (+19%);1440 remains880. No transform scaling, new content, stretched panel or additional glow. Main top40px instead32; graph itself uses extra height rather than an empty min-height spacer.
 
@@ -22,7 +22,9 @@ B DECISIONS: Only Programming Fundamentals and Machine Learning Fundamentals are
 
 COMPLETED C/D: B committed166164a. C adds64px padded capability link targets,15px labels/right-aligned18px arrows and surface-2 hover/focus wells; no resting cards. Wide caption minimum56, main bottom16 and band padding12 tighten utility-to-band rhythm. Typecheck/lint pass. D source/geometry review retains1280/1024/tablet/mobile grid/type/stage rules; no additional responsive fix identified. Browser sign-off unavailable, not claimed passed. Created11-task-5-final-landing-qa.md with seven-objective and manual matrix evidence.
 
-EXACT NEXT ACTION: Commit C CSS/checkpoint/QA locally. Then final typecheck/lint/isolated tests/build/audit:build and task-owned local route/asset smoke. Preserve next-env baseline after Next regeneration. Record exact performance/results, freeze pending human sign-off and create final QA checkpoint commit; no new polish wishlist.
+FINAL CHECKPOINT: All seven objectives implemented; no additional responsive defect found in source/geometry review. Only task-owned port3010 server stopped. Final local checkpoint identifiable by `docs(ui): freeze landing after final targeted polish`. Branch remainsatlas-v2; no push/merge/rebase/reset/clean. Only pre-existing next-env.d.ts remains outside task commits.
+
+EXACT NEXT ACTION: Human sign-off only: isolated-browser matrix in11-task-5-final-landing-qa.md,1600×900 dark first,1440×900,1920×1080,1280/1024/tablet/430/390, then light/locales/keyboard/reduced-motion/actual bounds and /home,/learn. Confirm seven criteria; fix only confirmed scoped regressions if necessary. Otherwise freeze landing and stop; no Task6/new design/auth work. Preserve real local data and unrelated next-env blob.
 
 ## Task 4 retained implementation record
 

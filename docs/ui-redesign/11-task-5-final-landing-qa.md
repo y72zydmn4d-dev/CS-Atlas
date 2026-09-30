@@ -36,13 +36,20 @@ These are CSS arithmetic and source checks, not measured browser bounds. Wider g
 - Existing native relationship list, manual tabs, announcements, Escape, visible3px focus,≥44px targets and no-JS Guest link preserved. No focus order or credential collection change.
 - Reduced motion/static default and all opt-in pause reasons unchanged. Focal labels do not dim through parent opacity. New effects are only CSS color/surface emphasis.
 - Dark and light reuse existing surface-2/accent/relationship roles; Guest colors unchanged. Forced-colors remains system-color based. No new luminance/glow recipes. Real composited contrast/focus still requires browser review.
-- No per-frame JS/measurement. Initial bundle/build audit and final command results pending below; compare against Task4 initial168,877B gzip, root5,084B and aggregate916,521B.
+- No per-frame JS/measurement. Initial modern public JS168,906B gzip (9 scripts), root5,113B and aggregate916,550B: each +29B versus Task4. Shared framework/providers included; script census is not a runtime/CWV/thermal benchmark. No materially increased bundle or dependency.
 
 ## Validation / completion checkpoint
 
 - A: typecheck/lint pass; local61613a4.
 - B: typecheck/lint and51 files/285 tests pass; local166164a. Two intermediate curve trials exposed fallback/Recursion clearance issues; final route passes all28 geometry tests without weakened assertions.
-- C/D/final: pending final validation/build/route audit. Do not claim completion until this section is updated.
+- C: typecheck/lint pass; local6461fff. D: source and automated geometry regression review complete; no separate responsive fix required. Actual browser review remains below.
+- Final `npm run typecheck`, `npm run lint`, `npm test`: pass;51 files/285 tests, search timing42.84ms against unchanged100ms budget.
+- `npm run build`: pass;736 generated pages. `npm run audit:build`: pass;99 chunks,916,550B aggregate gzip, largest148,115B, largest route10,447B. Unchanged limits1,500,000/200,000/100,000B.
+- `node scripts/audit-public-entry.mjs http://localhost:3010`: pass;16 routes200; root public/no credential collection, directly available SSR workspace/deep routes, no full canonical/heavy runtime asset leak. Additional local `/problems` GET200. No routing/shared-workspace production files modified.
+- After Next regenerated imports, restored only that generated delta to the exact pre-existing next-env.d.ts blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6; typecheck re-passed. This file remains unstaged. Package/Practice vendor output unchanged. `git diff --check` passes.
+- Only the task-owned port3010 production server was started/stopped; no user browser or user-local storage was touched. Final QA commit identifiable by `docs(ui): freeze landing after final targeted polish`.
+
+Task5 implementation and required automated validation complete. Exact changed-file inventory: `git diff 009875f..HEAD --name-only`. Production changes limited to landing.css, knowledge-atlas-visual, authored knowledge-preview and its landing-projection presentation type; geometry regression fixtures plus QA/PROGRESS/status documentation. Historical07–10 unchanged. No auth, content curriculum, route, storage or workspace change.
 
 ## Remaining human sign-off (freeze gate)
 

@@ -4,7 +4,7 @@ CS-Atlas Learn is a projection over canonical Concepts, shared Exercises and Pro
 
 ## Add a subject
 
-1. Add a `SubjectManifest` in `content/learn/registry.ts` with a stable kebab-case `id`/`slug`, category, honest content status, localization status, and canonical Concept IDs.
+1. Add a `SubjectManifest` in `content/learn/registry.ts` with a stable kebab-case `id`/`slug`, unique positive `navigationOrder`, category, honest content status, localization status, and canonical Concept IDs. The Learn subject bar is derived from these manifests; do not maintain a second subject list in UI code.
 2. Add ordered sections and lesson manifests. IDs use `learn:<subject>:<lesson-slug>` and section IDs use `learn-section:<subject>:<section-slug>`.
 3. Add reference, exercise, quiz, roadmap, and problem relationships only when the target records exist.
 4. Keep an un-authored curriculum item at `SKELETON`. Use `PARTIAL` for a subject with some real content and `COMPLETE` only after every promised surface is reviewed.

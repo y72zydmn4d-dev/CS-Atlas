@@ -69,6 +69,7 @@ export interface QuizGroupManifest {
 export interface SubjectManifest {
   id: string;
   slug: string;
+  navigationOrder: number;
   title: LocalizedConceptText;
   description: LocalizedConceptText;
   category: SubjectCategory;
@@ -200,6 +201,7 @@ export function validateLearnPlatform(input: {
 
   for (const subject of input.subjects) {
     if (!slugPattern.test(subject.slug)) issues.push(`${subject.id} has invalid slug ${subject.slug}`);
+    if (!Number.isInteger(subject.navigationOrder) || subject.navigationOrder < 1) issues.push(`${subject.id} has invalid navigation order`);
     if (!subject.conceptIds.length || subject.conceptIds.some((id) => !input.conceptIds.has(id))) issues.push(`${subject.id} has invalid Concept IDs`);
     unique(`${subject.id} section order`, subject.sections.map((section) => String(section.order)));
     for (const section of subject.sections) {
@@ -223,6 +225,7 @@ export function validateLearnPlatform(input: {
       if (group.lessonIds.some((id) => !lessonIds.has(id)) || group.questionIds.some((id) => !questionIds.has(id))) issues.push(`${group.id} has invalid Quiz links`);
     }
   }
+  unique("subject navigation order", input.subjects.map((item) => String(item.navigationOrder)));
   for (const content of input.lessonContent) {
     if (!lessonIds.has(content.lessonId)) issues.push(`${content.lessonId} content has no manifest lesson`);
     unique(`${content.lessonId} blocks`, content.blocks.map((block) => block.id));

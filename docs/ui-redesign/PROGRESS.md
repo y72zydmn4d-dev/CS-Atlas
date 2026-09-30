@@ -1,6 +1,6 @@
 # UI redesign — Task 1 checkpoint
 
-STATUS: TASK 2 — IN PROGRESS. Milestones A/B complete; milestone C next (2026-09-30).
+STATUS: TASK 2 — IN PROGRESS. Milestones A/B/C complete; milestone D responsive/browser QA next (2026-09-30).
 
 ## Task 2 live checkpoint
 
@@ -10,24 +10,27 @@ COMPLETED:
 - Existing `next-env.d.ts` modification is unrelated; baseline blob `a419cbe4e3a5e8d4b481b851dbf4ac767de069e6`, exclude from every task commit.
 - A: extracted the single workspace Home composition to components/home and exposed it at /home. Public / is a temporary minimal shell until B. RouteShell lazily mounts workspace providers only on non-root routes; deep URLs remain ungated. Sidebar/brand/footer Home links use /home; legacy Home breadcrumb literals normalize centrally without touching saved records.
 - A committed as 27b2da6. B: implemented bilingual public header/hero, unavailable manual-activation account tabs, functional guest link, native local-data disclosures, capability strip/footer and scoped responsive light/dark styles. No credential fields, provider buttons, form submissions or fake auth.
+- B committed as e12985a. C: canonical server projection (12 concepts/13 verified edges), 12/8/6-node responsive SVG plus HTML labels, native connection list, selection/hover/Escape and resolved Concept links. Static by default; opt-in desktop CSS whole-layer drift pauses without reset on selection/details/auth focus/offscreen/document-hidden; reduced motion excludes control and drift.
 
 FILES CHANGED:
 - A: app/layout.tsx, app/page.tsx, app/home/page.tsx; components/route-shell.tsx, workspace-providers-shell.tsx, app-shell.tsx, breadcrumbs.tsx, home/workspace-home-page.tsx, home/author-footer.tsx; lib/capabilities.ts, lib/routes.ts; tests/route-shell.test.tsx, routes.test.ts, workspace-ui.test.tsx, author-footer.test.tsx; this checkpoint.
 - B: components/landing/{public-landing-shell,landing-header,landing-hero,auth-panel,local-data-disclosure,capability-strip}.tsx; app/landing.css, app/layout.tsx, app/page.tsx; i18n/messages/{landing,en,vi}.ts; lib/routes.ts; tests/{landing,routes}.test.*; this checkpoint.
+- C: content/landing/knowledge-preview.ts, lib/concepts/landing-projection.ts, components/landing/{knowledge-atlas-visual,use-landing-motion}.tsx/.ts, app/page.tsx, app/landing.css, tests/{landing-projection,knowledge-preview}.test.*; this checkpoint.
 
 VALIDATION PASSED:
 - A: npm run typecheck, npm run lint, npm test (46 files /238 tests) passed. Task 1 commit confirmed.
 - B: typecheck, lint, tests passed (47 files /242 tests), including unavailable mode switching, keyboard focus, locale, guest href, credential absence and preserved progress.
+- C: typecheck/lint passed; tests passed (49 files /248 tests). Initial lint ref-object taint fixed by destructuring callback/state; canonical Python slug test corrected to topic-python. One existing search timing-budget test transiently exceeded100ms while commands overlapped; isolated full rerun passed. No budget relaxed.
 
 KNOWN ISSUES:
 - No production auth. Per02/05, unavailable modes collect no credentials; password visibility/validation tests are not applicable until a real auth milestone. Test absence of credential collection instead.
-- Knowledge visual pending C; browser/bundle QA remains E.
+- Browser visual/layout/keyboard checks, production build and public bundle measurement pending D/E. No dependencies added.
 
 UNRESOLVED:
 - Real auth/password/provider/sync policy remains outside Task 2.
 
 EXACT NEXT ACTION:
-- Commit B, then C: resolve the specified 12 canonical concepts and13 real relationships server-side, add SVG/HTML visual with native list alternative and static-by-default motion enhancement.
+- Commit C. Build production app and inspect dedicated QA browser at target widths, themes/locales and reduced motion; fix only landing/shell regressions, then validate/commit D. Preserve unrelated next-env.d.ts baseline if Next regenerates it.
 
 ## Task 1 retained design record
 

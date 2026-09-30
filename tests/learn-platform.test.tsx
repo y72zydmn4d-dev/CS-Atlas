@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { AtlasProvider } from "@/components/atlas-provider";
 import { LocaleProvider } from "@/components/locale-provider";
 import { LessonWorkspace } from "@/components/learn/lesson-workspace";
+import { SubjectHome } from "@/components/learn/subject-home";
 import { learnContentByLessonId, learnExamples, learnLessonContent, learnQuizQuestions, learnReferences } from "@/content/learn/lesson-content";
 import { learnLessonById, learnLessonByRoute, learnLessons, learnRouteAliases, learnSubjectBySlug, learnSubjects } from "@/content/learn/registry";
 import { concepts } from "@/content/concepts/registry";
@@ -78,6 +79,17 @@ describe("Learn subject manifests", () => {
 });
 
 describe("Learn workspace behavior", () => {
+  it("uses the same manifest curriculum on the subject home without a redundant curriculum action", async () => {
+    const subject = learnSubjectBySlug.get("python");
+    if (!subject) throw new Error("Missing Python subject");
+    render(<Providers><SubjectHome subject={subject} /></Providers>);
+    expect(screen.getByRole("complementary", { name: "Python curriculum" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Tutorial home" })).toHaveAttribute("aria-current", "page");
+    expect(screen.queryByRole("link", { name: /View curriculum/i })).not.toBeInTheDocument();
+    await waitFor(() => expect(screen.getByRole("button", { name: "Getting started" })).toHaveAttribute("aria-expanded", "true"));
+    expect(screen.getByRole("button", { name: "Variables" })).toHaveAttribute("aria-expanded", "false");
+  });
+
   it("starts with only the active curriculum group expanded when no preference exists", async () => {
     const subject = learnSubjectBySlug.get("python");
     const lesson = learnLessonByRoute.get("python/lists");
@@ -100,6 +112,7 @@ describe("Learn workspace behavior", () => {
     const drawerButton = screen.getByRole("button", { name: "Curriculum" });
     fireEvent.click(drawerButton);
     expect(drawerButton).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByRole("dialog", { name: "Data Structures & Algorithms curriculum" })).toHaveAttribute("aria-modal", "true");
     fireEvent.keyDown(window, { key: "Escape" });
     await waitFor(() => expect(drawerButton).toHaveFocus());
     fireEvent.click(screen.getByRole("button", { name: "Mark complete" }));

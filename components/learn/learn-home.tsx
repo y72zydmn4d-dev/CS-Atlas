@@ -18,8 +18,6 @@ const categoryLabels: Record<SubjectCategory, { en: string; vi: string }> = {
   "computer-science": { en: "Computer science", vi: "Khoa học máy tính" },
   "developer-tools": { en: "Developer tools", vi: "Công cụ phát triển" },
 };
-const popularIds = new Set(["python", "dsa", "cpp", "javascript", "sql", "machine-learning"]);
-
 export function LearnHome() {
   const { locale } = useI18n();
   const atlas = useAtlas();
@@ -45,8 +43,6 @@ export function LearnHome() {
     </section>}
 
     {normalized && <section className="learn-search-results" aria-live="polite"><div className="learn-section-heading"><h2>{locale === "vi" ? "Kết quả bài học" : "Lesson results"}</h2><span>{lessonMatches.length}</span></div>{lessonMatches.length ? <ul>{lessonMatches.map((lesson) => <li key={lesson.id}><Link href={`/learn/${lesson.subjectId}/${lesson.slug}`}><span><strong>{lesson.title[locale]}</strong><small>{learnSubjects.find((subject) => subject.id === lesson.subjectId)?.title[locale]} · {lesson.status}</small></span><ArrowRight size={15} /></Link></li>)}</ul> : <p className="empty-state">{locale === "vi" ? "Không tìm thấy bài học phù hợp." : "No matching lessons found."}</p>}</section>}
-
-    {!normalized && <section className="learn-directory-section"><div className="learn-section-heading"><div><p className="learn-section-label">POPULAR</p><h2>{locale === "vi" ? "Bắt đầu nhanh" : "Start quickly"}</h2></div></div><div className="learn-popular-row">{learnSubjects.filter((subject) => popularIds.has(subject.id)).map((subject) => <SubjectTile key={subject.id} subject={subject} locale={locale} />)}</div></section>}
 
     {categoryOrder.map((category) => {
       const subjects = visibleSubjects.filter((subject) => subject.category === category);

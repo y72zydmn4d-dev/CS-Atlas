@@ -17,6 +17,8 @@ The research package at `docs/research/w3schools-learn-audit/` records the crawl
 - One typed `SubjectManifest` / `CurriculumSection` / `LessonManifest` registry over canonical Concept IDs.
 - A discriminated lesson block model and reusable renderer.
 - Subject-scoped curriculum navigation, active/completed state, filtering, collapsible groups, independent sticky scrolling, preserved local scroll/collapse state, keyboard Escape/focus restoration, and a mobile drawer.
+- A manifest-ordered, horizontally scrollable Learn subject bar shared by the Learn catalog, subject homes, lessons, exercises, examples, quizzes, and references. Direct routes keep the active subject visible and highlighted.
+- One subject workspace shell now composes the persistent curriculum, bounded main reader, optional right rail, and responsive drawer across subject home and lesson/surface routes, avoiding layout jumps between overview and lesson pages.
 - Readable center column plus optional desktop rail for headings, Concepts, Problems, and bounded Atlas AI entry.
 - Separate subject home, tutorial, examples, exercises, quiz, reference index, and reference detail surfaces.
 - Atlas-native editor cycle with edit, reset, copy, output, and Playground actions. Existing QuickJS is reused for supported JavaScript only; unsupported runtimes are labeled unavailable.
@@ -48,9 +50,9 @@ The authored batch contains 7 reusable examples (2 QuickJS-runnable JavaScript e
 
 ## Route and UX changes
 
-`/learn` is now a dense grouped knowledge catalog with search, Continue Learning, Popular, Programming Languages, Web Development, Data & Databases, Data Science, AI & Machine Learning, Computer Science, Developer Tools, References, Playground, and the preserved Guided Learning mode. Subject pages disclose total versus authored curriculum and expose every learning surface. The migration table is documented in `docs/atlas-v2/learn-route-migration.md`.
+`/learn` now leads with a compact horizontal subject bar, followed by search, Continue Learning, a reduced grouped catalog, and the preserved Guided Learning mode. Subject pages disclose total versus authored curriculum and expose every learning surface without duplicating the complete lesson list in the center. The persistent left curriculum is visible immediately on subject homes and remains in place through lessons and other subject surfaces. The migration table is documented in `docs/atlas-v2/learn-route-migration.md`.
 
-Wide layouts use a 264px curriculum, bounded reader, and 224px rail rather than stretching prose. The rail collapses at laptop widths; the curriculum becomes a drawer below 900px; the article and example controls become full-width on mobile. Styling uses existing semantic tokens, restrained dividers, dense rows/tables, and Atlas typography rather than W3Schools branding.
+Wide layouts use a 264px curriculum, bounded reader, and 224px rail rather than stretching prose. The subject bar and curriculum use coordinated sticky offsets below the Atlas header. The rail collapses at laptop widths; the curriculum becomes a focus-managed drawer below 900px; the subject bar remains horizontally scrollable; and article/example controls become full-width on mobile. Styling uses existing semantic tokens, restrained dividers, dense rows/tables, and Atlas typography rather than W3Schools branding.
 
 ## Validation and tests
 

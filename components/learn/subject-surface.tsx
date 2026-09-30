@@ -4,9 +4,9 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useAtlas } from "@/components/atlas-provider";
-import { Breadcrumbs } from "@/components/breadcrumbs";
 import { useI18n } from "@/components/locale-provider";
 import { ExampleRunner } from "@/components/learn/example-runner";
+import { LearnSubjectWorkspace } from "@/components/learn/learn-subject-workspace";
 import { learnExamples, learnQuizQuestionById, learnReferenceById } from "@/content/learn/lesson-content";
 import { learnLessonById } from "@/content/learn/registry";
 import { exerciseById } from "@/content/exercises";
@@ -18,7 +18,10 @@ export function SubjectSurface({ subject, surface }: { subject: SubjectManifest;
   const { locale } = useI18n();
   const [query, setQuery] = useState("");
   const title = surface[0].toLocaleUpperCase() + surface.slice(1);
-  return <div className="page learn-surface-page"><Breadcrumbs items={[{ label: "Learn", href: "/learn" }, { label: subject.title[locale], href: `/learn/${subject.slug}` }, { label: title }]} /><header className="page-header"><div><p className="kicker">{subject.title[locale]} · {surface}</p><h1>{subject.title[locale]} {title}</h1><p className="lede">{surface === "reference" ? "Compact lookup records are separate from the teaching sequence." : surface === "exercises" ? "Practice is grouped by curriculum chapter and resolves to canonical Atlas Exercise records." : surface === "quiz" ? "Original section checks feed the existing local learning evidence system." : "Reusable authored examples connect back to lessons and canonical Concepts."}</p></div><Link className="button-secondary" href={`/learn/${subject.slug}`}>Subject home</Link></header><label className="learn-surface-search"><Search size={16} /><span className="sr-only">Search</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={`Search ${surface}...`} /></label>{surface === "exercises" && <ExerciseSurface subject={subject} query={query} />}{surface === "examples" && <ExampleSurface subject={subject} query={query} />}{surface === "quiz" && <QuizSurface subject={subject} />}{surface === "reference" && <ReferenceSurface subject={subject} query={query} />}</div>;
+  return <LearnSubjectWorkspace subject={subject} activeView={surface}>
+    <nav className="learn-breadcrumb" aria-label="Breadcrumb"><Link href="/learn">Learn</Link><span>/</span><Link href={`/learn/${subject.slug}`}>{subject.title[locale]}</Link><span>/</span><span aria-current="page">{title}</span></nav>
+    <div className="learn-surface-page"><header className="page-header"><div><p className="kicker">{subject.title[locale]} · {surface}</p><h1>{subject.title[locale]} {title}</h1><p className="lede">{surface === "reference" ? "Compact lookup records are separate from the teaching sequence." : surface === "exercises" ? "Practice is grouped by curriculum chapter and resolves to canonical Atlas Exercise records." : surface === "quiz" ? "Original section checks feed the existing local learning evidence system." : "Reusable authored examples connect back to lessons and canonical Concepts."}</p></div><Link className="button-secondary" href={`/learn/${subject.slug}`}>Subject home</Link></header><label className="learn-surface-search"><Search size={16} /><span className="sr-only">Search</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={`Search ${surface}...`} /></label>{surface === "exercises" && <ExerciseSurface subject={subject} query={query} />}{surface === "examples" && <ExampleSurface subject={subject} query={query} />}{surface === "quiz" && <QuizSurface subject={subject} />}{surface === "reference" && <ReferenceSurface subject={subject} query={query} />}</div>
+  </LearnSubjectWorkspace>;
 }
 
 function ExerciseSurface({ subject, query }: { subject: SubjectManifest; query: string }) {

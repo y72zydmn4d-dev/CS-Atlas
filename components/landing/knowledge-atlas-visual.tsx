@@ -49,15 +49,15 @@ export function KnowledgeAtlasVisual({ projection }: { projection: LandingProjec
                 const route = edge.routes[layout];
                 if (!source || !target || !sourceNode || !targetNode || !route) return null;
                 const measurement = measurements[layout];
-                const box = (item: typeof sourceNode, point: typeof source) => landingBox(point,measurement?.sizes[item.id] ?? [layout === "wide" ? item.rank === "anchor" ? 164 : 148 : layout === "compact" ? 140 : 128,layout === "wide" && item.rank === "anchor" ? 72 : 64],measurement?.viewport ?? [width,height],[width,height]);
+                const box = (item: typeof sourceNode, point: typeof source) => landingBox(point,measurement?.sizes[item.id] ?? [layout === "wide" ? item.focal ? 180 : item.rank === "anchor" ? 164 : 148 : layout === "compact" ? 140 : 128,layout === "wide" ? item.focal ? 88 : item.rank === "anchor" ? 72 : 64 : 64],measurement?.viewport ?? [width,height],[width,height]);
                 const incident = edge.source === active || edge.target === active;
-                return <path key={edge.id} d={landingCurvePath(landingCurves(box(sourceNode,source),box(targetNode,target),route,edge.type === "PREREQUISITE_OF"))} className={`knowledge-edge ${edge.type === "RELATED_TO" ? "related" : ""} ${active ? incident ? "incident" : "dimmed" : ""}`} markerEnd={edge.type === "PREREQUISITE_OF" ? `url(#${instanceId}-${layout})` : undefined} />;
+                return <path key={edge.id} d={landingCurvePath(landingCurves(box(sourceNode,source),box(targetNode,target),route,edge.type === "PREREQUISITE_OF"))} className={`knowledge-edge ${sourceNode.focal || targetNode.focal ? "focal" : ""} ${edge.type === "RELATED_TO" ? "related" : ""} ${active ? incident ? "incident" : "dimmed" : ""}`} markerEnd={edge.type === "PREREQUISITE_OF" ? `url(#${instanceId}-${layout})` : undefined} />;
               })}
             </svg>
             {nodes.map((item) => {
               const point = item[layout];
               if (!point) return null;
-              return <span key={item.id} data-concept={item.id} className={`knowledge-node rank-${item.rank} ${active === item.id ? "active" : active && neighbors.has(item.id) ? "neighbor" : active ? "unrelated" : ""}`} style={{ left:`${point[0]/width*100}%`, top:`${point[1]/height*100}%` }} onPointerEnter={() => setHovered(item.id)} onPointerLeave={() => setHovered(null)} onClick={() => select(item.id,false)}><i /><span>{item.name[locale]}</span></span>;
+              return <span key={item.id} data-concept={item.id} className={`knowledge-node rank-${item.rank} ${item.focal ? "focal" : ""} ${active === item.id ? "active" : active && neighbors.has(item.id) ? "neighbor" : active ? "unrelated" : ""}`} style={{ left:`${point[0]/width*100}%`, top:`${point[1]/height*100}%` }} onPointerEnter={() => setHovered(item.id)} onPointerLeave={() => setHovered(null)} onClick={() => select(item.id,false)}><i /><span>{item.name[locale]}</span></span>;
             })}
           </div>;
         })}

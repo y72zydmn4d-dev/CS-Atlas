@@ -4,16 +4,22 @@ import { landingDimensions, type LandingLayout } from "@/lib/concepts/landing-pr
 import { landingBox, landingCurves, landingCurvePath, type LandingPoint } from "@/lib/concepts/landing-geometry";
 
 describe("landing relationship geometry", () => {
-  for (const [layout,actualWidth] of [["wide",880],["wide",848],["wide",768],["compact",552],["tablet",440]] as const) {
+  // Existing laptop/tablet stages plus expanded desktop and conservative pre-measurement boxes.
+  for (const [layout,actualWidth,actualHeight,focal] of [
+    ["wide",880,360,false],["wide",848,360,false],["wide",768,360,false],
+    ["compact",552,280,false],["tablet",440,232,false],
+    ["wide",880,414,true],["wide",1008,414,true],["wide",1008,450,true],["wide",768,360,true],
+  ] as const) {
     for (const envelope of ["reserved","short","mixed"] as const) {
-      it(`keeps ${layout}/${actualWidth}/${envelope} curves clear of label rectangles`, () => {
+      it(`keeps ${layout}/${actualWidth}×${actualHeight}/${focal ? "focal" : "normal"}/${envelope} curves clear of label rectangles`, () => {
         const reference = landingDimensions[layout];
         const nodes = knowledgePreview.nodes.flatMap((node) => {
           const point = node[layout];
           if (!point) return [];
           const tall = envelope === "reserved" || envelope === "mixed" && node.id === "topic:ml-fundamentals";
-          const size: LandingPoint = [layout === "wide" ? node.rank === "anchor" ? 164 : 148 : layout === "compact" ? 140 : 128,tall ? layout === "wide" && node.rank === "anchor" ? 72 : 64 : node.rank === "anchor" ? 56 : 48];
-          return [{ id:node.id, box:landingBox(point,size,[actualWidth,reference[1]],reference) }];
+          const isFocal = focal && node.focal;
+          const size: LandingPoint = [isFocal ? 180 : layout === "wide" ? node.rank === "anchor" ? 164 : 148 : layout === "compact" ? 140 : 128,tall ? isFocal ? 88 : layout === "wide" && node.rank === "anchor" ? 72 : 64 : isFocal ? 64 : node.rank === "anchor" ? 56 : 48];
+          return [{ id:node.id, box:landingBox(point,size,[actualWidth,actualHeight],reference) }];
         });
         for (const relation of knowledgePreview.relations) {
           const source = nodes.find((node) => node.id === relation.source);
@@ -30,7 +36,7 @@ describe("landing relationship geometry", () => {
             expect(point[1]).toBeGreaterThanOrEqual(12);
             expect(point[1]).toBeLessThanOrEqual(reference[1]-12);
             for (const {id,box} of nodes) {
-              const intersects = Math.abs(point[0]-box.center[0]) < box.width/2+5*(box.scale?.[0] ?? 1) && Math.abs(point[1]-box.center[1]) < box.height/2+5;
+              const intersects = Math.abs(point[0]-box.center[0]) < box.width/2+5*(box.scale?.[0] ?? 1) && Math.abs(point[1]-box.center[1]) < box.height/2+5*(box.scale?.[1] ?? 1);
               expect(intersects,`${relation.source}→${relation.target} crosses ${id} at ${point}`).toBe(false);
             }
           }

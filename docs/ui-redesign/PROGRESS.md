@@ -10,15 +10,17 @@ COMPLETED:
 - Read Task3/4 contract and current CSS, graph projection/geometry, shell and QA. Human review authorizes only seven targeted composition refinements; historical documents remain unchanged.
 - Safe browser discovery returned no apps/browsers (native pipe startup failed). No rendered verification claimed; use source/automated geometry checks and record exact manual sign-off matrix.
 
-FILES CHANGED: app/landing.css; this checkpoint.
+FILES CHANGED: A app/landing.css/checkpoint. B also components/landing/knowledge-atlas-visual.tsx, content/landing/knowledge-preview.ts, lib/concepts/landing-projection.ts and tests/landing-geometry.test.ts.
 
-VALIDATION: MilestoneA typecheck/lint pass; diff reviewed. Changes limited to≥1440px; existing1280/1024/tablet/mobile overrides retain their geometry.
+VALIDATION: MilestoneA typecheck/lint pass; committed61613a4. B final typecheck/lint and51 files/285 tests pass. Initial expanded tests exposed Python→ML fallback corner clearance; a smooth-join trial exposed Recursion clearance. Final refinement passes all28 geometry checks at old and expanded stages, including conservative1280 fallback. No assertions/budgets weakened. Diff whitespace check passes.
 
 KNOWN ISSUES: Rendered wide-desktop balance, label/path bounds and responsive/theme/accessibility sign-off cannot be verified with current browser tools. Preserve no-auth/local-first behavior and existing graph interactions.
 
 COMPOSITION DECISIONS: ≥1440 frame cap1600 instead1440, panel416 instead400, gap48 instead64, shared headline baseline retained. Headlines64px/68px at1440/1600 versus56/60 (+13–14%). Graph clamp400px/46svh/450px:414 at900h (+15%),450 at1080h (+25%); short desktop≤719h retains360. At1600 graph column1008 versus848 (+19%);1440 remains880. No transform scaling, new content, stretched panel or additional glow. Main top40px instead32; graph itself uses extra height rather than an empty min-height spacer.
 
-EXACT NEXT ACTION: Commit coherentA locally, thenB: strengthen only Programming Fundamentals and Machine Learning Fundamentals on wide desktop; preserve12 concepts/13 relations and coordinates/state. Add measured-size geometry regression fixtures for new stage sizes, refine existing edge depth classes, validate typecheck/lint/tests.
+B DECISIONS: Only Programming Fundamentals and Machine Learning Fundamentals are focal; landing-authored optional focal flag travels in existing server projection, not client ID literals/full registry. Wide≥1440/height≥720 uses180px label boxes,18px650 labels,12px cores. Others retain Task4 sizes. Conservative180×88px fallback for those two avoids initial edge-through-label; one existing ResizeObserver still owns real sizes. Resting background/direct-focal/active edge opacity .65/.9/1 (related .45/.75/1), preserving dashes/arrows and active/dimmed specificity. Python→ML only: controls406,116; join560,124;608,126.5;646,168 (near-collinear join tangents), avoiding Recursion and larger focal box. No canonical or node coordinate changes.
+
+EXACT NEXT ACTION: Commit B locally. C then adds only link hover/focus wells/directional affordance and tighter wide caption/main-to-band spacing. No new sections/mobile architecture; validate and persist before local commit.
 
 ## Task 4 retained implementation record
 

@@ -8,6 +8,7 @@ type PreviewRelationType = "PREREQUISITE_OF" | "RELATED_TO";
 export interface LandingNodeLayout {
   id: string;
   rank: "anchor" | "bridge" | "supporting";
+  focal?: true;
   wide: Point;
   compact?: Point;
   tablet?: Point;

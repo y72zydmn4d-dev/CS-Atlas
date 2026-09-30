@@ -6,10 +6,10 @@ function route(sourceSide: LandingSide, targetSide: LandingSide, ...controls: La
 // Editorial coordinates and canonical selectors only; never duplicate Concept metadata.
 export const knowledgePreview: LandingPresentation = {
   nodes: [
-    { id: "topic:programming-fundamentals", rank: "anchor", wide: [100,48], compact: [86,44] },
+    { id: "topic:programming-fundamentals", rank: "anchor", focal: true, wide: [100,48], compact: [86,44] },
     { id: "topic:complexity-analysis", rank: "supporting", wide: [296,44], compact: [280,44] },
     { id: "topic:arrays", rank: "supporting", wide: [478,76] },
-    { id: "topic:ml-fundamentals", rank: "anchor", wide: [690,80], compact: [468,52], tablet: [220,44] },
+    { id: "topic:ml-fundamentals", rank: "anchor", focal: true, wide: [690,80], compact: [468,52], tablet: [220,44] },
     { id: "topic:python", rank: "anchor", wide: [104,162], compact: [86,138], tablet: [76,48] },
     { id: "topic:recursion", rank: "supporting", wide: [280,156] },
     { id: "topic:dynamic-programming", rank: "bridge", wide: [464,200] },
@@ -25,7 +25,7 @@ export const knowledgePreview: LandingPresentation = {
     { source: "topic:complexity-analysis", target: "topic:arrays", type: "PREREQUISITE_OF", routes: { wide: route("right","left",[388,44],[390,76]) } },
     { source: "topic:complexity-analysis", target: "topic:dynamic-programming", type: "PREREQUISITE_OF", routes: { wide: route("bottom","top",[296,106],[464,132]) } },
     { source: "topic:recursion", target: "topic:dynamic-programming", type: "PREREQUISITE_OF", routes: { wide: route("right","left",[378,156],[363,200]) } },
-    { source: "topic:python", target: "topic:ml-fundamentals", type: "PREREQUISITE_OF", routes: { wide: route("top","bottom",[104,106],[406,118],[560,118],[608,118],[646,142]), compact: route("top","bottom",[86,94],[368,90]), tablet: route("bottom","bottom",[76,112],[220,112]) } },
+    { source: "topic:python", target: "topic:ml-fundamentals", type: "PREREQUISITE_OF", routes: { wide: route("top","bottom",[104,106],[406,116],[560,124],[608,126.5],[646,168]), compact: route("top","bottom",[86,94],[368,90]), tablet: route("bottom","bottom",[76,112],[220,112]) } },
     { source: "topic:ml-fundamentals", target: "topic:neural-networks", type: "PREREQUISITE_OF", routes: { wide: route("bottom","top",[666,136],[666,154]), compact: route("bottom","top",[452,98],[452,102]), tablet: route("bottom","bottom",[220,104],[364,122]) } },
     { source: "topic:linear-algebra", target: "topic:neural-networks", type: "PREREQUISITE_OF", routes: { wide: route("top","left",[164,214],[352,196],[380,236],[408,276],[552,268]), compact: route("right","left",[184,200],[184,168]), tablet: route("top","bottom",[76,120],[364,130]) } },
     { source: "topic:linear-algebra", target: "topic:optimization", type: "PREREQUISITE_OF", routes: { wide: route("bottom","left",[196,346],[324,346]), compact: route("right","left",[178,264],[190,264]), tablet: route("top","top",[76,118],[220,120]) } },

@@ -74,10 +74,12 @@
 .knowledge-node.active i,.knowledge-node.neighbor i { background:var(--landing-relationship); box-shadow:0 0 0 3px color-mix(in srgb,var(--landing-relationship) 25%,transparent); }
 .knowledge-node.unrelated { color:var(--muted); }
 .knowledge-node.unrelated i { opacity:.65; box-shadow:none; }
-.knowledge-edge { stroke:var(--landing-graph-edge); stroke-width:1.25; fill:none; opacity:.8; vector-effect:non-scaling-stroke; transition:opacity 180ms var(--ease-standard),stroke 180ms var(--ease-standard); }
-.knowledge-edge.related { stroke-width:1; stroke-dasharray:3 5; opacity:.6; }
-.knowledge-edge.incident { stroke:var(--landing-relationship); stroke-width:1.75; opacity:1; }
-.knowledge-edge.dimmed { stroke-width:1; opacity:.25; }
+.knowledge-edge { stroke:var(--landing-graph-edge); stroke-width:1.25; fill:none; opacity:.65; vector-effect:non-scaling-stroke; transition:opacity 180ms var(--ease-standard),stroke 180ms var(--ease-standard); }
+.knowledge-edge.related { stroke-width:1; stroke-dasharray:3 5; opacity:.45; }
+.knowledge-edge.focal { stroke-width:1.4; opacity:.9; }
+.knowledge-edge.related.focal { stroke-width:1.1; opacity:.75; }
+.knowledge-edge.incident,.knowledge-edge.related.incident { stroke:var(--landing-relationship); stroke-width:1.75; opacity:1; }
+.knowledge-edge.dimmed,.knowledge-edge.related.dimmed { stroke-width:1; opacity:.25; }
 .knowledge-caption { min-height:72px; display:flex; align-items:start; gap:16px; justify-content:space-between; font-size:13px; padding-top:12px; color:var(--muted); }
 .knowledge-caption p { margin:0; max-width:42ch; }
 .knowledge-caption strong,.knowledge-caption p span { display:block; }
@@ -130,6 +132,10 @@
   .knowledge-graphic { height:clamp(400px,46svh,450px); }
 }
 @media (min-width:1600px) { .landing-hero h1 { font-size:68px; } }
+@media (min-width:1440px) and (min-height:720px) {
+  .knowledge-wide .knowledge-node.focal { width:180px; min-height:64px; font-size:18px; font-weight:650; }
+  .knowledge-wide .knowledge-node.focal i { width:12px; height:12px; flex-basis:12px; }
+}
 @media (min-width:1440px) and (max-height:719px) { .knowledge-graphic { height:360px; } }
 @media (min-width:1280px) and (max-width:1439px) { .landing-frame { padding-inline:40px; } .landing-main { grid-template-columns:minmax(0,1fr) 384px; column-gap:48px; } .landing-hero h1 { font-size:48px; } }
 @media (min-width:1024px) and (max-width:1279px) { .landing-frame { padding-inline:40px; } .landing-main { grid-template-columns:minmax(0,1fr) 360px; column-gap:32px; padding-top:28px; } .landing-hero h1 { font-size:44px; } .landing-support { font-size:16px; line-height:1.6; } .landing-auth { padding:24px; } }

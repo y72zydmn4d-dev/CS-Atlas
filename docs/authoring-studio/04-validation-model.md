@@ -2,7 +2,7 @@
 
 ## Implemented contract
 
-Canonical files remain read-only. No Preview, Save, creation, writer, migration or curriculum mutation. POST `/api/studio/validation` is a **read-only computation** accepting an unsaved draft, not a mutation operation. No file target, client validation result or executable source is accepted.
+Canonical files remain read-only. D introduced no Preview, Save, creation, writer, migration or curriculum mutation. E now adds unsaved shared-renderer preview; see [05](05-preview-architecture.md). POST `/api/studio/validation` is a **read-only computation** accepting an unsaved draft, not a mutation operation. No file target, client validation result or executable source is accepted.
 
 Pure `lib/domain/learn-validation/` owns unknown-input parsing, structured diagnostics and per-lesson canonical rules. The existing `validateLearnPlatform` build facade reuses the same parser/rules for every manifest/body pair; its broader subject/group/alias checks remain intact. Studio loads request-scoped canonical metadata/registry membership and validates one candidate. No competing Studio rule table or client-authoritative verdict.
 
@@ -44,7 +44,7 @@ Module snapshots remain trusted Next dev imports; request context is rebuilt and
 
 ## Future gates
 
-E may use `renderable` plus authoritative validation and must reuse the real learner renderer without evidence side effects. F/G MUST revalidate the exact current draft against fresh canonical state under the write lock, reject all ERRORs and stale revisions, and validate the resulting graph/write plan. Never trust a browser-provided report/hash/valid:true. Writer path/atomicity/security guarantees are not implemented here.
+E uses `renderable` plus exact authoritative validation and the real learner renderer without evidence side effects. Shared `renderability.ts` permits only six safe presence/completeness ERROR codes: COMPLETE_MISSING_BODY, COMPLETE_MISSING_SUBSTANCE, COMPLETE_MISSING_OBJECTIVES, COMPLETE_SUMMARY_EMPTY, COMPLETE_REVIEW_DATE_EMPTY and BLOCK_CONTENT_EMPTY. Typed empty content can render honestly. Every other ERROR fails closed; unresolved records are never silently omitted. Warnings/Info remain previewable. All ERRORs still block `canPersistInFuture`; no build/integrity/status rule or severity is weakened. F/G MUST revalidate the exact current draft against fresh canonical state under the write lock, reject all ERRORs and stale revisions, and validate the resulting graph/write plan. Never trust a browser-provided report/hash/valid:true. Writer path/atomicity/security guarantees are not implemented here.
 
 ## Known boundaries
 

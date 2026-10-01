@@ -4,6 +4,7 @@ import { SubjectHome } from "@/components/learn/subject-home";
 import { SubjectSurface, type LearnSurface } from "@/components/learn/subject-surface";
 import { learnContentByLessonId } from "@/content/learn/lesson-content";
 import { learnLessonByRoute, learnSubjectBySlug, learnSubjects } from "@/content/learn/registry";
+import { readLessonRenderResources } from "@/lib/learn/render-resources.server";
 
 const surfaces = new Set<LearnSurface>(["exercises", "examples", "quiz", "reference"]);
 
@@ -31,5 +32,6 @@ export default async function LearnSubjectRoute({ params }: { params: Promise<{ 
   if (surfaces.has(page as LearnSurface)) return <SubjectSurface subject={subject} surface={page as LearnSurface} />;
   const lesson = learnLessonByRoute.get(`${subjectSlug}/${page}`);
   if (!lesson) notFound();
-  return <LessonWorkspace subject={subject} lesson={lesson} content={learnContentByLessonId.get(lesson.id)} />;
+  const content = learnContentByLessonId.get(lesson.id);
+  return <LessonWorkspace subject={subject} lesson={lesson} content={content} resources={readLessonRenderResources(content?.blocks ?? [])} />;
 }

@@ -121,13 +121,14 @@ describe("transient lesson editing", () => {
     expect(screen.getByText("Matches saved source")).toBeVisible();
   });
 
-  it("preserves canonical relationships until picker edits, without Save/preview actions", async () => {
+  it("preserves canonical relationships until picker edits, without persistence actions", async () => {
     await renderEditor("dsa", "learn:dsa:arrays");
     const details = screen.getByText("Saved identity and relationships (read-only)");
     fireEvent.click(details);
     expect(screen.getAllByText("exercise:array-linear-scan").length).toBeGreaterThan(0);
     expect(screen.getByRole("combobox", { name: "Search Concept IDs" })).toBeVisible();
-    expect(screen.queryByRole("button", { name: /save|create|preview/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /save|create/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Preview" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Validate" })).toBeVisible();
     const choices = within(screen.getByLabelText("Block type")).getAllByRole("option").map((option) => option.textContent);
     expect(choices).toHaveLength(16);
@@ -189,13 +190,13 @@ describe("dirty draft protection", () => {
     expect(screen.queryByRole("combobox", { name: "Search Record for new block" })).not.toBeInTheDocument();
   });
 
-  it.each(["lesson", "subject", "overview", "home", "learner"])("guards %s navigation with Cancel and Discard, no Save", async (destination) => {
+  it.each(["lesson", "subject", "overview", "home"])("guards %s navigation with Cancel and Discard, no Save", async (destination) => {
     await renderEditor();
     fireEvent.change(screen.getByLabelText("Lesson title (EN)"), { target: { value: "Dirty title" } });
     const link = destination === "subject" ? screen.getByRole("link", { name: /Python PARTIAL/ })
       : destination === "lesson" ? within(screen.getByRole("navigation", { name: "Curriculum explorer" })).getByRole("link", { name: /Classes SKELETON/ })
       : destination === "overview" ? screen.getByRole("link", { name: "CS Atlas Content Studio" })
-      : destination === "home" ? screen.getByRole("link", { name: "Home →" }) : screen.getByRole("link", { name: "Open learner lesson →" });
+      : screen.getByRole("link", { name: "Home →" });
     const href = link.getAttribute("href");
     const event = new MouseEvent("click", { bubbles: true, cancelable: true, button: 0 });
     fireEvent(link, event);
@@ -212,6 +213,15 @@ describe("dirty draft protection", () => {
     expect(navigateStudioDocument).toHaveBeenCalledExactlyOnceWith(href);
     expect(screen.getByText("Matches saved source")).toBeVisible();
     expect(screen.getByLabelText("Lesson title (EN)")).toHaveValue("Interfaces");
+  });
+
+  it("opens the persisted canonical lesson separately without discarding the active draft", async () => {
+    await renderEditor();
+    fireEvent.change(screen.getByLabelText("Lesson title (EN)"), { target: { value: "Dirty title" } });
+    const link = screen.getByRole("link", { name: /Open current canonical lesson/ });
+    expect(link).toHaveAttribute("target", "_blank"); expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    expect(screen.getByLabelText("Lesson title (EN)")).toHaveValue("Dirty title");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument(); expect(navigateStudioDocument).not.toHaveBeenCalled();
   });
 
   it("confirms Reset, preserves content on Cancel, restores clean baseline on acceptance", async () => {

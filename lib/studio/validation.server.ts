@@ -6,10 +6,12 @@ import { readStudioLessonBody, readStudioManifests } from "@/lib/studio/content-
 import { validateCanonicalLesson } from "@/lib/domain/learn-validation";
 import { boundedIssues, type ValidationReport } from "@/lib/domain/learn-validation/types";
 import { draftFingerprint } from "@/lib/studio/draft";
+import { canRenderLesson } from "@/lib/domain/learn-validation/renderability";
+import type { LessonCandidate, LessonValidationContext } from "@/lib/domain/learn-validation/types";
 
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
 /** Server-authoritative, single-draft computation. No filesystem writer exists. */
-export async function validateStudioLessonDraft(subjectId: string, lessonId: string, input: unknown): Promise<ValidationReport | null> {
+export async function validateStudioLessonCandidate(subjectId: string, lessonId: string, input: unknown): Promise<{ report: ValidationReport; candidate: LessonCandidate | null; context: LessonValidationContext } | null> {
   requireStudioEnabled();
   if (!isStudioSubjectId(subjectId) || !isStudioLessonId(lessonId)) return null;
   const subjects = await readStudioManifests();
@@ -28,10 +30,16 @@ export async function validateStudioLessonDraft(subjectId: string, lessonId: str
   const issues = boundedIssues(result.issues);
   const counts = { ERROR: 0, WARNING: 0, INFO: 0 };
   for (const issue of issues) counts[issue.severity]++;
-  return {
+  const report: ValidationReport = {
     version: 1, status: counts.ERROR ? "invalid" : counts.WARNING ? "review" : "valid", hasErrors: counts.ERROR > 0,
-    canPersistInFuture: counts.ERROR === 0, renderable: Boolean(result.candidate && counts.ERROR === 0), counts, issues,
+    canPersistInFuture: counts.ERROR === 0, renderable: canRenderLesson(result.candidate, issues), counts, issues,
     subjectId, lessonId, draftFingerprint: result.candidate ? sha(draftFingerprint(result.candidate)) : null,
     contextFingerprint: sha(JSON.stringify([subjects, body, [...context.conceptIds], [...context.exerciseIds], [...context.problemIds], learnExamples, learnReferences])),
   };
+  return { report, candidate: result.candidate, context };
+}
+
+/** Public report-only operation retains D's narrow contract. No registry/context returned. */
+export async function validateStudioLessonDraft(subjectId: string, lessonId: string, input: unknown): Promise<ValidationReport | null> {
+  return (await validateStudioLessonCandidate(subjectId, lessonId, input))?.report ?? null;
 }

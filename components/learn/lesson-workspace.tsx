@@ -7,11 +7,12 @@ import { useAtlas } from "@/components/atlas-provider";
 import { BookmarkButton } from "@/components/content-actions";
 import { useI18n } from "@/components/locale-provider";
 import { LearnSubjectWorkspace } from "@/components/learn/learn-subject-workspace";
-import { LessonBlockRenderer } from "@/components/learn/lesson-block-renderer";
+import { LessonContentSurface } from "@/components/learn/lesson-content-surface";
 import type { LearnLessonContent, LessonManifest, SubjectManifest } from "@/lib/domain/learn-platform";
 import { flattenSubjectLessons } from "@/lib/domain/learn-platform";
+import type { LessonRenderResources } from "@/lib/domain/learn-rendering";
 
-export function LessonWorkspace({ subject, lesson, content }: { subject: SubjectManifest; lesson: LessonManifest; content?: LearnLessonContent }) {
+export function LessonWorkspace({ subject, lesson, content, resources }: { subject: SubjectManifest; lesson: LessonManifest; content?: LearnLessonContent; resources: LessonRenderResources }) {
   const { locale } = useI18n();
   const atlas = useAtlas();
   const lessons = useMemo(() => flattenSubjectLessons(subject), [subject]);
@@ -42,12 +43,11 @@ export function LessonWorkspace({ subject, lesson, content }: { subject: Subject
 
   return <LearnSubjectWorkspace subject={subject} activeLessonId={lesson.id} rightRail={rightRail}>
     <nav className="learn-breadcrumb" aria-label="Breadcrumb"><Link href="/learn">Learn</Link><span>/</span><Link href={`/learn/${subject.slug}`}>{subject.title[locale]}</Link><span>/</span><span aria-current="page">{lesson.title[locale]}</span></nav>
-    <article className="learn-lesson-article">
-      <header className="learn-lesson-header"><p className="learn-section-label">{subject.title[locale]} · {subject.sections.find((section) => section.id === lesson.sectionId)?.title[locale]}</p><h1>{lesson.title[locale]}</h1><p>{content?.summary[locale] ?? lesson.description[locale]}</p><div className="doc-meta"><span className="chip">{lesson.difficulty}</span>{lesson.status !== "COMPLETE" && <span className={`chip learn-status status-${lesson.status.toLocaleLowerCase()}`}>{lesson.status}</span>}<span className="chip">≈ {lesson.estimatedMinutes} min</span></div><div className="learn-lesson-actions"><BookmarkButton bookmark={{ id: lesson.id, type: "lesson", title: lesson.title[locale], href: `/learn/${subject.slug}/${lesson.slug}`, context: subject.title[locale] }} /><button className="button-secondary" type="button" disabled={isCompleted} onClick={markComplete}>{isCompleted ? <CheckCircle2 size={15} /> : <Check size={15} />}{isCompleted ? locale === "vi" ? "Đã hoàn thành" : "Completed" : locale === "vi" ? "Đánh dấu hoàn thành" : "Mark complete"}</button></div></header>
-      <LessonPager previous={previous} next={next} subject={subject} locale={locale} />
-      {content ? <LessonBlockRenderer blocks={content.blocks} /> : <section className="learn-skeleton-note"><p className="learn-section-label">SKELETON</p><h2>{locale === "vi" ? "Bài học này chưa được biên soạn đầy đủ" : "This lesson is not fully authored yet"}</h2><p>{locale === "vi" ? "Mục này giữ vị trí và quan hệ trong chương trình, nhưng không giả vờ là nội dung hoàn chỉnh." : "This item preserves its curriculum position and relationships without pretending to be complete content."}</p>{lesson.conceptIds.map((conceptId) => <Link className="text-link" key={conceptId} href={`/concepts/${conceptId.replace(":", "-")}`}>Open canonical Concept <ArrowRight size={14} /></Link>)}</section>}
-      <LessonPager previous={previous} next={next} subject={subject} locale={locale} />
-    </article>
+    <LessonContentSurface lesson={lesson} content={content} resources={resources}
+      context={{ subject: { id: subject.id, slug: subject.slug, title: subject.title }, section: { id: lesson.sectionId, title: subject.sections.find((section) => section.id === lesson.sectionId)?.title ?? { en: "", vi: "" } } }}
+      actions={<><BookmarkButton bookmark={{ id: lesson.id, type: "lesson", title: lesson.title[locale], href: `/learn/${subject.slug}/${lesson.slug}`, context: subject.title[locale] }} /><button className="button-secondary" type="button" disabled={isCompleted} onClick={markComplete}>{isCompleted ? <CheckCircle2 size={15} /> : <Check size={15} />}{isCompleted ? locale === "vi" ? "Đã hoàn thành" : "Completed" : locale === "vi" ? "Đánh dấu hoàn thành" : "Mark complete"}</button></>}
+      pager={<LessonPager previous={previous} next={next} subject={subject} locale={locale} />}
+    />
   </LearnSubjectWorkspace>;
 }
 

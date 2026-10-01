@@ -40,3 +40,18 @@ export async function readValidationRequest(request: Request): Promise<{ value: 
   } catch { return { code: "invalid-json", status: 400 }; }
   finally { reader.releaseLock(); }
 }
+
+export interface StudioComputationBudget { windowStart: number; requestCount: number }
+/** Shared read-only draft envelope/security boundary; callers independently guard availability. */
+export async function readStudioDraftRequest(request: Request, budget: StudioComputationBudget): Promise<{ subjectId: string; lessonId: string; draft: unknown } | { code: string; status: number }> {
+  if (!isLocalStudioOrigin(request)) return { code: "origin-rejected", status: 403 };
+  if (new URL(request.url).search) return { code: "invalid-request", status: 400 };
+  const now = Date.now();
+  if (now - budget.windowStart >= 60_000) { budget.windowStart = now; budget.requestCount = 0; }
+  if (++budget.requestCount > 120) return { code: "rate-limited", status: 429 };
+  const parsed = await readValidationRequest(request);
+  if ("code" in parsed) return parsed;
+  const value = parsed.value;
+  if (!value || typeof value !== "object" || Array.isArray(value) || !("subjectId" in value) || typeof value.subjectId !== "string" || !("lessonId" in value) || typeof value.lessonId !== "string" || !("draft" in value) || Object.keys(value).some((key) => !["subjectId", "lessonId", "draft"].includes(key))) return { code: "invalid-request", status: 400 };
+  return { subjectId: value.subjectId, lessonId: value.lessonId, draft: value.draft };
+}

@@ -1,18 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Clipboard, Lightbulb, RotateCcw } from "lucide-react";
+import { Check, Lightbulb, RotateCcw } from "lucide-react";
 import type { ExerciseBlock } from "@/lib/types";
 import { useAtlas } from "@/components/atlas-provider";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/components/locale-provider";
 import { conceptIdForTopic } from "@/lib/domain/concepts";
+import { CopyCodeBlock } from "@/components/copy-code-block";
 
-export function CopyCodeBlock({ code, language }: { code: string; language: string }) {
-  const [copied, setCopied] = useState(false);
-  const { t } = useI18n();
-  return <div className="rich-code"><div className="rich-code-header"><span>{language}</span><button onClick={async () => { await navigator.clipboard.writeText(code); setCopied(true); window.setTimeout(() => setCopied(false), 1400); }} aria-label={t("actions.copy")}>{copied ? <Check size={14} /> : <Clipboard size={14} />}{copied ? t("actions.copied") : t("actions.copy")}</button></div><pre className="code-block"><code>{code}</code></pre></div>;
-}
+export { CopyCodeBlock } from "@/components/copy-code-block";
 
 export function ExercisePanel({ topicId, block }: { topicId: string; block: ExerciseBlock }) {
   const { exercises, setExerciseStatus, recordLearningEvent } = useAtlas();

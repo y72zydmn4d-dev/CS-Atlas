@@ -12,6 +12,9 @@ import { problems } from "@/content/problems";
 import { searchIndex } from "@/content";
 import { flattenSubjectLessons, validateLearnPlatform } from "@/lib/domain/learn-platform";
 import { storage } from "@/lib/storage";
+import { resolveLessonRenderResources } from "@/lib/domain/learn-rendering";
+
+const resourcesFor = (lessonId: string) => resolveLessonRenderResources(learnContentByLessonId.get(lessonId)?.blocks ?? [], { examples: new Map(learnExamples.map((item) => [item.id, item])), references: new Map(learnReferences.map((item) => [item.id, item])), lessons: learnLessonById });
 
 function Providers({ children }: { children: React.ReactNode }) {
   return <LocaleProvider><AtlasProvider>{children}</AtlasProvider></LocaleProvider>;
@@ -94,7 +97,7 @@ describe("Learn workspace behavior", () => {
     const subject = learnSubjectBySlug.get("python");
     const lesson = learnLessonByRoute.get("python/lists");
     if (!subject || !lesson) throw new Error("Missing Learn fixture");
-    render(<Providers><LessonWorkspace subject={subject} lesson={lesson} content={learnContentByLessonId.get(lesson.id)} /></Providers>);
+    render(<Providers><LessonWorkspace subject={subject} lesson={lesson} content={learnContentByLessonId.get(lesson.id)} resources={resourcesFor(lesson.id)} /></Providers>);
     await waitFor(() => expect(screen.getByRole("button", { name: "Collections" })).toHaveAttribute("aria-expanded", "true"));
     expect(screen.getByRole("button", { name: "Getting started" })).toHaveAttribute("aria-expanded", "false");
   });
@@ -104,7 +107,7 @@ describe("Learn workspace behavior", () => {
     const lesson = learnLessonByRoute.get("dsa/binary-search");
     if (!subject || !lesson) throw new Error("Missing Learn fixture");
     storage.saveLearnNavigation(subject.id, { scrollTop: 24, collapsedSectionIds: [subject.sections[0].id] });
-    const { container } = render(<Providers><LessonWorkspace subject={subject} lesson={lesson} content={learnContentByLessonId.get(lesson.id)} /></Providers>);
+    const { container } = render(<Providers><LessonWorkspace subject={subject} lesson={lesson} content={learnContentByLessonId.get(lesson.id)} resources={resourcesFor(lesson.id)} /></Providers>);
     await waitFor(() => expect(storage.loadLearningEvents().some((event) => event.type === "lesson-started" && event.target?.id === lesson.id)).toBe(true));
     expect(container.querySelector('a[aria-current="page"]')).toHaveTextContent("Binary Search");
     const firstSectionButton = screen.getByRole("button", { name: subject.sections[0].title.en });
@@ -117,6 +120,9 @@ describe("Learn workspace behavior", () => {
     await waitFor(() => expect(drawerButton).toHaveFocus());
     fireEvent.click(screen.getByRole("button", { name: "Mark complete" }));
     await waitFor(() => expect(storage.loadLearningEvents().some((event) => event.type === "lesson-completed" && event.target?.id === lesson.id)).toBe(true));
+    fireEvent.click(screen.getByRole("button", { name: "Bookmark" }));
+    await waitFor(() => expect(storage.loadBookmarks().some((bookmark) => bookmark.id === lesson.id && bookmark.type === "lesson")).toBe(true));
+    expect(screen.getByRole("link", { name: "Ask Atlas AI" })).toHaveAttribute("href", `/assistant?concept=${encodeURIComponent(lesson.conceptIds[0])}`);
   });
 
   it("derives deterministic previous and next order from manifest sections", () => {

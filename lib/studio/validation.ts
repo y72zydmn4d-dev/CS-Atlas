@@ -1,5 +1,6 @@
 import type { AuthoringLessonDraft } from "@/lib/studio/draft";
 import { validationLimits, type ValidationReport } from "@/lib/domain/learn-validation/types";
+import { hasRenderableIssues } from "@/lib/domain/learn-validation/renderability";
 
 export interface StudioValidationRequest { subjectId: string; lessonId: string; draft: AuthoringLessonDraft }
 const object = (value: unknown): value is Record<string, unknown> => Boolean(value && typeof value === "object" && !Array.isArray(value));
@@ -17,5 +18,5 @@ export function isValidationReport(value: unknown): value is ValidationReport {
   return Object.entries(counts).every(([key, count]) => object(value.counts) && value.counts[key] === count)
     && value.hasErrors === (counts.ERROR > 0) && value.canPersistInFuture === !value.hasErrors
     && value.status === (counts.ERROR ? "invalid" : counts.WARNING ? "review" : "valid")
-    && (!value.renderable || !value.hasErrors);
+    && (!value.renderable || (value.draftFingerprint !== null && hasRenderableIssues(value.issues)));
 }

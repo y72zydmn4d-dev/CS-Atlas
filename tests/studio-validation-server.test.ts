@@ -20,7 +20,7 @@ describe("authoritative Studio validation service", () => {
     const draft = validationDraft("learn:java:interfaces");
     expect(await validateStudioLessonDraft("java", draft.lesson.id, draft)).toMatchObject({ status: "valid", counts: { ERROR: 0, WARNING: 0, INFO: 0 } });
     draft.lesson.status = "COMPLETE";
-    expect(await validateStudioLessonDraft("java", draft.lesson.id, draft)).toMatchObject({ status: "invalid", canPersistInFuture: false, renderable: false });
+    expect(await validateStudioLessonDraft("java", draft.lesson.id, draft)).toMatchObject({ status: "invalid", canPersistInFuture: false, renderable: true }); // E: safe skeleton display, still cannot persist COMPLETE.
   });
   it.each(["id", "subjectId", "sectionId", "slug", "order", "contentSource"] as const)("prevents changing immutable existing %s", async (field) => {
     const draft = validationDraft();

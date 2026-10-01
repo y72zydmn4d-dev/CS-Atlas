@@ -5,6 +5,7 @@ import { useI18n } from "@/components/locale-provider";
 import { draftFingerprint, toCanonicalCandidate, type AuthoringLessonDraft } from "@/lib/studio/draft";
 import { requestStudioValidation } from "@/lib/studio/validation-client";
 import type { ValidationReport } from "@/lib/domain/learn-validation/types";
+import { ValidationIssues } from "@/components/studio/validation-issues";
 
 /** Report state is separate from the transient draft. Never a persistence ticket. */
 export function LessonValidation({ draft }: { draft: AuthoringLessonDraft }) {
@@ -45,14 +46,6 @@ export function LessonValidation({ draft }: { draft: AuthoringLessonDraft }) {
         <p>{t("studio.validationCounts", { errors: result.report.counts.ERROR, warnings: result.report.counts.WARNING, info: result.report.counts.INFO })}</p>
       </>}
     </div>
-    {result && <div className="studio-validation-issues" data-stale={stale}>
-      {(["ERROR", "WARNING", "INFO"] as const).map((severity) => result.report.counts[severity] > 0 && <section key={severity} aria-label={t(`studio.severity${severity}`)}>
-        <h4>{t(`studio.severity${severity}`)} · {result.report.counts[severity]}</h4>
-        <ul>{result.report.issues.filter((issue) => issue.severity === severity).map((issue, index) => <li key={`${issue.code}:${issue.path}:${index}`}>
-          <strong>{issue.code}</strong><p lang="en">{issue.message}</p><code>{issue.path}</code>
-          {issue.blockId && <span> · {issue.blockId}</span>}
-        </li>)}</ul>
-      </section>)}
-    </div>}
+    {result && <ValidationIssues report={result.report} stale={stale} />}
   </section>;
 }

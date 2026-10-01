@@ -7,16 +7,17 @@ import { LessonMetadataEditor } from "@/components/studio/lesson-metadata-editor
 import { LessonRelationshipsEditor } from "@/components/studio/lesson-relationships-editor";
 import { ContentBlockList } from "@/components/studio/content-block-list";
 import { useStudioDraft } from "@/components/studio/studio-draft-session";
-import { StudioLink } from "@/components/studio/studio-link";
 import { emptyDraftBody } from "@/lib/studio/draft";
 import { LessonValidation } from "@/components/studio/lesson-validation";
+import { LessonPreview } from "@/components/studio/lesson-preview";
 import type { Locale } from "@/lib/types";
 
 export function LessonEditor({ canonicalDetails, learnerHref }: { canonicalDetails: ReactNode; learnerHref?: string }) {
   const { locale, t } = useI18n();
   const { draft, dirty, resetToken, update, reset } = useStudioDraft();
   const [language, setLanguage] = useState<Locale>(locale);
-  return <section className="studio-panel studio-inspector studio-editor" aria-labelledby="studio-editor-title">
+  const [previewActive, setPreviewActive] = useState(false);
+  return <section className="studio-panel studio-inspector studio-editor" data-view={previewActive ? "preview" : "edit"} aria-labelledby="studio-editor-title">
     <header className="studio-panel-header">
       <div className="studio-editor-toolbar"><h2 id="studio-editor-title">{t("studio.editor")}</h2>
         {draft && <><span role="status" className="studio-dirty-status" data-dirty={dirty}>{t(dirty ? "studio.modifiedDraft" : "studio.savedSource")}</span>
@@ -24,7 +25,7 @@ export function LessonEditor({ canonicalDetails, learnerHref }: { canonicalDetai
       </div>
       {draft && <>
         <div className="studio-inspector-heading"><h3>{draft.lesson.title[language] || draft.lesson.title.en || draft.lesson.id}</h3>
-          {learnerHref && <StudioLink href={learnerHref} className="studio-text-link">{t("studio.openLearner")} →</StudioLink>}
+          {learnerHref && <a href={learnerHref} target="_blank" rel="noopener noreferrer" className="studio-text-link">{t("studio.openCanonical")} ↗</a>}
         </div>
         <div className="studio-language-tabs" role="group" aria-label={t("studio.authorLanguage")}>{(["en", "vi"] as const).map((value) =>
           <button key={value} type="button" aria-pressed={language === value} onClick={() => setLanguage(value)}>{value.toUpperCase()}</button>)}</div>
@@ -34,8 +35,9 @@ export function LessonEditor({ canonicalDetails, learnerHref }: { canonicalDetai
       <p className="studio-notice">{t("studio.transientNotice")}</p>
       {draft.lesson.translationStatus === "english-only" && <p className="studio-body-meta">{t("studio.englishOnly")}</p>}
       <details className="studio-canonical-details"><summary>{t("studio.identityDetails")}</summary>{canonicalDetails}</details>
-      <LessonValidation key={`${draft.lesson.id}:${resetToken}`} draft={draft} />
-      <form onSubmit={(event) => event.preventDefault()}>
+      <LessonValidation key={`validation:${draft.lesson.id}:${resetToken}`} draft={draft} />
+      <LessonPreview key={`preview:${draft.lesson.id}:${resetToken}`} draft={draft} language={language} dirty={dirty} active={previewActive} onActiveChange={setPreviewActive} />
+      <form hidden={previewActive} onSubmit={(event) => event.preventDefault()}>
         <LessonMetadataEditor lesson={draft.lesson} language={language} onChange={(lesson) => update({ ...draft, lesson })} />
         <LessonRelationshipsEditor key={`${draft.lesson.id}:${resetToken}`} lesson={draft.lesson} onChange={(lesson) => update({ ...draft, lesson })} />
         {!draft.content ? <div className="studio-editor-section"><h3>{t("studio.body")}</h3><p>{t("studio.noBody")}</p>

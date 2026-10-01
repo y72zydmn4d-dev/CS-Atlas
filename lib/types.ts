@@ -1,6 +1,8 @@
-export type Difficulty = "Foundational" | "Intermediate" | "Advanced";
+export const difficultyValues = ["Foundational", "Intermediate", "Advanced"] as const;
+export type Difficulty = (typeof difficultyValues)[number];
 export type Locale = "en" | "vi";
-export type TranslationStatus = "complete" | "partial" | "english-only";
+export const translationStatusValues = ["complete", "partial", "english-only"] as const;
+export type TranslationStatus = (typeof translationStatusValues)[number];
 export type ProgressStatus = "not-started" | "in-progress" | "completed";
 export type ExerciseStatus = "not-attempted" | "attempted" | "solved";
 export type ContentLevel = "Foundation" | "Developing" | "Detailed" | "Reference-quality";

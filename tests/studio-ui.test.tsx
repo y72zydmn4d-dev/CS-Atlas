@@ -23,7 +23,7 @@ describe("Studio read-only workspace", () => {
     expect(screen.getByRole("heading", { level: 1, name: "CS Atlas Content Studio" })).toBeVisible();
     expect(screen.getByText("428")).toBeVisible();
     expect(screen.getByText("419")).toBeVisible();
-    expect(screen.getByText(/Validation: not scanned/)).toBeVisible();
+    expect(screen.getByText(/Repository validation: not scanned/)).toBeVisible();
     expect(screen.getByText(/Select a subject/)).toBeVisible();
     expect(screen.getByText(/Select a lesson to load/)).toBeVisible();
     expect(screen.queryByRole("button", { name: /save|create|reorder|validate|preview/i })).not.toBeInTheDocument();

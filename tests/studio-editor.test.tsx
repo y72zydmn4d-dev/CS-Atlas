@@ -59,7 +59,7 @@ describe("transient lesson editing", () => {
     }
     expect(screen.getByLabelText("Estimated duration")).toHaveValue(21);
     expect(inspection).toEqual(before);
-    expect(screen.getByText(/not validated or published/)).toBeVisible();
+    expect(screen.getByText(/not published/)).toBeVisible();
   });
 
   it("creates a transient body and structurally adds, edits, reorders and removes objectives", async () => {
@@ -127,7 +127,8 @@ describe("transient lesson editing", () => {
     fireEvent.click(details);
     expect(screen.getAllByText("exercise:array-linear-scan").length).toBeGreaterThan(0);
     expect(screen.getByRole("combobox", { name: "Search Concept IDs" })).toBeVisible();
-    expect(screen.queryByRole("button", { name: /save|create|preview|validate/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /save|create|preview/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Validate" })).toBeVisible();
     const choices = within(screen.getByLabelText("Block type")).getAllByRole("option").map((option) => option.textContent);
     expect(choices).toHaveLength(16);
     expect(choices).toContain("exercise");

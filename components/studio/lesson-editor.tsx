@@ -9,6 +9,7 @@ import { ContentBlockList } from "@/components/studio/content-block-list";
 import { useStudioDraft } from "@/components/studio/studio-draft-session";
 import { StudioLink } from "@/components/studio/studio-link";
 import { emptyDraftBody } from "@/lib/studio/draft";
+import { LessonValidation } from "@/components/studio/lesson-validation";
 import type { Locale } from "@/lib/types";
 
 export function LessonEditor({ canonicalDetails, learnerHref }: { canonicalDetails: ReactNode; learnerHref?: string }) {
@@ -33,6 +34,7 @@ export function LessonEditor({ canonicalDetails, learnerHref }: { canonicalDetai
       <p className="studio-notice">{t("studio.transientNotice")}</p>
       {draft.lesson.translationStatus === "english-only" && <p className="studio-body-meta">{t("studio.englishOnly")}</p>}
       <details className="studio-canonical-details"><summary>{t("studio.identityDetails")}</summary>{canonicalDetails}</details>
+      <LessonValidation key={`${draft.lesson.id}:${resetToken}`} draft={draft} />
       <form onSubmit={(event) => event.preventDefault()}>
         <LessonMetadataEditor lesson={draft.lesson} language={language} onChange={(lesson) => update({ ...draft, lesson })} />
         <LessonRelationshipsEditor key={`${draft.lesson.id}:${resetToken}`} lesson={draft.lesson} onChange={(lesson) => update({ ...draft, lesson })} />

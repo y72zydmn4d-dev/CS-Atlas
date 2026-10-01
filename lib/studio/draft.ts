@@ -1,11 +1,9 @@
-import type { LearnLessonBlock, LearnLessonContent, LessonManifest } from "@/lib/domain/learn-platform";
+import type { LearnLessonBlock, LearnLessonContent } from "@/lib/domain/learn-platform";
+import type { LessonCandidate } from "@/lib/domain/learn-validation/types";
 import type { StudioLessonInspection } from "@/lib/studio/types";
 
 /** Transient composition of canonical records. Never a persisted Studio model. */
-export interface AuthoringLessonDraft {
-  lesson: LessonManifest;
-  content: LearnLessonContent | null;
-}
+export type AuthoringLessonDraft = LessonCandidate;
 
 export function toAuthoringDraft(source: Pick<StudioLessonInspection, "lesson" | "content">): AuthoringLessonDraft {
   return structuredClone({ lesson: source.lesson, content: source.content });

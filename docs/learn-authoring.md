@@ -4,9 +4,9 @@ CS-Atlas Learn is a projection over canonical Concepts, shared Exercises and Pro
 
 ## Studio drafts / manual authoring
 
-Milestones A/B/C add local `/studio` health/explorers and a **transient structured editor** for the selected canonical lesson. Run `AUTHORING_STUDIO_ENABLED=true npm run dev -- --hostname 127.0.0.1`; production remains unavailable. EN/VI metadata, objectives, all16 block types and canonical Concept/Exercise/Problem/LearnReference/Example/Lesson relationship pickers are editable. Only IDs enter the draft; bounded GET searches never mutate registries. Drafts never alter repository content. See [Studio workflow](authoring-studio/01-author-workflow.md) and [security boundary](authoring-studio/02-security-boundary.md).
+Milestones A/B/C/D add local `/studio` health/explorers and a **transient structured editor** for the selected canonical lesson. Run `AUTHORING_STUDIO_ENABLED=true npm run dev -- --hostname 127.0.0.1`; production remains unavailable. EN/VI metadata, objectives, all16 block types and canonical Concept/Exercise/Problem/LearnReference/Example/Lesson relationship pickers are editable. Only IDs enter the draft; bounded GET searches never mutate registries. Validate checks the selected unsaved draft server-side and reports codes/severity/field paths; edits stale the report. Drafts/validation never alter repository content. See [Studio workflow](authoring-studio/01-author-workflow.md) and [security boundary](authoring-studio/02-security-boundary.md).
 
-Studio cannot save/create/reorder canonical curriculum yet. Reset and dirty-navigation warnings protect transient edits; there is no autosave/draft persistence. Manual authoring below remains the only write workflow; current TypeScript sources have not migrated or gained a parallel model. COMPLETE counts remain declarations and Studio validation is not scanned. Future safe persistence follows the [file contract](authoring-studio/03-content-file-contract.md), never regex rewriting of source.
+Studio cannot save/create/reorder canonical curriculum yet. Reset and dirty-navigation warnings protect transient edits; there is no autosave/draft persistence. Manual authoring below remains the only write workflow; current TypeScript sources have not migrated or gained a parallel model. COMPLETE counts remain declarations and repository-wide Studio validation is not scanned; active-draft validation is available. Future safe persistence follows the [file contract](authoring-studio/03-content-file-contract.md), never regex rewriting of source.
 
 ## Add a subject
 
@@ -61,4 +61,4 @@ npm test
 npm run build
 ```
 
-`validateLearnPlatform` rejects duplicate IDs/routes/order, invalid slugs, missing Concepts, prerequisites, Exercises, Problems, References, quiz questions, content links, unsafe runtime declarations, and false `COMPLETE` claims. Add focused tests whenever a new block or runtime contract is introduced.
+The shared canonical parser/per-lesson rules used by both Studio and `validateLearnPlatform` reject malformed16 block variants, status/body policy violations, prerequisite cycles and invalid references. `validateLearnPlatform` additionally rejects duplicate IDs/routes/order, invalid slugs, missing Concepts, prerequisites, Exercises, Problems, References, quiz questions, content links, unsafe runtime declarations, and false `COMPLETE` claims. Add focused tests whenever a new block or runtime contract is introduced.

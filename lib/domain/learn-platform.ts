@@ -1,5 +1,7 @@
 import type { ConceptId, LocalizedConceptText } from "@/lib/domain/concepts";
 import type { Difficulty, TranslationStatus } from "@/lib/types";
+import { validateCanonicalLesson } from "@/lib/domain/learn-validation";
+import { learnSlugPattern } from "@/lib/domain/learn-validation/metadata";
 
 export const learnContentStatuses = ["PLANNED", "SKELETON", "PARTIAL", "COMPLETE"] as const;
 export type LearnContentStatus = (typeof learnContentStatuses)[number];
@@ -15,7 +17,9 @@ export const subjectCategories = [
 ] as const;
 export type SubjectCategory = (typeof subjectCategories)[number];
 
-export type LearnRuntime = "none" | "browser-quickjs" | "remote-judge";
+export const learnRuntimes = ["none", "browser-quickjs", "remote-judge"] as const;
+export type LearnRuntime = (typeof learnRuntimes)[number];
+export const learnCalloutTones = ["note", "tip", "important", "warning", "common-mistake"] as const;
 export type LearnJsonValue = null | boolean | number | string | LearnJsonValue[] | { [key: string]: LearnJsonValue };
 
 export interface LessonManifest {
@@ -101,7 +105,7 @@ export type LearnLessonBlock =
   | (BaseLearnBlock & { type: "code"; language: string; code: string; caption?: LocalizedConceptText })
   | (BaseLearnBlock & { type: "example"; exampleId: string })
   | (BaseLearnBlock & { type: "output"; output: string })
-  | (BaseLearnBlock & { type: "callout"; tone: "note" | "tip" | "important" | "warning" | "common-mistake"; body: LocalizedConceptText })
+  | (BaseLearnBlock & { type: "callout"; tone: (typeof learnCalloutTones)[number]; body: LocalizedConceptText })
   | (BaseLearnBlock & { type: "table"; columns: LocalizedConceptText[]; rows: string[][] })
   | (BaseLearnBlock & { type: "comparison"; columns: LocalizedConceptText[]; rows: Array<{ label: LocalizedConceptText; values: LocalizedConceptText[] }> })
   | (BaseLearnBlock & { type: "complexity"; time: string; space: string; body: LocalizedConceptText })
@@ -163,8 +167,6 @@ export function flattenSubjectLessons(subject: SubjectManifest) {
   return subject.sections.flatMap((section) => section.lessons);
 }
 
-const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-
 export function validateLearnPlatform(input: {
   subjects: SubjectManifest[];
   lessonContent: LearnLessonContent[];
@@ -186,7 +188,6 @@ export function validateLearnPlatform(input: {
   };
   const lessons = input.subjects.flatMap(flattenSubjectLessons);
   const lessonIds = new Set(lessons.map((lesson) => lesson.id));
-  const exampleIds = new Set(input.examples.map((item) => item.id));
   const referenceIds = new Set(input.references.map((item) => item.id));
   const questionIds = new Set(input.quizQuestions.map((item) => item.id));
   unique("subjects", input.subjects.map((item) => item.id));
@@ -194,13 +195,19 @@ export function validateLearnPlatform(input: {
   unique("lessons", lessons.map((item) => item.id));
   unique("lesson routes", lessons.map((item) => `${item.subjectId}/${item.slug}`));
   unique("lesson content", input.lessonContent.map((item) => item.lessonId));
-  unique("examples", [...exampleIds]);
-  unique("references", [...referenceIds]);
-  unique("quiz questions", [...questionIds]);
+  unique("examples", input.examples.map((item) => item.id));
+  unique("references", input.references.map((item) => item.id));
+  unique("quiz questions", input.quizQuestions.map((item) => item.id));
   unique("legacy aliases", input.aliases.map((item) => item.legacyPath));
+  const context = {
+    subjects: input.subjects, lessons: new Map(lessons.map((lesson) => [lesson.id, lesson])),
+    conceptIds: input.conceptIds, exerciseIds: input.exerciseIds, problemIds: input.problemIds,
+    examples: new Map(input.examples.map((item) => [item.id, item])), references: new Map(input.references.map((item) => [item.id, item])),
+  };
+  const bodies = new Map(input.lessonContent.map((item) => [item.lessonId, item]));
 
   for (const subject of input.subjects) {
-    if (!slugPattern.test(subject.slug)) issues.push(`${subject.id} has invalid slug ${subject.slug}`);
+    if (!learnSlugPattern.test(subject.slug)) issues.push(`${subject.id} has invalid slug ${subject.slug}`);
     if (!Number.isInteger(subject.navigationOrder) || subject.navigationOrder < 1) issues.push(`${subject.id} has invalid navigation order`);
     if (!subject.conceptIds.length || subject.conceptIds.some((id) => !input.conceptIds.has(id))) issues.push(`${subject.id} has invalid Concept IDs`);
     unique(`${subject.id} section order`, subject.sections.map((section) => String(section.order)));
@@ -208,12 +215,8 @@ export function validateLearnPlatform(input: {
       if (section.subjectId !== subject.id) issues.push(`${section.id} has mismatched subject ID`);
       unique(`${section.id} lesson order`, section.lessons.map((lesson) => String(lesson.order)));
       for (const lesson of section.lessons) {
-        if (lesson.subjectId !== subject.id || lesson.sectionId !== section.id) issues.push(`${lesson.id} has mismatched ownership`);
-        if (!slugPattern.test(lesson.slug)) issues.push(`${lesson.id} has invalid slug ${lesson.slug}`);
-        if (!lesson.conceptIds.length || lesson.conceptIds.some((id) => !input.conceptIds.has(id))) issues.push(`${lesson.id} has invalid Concept IDs`);
-        if (lesson.prerequisiteLessonIds.some((id) => !lessonIds.has(id))) issues.push(`${lesson.id} has invalid prerequisite`);
-        if (lesson.exerciseIds.some((id) => !input.exerciseIds.has(id))) issues.push(`${lesson.id} has invalid Exercise reference`);
-        if (lesson.problemIds.some((id) => !input.problemIds.has(id))) issues.push(`${lesson.id} has invalid Problem reference`);
+        const report = validateCanonicalLesson({ lesson, content: bodies.get(lesson.id) ?? null }, context);
+        issues.push(...report.issues.filter((issue) => issue.severity === "ERROR").map((issue) => `${lesson.id} ${issue.code} (${issue.path}): ${issue.message}`));
         if (lesson.status === "COMPLETE" && !lesson.contentSource) issues.push(`${lesson.id} claims COMPLETE without content`);
       }
     }
@@ -228,13 +231,6 @@ export function validateLearnPlatform(input: {
   unique("subject navigation order", input.subjects.map((item) => String(item.navigationOrder)));
   for (const content of input.lessonContent) {
     if (!lessonIds.has(content.lessonId)) issues.push(`${content.lessonId} content has no manifest lesson`);
-    unique(`${content.lessonId} blocks`, content.blocks.map((block) => block.id));
-    for (const block of content.blocks) {
-      if (block.type === "example" && !exampleIds.has(block.exampleId)) issues.push(`${content.lessonId}.${block.id} has invalid Example`);
-      if (block.type === "exercise" && !input.exerciseIds.has(block.exerciseId)) issues.push(`${content.lessonId}.${block.id} has invalid Exercise`);
-      if (block.type === "references" && block.referenceIds.some((id) => !referenceIds.has(id))) issues.push(`${content.lessonId}.${block.id} has invalid Reference`);
-      if (block.type === "related" && (block.lessonIds.some((id) => !lessonIds.has(id)) || block.problemIds.some((id) => !input.problemIds.has(id)))) issues.push(`${content.lessonId}.${block.id} has invalid related content`);
-    }
   }
   for (const example of input.examples) {
     if (!lessonIds.has(example.lessonId) || example.conceptIds.some((id) => !input.conceptIds.has(id))) issues.push(`${example.id} has invalid lesson or Concept links`);

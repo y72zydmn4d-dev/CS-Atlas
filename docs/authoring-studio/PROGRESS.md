@@ -1,48 +1,55 @@
 # Content Authoring Studio — resumable checkpoint
 
-STATUS: MILESTONE C — COMPLETE. CANONICAL CONTENT REMAINS READ-ONLY; D–K NOT IMPLEMENTED.
-
-CURRENT MILESTONE: C only, resumed from confirmed9633dda on atlas-v2. M0/A/B complete; do not repeat. No push/merge/branch change.
+STATUS: MILESTONE D — COMPLETE.
+CURRENT BRANCH: atlas-v2.
+CURRENT COMMIT / BASE: e97472f (Milestone C), confirmed; M0/A/B/C complete.
+CURRENT MILESTONE: D only. No restart, branch switch, push or merge.
+LOCAL COMPLETION COMMIT: feat(studio): add authoritative canonical draft validation (the commit containing this checkpoint; resolve with git log -1).
+CANONICAL CONTENT: READ-ONLY.
+FILESYSTEM MUTATION: NOT IMPLEMENTED.
+NEXT: MILESTONE E — CANONICAL LESSON PREVIEW.
 
 ARCHITECTURE DECISIONS:
 
-- One canonical content model. Existing TS registries stay authoritative/read-only. The B draft composes cloned LessonManifest + nullable LearnLessonContent; C changes only existing ID fields. No persisted Studio model, content/schema/storage migration or registry authoring.
-- Exact dev+AUTHORING_STUDIO_ENABLED=true guard remains on page/loaders/readers; /studio proxy hard404 remains. C GET resource route independently denies unavailable environments before parsing/imports; it is not covered by proxy.
-- Actual roles: ordered manifest Concept IDs, prerequisite Lesson IDs, Exercise IDs, Problem IDs. First Concept drives learner rail; no invented primary/related/prerequisite Concept roles. Blocks: single Example ID, single Exercise ID, Reference item IDs with subject/category context, separate Related Lesson/Problem arrays.
-- Closed six-kind GET /api/studio/relationships/[kind], version1 narrow label/description/metadata/ID projections. Literal lazy server imports only. Search≤20, query≤120chars; selected-ID lookup≤40/request/200chars per ID; client batches larger legacy selections. Fixed local-worker600requests/min, no-store/noindex, same-origin/Fetch Metadata cross-site checks. No generic file/raw-registry endpoint.
-- Debounced250ms search only when open, AbortController and effect-generation guards; selected metadata resolves only active draft links. Selection lives only in draft IDs; lookup/search metadata never persists. Unknown IDs remain repairable; request failure does not imply unknown membership. Legacy duplicates are preserved; new duplicates prevented.
-- All16 block types now addable/editable. Single Example/Exercise blocks require canonical picker selection before Add; replace required link via search, remove whole block to unlink. Lists may be empty transiently. No code/source execution or copied registry bodies.
-- Reuse B structural comparison and guarded native navigation. Reset/discard remounts picker/add-block UI via transient reset token, cancelling pending requests/choices. Ctrl/Cmd+S remains informational only. No validation/preview/Save/Create/curriculum-order operation.
-- Quiz groups belong to subjects; no lesson Quiz field/picker. Subject group/registry record authoring stays deferred. Cross-reference/cycle/COMPLETE validation belongs to D; no writer/path/transaction/stale-revision guarantees before F/G.
+- One canonical model. AuthoringLessonDraft aliases the shared canonical LessonCandidate composition, not a persisted Studio record. Existing TypeScript content stays authoritative/read-only; no storage migration.
+- Pure lib/domain/learn-validation parser reconstructs unknown input into actual LessonManifest + nullable LearnLessonContent. Modular metadata,16-block, registry, curriculum and status rules are reused by validateLearnPlatform/build, not separate Studio policies.
+- Owning difficulty/translation/runtime/callout constants retain identical union values. Code syntax language remains a bounded display token, not Practice execution support.
+- POST /api/studio/validation is read-only computation, not a persistence mutation. Dev AND explicit AUTHORING_STUDIO_ENABLED=true; independent route/service guard, exact direct loopback Host/Origin (no forwarded-host trust), JSON/stream1MiB/120 requests per minute/no-store/noindex.
+- SHA256 candidate/context fingerprints and typed counts/codes/paths; report is content eligibility, not authorization/disk revision/Save ticket. Future F/G must revalidate exact current draft against fresh context under the writer lock.
+- Separate client report state binds exact submitted structural draft; any edit marks stale, reset/selection clears, cancellation/sequencing prevents old-current verdicts. Unknown relationships are reported, not silently repaired.
+- Prerequisites are DAG dependencies per M0; bounded iterative DFS checks reachable cycles. Related associations remain cyclic-capable, self-links invalid.
+- SKELETON/PLANNED allow absent bodies, structural/reference corruption still errors. PARTIAL thin-body warning; COMPLETE requires substantive body, summary, review date and objectives. Quality hints nonblocking; no scoring/automatic promotion.
 
 COMPLETED:
 
-- Verified repo/branch/history9633dda and unrelated next-env; read checkpoint00/01/03/06, AGENTS/TASKS/DECISIONS, actual schema/registries/components and local Next16 route-handler guidance. No audit restart.
-- Server read-only projections/search/resolution, guarded typed GET adapter, transport validation/client adapter and compact reusable picker; actual manifest/block role integration, Reference category search context and existing Example selection.
-- Proper combobox/listbox labels, ↑/↓/Enter/Escape, active-descendant, mouse selection, clear/loading/empty/error/retry, selected-ID metadata/remove/reorder, live announcements, bounded inline panels and EN/VI UI.
-- Tests cover six registries/aliases/accent matching/bounds/projection exclusions, production/disabled route and direct loader guards, unknown/path-like IDs, typed transport, cancellation/races, ID-only selection/dedup, role preservation, dirty reversal/source isolation and Reset/Discard.
-- Real inventory unchanged:13 subjects/58 sections/428 lessons;9 COMPLETE/419 SKELETON. No canonical content, frozen landing, learner route/provider, dependencies or generated Practice asset changes.
+- Verified repo/atlas-v2/e97472f and original unrelated next-env baseline. Read requested architecture/workflow/security/QA/constitution/history and local Next16 route/Server Client guidance; inspected existing schema/build validators and all editable fields/roles.
+- Documented04 contract before code. Shared parser/rules, guarded authoritative service/request adapter/typed transport and stale-aware bilingual report UI implemented. No Preview or writer.
+- All9 authored lessons validate without ERRORs; real Java Interfaces SKELETON accepted. Unknown/duplicate IDs retained, all16 variants validated, static Example/Reference semantics and curriculum/identity/reserved routes/prerequisite cycles checked.
+- 95 added tests; final full run 69 suites/565 tests green, including the owning-constant refactor. Typecheck/lint, production build and build budgets pass.
+- Enabled/disabled/production HTTP guards/computation/unsupported-method smokes and canonical no-write hashes passed. Final fresh enabled-dev and flag=true production checks pass; temporary debugging removed; owned QA servers stopped.
 
 FILES CHANGED:
 
-- New lib/studio/relationships.ts,relationships.server.ts,relationship-client.ts; app/api/studio/relationships/[kind]/route.ts; components/studio/relationship-picker.tsx,lesson-relationships-editor.tsx.
-- Landing/learner code unchanged. Existing Studio block/editor/session/draft/styles/i18n integrate pickers and reset token only.
-- New search/route/client/picker tests plus updated Studio editor/block/UI/read-only-boundary tests. scripts/audit-studio.mjs adds six resource and selected-ID GET smokes.
-- Docs01/02/06/PROGRESS, learn-authoring/STATUS/atlas-v2 directory ownership and TASKS updates. Original next-env.d.ts must remain excluded.
+- lib/domain/learn-validation/{types,parse,metadata,blocks,relationships,curriculum,status,index}.ts; owning lib/domain/learn-platform.ts and lib/types.ts reuse rules/runtime values, no union/data change.
+- lib/studio/{draft,validation,validation.server,validation-request.server,validation-client}.ts; app/api/studio/validation/route.ts.
+- components/studio/lesson-validation.tsx, lesson-editor.tsx; app/studio/studio.css; paired i18n/messages/studio.ts.
+- New canonical validation fixtures/rules/service/route/client/UI tests; prior Studio no-write/UI/editor assertions updated for legitimate Validate behavior; scripts/audit-studio-validation.mjs (read-only computations/hashes).
+- docs04,01,02,06,PROGRESS, learn-authoring, STATUS, atlas-v2 directory ownership and TASKS. Never stage next-env.d.ts.
 
-VALIDATION PASSED:
+VALIDATION:
 
-- npm run typecheck; npm run lint (zero warnings); npm test:64 suites/470 tests.70 new C tests. Initial outdated B assertion, unscoped native option test query, test HeadersInit type and ref-render lint rule were corrected; final full suite green.
-- npm run build:737 pages and one dynamic GET-only Studio resource route. npm run audit:build:101 chunks/931,635 total gzip bytes (+3,737/~0.40% vs B), largest148,115/largest route10,446 unchanged; budgets pass. No dependencies added.
-- HTTP audits passed enabled dev (six resources200≤20 results, known/unknown lookup, rejected malformed request, selected editor and normal Learn), disabled dev flag=false and production flag=true (pages and resources hard404/no-store). Unsupported mutation methods405 in dev/production; no handler/I/O. Public-entry16-route/Guest/artwork audit passed; root entry5,149gzip unchanged, modern script census173,288 (+954/~0.55% vs B), not a hydration benchmark.
-- Git whitespace/import review passed; no content/schema/learner/config/dependency/vendor changes. Exact original next-env blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6 preserved after Next build generation; excluded from staging.
+- npm run typecheck; npm run lint; npm test; npm run build; npm run audit:build — all pass. Focused Studio/canonical validation tests also passed before the final full run.
+- Build: 738 generated entries; 103 chunks/933,916 gzip (+2,281/~0.24% vs C), largest 148,115, largest route Studio 11,545; no dependencies. Public landing entry 5,149 unchanged, modern script census 173,908 (+620/~0.36% vs C), not a timing benchmark.
+- Local HTTP enabled dev validation 200 (valid/invalid), controlled 400/403/415/413, unsupported methods 405; production flag=true and disabled dev 404; source hashes unchanged. Existing Studio/learner route and 16-route public-entry/artwork audits pass.
+- git diff --check passes; canonical content/vendor/landing files unchanged. Original unrelated next-env.d.ts blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6 preserved and excluded from staging. No push or merge.
 
-OPEN RISKS: D runtime parsers/authoritative graph validation, E real no-evidence preview, F canonical JSON parity migration/path/symlink/lock/revisions/transaction recovery and later persistence gates remain required. Enabled dev remains loopback-only, not admin authentication. Module reads use current trusted registry snapshots, not revisioned filesystem reads.
+OPEN RISKS / KNOWN LIMITATIONS:
 
-KNOWN LIMITATIONS: transient drafts only; no Save/preview/create/curriculum management/validation scan/Save & Next. No full Quiz or registry authoring. Single-ID link removal uses whole-block removal. Native full-document selections reset filters; beforeunload is browser-controlled and may be suppressed. Browser inventory browsers:[] again: visual/console/real keyboard/assistive technology review remains manual, no browser QA claimed.
+- No Preview/Save/Create/curriculum persistence, writer/storage migration, bulk health scan or Git operations. E–K unimplemented.
+- Typed trusted TS registry snapshots follow Next dev HMR; no custom persistent cache. Disk-revision/registry freshness under lock remains F/G. Full subject/group/quiz unknown-input schemas remain future storage gates.
+- English diagnostics explicitly labeled inside EN/VI UI. Click-to-focus and validation shortcut deferred; exact field paths/block IDs supplied. Presence policy does not certify educational depth/review quality or full translated body completeness.
+- Browser inventory browsers:[]; no isolated rendered/keyboard/assistive-tech/console/HMR certification. Manual matrix in06-QA. Existing beforeunload/browser-shutdown limitations remain.
 
-EXACT NEXT ACTION: D ONLY — authoritative canonical validation, still no filesystem writes/Save/preview/storage migration. First verify atlas-v2/status/log and the local semantic C commit titled feat(studio): add canonical relationship pickers; read this checkpoint and00/01/02/03/06. Reuse cloned draft and guarded server registry reads to implement shared runtime parsers and canonical/cross-reference/curriculum diagnostics plus validation panel, per03. Do not restart M0/A/B/C or expose F/G operations. Manual C browser matrix is recorded in06-QA, not claimed complete.
+EXACT NEXT ACTION: E ONLY — read this checkpoint/04-validation-model and the existing real learner renderer/evidence boundaries. Design and implement canonical unsaved lesson preview, guarded and validated through the authoritative engine, with explicit no-evidence/no-execution behavior as appropriate. Do not duplicate a Studio renderer, restart earlier milestones or introduce filesystem persistence. F remains the unimplemented safe writer foundation.
 
-FINAL HANDOFF: one coherent local C commit; no push/merge/branch change. Owned local QA servers stopped before handoff. If interrupted just before the commit exists, implementation/checks are complete: inspect diff, stage only listed C files (never next-env), and create that semantic commit rather than repeating implementation.
-
-PREVIOUS CHECKPOINTS: M0 168f760; A b3cb336; B 9633dda. B validated60 suites/400 tests,737 pages,100 chunks/927,898gzip; source audit/file contract00/03 and historical QA06 remain unchanged. Do not repeat or infer writer completion.
+PREVIOUS CHECKPOINTS: M0 168f760; A b3cb336; B9633dda; C e97472f. Do not repeat or infer writer completion.

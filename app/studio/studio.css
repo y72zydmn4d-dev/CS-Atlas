@@ -146,3 +146,11 @@
   .studio-repeatable-row { align-items:stretch; flex-direction:column; }
   .studio-editor-field-row { grid-template-columns:minmax(0,1fr); }
 }
+.studio-validation-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.studio-validation-heading h3 { margin: 0; }
+.studio-validation-issues { max-height: 24rem; overflow: auto; }
+.studio-validation-issues ul { padding-inline-start: 1.25rem; }
+.studio-validation-issues li { margin-block: .75rem; overflow-wrap: anywhere; }
+.studio-validation-issues p { margin-block: .25rem; }
+.studio-validation-issues code { font-size: .75rem; }
+.studio-validation-issues[data-stale="true"] { border-inline-start: 2px solid var(--border); padding-inline-start: .75rem; }

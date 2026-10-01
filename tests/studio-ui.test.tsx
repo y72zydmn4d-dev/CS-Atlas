@@ -1,6 +1,8 @@
 import { cleanup, fireEvent, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
+vi.mock("@/lib/studio/relationship-client", () => ({ searchStudioOptions: fixtureSearch, resolveStudioOptions: fixtureResolve }));
+import { fixtureSearch, fixtureResolve } from "@/tests/studio-relationship-fixtures";
 import { StudioWorkspace } from "@/components/studio/studio-workspace";
 import { LessonInspector } from "@/components/studio/lesson-inspector";
 import { LocaleProvider, useI18n } from "@/components/locale-provider";

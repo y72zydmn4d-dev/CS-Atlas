@@ -1,6 +1,6 @@
 # 02 — Studio security boundary
 
-## Implemented in Milestones A/B
+## Implemented in Milestones A/B/C
 
 | Boundary | Guarantee / implementation |
 |---|---|
@@ -11,8 +11,10 @@
 | IDs | Bounded ASCII canonical ID grammar plus subject/lesson registry membership and ownership. Unknown/path-shaped/cross-subject IDs never read a body. Source declarations are display-only, never interpreted as filesystem paths. |
 | Data minimization | Overview/subjects/curriculum contain only metadata projections. Body import occurs only on valid lesson selection; only selected body is rendered. No private solutions, broad content/index barrel or external service. |
 | Rendering | Inputs/textareas render escaped canonical prose/code, including `<script>`. No raw HTML, eval, shell/server execution or embedded runtime. Editor does not mount LessonWorkspace/ExampleRunner or emit learning events. |
-| Mutation | **No repository mutation.** B edits cloned client state only. No API routes, Server Actions, fs writes, autosave, Git commands, writer revision or write plan. `/api/studio` and `/api/studio/write-file` do not exist. |
-| Draft isolation | Canonical inspection, cloned baseline and cloned editor draft are distinct. Conversion returns another isolated canonical candidate. IDs/slugs/ownership/source/order and registry ID payloads have no editing input. No localStorage/IndexedDB drafts, outbound requests or aggregate content imports in editor modules. |
+| Mutation | **No repository mutation.** B/C edit cloned client state only. C adds one GET-only relationship resource route, no POST/PUT/PATCH/DELETE handler, Server Actions, fs writes, autosave, Git commands, writer revision or write plan. `/api/studio` and `/api/studio/write-file` still do not exist. |
+| Draft isolation | Canonical inspection, cloned baseline and editor draft are distinct. Conversion returns an isolated canonical candidate. IDs/slugs/ownership/source/order remain immutable; relationship ID selection changes only the draft. No localStorage/IndexedDB drafts, external requests or client registry imports. |
+| C search boundary | `/api/studio/relationships/[kind]` independently checks exact dev+flag before request parsing or registry operations; proxy does not cover API routes. Closed six-kind dispatch, URL≤10,000 chars, query≤120, results≤20, resolution≤40 IDs/request/200chars each; unknown keys/kinds/duplicate query/mixed modes rejected. Same-origin/Fetch Metadata cross-site checks, fixed600requests/min local-worker cap, no-store/noindex, stable errors. GET requires no JSON request body; missing Origin is allowed for same-site GET/CLI only, **not a future writer policy**. |
+| C projection | Transport shape checked on server and client. Literal imports only; return labels/short descriptions/metadata/IDs, never filesystem paths, bodies, assessment answers, Example code or Problem solutions. ID lookup performs Map membership, not path resolution. Unknown IDs remain repairable. No C path-containment/writer-security certification. |
 
 Run on loopback; this is a local development utility, not admin authentication. Root theme/locale providers are reused. Exact /studio bypasses WorkspaceProvidersShell: the learner AppShell/Search imports content/index and its monolithic body module, so mounting it would violate narrow startup loading and initialize unrelated learning-data services. All existing learner paths/providers retain their behavior. Studio owns main/skip/header utilities, not a competing theme. The owner must not expose an enabled development server publicly. A has no remote administration model.
 
@@ -24,4 +26,4 @@ Read-only ID rejection is **not** a tested filesystem containment implementation
 
 Current TS body storage is monolithic: first valid selected-body import initializes nine trusted bodies/examples/references/quizzes on the server. It does not import them on overview/curriculum or send all bodies to the browser. Per-body source granularity/JSON cutover is intentionally deferred to F.
 
-Tests: unavailable loaders/readers reject before content access; disabled route before loader/request wait; proxy production flag=true and route matcher exclusions; registry ownership/unknown/traversal IDs; escaped malicious inspection text; no inspection progress writes. Full mutation adversarial fixture gates remain unimplemented.
+Tests: unavailable loaders/readers/search reject before content access; disabled page/search route before loader/request wait; proxy production flag=true and route matcher exclusions; registry ownership/unknown/traversal IDs; escaped malicious inspection text; no inspection progress writes. C adds search/projection/transport/keyboard/race/role/dirty/reset tests and static absence of mutation methods/actions/writers. Full mutation adversarial fixture gates remain unimplemented.

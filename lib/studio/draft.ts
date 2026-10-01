@@ -74,3 +74,17 @@ export function createDraftBlock(type: EditableBlockType, blocks: readonly Learn
 export function duplicateDraftBlock(block: LearnLessonBlock, blocks: readonly LearnLessonBlock[]): LearnLessonBlock {
   return { ...structuredClone(block), id: nextBlockId(blocks, block.type) };
 }
+
+export const relationshipBlockTypes = ["example", "exercise", "references", "related"] as const;
+export type RelationshipBlockType = (typeof relationshipBlockTypes)[number];
+/** Single-link blocks are only created after picker selection; no invented/blank IDs. */
+export function createRelationshipBlock(type: RelationshipBlockType, blocks: readonly LearnLessonBlock[], selectedId?: string): LearnLessonBlock {
+  const id = nextBlockId(blocks, type);
+  switch (type) {
+    case "references": return { id, type, referenceIds: [] };
+    case "related": return { id, type, lessonIds: [], problemIds: [] };
+    case "example": if (selectedId) return { id, type, exampleId: selectedId }; break;
+    case "exercise": if (selectedId) return { id, type, exerciseId: selectedId }; break;
+  }
+  throw new Error("Select a canonical record before adding this block");
+}

@@ -39,7 +39,27 @@ if (mode === "enabled") {
 
 for (const path of ["/api/studio", "/api/studio/write-file"]) {
   const { response } = await get(path);
-  assert.equal(response.status, 404, "No Studio endpoint is implemented in Milestones A/B");
+  assert.equal(response.status, 404, "No Studio writer endpoint exists");
+}
+for (const kind of ["concepts", "exercises", "problems", "references", "examples", "lessons"]) {
+  const { response, html } = await get(`/api/studio/relationships/${kind}?q=`);
+  assert.equal(response.status, mode === "enabled" ? 200 : 404);
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  if (mode === "enabled") {
+    const payload = JSON.parse(html);
+    assert.equal(payload.version, 1); assert.equal(payload.kind, kind);
+    assert(payload.items.length > 0 && payload.items.length <= 20);
+    assert(payload.items.every((item) => item.kind === kind && typeof item.id === "string"));
+    assert(!/"(?:blocks|starterSource|assessment|tests|referenceSolution)"/.test(html), "Only narrow public projections");
+  }
+}
+if (mode === "enabled") {
+  const { response, html } = await get("/api/studio/relationships/concepts?id=topic%3Arecursion&id=missing%3Aid");
+  assert.equal(response.status, 200);
+  const result = JSON.parse(html);
+  assert.equal(result.items[0].id, "topic:recursion"); assert.deepEqual(result.unresolvedIds, ["missing:id"]);
+  assert.equal((await get("/api/studio/relationships/concepts?path=../../package.json")).response.status, 400);
+  assert.equal((await get("/api/studio/relationships/write-file")).response.status, 404);
 }
 for (const path of ["/", "/home", "/learn", "/learn/python", "/learn/python/introduction", "/learn/java"]) {
   const { response, html } = await get(path);

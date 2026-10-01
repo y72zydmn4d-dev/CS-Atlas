@@ -5,12 +5,14 @@ import { useI18n } from "@/components/locale-provider";
 import { ContentBlockEditor } from "@/components/studio/content-block-editor";
 import type { LearnLessonBlock } from "@/lib/domain/learn-platform";
 import type { Locale } from "@/lib/types";
-import { createDraftBlock, duplicateDraftBlock, editableBlockTypes, moveItem, type EditableBlockType } from "@/lib/studio/draft";
+import { createDraftBlock, createRelationshipBlock, duplicateDraftBlock, editableBlockTypes, relationshipBlockTypes, moveItem } from "@/lib/studio/draft";
+import { RelationshipPicker } from "@/components/studio/relationship-picker";
 
 export function ContentBlockList({ blocks, language, onChange }: { blocks: LearnLessonBlock[]; language: Locale; onChange: (blocks: LearnLessonBlock[]) => void }) {
   const { t } = useI18n();
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set());
-  const [type, setType] = useState<EditableBlockType>("paragraph");
+  const [type, setType] = useState<LearnLessonBlock["type"]>("paragraph");
+  const [selectedId, setSelectedId] = useState<string[]>([]);
   return <section className="studio-editor-section" aria-label={t("studio.contentBlocks")}>
     <h3>{t("studio.contentBlocks")} · {blocks.length}</h3>
     <ol className="studio-block-list">{blocks.map((block, index) => <li key={block.id} className="studio-editor-block">
@@ -34,10 +36,18 @@ export function ContentBlockList({ blocks, language, onChange }: { blocks: Learn
     </li>)}</ol>
     <div className="studio-add-block">
       <label className="studio-field">{t("studio.blockType")}<select value={type} onChange={(event) => {
-        const selected = editableBlockTypes.find((entry) => entry === event.target.value); if (selected) setType(selected);
-      }}>{editableBlockTypes.map((value) => <option key={value}>{value}</option>)}</select></label>
-      <button type="button" onClick={() => onChange([...blocks, createDraftBlock(type, blocks)])}>{t("studio.addBlock")}</button>
+        const selected = [...editableBlockTypes, ...relationshipBlockTypes].find((entry) => entry === event.target.value);
+        if (selected) { setType(selected); setSelectedId([]); }
+      }}>{[...editableBlockTypes, ...relationshipBlockTypes].map((value) => <option key={value}>{value}</option>)}</select></label>
+      <button type="button" disabled={(type === "example" || type === "exercise") && !selectedId[0]} onClick={() => {
+        const direct = editableBlockTypes.find((entry) => entry === type);
+        const linked = relationshipBlockTypes.find((entry) => entry === type);
+        if (direct) onChange([...blocks, createDraftBlock(direct, blocks)]);
+        else if (linked) onChange([...blocks, createRelationshipBlock(linked, blocks, selectedId[0])]);
+        setSelectedId([]);
+      }}>{t("studio.addBlock")}</button>
     </div>
-    <p className="studio-body-meta">{t("studio.relationshipsDeferred")}</p>
+    {(type === "example" || type === "exercise") && <RelationshipPicker key={type} kind={type === "example" ? "examples" : "exercises"}
+      label={t("studio.newBlockRelationship")} single ids={selectedId} onChange={setSelectedId} />}
   </section>;
 }

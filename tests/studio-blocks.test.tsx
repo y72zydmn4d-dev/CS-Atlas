@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { cleanup, fireEvent, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
+vi.mock("@/lib/studio/relationship-client", () => ({ searchStudioOptions: fixtureSearch, resolveStudioOptions: fixtureResolve }));
+import { fixtureSearch, fixtureResolve } from "@/tests/studio-relationship-fixtures";
 import { ContentBlockEditor } from "@/components/studio/content-block-editor";
 import { createDraftBlock } from "@/lib/studio/draft";
 import type { LearnLessonBlock } from "@/lib/domain/learn-platform";
@@ -86,10 +88,26 @@ describe("canonical block editors", () => {
     { id: "exercise", type: "exercise", exerciseId: "exercise:existing" },
     { id: "refs", type: "references", referenceIds: ["reference:existing"] },
     { id: "related", type: "related", lessonIds: ["learn:java:interfaces"], problemIds: ["problem:existing"] },
-  ] satisfies LearnLessonBlock[])("keeps $type IDs read-only until C", (block) => {
+  ] satisfies LearnLessonBlock[])("preserves $type IDs until explicit picker editing", (block) => {
     renderBlock(block);
-    expect(screen.getByText(/IDs are read-only/)).toBeVisible();
-    expect(screen.getAllByRole("textbox")).toHaveLength(1); // optional title only
+    expect(screen.getAllByRole("combobox").length).toBeGreaterThan(0);
     expect(serialized()).toBe(JSON.stringify(block));
+  });
+  it("keeps Related Lesson and Problem lists independent while selecting/removing", async () => {
+    renderBlock({ id: "related", type: "related", lessonIds: ["learn:java:interfaces"], problemIds: [] });
+    const input = screen.getByRole("combobox", { name: "Search Related Problem IDs" });
+    fireEvent.focus(input); fireEvent.change(input, { target: { value: "first-occurrence" } });
+    fireEvent.click(await screen.findByRole("option"));
+    expect(serialized()).toContain('"lessonIds":["learn:java:interfaces"],"problemIds":["first-occurrence"]');
+    fireEvent.click(screen.getByRole("button", { name: "Remove · Related Problem IDs · first-occurrence" }));
+    expect(serialized()).toContain('"lessonIds":["learn:java:interfaces"],"problemIds":[]');
+  });
+  it("selects Reference item IDs with category context without copying category objects", async () => {
+    renderBlock({ id: "references", type: "references", referenceIds: ["missing-reference"] });
+    const input = screen.getByRole("combobox", { name: "Search Reference IDs" });
+    fireEvent.focus(input); fireEvent.change(input, { target: { value: "python-builtins len" } });
+    fireEvent.click(await screen.findByRole("option"));
+    expect(serialized()).toContain('"referenceIds":["missing-reference","python-ref-len"]');
+    expect(serialized()).not.toContain("python-builtins");
   });
 });

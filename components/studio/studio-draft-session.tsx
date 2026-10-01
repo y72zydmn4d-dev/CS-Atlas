@@ -11,6 +11,7 @@ type PendingAction = { type: "navigate"; href: string } | { type: "reset" };
 interface DraftSession {
   draft: AuthoringLessonDraft | null;
   dirty: boolean;
+  resetToken: number;
   update: (draft: AuthoringLessonDraft) => void;
   reset: () => void;
   requestNavigation: (href: string) => boolean;
@@ -24,6 +25,7 @@ export function StudioDraftSession({ inspection, children }: { inspection: Studi
   const [draft, setDraft] = useState(() => inspection ? toAuthoringDraft(inspection) : null);
   const [pending, setPending] = useState<PendingAction | null>(null);
   const [shortcutNotice, setShortcutNotice] = useState(false);
+  const [resetToken, setResetToken] = useState(0);
   const baselineFingerprint = useMemo(() => baseline ? draftFingerprint(baseline) : null, [baseline]);
   const dirty = Boolean(draft && draftFingerprint(draft) !== baselineFingerprint);
   const allowUnload = useRef(false);
@@ -34,6 +36,7 @@ export function StudioDraftSession({ inspection, children }: { inspection: Studi
     setSource(inspection);
     setBaseline(inspection ? toAuthoringDraft(inspection) : null);
     setDraft(inspection ? toAuthoringDraft(inspection) : null);
+    setResetToken((value) => value + 1);
   }
 
   useEffect(() => {
@@ -57,7 +60,7 @@ export function StudioDraftSession({ inspection, children }: { inspection: Studi
     return () => window.removeEventListener("keydown", shortcut);
   }, []);
 
-  function restore() { setDraft(source ? toAuthoringDraft(source) : null); }
+  function restore() { setDraft(source ? toAuthoringDraft(source) : null); setResetToken((value) => value + 1); }
   function reset() { if (dirty) setPending({ type: "reset" }); }
   function requestNavigation(href: string) {
     if (!dirty) return false;
@@ -73,7 +76,7 @@ export function StudioDraftSession({ inspection, children }: { inspection: Studi
       navigateStudioDocument(action.href);
     }
   }
-  return <Context.Provider value={{ draft, dirty, update: (value) => { allowUnload.current = false; setDraft(value); }, reset, requestNavigation }}>
+  return <Context.Provider value={{ draft, dirty, resetToken, update: (value) => { allowUnload.current = false; setDraft(value); }, reset, requestNavigation }}>
     {children}
     {shortcutNotice && <p className="studio-shortcut-notice" role="status">{t("studio.noSaveShortcut")} <button type="button" onClick={() => setShortcutNotice(false)}>{t("studio.dismiss")}</button></p>}
     {pending && <DiscardChangesDialog reset={pending.type === "reset"} onCancel={() => setPending(null)} onDiscard={discard} />}

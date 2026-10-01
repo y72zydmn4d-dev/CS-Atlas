@@ -104,6 +104,23 @@
 .studio-discard-dialog p { font-size:13px; line-height:1.6; color:var(--muted); }
 .studio-discard-dialog .studio-actions { justify-content:flex-end; margin-top:20px; }
 .studio-shortcut-notice { position:fixed; z-index:30; bottom:16px; left:50%; transform:translateX(-50%); max-width:calc(100vw - 32px); padding:12px; font-size:12px; color:var(--text); background:var(--surface); border:1px solid var(--border-strong); border-radius:4px; }
+.studio-relationship-picker { min-width:0; margin-top:14px; padding-top:10px; border-top:1px solid var(--border); }
+.studio-relationship-heading { display:flex; gap:6px 12px; flex-wrap:wrap; align-items:baseline; font-size:11px; }
+.studio-relationship-heading small { color:var(--muted); font-size:10px; }
+.studio-selected-relationships { list-style:none; padding:0; margin:8px 0 0; display:grid; gap:4px; }
+.studio-selected-relationships>li { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; padding:6px 8px; background:var(--surface-2); border:1px solid var(--border); border-radius:4px; font-size:11px; }
+.studio-selected-relationships>li>div:first-child { min-width:0; flex:1 1 160px; }
+.studio-selected-relationships code,.studio-selected-relationships small,.studio-relationship-results code,.studio-relationship-results small { display:block; font-size:10px; color:var(--muted); overflow-wrap:anywhere; }
+.studio-selected-relationships>li[data-unresolved="true"] { border-style:dashed; }
+.studio-relationship-input-row { display:flex; align-items:stretch; gap:6px; margin-top:4px; }
+.studio-relationship-input-row input { flex:1; width:0; min-width:0; border:1px solid var(--border-strong); border-radius:4px; padding:6px 8px; background:var(--surface-2); color:var(--text); font:inherit; font-size:12px; }
+.studio-relationship-results { list-style:none; margin:0; padding:4px; border:1px solid var(--border-strong); border-radius:4px; max-height:260px; overflow:auto; overscroll-behavior:contain; background:var(--surface); }
+.studio-relationship-results:empty { display:none; }
+.studio-relationship-results>li { padding:7px 8px; border:1px solid transparent; border-radius:3px; cursor:pointer; font-size:12px; overflow-wrap:anywhere; }
+.studio-relationship-results>li[data-active="true"] { background:var(--accent-soft); border-color:var(--accent); }
+.studio-relationship-results strong { font-weight:600; }
+.studio-relationship-results strong small { display:inline; }
+.studio-relationship-results>li>span { color:var(--muted); display:block; font-size:11px; line-height:1.5; }
 @media (max-width:1279px) {
   .studio-grid { grid-template-columns:190px minmax(0,1fr); }
   .studio-inspector { grid-column:1/-1; }

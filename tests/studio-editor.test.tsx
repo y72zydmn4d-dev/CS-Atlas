@@ -2,6 +2,8 @@ import { cleanup, fireEvent, screen, within } from "@testing-library/react";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 vi.mock("@/lib/studio/document-navigation", () => ({ navigateStudioDocument: vi.fn() }));
+vi.mock("@/lib/studio/relationship-client", () => ({ searchStudioOptions: fixtureSearch, resolveStudioOptions: fixtureResolve }));
+import { fixtureSearch, fixtureResolve } from "@/tests/studio-relationship-fixtures";
 import { StudioWorkspace } from "@/components/studio/studio-workspace";
 import { getStudioCurriculum, getStudioLesson, getStudioOverview, getStudioSubjects } from "@/lib/studio/loaders.server";
 import { navigateStudioDocument } from "@/lib/studio/document-navigation";
@@ -119,20 +121,73 @@ describe("transient lesson editing", () => {
     expect(screen.getByText("Matches saved source")).toBeVisible();
   });
 
-  it("preserves existing canonical relationships read-only, without picker/Save/preview actions", async () => {
+  it("preserves canonical relationships until picker edits, without Save/preview actions", async () => {
     await renderEditor("dsa", "learn:dsa:arrays");
     const details = screen.getByText("Saved identity and relationships (read-only)");
     fireEvent.click(details);
     expect(screen.getAllByText("exercise:array-linear-scan").length).toBeGreaterThan(0);
-    expect(screen.queryByLabelText("Concept IDs")).not.toBeInTheDocument();
+    expect(screen.getByRole("combobox", { name: "Search Concept IDs" })).toBeVisible();
     expect(screen.queryByRole("button", { name: /save|create|preview|validate/i })).not.toBeInTheDocument();
     const choices = within(screen.getByLabelText("Block type")).getAllByRole("option").map((option) => option.textContent);
-    expect(choices).toHaveLength(12);
-    expect(choices).not.toContain("exercise");
+    expect(choices).toHaveLength(16);
+    expect(choices).toContain("exercise");
   });
 });
 
 describe("dirty draft protection", () => {
+  it.each([
+    ["Concept IDs", "topic:recursion"], ["Exercise IDs", "exercise:array-linear-scan"],
+    ["Problem IDs", "first-occurrence"], ["Prerequisite lesson IDs", "learn:java:classes"],
+  ])("guards %s-only edits and restores original relationships on Reset/Discard", async (label, id) => {
+    const { inspection } = await renderEditor();
+    const baseline = structuredClone(inspection);
+    const input = screen.getByRole("combobox", { name: `Search ${label}` });
+    fireEvent.focus(input); fireEvent.change(input, { target: { value: id } });
+    fireEvent.click(await within(screen.getByRole("listbox", { name: label })).findByRole("option"));
+    expect(screen.getByText("Modified draft")).toBeVisible(); expect(inspection).toEqual(baseline);
+    const target = label === "Concept IDs" ? within(screen.getByRole("navigation", { name: "Curriculum explorer" })).getByRole("link", { name: /Classes SKELETON/ }) : screen.getByRole("link", { name: /Python PARTIAL/ });
+    fireEvent.click(target);
+    expect(screen.getByRole("dialog", { name: "Discard unsaved draft?" })).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
+    expect(within(screen.getByRole("group", { name: label })).getByRole("button", { name: `Remove · ${label} · ${id}` })).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Reset draft" }));
+    fireEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: "Reset draft" }));
+    expect(screen.getByText("Matches saved source")).toBeVisible();
+    expect(within(screen.getByRole("group", { name: label })).queryByRole("button", { name: `Remove · ${label} · ${id}` })).not.toBeInTheDocument();
+    const newInput = screen.getByRole("combobox", { name: `Search ${label}` });
+    fireEvent.focus(newInput); fireEvent.change(newInput, { target: { value: id } });
+    fireEvent.click(await within(screen.getByRole("listbox", { name: label })).findByRole("option"));
+    fireEvent.click(target); fireEvent.click(screen.getByRole("button", { name: "Discard draft and continue" }));
+    expect(screen.getByText("Matches saved source")).toBeVisible(); expect(navigateStudioDocument).toHaveBeenCalledOnce();
+  });
+
+  it("returns clean after manually removing only the newly added relationship", async () => {
+    await renderEditor();
+    const input = screen.getByRole("combobox", { name: "Search Concept IDs" });
+    fireEvent.focus(input); fireEvent.change(input, { target: { value: "topic:recursion" } });
+    fireEvent.click(await within(screen.getByRole("listbox", { name: "Concept IDs" })).findByRole("option"));
+    expect(screen.getByText("Modified draft")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Remove · Concept IDs · topic:recursion" }));
+    expect(screen.getByText("Matches saved source")).toBeVisible();
+  });
+
+  it.each(["example", "exercise"])("adds a %s block only after canonical selection; Reset clears pending picker UI", async (type) => {
+    await renderEditor("python", "learn:python:introduction");
+    fireEvent.change(screen.getByLabelText("Block type"), { target: { value: type } });
+    expect(screen.getByRole("button", { name: "+ Add block" })).toBeDisabled();
+    const input = screen.getByRole("combobox", { name: "Search Record for new block" });
+    fireEvent.focus(input); fireEvent.change(input, { target: { value: type === "example" ? "python-example-first-program" : "exercise:array-linear-scan" } });
+    fireEvent.click(await within(screen.getByRole("listbox", { name: "Record for new block" })).findByRole("option"));
+    expect(screen.getByText("Matches saved source")).toBeVisible(); // pending choice isn't authored content
+    fireEvent.click(screen.getByRole("button", { name: "+ Add block" }));
+    expect(screen.getByText("Modified draft")).toBeVisible();
+    expect(screen.getByRole("button", { name: `Remove · ${type}-1` })).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Reset draft" }));
+    fireEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: "Reset draft" }));
+    expect(screen.getByText("Matches saved source")).toBeVisible();
+    expect(screen.queryByRole("combobox", { name: "Search Record for new block" })).not.toBeInTheDocument();
+  });
+
   it.each(["lesson", "subject", "overview", "home", "learner"])("guards %s navigation with Cancel and Discard, no Save", async (destination) => {
     await renderEditor();
     fireEvent.change(screen.getByLabelText("Lesson title (EN)"), { target: { value: "Dirty title" } });

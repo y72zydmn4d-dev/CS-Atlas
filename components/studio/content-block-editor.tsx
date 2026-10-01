@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { LocalizedField, optionalLocalized, TextField } from "@/components/studio/editor-fields";
 import { LearningObjectivesEditor } from "@/components/studio/learning-objectives-editor";
 import { StructuredTableEditor } from "@/components/studio/structured-table-editor";
+import { RelationshipPicker } from "@/components/studio/relationship-picker";
 import type { LearnLessonBlock } from "@/lib/domain/learn-platform";
 import type { Locale } from "@/lib/types";
 
@@ -47,19 +48,17 @@ export function ContentBlockEditor({ block, language, onChange }: { block: Learn
       </>;
       case "output": return <TextField label={t("studio.output")} value={block.output} multiline code onChange={(output) => onChange({ ...block, output })} />;
       case "table": case "comparison": return <StructuredTableEditor block={block} language={language} onChange={onChange} />;
-      case "example": return <ReadOnlyIds ids={[block.exampleId]} />;
-      case "exercise": return <ReadOnlyIds ids={[block.exerciseId]} />;
-      case "references": return <ReadOnlyIds ids={block.referenceIds} />;
-      case "related": return <ReadOnlyIds ids={[...block.lessonIds, ...block.problemIds]} />;
+      case "example": return <RelationshipPicker kind="examples" label={t("studio.examples")} single ids={[block.exampleId]} onChange={(ids) => { if (ids[0]) onChange({ ...block, exampleId: ids[0] }); }} />;
+      case "exercise": return <RelationshipPicker kind="exercises" label={t("studio.exercises")} single ids={[block.exerciseId]} onChange={(ids) => { if (ids[0]) onChange({ ...block, exerciseId: ids[0] }); }} />;
+      case "references": return <RelationshipPicker kind="references" label={t("studio.references")} ids={block.referenceIds} onChange={(referenceIds) => onChange({ ...block, referenceIds })} />;
+      case "related": return <>
+        <RelationshipPicker kind="lessons" label={t("studio.relatedLessons")} ids={block.lessonIds} onChange={(lessonIds) => onChange({ ...block, lessonIds })} />
+        <RelationshipPicker kind="problems" label={t("studio.relatedProblems")} ids={block.problemIds} onChange={(problemIds) => onChange({ ...block, problemIds })} />
+      </>;
     }
   }
   return <div className="studio-block-fields">
     <LocalizedField label={t("studio.blockTitle")} value={block.title ?? { en: "", vi: "" }} language={language} onChange={(title) => onChange({ ...block, title: optionalLocalized(title, original.current.title) })} />
     {payload()}
   </div>;
-}
-
-function ReadOnlyIds({ ids }: { ids: string[] }) {
-  const { t } = useI18n();
-  return <><p className="studio-body-meta">{t("studio.relationshipsDeferred")}</p><ul className="studio-id-list">{ids.map((id, index) => <li key={`${index}-${id}`}><code>{id}</code></li>)}</ul></>;
 }

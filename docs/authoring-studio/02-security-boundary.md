@@ -1,5 +1,13 @@
 # 02 — Studio security boundary
 
+## Milestone F — internal fixture-tested foundation, not browser Save
+
+`lib/studio/writer/*.server.ts` has no importer from Studio UI/API/actions. Independent dev+exact-flag guards protect service, plan/preflight, execution and recovery. Save/Ctrl+S remains unavailable. No generic endpoint/Server Action was added; real TypeScript content remains authoritative and unchanged.
+
+Implemented/tested: domain-derived JSON targets plus one exact generated index; strict canonical subject/body parsing and shared build rules; opaque process-local validation receipt; immutable issued plans; SHA256 byte/inventory revisions including read-only content; traversal/encoded/separator rejection, relative+real containment, all-component symlink and regular-file hardlink checks; bounded preflight; exclusive no-steal lock; restrictive flushed staging/journal; per-file atomic replacement/no-clobber create; graph/hash read-after-write; preflighted conditional rollback, exact hash verification and retained critical recovery evidence. No shell/eval/dynamic author import. All mutation tests use unique temporary fixtures. See [08](08-save-pipeline.md).
+
+The real checkout lacks machine-owned storage and fails STORAGE_NOT_READY before dependency loading/staging. Migration/fresh dependency adapter/HMR parity and guarded browser exposure remain G prerequisites; no dual store/override. Locks fail fast rather than queue/retry stale plans. A retained lock requires operator investigation, never elapsed-time stealing. Corrupt/missing journals and orphan locks need manual review; no ambiguous auto-cleanup. Portable checks narrow but cannot eliminate malicious same-account TOCTOU or guarantee globally atomic/power-loss-safe multi-file updates.
+
 ## Implemented in Milestones A/B/C/D/E
 
 | Boundary | Guarantee / implementation |
@@ -26,8 +34,8 @@ Malformed selections in enabled dev call `notFound`; root streaming can produce 
 
 ## Explicitly not implemented / future gates
 
-Read-only ID rejection is **not** a tested filesystem containment implementation. No writer exists to certify symlink/hard-link/TOCTOU defense, atomicity/recovery, stale-write protection or writer-specific authorization/recovery. Strict read-only validation Origin checks are implemented; they do not certify filesystem writes. Implement/test the exact [03 file contract](03-content-file-contract.md) before F/G; production guards must cover every future endpoint/action internally, not merely proxy/navigation.
+A–E request checks alone do not certify persistence. F now tests the internal filesystem boundary, not a live migrated reader/Save endpoint. G must prove [03](03-content-file-contract.md) parity and independently enforce request origin/size/authorization/revision safeguards; proxy/navigation alone is never sufficient.
 
-Current TS body storage is monolithic: first valid selected-body import initializes nine trusted bodies/examples/references/quizzes on the server. It does not import them on overview/curriculum or send all bodies to the browser. Per-body source granularity/JSON cutover is intentionally deferred to F.
+Current TS body storage is monolithic: first valid selected-body import initializes nine trusted bodies/examples/references/quizzes on the server. No bodies on overview/curriculum or broad browser payload. Live JSON cutover is deferred to G's reviewed activation gate; F uses fixtures only.
 
-Tests: unavailable loaders/readers/search reject before content access; disabled page/search route before loader/request wait; proxy production flag=true and route matcher exclusions; registry ownership/unknown/traversal IDs; escaped malicious inspection text; no inspection progress writes. C adds search/projection/transport/keyboard/race/role/dirty/reset tests and static absence of persistence methods/actions/writers. D/E allowlist only the two computational POSTs and test request bounds, production denial, malformed input, no-write hashes and shared validation/rendering. Full mutation adversarial fixture gates remain unimplemented.
+A–E guard/request/no-state-write gates retained. F adds adversarial/round-trip/receipt/revision/transaction/failure/recovery fixtures and real content hashes. Static route/UI regression permits only internal server-only writer modules, forbids imports from every existing Studio/browser/computational route module, and retains exact three-route/no-action/no-execution checks. No writer HTTP interface.

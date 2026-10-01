@@ -7,10 +7,11 @@ import { validateCanonicalLesson } from "@/lib/domain/learn-validation";
 import { boundedIssues, type ValidationReport } from "@/lib/domain/learn-validation/types";
 import { draftFingerprint } from "@/lib/studio/draft";
 import { canRenderLesson } from "@/lib/domain/learn-validation/renderability";
+import { validateExistingLessonIdentity } from "@/lib/domain/learn-validation/existing";
 import type { LessonCandidate, LessonValidationContext } from "@/lib/domain/learn-validation/types";
 
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
-/** Server-authoritative, single-draft computation. No filesystem writer exists. */
+/** Server-authoritative read-only computation; never invokes the internal writer. */
 export async function validateStudioLessonCandidate(subjectId: string, lessonId: string, input: unknown): Promise<{ report: ValidationReport; candidate: LessonCandidate | null; context: LessonValidationContext } | null> {
   requireStudioEnabled();
   if (!isStudioSubjectId(subjectId) || !isStudioLessonId(lessonId)) return null;
@@ -23,10 +24,7 @@ export async function validateStudioLessonCandidate(subjectId: string, lessonId:
   ]);
   const context = { subjects, lessons, conceptIds: new Set(concepts.map((item) => item.id)), exerciseIds: new Set(exercises.map((item) => item.id)), problemIds: new Set(problems.map((item) => item.id)), examples: new Map(learnExamples.map((item) => [item.id, item])), references: new Map(learnReferences.map((item) => [item.id, item])) };
   const result = validateCanonicalLesson(input, context);
-  if (result.candidate) {
-    for (const field of ["id", "subjectId", "sectionId", "slug", "order", "contentSource"] as const) if (result.candidate.lesson[field] !== persisted[field]) result.issues.push({ code: "IMMUTABLE_LESSON_FIELD", severity: "ERROR", path: `lesson.${field}`, entityId: lessonId, message: "Existing canonical identity, placement and source fields cannot be changed in this draft operation." });
-    if (result.candidate.content && result.candidate.content.version !== (body?.version ?? 1)) result.issues.push({ code: "IMMUTABLE_BODY_VERSION", severity: "ERROR", path: "content.version", entityId: lessonId, message: "Body version is server-owned and cannot change in this operation." });
-  }
+  if (result.candidate) result.issues.push(...validateExistingLessonIdentity(result.candidate, persisted, body));
   const issues = boundedIssues(result.issues);
   const counts = { ERROR: 0, WARNING: 0, INFO: 0 };
   for (const issue of issues) counts[issue.severity]++;

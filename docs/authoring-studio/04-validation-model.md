@@ -48,7 +48,7 @@ E uses `renderable` plus exact authoritative validation and the real learner ren
 
 ## Known boundaries
 
-All16 editable blocks have structural/domain/registry validation. No read-only editable variant is silently skipped. Full subject/group/quiz registry unknown-input schemas and writer graph freshness/parity remain F/K; no subject/quiz draft exists in D. Educational depth/review accuracy and full translated-body editorial coverage cannot be certified by these simple presence checks. Syntax languages remain display strings (no new execution enum). Click-to-focus and a validation shortcut are deferred; paths/block IDs are available now. No repository-wide scan. Existing build additionally checks persisted COMPLETE source declarations; a new transient body cannot author its source path, so future writer must derive that association and validate the resulting graph.
+All16 editable blocks have structural/domain/registry validation. No editable variant is silently skipped. F adds strict existing SubjectManifest/group storage parsing and shared identity policy in isolated JSON fixtures; no subject/quiz draft or live cutover. Quiz questions remain trusted read-only typed registries, not an untrusted authoring domain. Fresh live adapter/HMR parity remains a G activation gate. Educational depth/review accuracy and full translated-body editorial coverage cannot be certified by simple presence checks. Syntax languages remain display strings (no execution enum). Click-to-focus/shortcut deferred; exact paths/block IDs supplied. No repository-wide health scan. Build additionally checks persisted COMPLETE source declarations; F derives a first-body association and validates the resulting graph, never trusts an author path.
 
 ## QA
 

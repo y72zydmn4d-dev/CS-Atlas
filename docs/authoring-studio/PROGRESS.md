@@ -1,72 +1,56 @@
 # Content Authoring Studio — resumable checkpoint
 
-STATUS: MILESTONE E — COMPLETE.
+STATUS: MILESTONE F — COMPLETE.
 CURRENT BRANCH: atlas-v2.
-CURRENT COMMIT / BASE: 3b7cc33 (Milestone D), confirmed; M0/A/B/C/D complete.
-CURRENT MILESTONE: E only. No restart, branch switch, push or merge.
-LOCAL COMPLETION COMMIT: feat(studio): add canonical unsaved lesson preview (this checkpoint; resolve with git log).
-CANONICAL CONTENT: READ-ONLY.
-FILESYSTEM WRITES: NONE from Studio; filesystem mutation NOT IMPLEMENTED.
-PREVIEW: UNSAVED DRAFT SUPPORTED.
-SIDE EFFECTS: DISABLED IN AUTHOR PREVIEW.
-NO-WRITE GUARANTEE: preview remains in-memory; no filesystem/temp content, database, Save/Create/Reorder or Git operations from Studio.
-CURRENT VALIDATION CONTRACT: server-authoritative, exact parsed draft/context fingerprints, strict guarded bounded read-only computation; no client verdict is trusted.
-PREVIEW ARCHITECTURE: shared LessonContentSurface → original LessonBlockRenderer/ExampleRunner and real CSS. Server-selected public resources, exact authoritative preparation, transient Edit/Preview surface and typed author-preview mode. Learner wrapper/state/providers never mounted in Studio.
-NEXT: MILESTONE F — SECURE WRITE FOUNDATION (not implemented).
+CURRENT COMMIT / BASE: 13b92af (E), verified; M0/A/B/C/D/E not restarted.
+LOCAL COMPLETION COMMIT: feat(studio): add secure canonical write foundation (this checkpoint; resolve with git log).
+WRITE FOUNDATION: IMPLEMENTED; internal server-only, fixture-tested.
+STUDIO SAVE UI: NOT CONNECTED.
+CANONICAL CONTENT: real TypeScript READ-ONLY / unchanged.
+REAL CANONICAL CONTENT WRITES: NOT EXERCISED BY STUDIO.
+WRITER TESTS: FIXTURE-ONLY.
+NEXT: MILESTONE G — SAVE EXISTING LESSON.
 
-E IMPLEMENTATION CHECKPOINT:
+## Architecture decisions / current write contract
 
-- Document05 completed before code. Normal Learn pipeline and evidence/bookmark/sidebar/runtime/AI boundaries audited. Shared LessonContentSurface extracted from the existing article; both Learn and Studio use the same LessonBlockRenderer and selected server-projected resources.
-- Author-preview mode is presentation-only: no learner workspace/provider/sidebar, completion/bookmarks/AI absent, canonical links open safely in a new tab, examples static. No temporary files, preview persistence, code execution or writer.
-- Guarded POST /api/studio/preview reuses D's bounded origin/request parsing and validates the exact draft; structured response includes report, fingerprints and selected render model. Explicit safe-content-presence ERRORs may preview but cannot persist; unknown integrity errors fail closed.
-- In-workspace Edit/Preview with explicit refresh, cancellation/sequencing, stale indication, retained draft, reset clearing and render error boundary implemented. Paired EN/VI chrome; shared theme/CSS and locale fallback.
-- E checks: typecheck/lint/full suite75 suites617 tests/build/audit and enabled/disabled/production HTTP/no-write/learner/public-entry smokes pass; details in06-QA.52 tests added since D. No isolated browser available; manual visual matrix remains explicit.
-- Expected E files: shared Learn surface/environment/resource projection/copy leaf; Studio preview service/transport/route/UI; shared renderability/request helpers; selected learner route integration; tests, audit script and docs. next-env.d.ts remains unrelated/excluded.
+- One canonical model: exact SubjectManifest/LearnLessonContent JSON layout proposed by03, never a persisted Studio DTO/override. Current live TypeScript files remain hand-maintained. F scope forbids real migration; actual initialization fails STORAGE_NOT_READY. The reviewed parity cutover/fresh dependency adapter/HMR proof is mandatory before G exposure.
+- Internal service factory accepts server-owned directory anchor/dependency adapter, not browser paths. Verify cs-atlas package/AGENTS/canonical source markers and real root. Exact targets: subjects/<id>.json, lessons/<subject>/<initial-ID-slug>.json, and generated/lesson-content-index.ts. Subject index/read-only registries/all other TS/config/Git files are immutable.
+- Guard dev AND exact AUTHORING_STUDIO_ENABLED=true independently in service, planning/preflight, execution/recovery. No current UI/API/action imports writer. Ctrl/Cmd+S remains explanatory, no Save. No shell/eval/dynamic author import, dependency, database, automatic Git or content deletion.
+- Shared canonical/build validators + strict unknown-input subject/group/body parsing; D/F reuse extracted immutable existing-record policy. Process-local nontransferable ERROR-free receipt binds exact draft + fresh context; frozen issued plan revalidated/rebuilt under lock. Browser ValidationReport/preview projection cannot authorize persistence.
+- SHA256 revision set of sorted relative byte resources/inventory, including manifests, bodies/absence, indexes and read-only content. No mtime/cache shortcuts; source changes conflict. Revision scanning is conservative/bounded, not bulk optimized. Future G browser contract must be narrow, not expose internal snapshot/plans.
+- Stable JSON keys/UTF8/LF/final newline; preserve strings/VI/code/ordered arrays and every existing field. No-op/manual formatting avoided; only body semantic edits bump canonical version; first body version1/server-derived association. Generated index is fixed literal imports, not arbitrary TS rewriting.
+- Closed domain/path/ownership/type policy, path.relative containment, nearest-existing real ancestor/all-component lstat, reject symlinks and hardlinked regular files, duplicate targets/collisions/limits. Recheck paths/hash near replacement; portable same-account TOCTOU is not completely eliminable.
+- Exclusive no-steal/fail-fast repository lock (not automatic queue/retry), restrictive flushed staging/backups and durable phase journal. Prepare-all-before-mutate; atomic per-file rename/no-clobber CREATE; canonical graph/hash read-after-write. Multi-file changes are rollback-protected, NOT globally atomic.
+- Preflight all rollback current hashes/backups; restore only own output, preserve intervening manual edits; verify original bytes. ROLLBACK_FAILED retains evidence/lock. Explicit stopped-owner-confirmed recovery validates paths/hashes/graph; ambiguous/corrupt/missing journals or orphan locks require manual inspection, never age-based cleanup. No process-kill/power-loss certification.
 
-ARCHITECTURE DECISIONS:
+## Completed / files changed
 
-- One canonical model. AuthoringLessonDraft aliases the shared canonical LessonCandidate composition, not a persisted Studio record. Existing TypeScript content stays authoritative/read-only; no storage migration.
-- Pure lib/domain/learn-validation parser reconstructs unknown input into actual LessonManifest + nullable LearnLessonContent. Modular metadata,16-block, registry, curriculum and status rules are reused by validateLearnPlatform/build, not separate Studio policies.
-- Owning difficulty/translation/runtime/callout constants retain identical union values. Code syntax language remains a bounded display token, not Practice execution support.
-- POST /api/studio/validation is read-only computation, not a persistence mutation. Dev AND explicit AUTHORING_STUDIO_ENABLED=true; independent route/service guard, exact direct loopback Host/Origin (no forwarded-host trust), JSON/stream1MiB/120 requests per minute/no-store/noindex.
-- SHA256 candidate/context fingerprints and typed counts/codes/paths; report is content eligibility, not authorization/disk revision/Save ticket. Future F/G must revalidate exact current draft against fresh context under the writer lock.
-- Separate client report state binds exact submitted structural draft; any edit marks stale, reset/selection clears, cancellation/sequencing prevents old-current verdicts. Unknown relationships are reported, not silently repaired.
-- Prerequisites are DAG dependencies per M0; bounded iterative DFS checks reachable cycles. Related associations remain cyclic-capable, self-links invalid.
-- SKELETON/PLANNED allow absent bodies, structural/reference corruption still errors. PARTIAL thin-body warning; COMPLETE requires substantive body, summary, review date and objectives. Quality hints nonblocking; no scoring/automatic promotion.
+- Read all Studio contracts, root instructions/tasks/decisions/authoring docs, actual storage/validators/guards and local Next server-only guidance. Wrote08-save-pipeline before transaction code and kept this checkpoint during implementation.
+- lib/domain/learn-validation/{subject,existing}.ts: actual canonical storage parser/shared immutable policy; lib/studio/validation.server.ts uses same identity rule, remains read-only.
+- lib/studio/writer/{types,paths,serialization,repository,planning,transaction,service}.server.ts: typed safe errors/limits, canonical reader/serializer, revision/receipts/plans/dry run, exact path ownership, guarded locking/staging/verification/rollback/recovery.
+- tests/studio-writer-{fixtures,planning.test,security.test,transaction.test}.ts; existing studio-read-only-boundary regression narrowly admits only unexposed internal writer directory.
+- docs/authoring-studio/{08-save-pipeline,01-author-workflow,02-security-boundary,03-content-file-contract,04-validation-model,06-qa,PROGRESS}; docs/learn-authoring.md/STATUS.md/atlas-v2/05-directory-structure.md; TASKS.md/DECISIONS.md and narrow transaction .gitignore rule.
+- No canonical content, app/component/UI/route, landing, dependency, Practice vendor or unrelated user changes included.
 
-COMPLETED:
+## Validation passed
 
-- Confirmed atlas-v2/3b7cc33, M0–D checkpoints and pre-existing next-env baseline. Read architecture/workflow/security/file/validation/QA contracts, root instructions and local Next16 server/client/route/error guides. Recorded05 before code; mapped all actual learner state boundaries.
-- Extracted shared real Learn article/selected resources/copy leaf. Normal learner wrapper retains evidence/bookmarks/actions/pagers/AI and QuickJS; Studio excludes them, static examples and safe new-tab content links.
-- Authoritative read-only preview route/service and guarded typed transport; exact manifest/body/order/roles/locales maintained. Shared explicit renderability allows safe presence errors but all ERRORs still forbid future persistence. Unknown/integrity errors blocked without deleting IDs or auto-fixing.
-- Edit/Preview reading mode, explicit refresh/Back, retained draft, authoritative report counts, current/stale fingerprints, abort/sequence/reset clearing and render-error isolation; EN/VI chrome, normal theme/CSS.
-- Pure adapter/service/request/client/rendering/UI and actual storage/Library/runtime/Search no-side-effect regressions. Real Python/DSA/code/references/Skeleton plus all16 blocks/XSS/canonical-hash cases. No temporary files or preview persistence.
-- Updated05/01/02/04/06/PROGRESS, authoring/status/task/ownership docs. No dependencies, schema/content/landing changes or writer.
+- npm run typecheck; npm run lint: pass, zero warnings.
+- npm test:78 suites /689 tests.72 new writer tests across3 suites; final staging-collision test proves cleanup never deletes an unowned directory. A–E/shared learner/request/security regressions retained.
+- Determinism/all13 subject and9 body round trips/all16 variants/VI/order/no-op; malformed/unknown references/identity/body removal; forged/stale/other-service receipts; external revisions/inventory/collision/missing targets; path/ownership/symlink/hardlink/resource bounds/environment guards.
+- Staging failure, either replacement in2-file commit, verification/canonical parse failure,3-file CREATE rollback, exact before hashes, rollback failure/evidence retention, manual-edit non-overwrite, explicit PREPARED/COMMITTING/COMPLETED recovery, corrupt/path-shaped journals/backups, locks/abandoned evidence. Isolated temp repositories only.
+- npm run build:739 entries, unchanged route surface. Final audit:build:106 chunks/940,021 gzip (same as E; repeated artifacts varied by5 bytes), largest148,115 and Studio12,928 unchanged; no writer/client import or package.
+- Enabled-dev existing Studio/page/relationship/validation/preview and representative learner smokes pass; disabled dev flag=false and production flag=true404/no-store; computational methods405, guarded malformed request400/403/415/413. Public-entry16-route/Guest/artwork audit passes. No writer endpoint/control. Owned QA servers stopped.
+- Real content23-file aggregate before/after SHA256 afed10235bac89b24518b57c9ae09957404bc903deb6ea2b386c6fe39348193e unchanged. git diff content/vendor empty; no real transaction directory. Original next-env.d.ts blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6 preserved after Next generation; never staged.
+- git diff --check and scoped staged-diff review required before local commit. No push/merge.
 
-FILES CHANGED:
+## Open risks / known limitations
 
-- lib/domain/learn-rendering.ts; learn-validation/renderability.ts; lib/learn/render-resources.server.ts.
-- components/learn/{lesson-content-surface,learn-render-environment,lesson-block-renderer,lesson-workspace,example-runner}.tsx; copy-code-block.tsx; interactive-content.tsx compatibility re-export; selected app/learn/[subject]/[page]/page.tsx resource loader.
-- lib/studio/preview{,.server,-client}.ts; validation.ts/validation.server.ts/validation-request.server.ts; app/api/studio/{preview,validation}/route.ts.
-- components/studio/{lesson-preview,preview-error-boundary,validation-issues,lesson-validation,lesson-editor}.tsx; app/studio/studio.css; i18n/messages/studio.ts.
-- tests/studio-preview-{fixtures,model,server,route,client,rendering,ui}; existing learn-platform/studio-editor/studio-read-only-boundary/studio-validation-server tests; scripts/audit-studio-preview.mjs.
-- docs/authoring-studio/{05,01,02,04,06,PROGRESS}; docs/learn-authoring.md/STATUS.md/atlas-v2/05-directory-structure.md; TASKS.md. Never stage next-env.d.ts.
+- Studio still cannot Save/create/reorder. Live JSON migration/reader/HMR/search/alias parity not done. Internal canonical JSON fixture reader is not proof of live Learn refreshing after writes. G must activate one source of truth, not an override, before UI persistence.
+- No browser provider (browsers:[]; iab unavailable). Independent rendered/keyboard/console/assistive-tech/HMR QA remains manual in06; F has no new author UI.
+- Conservative bounded full content revision/graph scans; no bulk writer. Existing syntax language/quality rules unchanged; no quiz/registry authoring or educational-depth certification.
+- Atomicity is per file only; readers may see mixed files during commit. Process/power failure can retain a journal/lock. Early-staging/final-cleanup orphan without intact journal requires manual review. Recovery never guesses/steals/overwrites conflicting manual bytes. Portable Node is not a malicious-local-account sandbox.
+- F foundation is not writer HTTP authorization certification. G must enforce explicit dev enablement, same-origin/content-type/size limits, typed domain operation and fresh exact-draft validation/revision under lock independently of UI.
 
-VALIDATION:
+EXACT NEXT ACTION: Verify this F local commit/atlas-v2/worktree; read03/08/06 and this checkpoint. For owner-authorized Milestone G only, first complete/review canonical JSON parity cutover and fresh dependency/read adapter/HMR agreement while preserving IDs/routes/aliases/Search/manual editing. Do NOT connect Save to unmigrated TS or serialize preview. Then deliberately add guarded typed existing-lesson Save with base revision, exact validation and safe conflicts/change report; repeat isolated failures and production/no-write security checks.
 
-- npm run typecheck; npm run lint (zero warnings); npm test75 suites/617 tests; npm run build; npm run audit:build — all pass. Focused tests exposed and fixed sibling-key and old-link/retained-form test expectations; no weakening of safety assertions.
-- Build:739 generated entries;106 chunks/940,021 gzip (+6,105/~0.65% vs D), largest148,115 unchanged, largest route Studio12,928 (+1,383); no dependencies. Public landing entry5,149 unchanged, modern initial census174,882 (+974/~0.56%), not a timing/hydration benchmark.
-- Enabled-dev preview/validation200 diagnostics, controlled400/403/415/413 and methods405; production flag=true and disabled-dev flag=false404/no-store. Source hashes unchanged, canonical Java route retains original Skeleton after unsaved preview. Studio/representative learner and16-route public-entry/artwork audits pass.
-- git diff --check passes; canonical content/vendor/landing files unchanged. Original unrelated next-env.d.ts blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6 preserved and excluded from staging. No push or merge.
-
-OPEN RISKS / KNOWN LIMITATIONS:
-
-- No Save/Create/curriculum persistence, writer/storage migration, bulk health scan or Git operations from Studio. F–K unimplemented.
-- Typed trusted TS registry snapshots follow Next dev HMR; no custom persistent cache. Disk-revision/registry freshness under lock remains F/G. Full subject/group/quiz unknown-input schemas remain future storage gates.
-- English diagnostics explicitly labeled inside EN/VI UI. Click-to-focus and validation shortcut deferred; exact field paths/block IDs supplied. Presence policy does not certify educational depth/review quality or full translated body completeness.
-- Content surface only, not full learner sidebar/rail/pagers/AI. Explicit refresh, static examples, no device frames/live diff. Safe missing content can preview but cannot persist. Metadata links absent from the normal article are not invented as new preview widgets.
-- Browser inventory browsers:[]; isolated in-app browser creation failed (iab unavailable). No rendered/keyboard/assistive-tech/console/HMR certification. Manual matrix in06-QA. Existing beforeunload/browser-shutdown limitations remain.
-
-EXACT NEXT ACTION: On the next owner-authorized F request, verify this checkpoint and read03-content-file-contract/05-preview-architecture/PROGRESS. Implement/test isolated fixture writer roots, deterministic serializer, revision protection and transaction-like rollback before exposing any repository mutation. E never writes; future Save must persist editor draft, not preview model, and revalidate under the writer boundary.
-
-PREVIOUS CHECKPOINTS: M0 168f760; A b3cb336; B9633dda; C e97472f; D3b7cc33. Do not repeat or infer writer completion.
+PREVIOUS CHECKPOINTS: M0 168f760; A b3cb336; B9633dda; C e97472f; D3b7cc33; E13b92af.

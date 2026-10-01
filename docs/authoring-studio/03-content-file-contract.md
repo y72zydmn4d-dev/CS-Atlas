@@ -1,6 +1,6 @@
 # 03 — Content file ownership and safe-write contract
 
-Milestone 0 decision contract, baseline `80018c6`. **No allowlisted writer exists yet.** Existing content files stay read-only during A–E. Runtime parsers, parity migration and isolated safety tests are mandatory before F/G enable writes.
+Milestone 0 decision contract, baseline `80018c6`. Existing content stays read-only through F. The latest F scope forbids real content changes: implement/test this layout only in isolated fixtures, fail closed on unmigrated storage. The historical migration sequence below is now a reviewed prerequisite before G exposure, not permission to migrate in F. See [08 — save pipeline](08-save-pipeline.md). No parallel override store is permitted.
 
 ## Ownership categories
 
@@ -91,14 +91,14 @@ Threat scope: Node cannot fully defeat a malicious same-OS-user process continuo
 
 Multi-file rename is **not** filesystem-wide atomic. Promise: no success on partial save, recoverable failure, no silently half-committed canonical state—not instantaneous multi-file snapshots across HMR readers.
 
-1. Acquire shared in-process queue AND exclusive repository-local writer lock (cross-worker/dev process). Existing/unrecoverable lock or journal blocks writes; do not auto-steal stale lock by elapsed time.
+1. Acquire exclusive repository-local writer lock shared by in-process/cross-worker executions. F explicitly chooses fail-fast instead of a queue/automatic retries of potentially stale plans. Existing lock or unrecoverable journal blocks writes; never auto-steal by elapsed time.
 2. Re-read revisions, verify all target/parent paths, validate merged graph, prepare every canonical/generated output. Stage same-filesystem temp files exclusively; flush output and durable recovery journal containing validated relative targets, before-bytes/hashes and intended after-hashes. No file rewrite while typing or previewing.
 3. Recheck expected targets; atomically rename each staged file, create bodies before publishing generated imports, generated index last. Never overwrite an unexpected new target/manual change; track each completed replacement.
 4. Re-read/parse/validate persisted bytes and affected graph; confirm hashes. Only now return Saved + relative file report + fresh revision; client refreshes canonical loaders. Next module/HMR propagation is separately verified by integration tests.
 5. Ordinary injected failure→restore prior bytes atomically/remove only own newly-created targets while checking current after-hashes; verify rollback. Do not overwrite intervening manual edits during recovery. If rollback cannot complete, retain journal, surface `recovery-required`, stop all new writes; never report success.
 6. Crash/restart→detect unfinished journal before reads used for mutation/preview and before any new write; recovery must be explicit, hash/path checked, and tested. Normal learner readers can briefly observe successive replacements; journal/recovery protects durable integrity. If reader-consistent snapshots become required, stop and design that separately, not a hidden CMS generation store.
 
-Transaction folder contains temporary technical recovery data only and is never a persisted editor model. Cleanup affects exclusively validated journal/temp targets, not broad directories. Implemented recovery behavior and platform limitations must be recorded in05-save-pipeline/06-QA before F handoff.
+Transaction folder contains temporary technical recovery data only and is never a persisted editor model. Cleanup affects exclusively validated, operation-owned journal/temp targets, not broad directories; authority starts after exclusive creation succeeds. Implemented guarantees/platform limits are in [08-save-pipeline](08-save-pipeline.md) and06-QA.
 
 ## Preview boundary
 
@@ -130,7 +130,7 @@ Use isolated temporary fixtures matching canonical folder layout; inject reposit
 | C | Bounded canonical Concept/Exercise/Problem/LearnReference and existing-example pickers; no registry mutations. |
 | D | Shared pure unknown-input parsers + authoritative validation panel, COMPLETE/curriculum checks;04-validation-model. |
 | E | Unsaved real-renderer preview, explicit no-learning-side-effects tests; no persistence. |
-| F | Parity JSON migration + deterministic indexes + locked/path-safe/revisioned write-plan and recovery tests in fixtures;05-save-pipeline. No live Save until all gates pass. |
+| F | Deterministic canonical JSON/indexes + locked/path-safe/revisioned plans/transaction/recovery tests in isolated fixtures;08-save-pipeline. Real content unchanged; no live Save. |
 | G | Expose manual safe save/shortcut, changed-file/conflict UI; dev learner/Search HMR proof. |
 | H / I | Create lessons; create/reorder sections/lessons, preserve IDs/dependencies; isolated creation workflow. |
 | J | Status/section filters, ordered Needs Authoring queue, Save & Next; no gamified score. |

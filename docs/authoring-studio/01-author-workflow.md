@@ -1,5 +1,7 @@
 # 01 — Studio workflow
 
+Milestone F adds only an internal fixture-tested [write foundation](08-save-pipeline.md). This author workflow is unchanged: no active Save/shortcut/persistence. Real TS content stays canonical; JSON parity cutover/fresh dependency adapter is required before G connects Save. An internal dry-run plan is not a persisted change or browser feature.
+
 ## Implemented: Milestones A/B/C/D/E (canonical source read-only, transient drafts)
 
 Start an explicitly enabled, loopback-only development server:

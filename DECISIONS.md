@@ -107,3 +107,10 @@ This file records decisions that constrain CS-Atlas architecture. New decisions 
 - **Decision:** Define Judge contracts and provide an adapter that returns `unavailable` without interpreting source. Keep remote Submit disabled.
 - **Rationale:** A mock lifecycle allows UI/domain integration without weakening the execution boundary.
 - **Consequences:** Public browser results remain local evidence only. Enabling remote submission requires the M6/M14 service, threat-model, operations, and kill-switch gates.
+
+## ADR-0013: Keep authoring writes internal until canonical storage parity activation
+
+- **Status:** Accepted for Studio F, 2026-10-01.
+- **Context:** M0 proposed JSON parity migration at F; the scoped F request explicitly forbids real content changes and browser Save. Current hand-maintained TypeScript cannot be safely rewritten as generic text.
+- **Decision:** Implement the exact proposed canonical JSON contract only in isolated fixture repositories; current checkout fails STORAGE_NOT_READY. No persisted override/CMS. Reuse canonical parsers/rules, derive targets by domain identity, bind validation/revision and use staged conditional rollback; no globally atomic claim.
+- **Consequences:** G must separately complete reviewed parity cutover/fresh dependency reader/HMR agreement before a guarded Save endpoint. F has no UI/action/API importer or active persistence shortcut. See Studio03/08 for ownership and residual filesystem/crash limits.

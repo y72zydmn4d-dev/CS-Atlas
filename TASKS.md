@@ -164,4 +164,5 @@ Runs continuously; final release gate depends on M1-M13 scope included in the re
 
 - [x] Milestone0: canonical content audit and future file/write contract (`168f760`).
 - [x] MilestoneA: guarded development-only read-only Studio, real health, metadata explorers, selected inspector, guard/loader/UI tests and local production404 smoke. No filesystem mutations. Independent visual QA remains manual; see `docs/authoring-studio/06-qa.md`.
-- [ ] B–K: transient editor, pickers, validation, real-renderer preview, safe canonical persistence, creation/ordering/health workflow and final security QA. Follow `docs/authoring-studio/03-content-file-contract.md`; do not infer these from A completion.
+- [x] MilestoneB: transient canonical-field structured lesson editor, cloned drafts, accurate reversible dirty state, objective/block editing, accessible discard/reset and dirty-only document unload warning. No filesystem persistence/API/action; relationship IDs remain read-only. See `docs/authoring-studio/01-author-workflow.md` and `06-qa.md` for scoped evidence/manual checks.
+- [ ] C–K: pickers, validation, real-renderer preview, safe canonical persistence, creation/ordering/health workflow and final security QA. Follow `docs/authoring-studio/03-content-file-contract.md`; do not infer these from A/B completion.

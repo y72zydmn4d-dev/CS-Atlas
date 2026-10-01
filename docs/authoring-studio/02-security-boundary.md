@@ -1,6 +1,6 @@
 # 02 — Studio security boundary
 
-## Implemented in Milestone A
+## Implemented in Milestones A/B
 
 | Boundary | Guarantee / implementation |
 |---|---|
@@ -10,8 +10,9 @@
 | I/O | `lib/studio/*.server.ts` uses `server-only`; Node route; canonical literal module imports are server-owned. No fs/path browser import, generic file API, arbitrary dynamic import or requested filesystem path. |
 | IDs | Bounded ASCII canonical ID grammar plus subject/lesson registry membership and ownership. Unknown/path-shaped/cross-subject IDs never read a body. Source declarations are display-only, never interpreted as filesystem paths. |
 | Data minimization | Overview/subjects/curriculum contain only metadata projections. Body import occurs only on valid lesson selection; only selected body is rendered. No private solutions, broad content/index barrel or external service. |
-| Rendering | All fields/block payloads render as escaped React text, including `<script>` input. No raw HTML, eval, shell/server execution or embedded runtime. Inspector does not mount LessonWorkspace/ExampleRunner or emit learning events. |
-| Mutation | **None.** No API routes, Server Actions, fs writes, autosave, Git commands, revision/write plan or authoring buttons. `/api/studio` and `/api/studio/write-file` do not exist. |
+| Rendering | Inputs/textareas render escaped canonical prose/code, including `<script>`. No raw HTML, eval, shell/server execution or embedded runtime. Editor does not mount LessonWorkspace/ExampleRunner or emit learning events. |
+| Mutation | **No repository mutation.** B edits cloned client state only. No API routes, Server Actions, fs writes, autosave, Git commands, writer revision or write plan. `/api/studio` and `/api/studio/write-file` do not exist. |
+| Draft isolation | Canonical inspection, cloned baseline and cloned editor draft are distinct. Conversion returns another isolated canonical candidate. IDs/slugs/ownership/source/order and registry ID payloads have no editing input. No localStorage/IndexedDB drafts, outbound requests or aggregate content imports in editor modules. |
 
 Run on loopback; this is a local development utility, not admin authentication. Root theme/locale providers are reused. Exact /studio bypasses WorkspaceProvidersShell: the learner AppShell/Search imports content/index and its monolithic body module, so mounting it would violate narrow startup loading and initialize unrelated learning-data services. All existing learner paths/providers retain their behavior. Studio owns main/skip/header utilities, not a competing theme. The owner must not expose an enabled development server publicly. A has no remote administration model.
 

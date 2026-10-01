@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { StudioLink } from "@/components/studio/studio-link";
 import { useState } from "react";
 import { useI18n } from "@/components/locale-provider";
 import { learnContentStatuses } from "@/lib/domain/learn-platform";
@@ -20,12 +20,12 @@ export function SubjectExplorer({ subjects, selectedSubjectId }: { subjects: Stu
         <label className="studio-field">{t("studio.subjectStatus")}<select value={status} onChange={(event) => setStatus(event.target.value)}><option value="">{t("studio.allStatuses")}</option>{learnContentStatuses.map((value) => <option key={value}>{value}</option>)}</select></label>
       </header>
       <nav className="studio-subject-list" aria-label={t("studio.subjectExplorer")}>
-        {filtered.map((subject) => <Link className="studio-subject" key={subject.id} href={studioHref(subject.id)} prefetch={false} aria-current={subject.id === selectedSubjectId ? "page" : undefined}>
+        {filtered.map((subject) => <StudioLink className="studio-subject" key={subject.id} href={studioHref(subject.id)} aria-current={subject.id === selectedSubjectId ? "page" : undefined}>
           <strong>{subject.title[locale] || subject.title.en}</strong>{" "}
           <span className="studio-status" data-status={subject.status}>{subject.status}</span>{" "}
           <small>{subject.id} · {subject.category}</small>
           <small>{t("studio.subjectCounts", { sections: subject.sectionCount, lessons: subject.lessonCount, complete: subject.lessonStatuses.COMPLETE })}</small>
-        </Link>)}
+        </StudioLink>)}
         {!filtered.length && <p className="studio-empty" role="status">{t("studio.noSubjects")}</p>}
       </nav>
     </section>

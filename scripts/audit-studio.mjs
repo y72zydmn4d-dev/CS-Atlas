@@ -21,7 +21,7 @@ for (const path of studioPaths) {
   assert.equal(html.includes('class="page studio-page"'), mode === "enabled");
   if (mode === "enabled") {
     assert(!html.includes("workspace-frame"), "Studio must not mount eager learner/Search/persistence services");
-    assert(html.includes("Read-only") && html.includes("not scanned"));
+    assert(html.includes("No repository writes") && html.includes("not scanned"));
     if (!path.includes("lesson=")) assert(!html.includes('class="studio-block-list"'), "Body must not render before selection");
     if (path.includes("introduction")) assert(html.includes('class="studio-block-list"'), "Selected authored body missing");
     if (path.includes("interfaces")) assert(html.includes("No authored body exists"), "Actual skeleton absence missing");
@@ -39,7 +39,7 @@ if (mode === "enabled") {
 
 for (const path of ["/api/studio", "/api/studio/write-file"]) {
   const { response } = await get(path);
-  assert.equal(response.status, 404, "No Studio endpoint is implemented in Milestone A");
+  assert.equal(response.status, 404, "No Studio endpoint is implemented in Milestones A/B");
 }
 for (const path of ["/", "/home", "/learn", "/learn/python", "/learn/python/introduction", "/learn/java"]) {
   const { response, html } = await get(path);

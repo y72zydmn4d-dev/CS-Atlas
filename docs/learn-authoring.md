@@ -2,11 +2,11 @@
 
 CS-Atlas Learn is a projection over canonical Concepts, shared Exercises and Problems, and local learning evidence. A lesson must reference those records; it must not redefine their authoritative metadata.
 
-## Studio inspection / manual authoring
+## Studio drafts / manual authoring
 
-Milestone A adds a **read-only** local `/studio` for canonical health counts, subject/curriculum filters and selected lesson/block inspection. Run `AUTHORING_STUDIO_ENABLED=true npm run dev -- --hostname 127.0.0.1`; production remains unavailable. See [Studio workflow](authoring-studio/01-author-workflow.md) and [security boundary](authoring-studio/02-security-boundary.md).
+Milestones A/B add local `/studio` health/explorers and a **transient structured editor** for the selected canonical lesson. Run `AUTHORING_STUDIO_ENABLED=true npm run dev -- --hostname 127.0.0.1`; production remains unavailable. EN/VI metadata, objectives and12 direct block payloads are editable; four ID-backed payloads remain read-only until C. Drafts never alter repository content. See [Studio workflow](authoring-studio/01-author-workflow.md) and [security boundary](authoring-studio/02-security-boundary.md).
 
-Studio cannot edit/save/create/reorder yet. Manual authoring below remains the only write workflow; current TypeScript sources have not migrated or gained a parallel persisted model. COMPLETE counts are manifest declarations and Studio validation is not scanned. Future safe authoring follows the [file contract](authoring-studio/03-content-file-contract.md), not regex rewriting of source.
+Studio cannot save/create/reorder canonical curriculum yet. Reset and dirty-navigation warnings protect transient edits; there is no autosave/draft persistence. Manual authoring below remains the only write workflow; current TypeScript sources have not migrated or gained a parallel model. COMPLETE counts remain declarations and Studio validation is not scanned. Future safe persistence follows the [file contract](authoring-studio/03-content-file-contract.md), never regex rewriting of source.
 
 ## Add a subject
 

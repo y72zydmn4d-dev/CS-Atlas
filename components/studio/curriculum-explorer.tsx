@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { StudioLink } from "@/components/studio/studio-link";
 import { useState } from "react";
 import { useI18n } from "@/components/locale-provider";
 import { learnContentStatuses } from "@/lib/domain/learn-platform";
@@ -32,9 +32,9 @@ export function CurriculumExplorer({ curriculum, selectedLessonId }: { curriculu
     {!curriculum ? <p className="studio-empty">{t("studio.chooseSubject")}</p> : <nav className="studio-curriculum-list" aria-label={t("studio.curriculum")}>
       {filtered.map((section, index) => <details key={section.id} className="studio-section" open={Boolean(query || status || sectionId || section.lessons.some((lesson) => lesson.id === selectedLessonId) || index === 0)}>
         <summary><span>{section.order}. {section.title[locale] || section.title.en}</span><small>{section.lessons.length}</small></summary>
-        {section.lessons.map((lesson) => <Link key={lesson.id} className="studio-lesson-link" prefetch={false} href={studioHref(curriculum.subject.id, lesson.id)} aria-current={lesson.id === selectedLessonId ? "page" : undefined}>
+        {section.lessons.map((lesson) => <StudioLink key={lesson.id} className="studio-lesson-link" href={studioHref(curriculum.subject.id, lesson.id)} aria-current={lesson.id === selectedLessonId ? "page" : undefined}>
           <span>{lesson.order}. {lesson.title[locale] || lesson.title.en}</span>{" "}<small className="studio-status" data-status={lesson.status}>{lesson.status}</small>
-        </Link>)}
+        </StudioLink>)}
       </details>)}
       {!count && <p className="studio-empty" role="status">{t("studio.noLessons")}</p>}
     </nav>}

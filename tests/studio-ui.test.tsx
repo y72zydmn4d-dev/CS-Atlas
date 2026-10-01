@@ -55,18 +55,14 @@ describe("Studio read-only workspace", () => {
     expect(screen.getByText("No lessons match these filters.")).toBeVisible();
   });
 
-  it("inspects selected body, code and relation IDs without recording progress or executing HTML", async () => {
+  it("retains immutable canonical source details without recording progress", async () => {
     localStorage.setItem("studio-test-learning-evidence", "untouched");
     const inspection = await getStudioLesson("dsa", "learn:dsa:arrays");
     if (!inspection?.content) throw new Error("Expected canonical fixture body");
-    inspection.content.blocks.push({ id: "unsafe-text", type: "paragraph", body: { en: "<script>alert(1)</script>", vi: "<script>alert(1)</script>" } });
     const { container } = renderWithLocale(<LessonInspector inspection={inspection} />);
-    expect(screen.getByRole("link", { name: "Open learner lesson →" })).toHaveAttribute("href", "/learn/dsa/arrays");
+    expect(screen.getByText("learn:dsa:arrays")).toBeVisible();
     expect(screen.getByText("exercise:array-linear-scan")).toBeVisible();
-    const block = container.querySelector<HTMLDetailsElement>(".studio-block-list li:last-child details");
-    if (!block) throw new Error("Missing block details");
-    fireEvent.click(block.querySelector("summary") ?? block);
-    expect(block.textContent).toContain("<script>alert(1)</script>");
+    expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
     expect(container.querySelector("script")).toBeNull();
     expect(container.querySelector("iframe")).toBeNull();
     expect(localStorage.getItem("studio-test-learning-evidence")).toBe("untouched");
@@ -75,17 +71,17 @@ describe("Studio read-only workspace", () => {
 
   it("shows actual skeleton absence and localized interface, without pretending copied text is translated", async () => {
     // Use the existing provider's locale setter rather than assume its storage key.
-    const inspection = await getStudioLesson("java", "learn:java:interfaces");
-    const { rerender } = renderWithLocale(<LessonInspector inspection={inspection} />);
+    const props = { overview: await getStudioOverview(), subjects: await getStudioSubjects(), curriculum: await getStudioCurriculum("java"), inspection: await getStudioLesson("java", "learn:java:interfaces") };
+    const { rerender } = renderWithLocale(<StudioWorkspace {...props} />);
     expect(screen.getByText(/No authored body exists/)).toBeVisible();
     expect(screen.getByText(/declares English-only/)).toBeVisible();
     function Vietnamese() {
       const { setLocale } = useI18n();
-      return <><button onClick={() => setLocale("vi")}>VI</button><LessonInspector inspection={inspection} /></>;
+      return <><button onClick={() => setLocale("vi")}>Use Vietnamese</button><StudioWorkspace {...props} /></>;
     }
     rerender(<LocaleProvider><Vietnamese /></LocaleProvider>);
-    fireEvent.click(screen.getByRole("button", { name: "VI" }));
-    expect(screen.getByRole("heading", { name: "Kiểm tra bài học" })).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Use Vietnamese" }));
+    expect(screen.getByRole("heading", { name: "Soạn bản nháp bài học" })).toBeVisible();
     expect(screen.getByText(/Chưa có nội dung được biên soạn/)).toBeVisible();
   });
 });

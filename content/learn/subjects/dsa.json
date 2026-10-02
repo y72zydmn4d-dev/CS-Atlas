@@ -1,0 +1,3210 @@
+{
+  "category": "computer-science",
+  "conceptIds": [
+    "topic:complexity-analysis"
+  ],
+  "description": {
+    "en": "Foundations, reusable problem-solving patterns, core structures, graph algorithms, dynamic programming, and advanced techniques.",
+    "vi": "Foundations, reusable problem-solving patterns, core structures, graph algorithms, dynamic programming, and advanced techniques."
+  },
+  "exerciseGroups": [
+    {
+      "exerciseIds": [
+        "exercise:array-linear-scan"
+      ],
+      "id": "dsa-array-exercises",
+      "lessonIds": [
+        "learn:dsa:arrays",
+        "learn:dsa:binary-search"
+      ],
+      "title": {
+        "en": "Arrays and searching",
+        "vi": "Arrays and searching"
+      }
+    }
+  ],
+  "icon": "Network",
+  "id": "dsa",
+  "navigationOrder": 9,
+  "quizGroups": [
+    {
+      "id": "dsa-foundations-quiz",
+      "lessonIds": [
+        "learn:dsa:complexity",
+        "learn:dsa:arrays",
+        "learn:dsa:binary-search"
+      ],
+      "questionIds": [
+        "dsa-quiz-binary-search",
+        "dsa-quiz-growth"
+      ],
+      "title": {
+        "en": "DSA foundations quiz",
+        "vi": "DSA foundations quiz"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "dsa-complexity",
+      "order": 1,
+      "referenceIds": [
+        "dsa-ref-growth-rates",
+        "dsa-ref-search-complexity"
+      ],
+      "title": {
+        "en": "Complexity reference",
+        "vi": "Complexity reference"
+      }
+    }
+  ],
+  "relatedProblemIds": [
+    "first-occurrence",
+    "unweighted-distance"
+  ],
+  "relatedRoadmapIds": [
+    "roadmap:data-structures-algorithms"
+  ],
+  "sections": [
+    {
+      "id": "learn-section:dsa:foundations",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn algorithms through concise explanations, examples, and connected practice.",
+            "vi": "Learn algorithms through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:algorithms",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:foundations",
+          "slug": "algorithms",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Algorithms",
+            "vi": "Algorithms"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:arrays"
+          ],
+          "description": {
+            "en": "Learn data structures through concise explanations, examples, and connected practice.",
+            "vi": "Learn data structures through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:data-structures",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:algorithms"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:foundations",
+          "slug": "data-structures",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Data Structures",
+            "vi": "Data Structures"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "contentSource": "content/learn/lessons/dsa/complexity.json",
+          "description": {
+            "en": "Learn complexity through concise explanations, examples, and connected practice.",
+            "vi": "Learn complexity through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 18,
+          "exerciseIds": [],
+          "id": "learn:dsa:complexity",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:data-structures"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:foundations",
+          "slug": "complexity",
+          "status": "COMPLETE",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Complexity",
+            "vi": "Complexity"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn big o through concise explanations, examples, and connected practice.",
+            "vi": "Learn big o through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:big-o",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:complexity"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:foundations",
+          "slug": "big-o",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Big O",
+            "vi": "Big O"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn big theta through concise explanations, examples, and connected practice.",
+            "vi": "Learn big theta through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:big-theta",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:big-o"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:foundations",
+          "slug": "big-theta",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Big Theta",
+            "vi": "Big Theta"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn big omega through concise explanations, examples, and connected practice.",
+            "vi": "Learn big omega through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:big-omega",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:dsa:big-theta"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:foundations",
+          "slug": "big-omega",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Big Omega",
+            "vi": "Big Omega"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn space complexity through concise explanations, examples, and connected practice.",
+            "vi": "Learn space complexity through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:space-complexity",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:dsa:big-omega"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:foundations",
+          "slug": "space-complexity",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Space Complexity",
+            "vi": "Space Complexity"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Foundations",
+        "vi": "Foundations"
+      }
+    },
+    {
+      "id": "learn-section:dsa:arrays-and-strings",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:arrays"
+          ],
+          "contentSource": "content/learn/lessons/dsa/arrays.json",
+          "description": {
+            "en": "Learn arrays through concise explanations, examples, and connected practice.",
+            "vi": "Learn arrays through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 18,
+          "exerciseIds": [
+            "exercise:array-linear-scan"
+          ],
+          "id": "learn:dsa:arrays",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:arrays-and-strings",
+          "slug": "arrays",
+          "status": "COMPLETE",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Arrays",
+            "vi": "Arrays"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:strings"
+          ],
+          "description": {
+            "en": "Learn strings through concise explanations, examples, and connected practice.",
+            "vi": "Learn strings through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:strings",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:arrays"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:arrays-and-strings",
+          "slug": "strings",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Strings",
+            "vi": "Strings"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn matrices through concise explanations, examples, and connected practice.",
+            "vi": "Learn matrices through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:matrices",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:strings"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:arrays-and-strings",
+          "slug": "matrices",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Matrices",
+            "vi": "Matrices"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Arrays and strings",
+        "vi": "Arrays and strings"
+      }
+    },
+    {
+      "id": "learn-section:dsa:searching",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:searching"
+          ],
+          "description": {
+            "en": "Learn linear search through concise explanations, examples, and connected practice.",
+            "vi": "Learn linear search through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:linear-search",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:searching",
+          "slug": "linear-search",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Linear Search",
+            "vi": "Linear Search"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:searching"
+          ],
+          "contentSource": "content/learn/lessons/dsa/binary-search.json",
+          "description": {
+            "en": "Learn binary search through concise explanations, examples, and connected practice.",
+            "vi": "Learn binary search through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 18,
+          "exerciseIds": [],
+          "id": "learn:dsa:binary-search",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:linear-search"
+          ],
+          "problemIds": [
+            "first-occurrence"
+          ],
+          "sectionId": "learn-section:dsa:searching",
+          "slug": "binary-search",
+          "status": "COMPLETE",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Binary Search",
+            "vi": "Binary Search"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn lower and upper bound through concise explanations, examples, and connected practice.",
+            "vi": "Learn lower and upper bound through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:lower-and-upper-bound",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:binary-search"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:searching",
+          "slug": "lower-and-upper-bound",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Lower and Upper Bound",
+            "vi": "Lower and Upper Bound"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn binary search on answer through concise explanations, examples, and connected practice.",
+            "vi": "Learn binary search on answer through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:binary-search-on-answer",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:lower-and-upper-bound"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:searching",
+          "slug": "binary-search-on-answer",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Binary Search on Answer",
+            "vi": "Binary Search on Answer"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 3,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Searching",
+        "vi": "Searching"
+      }
+    },
+    {
+      "id": "learn-section:dsa:sorting",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:sorting"
+          ],
+          "description": {
+            "en": "Learn bubble sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn bubble sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:bubble-sort",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:sorting",
+          "slug": "bubble-sort",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Bubble Sort",
+            "vi": "Bubble Sort"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn selection sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn selection sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:selection-sort",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:bubble-sort"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:sorting",
+          "slug": "selection-sort",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Selection Sort",
+            "vi": "Selection Sort"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn insertion sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn insertion sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:insertion-sort",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:selection-sort"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:sorting",
+          "slug": "insertion-sort",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Insertion Sort",
+            "vi": "Insertion Sort"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn merge sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn merge sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:merge-sort",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:insertion-sort"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:sorting",
+          "slug": "merge-sort",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Merge Sort",
+            "vi": "Merge Sort"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn quick sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn quick sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:quick-sort",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:merge-sort"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:sorting",
+          "slug": "quick-sort",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Quick Sort",
+            "vi": "Quick Sort"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn counting sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn counting sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:counting-sort",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:dsa:quick-sort"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:sorting",
+          "slug": "counting-sort",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Counting Sort",
+            "vi": "Counting Sort"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn radix sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn radix sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:radix-sort",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:dsa:counting-sort"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:sorting",
+          "slug": "radix-sort",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Radix Sort",
+            "vi": "Radix Sort"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn heap sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn heap sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:heap-sort",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:dsa:radix-sort"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:sorting",
+          "slug": "heap-sort",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Heap Sort",
+            "vi": "Heap Sort"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 4,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Sorting",
+        "vi": "Sorting"
+      }
+    },
+    {
+      "id": "learn-section:dsa:linked-structures",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:linked-lists"
+          ],
+          "description": {
+            "en": "Learn linked list through concise explanations, examples, and connected practice.",
+            "vi": "Learn linked list through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:linked-list",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:linked-structures",
+          "slug": "linked-list",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Linked List",
+            "vi": "Linked List"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn doubly linked list through concise explanations, examples, and connected practice.",
+            "vi": "Learn doubly linked list through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:doubly-linked-list",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:linked-list"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:linked-structures",
+          "slug": "doubly-linked-list",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Doubly Linked List",
+            "vi": "Doubly Linked List"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn circular list through concise explanations, examples, and connected practice.",
+            "vi": "Learn circular list through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:circular-list",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:doubly-linked-list"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:linked-structures",
+          "slug": "circular-list",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Circular List",
+            "vi": "Circular List"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 5,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Linked structures",
+        "vi": "Linked structures"
+      }
+    },
+    {
+      "id": "learn-section:dsa:stack-and-queue",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:stacks-queues"
+          ],
+          "description": {
+            "en": "Learn stack through concise explanations, examples, and connected practice.",
+            "vi": "Learn stack through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:stack",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:stack-and-queue",
+          "slug": "stack",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Stack",
+            "vi": "Stack"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:stacks-queues"
+          ],
+          "description": {
+            "en": "Learn queue through concise explanations, examples, and connected practice.",
+            "vi": "Learn queue through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:queue",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:stack"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:stack-and-queue",
+          "slug": "queue",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Queue",
+            "vi": "Queue"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn deque through concise explanations, examples, and connected practice.",
+            "vi": "Learn deque through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:deque",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:queue"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:stack-and-queue",
+          "slug": "deque",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Deque",
+            "vi": "Deque"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn monotonic stack through concise explanations, examples, and connected practice.",
+            "vi": "Learn monotonic stack through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:monotonic-stack",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:deque"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:stack-and-queue",
+          "slug": "monotonic-stack",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Monotonic Stack",
+            "vi": "Monotonic Stack"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn monotonic queue through concise explanations, examples, and connected practice.",
+            "vi": "Learn monotonic queue through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:monotonic-queue",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:monotonic-stack"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:stack-and-queue",
+          "slug": "monotonic-queue",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Monotonic Queue",
+            "vi": "Monotonic Queue"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 6,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Stack and queue",
+        "vi": "Stack and queue"
+      }
+    },
+    {
+      "id": "learn-section:dsa:hashing",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:hash-tables"
+          ],
+          "description": {
+            "en": "Learn hash table through concise explanations, examples, and connected practice.",
+            "vi": "Learn hash table through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:hash-table",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:hashing",
+          "slug": "hash-table",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Hash Table",
+            "vi": "Hash Table"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn hash set through concise explanations, examples, and connected practice.",
+            "vi": "Learn hash set through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:hash-set",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:hash-table"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:hashing",
+          "slug": "hash-set",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Hash Set",
+            "vi": "Hash Set"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn hash map through concise explanations, examples, and connected practice.",
+            "vi": "Learn hash map through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:hash-map",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:hash-set"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:hashing",
+          "slug": "hash-map",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Hash Map",
+            "vi": "Hash Map"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn frequency maps through concise explanations, examples, and connected practice.",
+            "vi": "Learn frequency maps through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:frequency-maps",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:hash-map"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:hashing",
+          "slug": "frequency-maps",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Frequency Maps",
+            "vi": "Frequency Maps"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 7,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Hashing",
+        "vi": "Hashing"
+      }
+    },
+    {
+      "id": "learn-section:dsa:patterns",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn two pointers through concise explanations, examples, and connected practice.",
+            "vi": "Learn two pointers through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:two-pointers",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:patterns",
+          "slug": "two-pointers",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Two Pointers",
+            "vi": "Two Pointers"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn sliding window through concise explanations, examples, and connected practice.",
+            "vi": "Learn sliding window through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:sliding-window",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:two-pointers"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:patterns",
+          "slug": "sliding-window",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Sliding Window",
+            "vi": "Sliding Window"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn prefix sum through concise explanations, examples, and connected practice.",
+            "vi": "Learn prefix sum through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:prefix-sum",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:sliding-window"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:patterns",
+          "slug": "prefix-sum",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Prefix Sum",
+            "vi": "Prefix Sum"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn difference array through concise explanations, examples, and connected practice.",
+            "vi": "Learn difference array through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:difference-array",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:prefix-sum"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:patterns",
+          "slug": "difference-array",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Difference Array",
+            "vi": "Difference Array"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 8,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Patterns",
+        "vi": "Patterns"
+      }
+    },
+    {
+      "id": "learn-section:dsa:recursion",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:recursion"
+          ],
+          "description": {
+            "en": "Learn recursion through concise explanations, examples, and connected practice.",
+            "vi": "Learn recursion through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:recursion",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:recursion",
+          "slug": "recursion",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Recursion",
+            "vi": "Recursion"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn backtracking through concise explanations, examples, and connected practice.",
+            "vi": "Learn backtracking through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:backtracking",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:recursion"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:recursion",
+          "slug": "backtracking",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Backtracking",
+            "vi": "Backtracking"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn divide and conquer through concise explanations, examples, and connected practice.",
+            "vi": "Learn divide and conquer through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:divide-and-conquer",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:backtracking"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:recursion",
+          "slug": "divide-and-conquer",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Divide and Conquer",
+            "vi": "Divide and Conquer"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 9,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Recursion",
+        "vi": "Recursion"
+      }
+    },
+    {
+      "id": "learn-section:dsa:trees-and-heaps",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:trees"
+          ],
+          "description": {
+            "en": "Learn tree basics through concise explanations, examples, and connected practice.",
+            "vi": "Learn tree basics through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:tree-basics",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:trees-and-heaps",
+          "slug": "tree-basics",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Tree Basics",
+            "vi": "Tree Basics"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn binary tree through concise explanations, examples, and connected practice.",
+            "vi": "Learn binary tree through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:binary-tree",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:tree-basics"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:trees-and-heaps",
+          "slug": "binary-tree",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Binary Tree",
+            "vi": "Binary Tree"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn tree traversal through concise explanations, examples, and connected practice.",
+            "vi": "Learn tree traversal through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:tree-traversal",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:binary-tree"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:trees-and-heaps",
+          "slug": "tree-traversal",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Tree Traversal",
+            "vi": "Tree Traversal"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn binary search tree through concise explanations, examples, and connected practice.",
+            "vi": "Learn binary search tree through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:binary-search-tree",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:tree-traversal"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:trees-and-heaps",
+          "slug": "binary-search-tree",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Binary Search Tree",
+            "vi": "Binary Search Tree"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn avl tree through concise explanations, examples, and connected practice.",
+            "vi": "Learn avl tree through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:avl-tree",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:binary-search-tree"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:trees-and-heaps",
+          "slug": "avl-tree",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "AVL Tree",
+            "vi": "AVL Tree"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn trie through concise explanations, examples, and connected practice.",
+            "vi": "Learn trie through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:trie",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:dsa:avl-tree"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:trees-and-heaps",
+          "slug": "trie",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Trie",
+            "vi": "Trie"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:heaps"
+          ],
+          "description": {
+            "en": "Learn heap through concise explanations, examples, and connected practice.",
+            "vi": "Learn heap through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:heap",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:dsa:trie"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:trees-and-heaps",
+          "slug": "heap",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Heap",
+            "vi": "Heap"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn priority queue through concise explanations, examples, and connected practice.",
+            "vi": "Learn priority queue through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:priority-queue",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:dsa:heap"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:trees-and-heaps",
+          "slug": "priority-queue",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Priority Queue",
+            "vi": "Priority Queue"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 10,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Trees and heaps",
+        "vi": "Trees and heaps"
+      }
+    },
+    {
+      "id": "learn-section:dsa:graphs",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:graphs"
+          ],
+          "description": {
+            "en": "Learn graph representation through concise explanations, examples, and connected practice.",
+            "vi": "Learn graph representation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:graph-representation",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:graphs",
+          "slug": "graph-representation",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Graph Representation",
+            "vi": "Graph Representation"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:graph-traversal"
+          ],
+          "contentSource": "content/learn/lessons/dsa/graph-traversal.json",
+          "description": {
+            "en": "Learn graph traversal through concise explanations, examples, and connected practice.",
+            "vi": "Learn graph traversal through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 18,
+          "exerciseIds": [],
+          "id": "learn:dsa:graph-traversal",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:graph-representation"
+          ],
+          "problemIds": [
+            "unweighted-distance"
+          ],
+          "sectionId": "learn-section:dsa:graphs",
+          "slug": "graph-traversal",
+          "status": "COMPLETE",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Graph Traversal",
+            "vi": "Graph Traversal"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn breadth-first search through concise explanations, examples, and connected practice.",
+            "vi": "Learn breadth-first search through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:breadth-first-search",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:graph-traversal"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:graphs",
+          "slug": "breadth-first-search",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Breadth-First Search",
+            "vi": "Breadth-First Search"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn depth-first search through concise explanations, examples, and connected practice.",
+            "vi": "Learn depth-first search through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:depth-first-search",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:breadth-first-search"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:graphs",
+          "slug": "depth-first-search",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Depth-First Search",
+            "vi": "Depth-First Search"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn components through concise explanations, examples, and connected practice.",
+            "vi": "Learn components through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:components",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:depth-first-search"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:graphs",
+          "slug": "components",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Components",
+            "vi": "Components"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn cycle detection through concise explanations, examples, and connected practice.",
+            "vi": "Learn cycle detection through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:cycle-detection",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:dsa:components"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:graphs",
+          "slug": "cycle-detection",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Cycle Detection",
+            "vi": "Cycle Detection"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn topological sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn topological sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:topological-sort",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:dsa:cycle-detection"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:graphs",
+          "slug": "topological-sort",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Topological Sort",
+            "vi": "Topological Sort"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 11,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Graphs",
+        "vi": "Graphs"
+      }
+    },
+    {
+      "id": "learn-section:dsa:shortest-paths-and-mst",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:shortest-paths"
+          ],
+          "description": {
+            "en": "Learn bfs shortest path through concise explanations, examples, and connected practice.",
+            "vi": "Learn bfs shortest path through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:bfs-shortest-path",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:shortest-paths-and-mst",
+          "slug": "bfs-shortest-path",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "BFS Shortest Path",
+            "vi": "BFS Shortest Path"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn dijkstra through concise explanations, examples, and connected practice.",
+            "vi": "Learn dijkstra through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:dijkstra",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:bfs-shortest-path"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:shortest-paths-and-mst",
+          "slug": "dijkstra",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Dijkstra",
+            "vi": "Dijkstra"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn bellman-ford through concise explanations, examples, and connected practice.",
+            "vi": "Learn bellman-ford through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:bellman-ford",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:dijkstra"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:shortest-paths-and-mst",
+          "slug": "bellman-ford",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Bellman-Ford",
+            "vi": "Bellman-Ford"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn floyd-warshall through concise explanations, examples, and connected practice.",
+            "vi": "Learn floyd-warshall through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:floyd-warshall",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:bellman-ford"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:shortest-paths-and-mst",
+          "slug": "floyd-warshall",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Floyd-Warshall",
+            "vi": "Floyd-Warshall"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn 0-1 bfs through concise explanations, examples, and connected practice.",
+            "vi": "Learn 0-1 bfs through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:0-1-bfs",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:floyd-warshall"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:shortest-paths-and-mst",
+          "slug": "0-1-bfs",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "0-1 BFS",
+            "vi": "0-1 BFS"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn disjoint set union through concise explanations, examples, and connected practice.",
+            "vi": "Learn disjoint set union through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:disjoint-set-union",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:dsa:0-1-bfs"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:shortest-paths-and-mst",
+          "slug": "disjoint-set-union",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Disjoint Set Union",
+            "vi": "Disjoint Set Union"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn kruskal through concise explanations, examples, and connected practice.",
+            "vi": "Learn kruskal through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:kruskal",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:dsa:disjoint-set-union"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:shortest-paths-and-mst",
+          "slug": "kruskal",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Kruskal",
+            "vi": "Kruskal"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn prim through concise explanations, examples, and connected practice.",
+            "vi": "Learn prim through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:prim",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:dsa:kruskal"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:shortest-paths-and-mst",
+          "slug": "prim",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Prim",
+            "vi": "Prim"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 12,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Shortest paths and MST",
+        "vi": "Shortest paths and MST"
+      }
+    },
+    {
+      "id": "learn-section:dsa:advanced-graphs",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn strongly connected components through concise explanations, examples, and connected practice.",
+            "vi": "Learn strongly connected components through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:strongly-connected-components",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-graphs",
+          "slug": "strongly-connected-components",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Strongly Connected Components",
+            "vi": "Strongly Connected Components"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn bridges through concise explanations, examples, and connected practice.",
+            "vi": "Learn bridges through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:bridges",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:strongly-connected-components"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-graphs",
+          "slug": "bridges",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Bridges",
+            "vi": "Bridges"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn articulation points through concise explanations, examples, and connected practice.",
+            "vi": "Learn articulation points through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:articulation-points",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:bridges"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-graphs",
+          "slug": "articulation-points",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Articulation Points",
+            "vi": "Articulation Points"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn lowest common ancestor through concise explanations, examples, and connected practice.",
+            "vi": "Learn lowest common ancestor through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:lowest-common-ancestor",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:articulation-points"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-graphs",
+          "slug": "lowest-common-ancestor",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Lowest Common Ancestor",
+            "vi": "Lowest Common Ancestor"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn binary lifting through concise explanations, examples, and connected practice.",
+            "vi": "Learn binary lifting through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:binary-lifting",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:lowest-common-ancestor"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-graphs",
+          "slug": "binary-lifting",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Binary Lifting",
+            "vi": "Binary Lifting"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn euler tour through concise explanations, examples, and connected practice.",
+            "vi": "Learn euler tour through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:euler-tour",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:dsa:binary-lifting"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-graphs",
+          "slug": "euler-tour",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Euler Tour",
+            "vi": "Euler Tour"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn flow through concise explanations, examples, and connected practice.",
+            "vi": "Learn flow through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:flow",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:dsa:euler-tour"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-graphs",
+          "slug": "flow",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Flow",
+            "vi": "Flow"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn matching through concise explanations, examples, and connected practice.",
+            "vi": "Learn matching through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:matching",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:dsa:flow"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-graphs",
+          "slug": "matching",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Matching",
+            "vi": "Matching"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 13,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Advanced graphs",
+        "vi": "Advanced graphs"
+      }
+    },
+    {
+      "id": "learn-section:dsa:greedy-and-dynamic-programming",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:greedy-algorithms"
+          ],
+          "description": {
+            "en": "Learn greedy strategy through concise explanations, examples, and connected practice.",
+            "vi": "Learn greedy strategy through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:greedy-strategy",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "greedy-strategy",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Greedy Strategy",
+            "vi": "Greedy Strategy"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn interval problems through concise explanations, examples, and connected practice.",
+            "vi": "Learn interval problems through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:interval-problems",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:greedy-strategy"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "interval-problems",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Interval Problems",
+            "vi": "Interval Problems"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn scheduling through concise explanations, examples, and connected practice.",
+            "vi": "Learn scheduling through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:scheduling",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:interval-problems"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "scheduling",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Scheduling",
+            "vi": "Scheduling"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:dynamic-programming"
+          ],
+          "description": {
+            "en": "Learn dp fundamentals through concise explanations, examples, and connected practice.",
+            "vi": "Learn dp fundamentals through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:dp-fundamentals",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:scheduling"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "dp-fundamentals",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "DP Fundamentals",
+            "vi": "DP Fundamentals"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn 1d dp through concise explanations, examples, and connected practice.",
+            "vi": "Learn 1d dp through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:1d-dp",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:dp-fundamentals"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "1d-dp",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "1D DP",
+            "vi": "1D DP"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn 2d dp through concise explanations, examples, and connected practice.",
+            "vi": "Learn 2d dp through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:2d-dp",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:dsa:1d-dp"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "2d-dp",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "2D DP",
+            "vi": "2D DP"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn knapsack through concise explanations, examples, and connected practice.",
+            "vi": "Learn knapsack through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:knapsack",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:dsa:2d-dp"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "knapsack",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Knapsack",
+            "vi": "Knapsack"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn longest increasing subsequence through concise explanations, examples, and connected practice.",
+            "vi": "Learn longest increasing subsequence through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:longest-increasing-subsequence",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:dsa:knapsack"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "longest-increasing-subsequence",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Longest Increasing Subsequence",
+            "vi": "Longest Increasing Subsequence"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn longest common subsequence through concise explanations, examples, and connected practice.",
+            "vi": "Learn longest common subsequence through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:longest-common-subsequence",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:dsa:longest-increasing-subsequence"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "longest-common-subsequence",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Longest Common Subsequence",
+            "vi": "Longest Common Subsequence"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn interval dp through concise explanations, examples, and connected practice.",
+            "vi": "Learn interval dp through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:interval-dp",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:dsa:longest-common-subsequence"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "interval-dp",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Interval DP",
+            "vi": "Interval DP"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn tree dp through concise explanations, examples, and connected practice.",
+            "vi": "Learn tree dp through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:tree-dp",
+          "order": 11,
+          "prerequisiteLessonIds": [
+            "learn:dsa:interval-dp"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "tree-dp",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Tree DP",
+            "vi": "Tree DP"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn bitmask dp through concise explanations, examples, and connected practice.",
+            "vi": "Learn bitmask dp through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:bitmask-dp",
+          "order": 12,
+          "prerequisiteLessonIds": [
+            "learn:dsa:tree-dp"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "bitmask-dp",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Bitmask DP",
+            "vi": "Bitmask DP"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn digit dp through concise explanations, examples, and connected practice.",
+            "vi": "Learn digit dp through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:digit-dp",
+          "order": 13,
+          "prerequisiteLessonIds": [
+            "learn:dsa:bitmask-dp"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:greedy-and-dynamic-programming",
+          "slug": "digit-dp",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Digit DP",
+            "vi": "Digit DP"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 14,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Greedy and dynamic programming",
+        "vi": "Greedy and dynamic programming"
+      }
+    },
+    {
+      "id": "learn-section:dsa:range-and-string-algorithms",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn fenwick tree through concise explanations, examples, and connected practice.",
+            "vi": "Learn fenwick tree through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:fenwick-tree",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:range-and-string-algorithms",
+          "slug": "fenwick-tree",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Fenwick Tree",
+            "vi": "Fenwick Tree"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn segment tree through concise explanations, examples, and connected practice.",
+            "vi": "Learn segment tree through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:segment-tree",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:fenwick-tree"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:range-and-string-algorithms",
+          "slug": "segment-tree",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Segment Tree",
+            "vi": "Segment Tree"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn lazy propagation through concise explanations, examples, and connected practice.",
+            "vi": "Learn lazy propagation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:lazy-propagation",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:segment-tree"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:range-and-string-algorithms",
+          "slug": "lazy-propagation",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Lazy Propagation",
+            "vi": "Lazy Propagation"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn sparse table through concise explanations, examples, and connected practice.",
+            "vi": "Learn sparse table through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:sparse-table",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:lazy-propagation"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:range-and-string-algorithms",
+          "slug": "sparse-table",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Sparse Table",
+            "vi": "Sparse Table"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn kmp through concise explanations, examples, and connected practice.",
+            "vi": "Learn kmp through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:kmp",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:sparse-table"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:range-and-string-algorithms",
+          "slug": "kmp",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "KMP",
+            "vi": "KMP"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn prefix function through concise explanations, examples, and connected practice.",
+            "vi": "Learn prefix function through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:prefix-function",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:dsa:kmp"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:range-and-string-algorithms",
+          "slug": "prefix-function",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Prefix Function",
+            "vi": "Prefix Function"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn z algorithm through concise explanations, examples, and connected practice.",
+            "vi": "Learn z algorithm through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:z-algorithm",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:dsa:prefix-function"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:range-and-string-algorithms",
+          "slug": "z-algorithm",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Z Algorithm",
+            "vi": "Z Algorithm"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn rolling hash through concise explanations, examples, and connected practice.",
+            "vi": "Learn rolling hash through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:rolling-hash",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:dsa:z-algorithm"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:range-and-string-algorithms",
+          "slug": "rolling-hash",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Rolling Hash",
+            "vi": "Rolling Hash"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn trie for strings through concise explanations, examples, and connected practice.",
+            "vi": "Learn trie for strings through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:trie-for-strings",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:dsa:rolling-hash"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:range-and-string-algorithms",
+          "slug": "trie-for-strings",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Trie for Strings",
+            "vi": "Trie for Strings"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 15,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Range and string algorithms",
+        "vi": "Range and string algorithms"
+      }
+    },
+    {
+      "id": "learn-section:dsa:number-theory-and-geometry",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn gcd through concise explanations, examples, and connected practice.",
+            "vi": "Learn gcd through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:gcd",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "gcd",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "GCD",
+            "vi": "GCD"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn extended gcd through concise explanations, examples, and connected practice.",
+            "vi": "Learn extended gcd through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:extended-gcd",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:gcd"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "extended-gcd",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Extended GCD",
+            "vi": "Extended GCD"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn prime sieve through concise explanations, examples, and connected practice.",
+            "vi": "Learn prime sieve through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:prime-sieve",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:extended-gcd"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "prime-sieve",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Prime Sieve",
+            "vi": "Prime Sieve"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn factorization through concise explanations, examples, and connected practice.",
+            "vi": "Learn factorization through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:factorization",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:prime-sieve"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "factorization",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Factorization",
+            "vi": "Factorization"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn modular arithmetic through concise explanations, examples, and connected practice.",
+            "vi": "Learn modular arithmetic through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:modular-arithmetic",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:factorization"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "modular-arithmetic",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Modular Arithmetic",
+            "vi": "Modular Arithmetic"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn fast exponentiation through concise explanations, examples, and connected practice.",
+            "vi": "Learn fast exponentiation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:fast-exponentiation",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:dsa:modular-arithmetic"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "fast-exponentiation",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Fast Exponentiation",
+            "vi": "Fast Exponentiation"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn combinatorics through concise explanations, examples, and connected practice.",
+            "vi": "Learn combinatorics through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:combinatorics",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:dsa:fast-exponentiation"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "combinatorics",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Combinatorics",
+            "vi": "Combinatorics"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn points and vectors through concise explanations, examples, and connected practice.",
+            "vi": "Learn points and vectors through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:points-and-vectors",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:dsa:combinatorics"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "points-and-vectors",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Points and Vectors",
+            "vi": "Points and Vectors"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn orientation through concise explanations, examples, and connected practice.",
+            "vi": "Learn orientation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:orientation",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:dsa:points-and-vectors"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "orientation",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Orientation",
+            "vi": "Orientation"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn line intersection through concise explanations, examples, and connected practice.",
+            "vi": "Learn line intersection through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:line-intersection",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:dsa:orientation"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "line-intersection",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Line Intersection",
+            "vi": "Line Intersection"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn convex hull through concise explanations, examples, and connected practice.",
+            "vi": "Learn convex hull through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:convex-hull",
+          "order": 11,
+          "prerequisiteLessonIds": [
+            "learn:dsa:line-intersection"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:number-theory-and-geometry",
+          "slug": "convex-hull",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Convex Hull",
+            "vi": "Convex Hull"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 16,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Number theory and geometry",
+        "vi": "Number theory and geometry"
+      }
+    },
+    {
+      "id": "learn-section:dsa:advanced-topics",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn coordinate compression through concise explanations, examples, and connected practice.",
+            "vi": "Learn coordinate compression through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:coordinate-compression",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-topics",
+          "slug": "coordinate-compression",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Coordinate Compression",
+            "vi": "Coordinate Compression"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn offline queries through concise explanations, examples, and connected practice.",
+            "vi": "Learn offline queries through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:offline-queries",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:dsa:coordinate-compression"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-topics",
+          "slug": "offline-queries",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Offline Queries",
+            "vi": "Offline Queries"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn meet in the middle through concise explanations, examples, and connected practice.",
+            "vi": "Learn meet in the middle through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:meet-in-the-middle",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:dsa:offline-queries"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-topics",
+          "slug": "meet-in-the-middle",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Meet in the Middle",
+            "vi": "Meet in the Middle"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn mo's algorithm through concise explanations, examples, and connected practice.",
+            "vi": "Learn mo's algorithm through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:mo-s-algorithm",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:dsa:meet-in-the-middle"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-topics",
+          "slug": "mo-s-algorithm",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Mo's Algorithm",
+            "vi": "Mo's Algorithm"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:complexity-analysis"
+          ],
+          "description": {
+            "en": "Learn heavy-light decomposition through concise explanations, examples, and connected practice.",
+            "vi": "Learn heavy-light decomposition through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:dsa:heavy-light-decomposition",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:dsa:mo-s-algorithm"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:dsa:advanced-topics",
+          "slug": "heavy-light-decomposition",
+          "status": "SKELETON",
+          "subjectId": "dsa",
+          "title": {
+            "en": "Heavy-Light Decomposition",
+            "vi": "Heavy-Light Decomposition"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 17,
+      "subjectId": "dsa",
+      "title": {
+        "en": "Advanced topics",
+        "vi": "Advanced topics"
+      }
+    }
+  ],
+  "slug": "dsa",
+  "status": "PARTIAL",
+  "title": {
+    "en": "Data Structures & Algorithms",
+    "vi": "Data Structures & Algorithms"
+  },
+  "translationStatus": "english-only"
+}

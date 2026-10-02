@@ -10,18 +10,20 @@ import { useStudioDraft } from "@/components/studio/studio-draft-session";
 import { emptyDraftBody } from "@/lib/studio/draft";
 import { LessonValidation } from "@/components/studio/lesson-validation";
 import { LessonPreview } from "@/components/studio/lesson-preview";
+import { LessonSave } from "@/components/studio/lesson-save";
+import { LessonInspector } from "@/components/studio/lesson-inspector";
 import type { Locale } from "@/lib/types";
 
 export function LessonEditor({ canonicalDetails, learnerHref }: { canonicalDetails: ReactNode; learnerHref?: string }) {
   const { locale, t } = useI18n();
-  const { draft, dirty, resetToken, update, reset } = useStudioDraft();
+  const { draft, dirty, resetToken, update, reset, saving, canonical } = useStudioDraft();
   const [language, setLanguage] = useState<Locale>(locale);
   const [previewActive, setPreviewActive] = useState(false);
   return <section className="studio-panel studio-inspector studio-editor" data-view={previewActive ? "preview" : "edit"} aria-labelledby="studio-editor-title">
     <header className="studio-panel-header">
       <div className="studio-editor-toolbar"><h2 id="studio-editor-title">{t("studio.editor")}</h2>
         {draft && <><span role="status" className="studio-dirty-status" data-dirty={dirty}>{t(dirty ? "studio.modifiedDraft" : "studio.savedSource")}</span>
-          <button type="button" disabled={!dirty} onClick={reset}>{t("studio.resetDraft")}</button></>}
+          <button type="button" disabled={!dirty || saving} onClick={reset}>{t("studio.resetDraft")}</button></>}
       </div>
       {draft && <>
         <div className="studio-inspector-heading"><h3>{draft.lesson.title[language] || draft.lesson.title.en || draft.lesson.id}</h3>
@@ -34,10 +36,12 @@ export function LessonEditor({ canonicalDetails, learnerHref }: { canonicalDetai
     {!draft ? <p className="studio-empty">{t("studio.chooseLesson")}</p> : <div className="studio-editor-content">
       <p className="studio-notice">{t("studio.transientNotice")}</p>
       {draft.lesson.translationStatus === "english-only" && <p className="studio-body-meta">{t("studio.englishOnly")}</p>}
-      <details className="studio-canonical-details"><summary>{t("studio.identityDetails")}</summary>{canonicalDetails}</details>
+      <details className="studio-canonical-details"><summary>{t("studio.identityDetails")}</summary>{canonical ? <LessonInspector inspection={canonical} /> : canonicalDetails}</details>
+      <LessonSave />
       <LessonValidation key={`validation:${draft.lesson.id}:${resetToken}`} draft={draft} />
       <LessonPreview key={`preview:${draft.lesson.id}:${resetToken}`} draft={draft} language={language} dirty={dirty} active={previewActive} onActiveChange={setPreviewActive} />
       <form hidden={previewActive} onSubmit={(event) => event.preventDefault()}>
+        <fieldset disabled={saving} className="studio-save-fields">
         <LessonMetadataEditor lesson={draft.lesson} language={language} onChange={(lesson) => update({ ...draft, lesson })} />
         <LessonRelationshipsEditor key={`${draft.lesson.id}:${resetToken}`} lesson={draft.lesson} onChange={(lesson) => update({ ...draft, lesson })} />
         {!draft.content ? <div className="studio-editor-section"><h3>{t("studio.body")}</h3><p>{t("studio.noBody")}</p>
@@ -56,6 +60,7 @@ export function LessonEditor({ canonicalDetails, learnerHref }: { canonicalDetai
             if (draft.content) update({ ...draft, content: { ...draft.content, blocks } });
           }} />
         </>}
+        </fieldset>
       </form>
     </div>}
   </section>;

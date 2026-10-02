@@ -1,0 +1,89 @@
+{
+  "blocks": [
+    {
+      "id": "objectives",
+      "items": [
+        {
+          "en": "State the ordering assumption.",
+          "vi": "State the ordering assumption."
+        },
+        {
+          "en": "Choose inclusive or half-open boundaries consistently.",
+          "vi": "Choose inclusive or half-open boundaries consistently."
+        },
+        {
+          "en": "Implement lower-bound search without overflow or infinite loops.",
+          "vi": "Implement lower-bound search without overflow or infinite loops."
+        }
+      ],
+      "type": "objectives"
+    },
+    {
+      "body": {
+        "en": "A family of algorithms that locate a boundary in a monotone search space by testing a midpoint and preserving the half that can still contain the answer.",
+        "vi": "A family of algorithms that locate a boundary in a monotone search space by testing a midpoint and preserving the half that can still contain the answer."
+      },
+      "id": "definition",
+      "term": "Binary search",
+      "type": "definition"
+    },
+    {
+      "body": {
+        "en": "In the half-open form [low, high), the answer is never outside the interval. Each branch must shrink that interval.",
+        "vi": "In the half-open form [low, high), the answer is never outside the interval. Each branch must shrink that interval."
+      },
+      "id": "invariant",
+      "tone": "important",
+      "type": "callout"
+    },
+    {
+      "exampleId": "dsa-example-binary-search",
+      "id": "example",
+      "type": "example"
+    },
+    {
+      "body": {
+        "en": "Each iteration reduces the remaining interval by roughly half while storing only boundary indices.",
+        "vi": "Each iteration reduces the remaining interval by roughly half while storing only boundary indices."
+      },
+      "id": "complexity",
+      "space": "O(1)",
+      "time": "O(log n)",
+      "type": "complexity"
+    },
+    {
+      "body": {
+        "en": "Mixing inclusive and exclusive boundary rules is the most common source of missed elements and non-terminating loops. Write the invariant before the code.",
+        "vi": "Mixing inclusive and exclusive boundary rules is the most common source of missed elements and non-terminating loops. Write the invariant before the code."
+      },
+      "id": "mistake",
+      "tone": "common-mistake",
+      "type": "callout"
+    },
+    {
+      "id": "refs",
+      "referenceIds": [
+        "dsa-ref-search-complexity"
+      ],
+      "type": "references"
+    },
+    {
+      "id": "related",
+      "lessonIds": [
+        "learn:dsa:arrays",
+        "learn:dsa:lower-and-upper-bound"
+      ],
+      "problemIds": [
+        "first-occurrence"
+      ],
+      "type": "related"
+    }
+  ],
+  "lessonId": "learn:dsa:binary-search",
+  "reviewedAt": "2026-09-30",
+  "summary": {
+    "en": "Maintain a search-space invariant and discard half of an ordered domain on each iteration.",
+    "vi": "Maintain a search-space invariant and discard half of an ordered domain on each iteration."
+  },
+  "version": 1
+}

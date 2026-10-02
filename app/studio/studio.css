@@ -165,3 +165,4 @@
 .studio-editor[data-view="preview"] { grid-column:1/-1; max-height:max(640px,calc(100dvh - 260px)); }
 .studio-grid:has(.studio-editor[data-view="preview"])>.studio-panel:not(.studio-editor) { display:none; }
 .studio-editor form[hidden] { display:none; }
+.studio-save-fields { border: 0; padding: 0; margin: 0; min-width: 0; }

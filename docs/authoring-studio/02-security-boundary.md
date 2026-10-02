@@ -1,12 +1,20 @@
 # 02 — Studio security boundary
 
-## Milestone F — internal fixture-tested foundation, not browser Save
+## Milestone G — guarded existing-lesson mutation
 
-`lib/studio/writer/*.server.ts` has no importer from Studio UI/API/actions. Independent dev+exact-flag guards protect service, plan/preflight, execution and recovery. Save/Ctrl+S remains unavailable. No generic endpoint/Server Action was added; real TypeScript content remains authoritative and unchanged.
+`GET /api/studio/lesson` loads one existing lesson and byte revision; `PUT` saves it. Route helper and writer independently require development + exact enablement. PUT requires exact loopback Host/Origin/port, JSON, streamed≤1MiB, no query fields and a closed IDs/draft/baseRevision envelope. GET accepts explicit same-origin Origin or browser `Sec-Fetch-Site: same-origin` with verified loopback Host; no absent-Origin exception for PUT. Both share120 requests/min per local worker and no-store/noindex. Unsupported methods are405; disabled/production GET/PUT404 before service construction. No proxy/forwarded-host trust.
+
+Server resolves all targets and loads current canonical JSON, checks byte revision, revalidates the exact candidate, issues its own F receipt/plan, executes the locked transaction and verifies normal Learn-reader readback. Browser reports, paths, plans, serializers and operation kinds are rejected. Client sees only selected canonical records, opaque base fingerprint, validation issues, relative changed files and safe diagnostic codes/operation IDs. F guards/path/ownership/revision/rollback guarantees remain unchanged. No generic write API, Server Action, shell/eval, automatic Git, registry authoring or client filesystem module.
+
+Read-only dependency seal checks source hashes and imported semantic hashes; disagreement blocks writing. JSON manual edits remain supported. Only selected body is sent to the editor; F's bounded full canonical scan occurs server-side on selected saveable load/Save. All mutation unit tests use isolated fixtures. One explicitly opted-in HTTP parity audit temporarily edited/restored two real JSON files exactly (06); normal test suite never writes real content. Details/limits in09.
+
+## Milestone F foundation (historical scope, retained guarantees)
+
+F alone had no API/UI importer. G now imports the server-only factory through a narrow service; UI receives no writer module. Independent guards protect service, plan/preflight, execution and recovery.
 
 Implemented/tested: domain-derived JSON targets plus one exact generated index; strict canonical subject/body parsing and shared build rules; opaque process-local validation receipt; immutable issued plans; SHA256 byte/inventory revisions including read-only content; traversal/encoded/separator rejection, relative+real containment, all-component symlink and regular-file hardlink checks; bounded preflight; exclusive no-steal lock; restrictive flushed staging/journal; per-file atomic replacement/no-clobber create; graph/hash read-after-write; preflighted conditional rollback, exact hash verification and retained critical recovery evidence. No shell/eval/dynamic author import. All mutation tests use unique temporary fixtures. See [08](08-save-pipeline.md).
 
-The real checkout lacks machine-owned storage and fails STORAGE_NOT_READY before dependency loading/staging. Migration/fresh dependency adapter/HMR parity and guarded browser exposure remain G prerequisites; no dual store/override. Locks fail fast rather than queue/retry stale plans. A retained lock requires operator investigation, never elapsed-time stealing. Corrupt/missing journals and orphan locks need manual review; no ambiguous auto-cleanup. Portable checks narrow but cannot eliminate malicious same-account TOCTOU or guarantee globally atomic/power-loss-safe multi-file updates.
+G cut over to machine-owned canonical JSON without a dual store. STORAGE_NOT_READY now protects dependency-seal mismatch or missing canonical storage. Locks fail fast rather than queue/retry stale plans. Retained locks/corrupt journals require investigation, never time-based stealing or ambiguous cleanup. Portable checks cannot eliminate malicious same-account TOCTOU or guarantee globally atomic/power-loss-safe multi-file updates.
 
 ## Implemented in Milestones A/B/C/D/E
 
@@ -32,10 +40,10 @@ Run on loopback; this is a local development utility, not admin authentication. 
 
 Malformed selections in enabled dev call `notFound`; root streaming can produce HTTP200 with a Next404 interrupt. They never render Studio data. Disabled environments are hard404 at the request boundary, including query/child-route variants.
 
-## Explicitly not implemented / future gates
+## Historical A–F exposure notes / future gates
 
-A–E request checks alone do not certify persistence. F now tests the internal filesystem boundary, not a live migrated reader/Save endpoint. G must prove [03](03-content-file-contract.md) parity and independently enforce request origin/size/authorization/revision safeguards; proxy/navigation alone is never sufficient.
+A–E computation endpoints remain read-only; their historical table above describes those capabilities, not the new G PUT. G applies independent mutation safeguards and reader parity (03/09); proxy/navigation alone is never sufficient.
 
-Current TS body storage is monolithic: first valid selected-body import initializes nine trusted bodies/examples/references/quizzes on the server. No bodies on overview/curriculum or broad browser payload. Live JSON cutover is deferred to G's reviewed activation gate; F uses fixtures only.
+Canonical bodies are individual JSON files. Overview/curriculum use metadata only; selected editor payload is narrow. Build/legacy synchronous consumers retain static import facades. Save validates the bounded canonical graph server-side, not428 nonexistent bodies.
 
-A–E guard/request/no-state-write gates retained. F adds adversarial/round-trip/receipt/revision/transaction/failure/recovery fixtures and real content hashes. Static route/UI regression permits only internal server-only writer modules, forbids imports from every existing Studio/browser/computational route module, and retains exact three-route/no-action/no-execution checks. No writer HTTP interface.
+A–E learner-side-effect isolation and F adversarial/transaction tests remain. Static boundary permits exactly the new lesson resource/service chain, never client writer imports or generic mutation APIs. Creation/ordering/deletion and remote administration remain out of scope.

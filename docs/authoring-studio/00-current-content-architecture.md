@@ -1,5 +1,7 @@
 # 00 — Current content architecture / Studio v1 audit
 
+Historical audit preserved. G has now cut over live manifests/bodies to canonical JSON; see03 for current ownership and09 for parity/Save/fresh-reader evidence. Do not treat the baseline TS locations below as current authoring targets.
+
 Audit baseline: `80018c6`, `atlas-v2`, 2026-10-01. **Milestone 0 only: no Studio route, migration or writer implemented.** Decisions below govern subsequent milestones; proposed paths are not present yet.
 
 ## Canonical ownership today

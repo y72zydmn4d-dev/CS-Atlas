@@ -1,0 +1,141 @@
+{
+  "blocks": [
+    {
+      "id": "objectives",
+      "items": [
+        {
+          "en": "Define the input-size variable.",
+          "vi": "Define the input-size variable."
+        },
+        {
+          "en": "Derive a dominant growth term.",
+          "vi": "Derive a dominant growth term."
+        },
+        {
+          "en": "Distinguish O, Ω, and Θ claims.",
+          "vi": "Distinguish O, Ω, and Θ claims."
+        }
+      ],
+      "type": "objectives"
+    },
+    {
+      "body": {
+        "en": "A description of resource growth as input size increases, abstracting away constant factors and lower-order terms under a stated computation model.",
+        "vi": "A description of resource growth as input size increases, abstracting away constant factors and lower-order terms under a stated computation model."
+      },
+      "id": "definition",
+      "term": "Asymptotic complexity",
+      "type": "definition"
+    },
+    {
+      "columns": [
+        {
+          "en": "Meaning",
+          "vi": "Meaning"
+        },
+        {
+          "en": "Use",
+          "vi": "Use"
+        }
+      ],
+      "id": "bounds",
+      "rows": [
+        {
+          "label": {
+            "en": "O(g(n))",
+            "vi": "O(g(n))"
+          },
+          "values": [
+            {
+              "en": "Asymptotic upper bound",
+              "vi": "Asymptotic upper bound"
+            },
+            {
+              "en": "The cost eventually grows no faster than a constant multiple of g",
+              "vi": "The cost eventually grows no faster than a constant multiple of g"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Ω(g(n))",
+            "vi": "Ω(g(n))"
+          },
+          "values": [
+            {
+              "en": "Asymptotic lower bound",
+              "vi": "Asymptotic lower bound"
+            },
+            {
+              "en": "The cost eventually grows at least as fast as g",
+              "vi": "The cost eventually grows at least as fast as g"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Θ(g(n))",
+            "vi": "Θ(g(n))"
+          },
+          "values": [
+            {
+              "en": "Tight bound",
+              "vi": "Tight bound"
+            },
+            {
+              "en": "Both upper and lower bounds hold",
+              "vi": "Both upper and lower bounds hold"
+            }
+          ]
+        }
+      ],
+      "type": "comparison"
+    },
+    {
+      "id": "method",
+      "items": [
+        {
+          "en": "Choose n and the operation to count.",
+          "vi": "Choose n and the operation to count."
+        },
+        {
+          "en": "Count work by case or iteration.",
+          "vi": "Count work by case or iteration."
+        },
+        {
+          "en": "Simplify the expression without hiding relevant variables.",
+          "vi": "Simplify the expression without hiding relevant variables."
+        },
+        {
+          "en": "State worst, average, best, expected, or amortized context.",
+          "vi": "State worst, average, best, expected, or amortized context."
+        }
+      ],
+      "ordered": true,
+      "type": "list"
+    },
+    {
+      "body": {
+        "en": "Big O is not automatically worst case. O describes an upper bound; the case must be stated separately.",
+        "vi": "Big O is not automatically worst case. O describes an upper bound; the case must be stated separately."
+      },
+      "id": "warning",
+      "tone": "important",
+      "type": "callout"
+    },
+    {
+      "id": "refs",
+      "referenceIds": [
+        "dsa-ref-growth-rates"
+      ],
+      "type": "references"
+    }
+  ],
+  "lessonId": "learn:dsa:complexity",
+  "reviewedAt": "2026-09-30",
+  "summary": {
+    "en": "Describe how resource use grows, state the input model, and separate upper, lower, tight, worst-case, and amortized claims.",
+    "vi": "Describe how resource use grows, state the input model, and separate upper, lower, tight, worst-case, and amortized claims."
+  },
+  "version": 1
+}

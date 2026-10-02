@@ -1,0 +1,540 @@
+{
+  "category": "web-development",
+  "conceptIds": [
+    "topic:programming-fundamentals"
+  ],
+  "description": {
+    "en": "Cascade, layout, responsive design, typography, motion, and modern styling primitives.",
+    "vi": "Cascade, layout, responsive design, typography, motion, and modern styling primitives."
+  },
+  "exerciseGroups": [],
+  "icon": "Palette",
+  "id": "css",
+  "navigationOrder": 2,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:css:core",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn syntax through concise explanations, examples, and connected practice.",
+            "vi": "Learn syntax through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:syntax",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:css:core",
+          "slug": "syntax",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Syntax",
+            "vi": "Syntax"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn selectors through concise explanations, examples, and connected practice.",
+            "vi": "Learn selectors through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:selectors",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:css:syntax"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:core",
+          "slug": "selectors",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Selectors",
+            "vi": "Selectors"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn cascade through concise explanations, examples, and connected practice.",
+            "vi": "Learn cascade through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:cascade",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:css:selectors"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:core",
+          "slug": "cascade",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Cascade",
+            "vi": "Cascade"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn specificity through concise explanations, examples, and connected practice.",
+            "vi": "Learn specificity through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:specificity",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:css:cascade"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:core",
+          "slug": "specificity",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Specificity",
+            "vi": "Specificity"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn box model through concise explanations, examples, and connected practice.",
+            "vi": "Learn box model through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:box-model",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:css:specificity"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:core",
+          "slug": "box-model",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Box Model",
+            "vi": "Box Model"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn units through concise explanations, examples, and connected practice.",
+            "vi": "Learn units through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:units",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:css:box-model"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:core",
+          "slug": "units",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Units",
+            "vi": "Units"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn colors through concise explanations, examples, and connected practice.",
+            "vi": "Learn colors through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:colors",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:css:units"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:core",
+          "slug": "colors",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Colors",
+            "vi": "Colors"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn typography through concise explanations, examples, and connected practice.",
+            "vi": "Learn typography through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:typography",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:css:colors"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:core",
+          "slug": "typography",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Typography",
+            "vi": "Typography"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "css",
+      "title": {
+        "en": "Core",
+        "vi": "Core"
+      }
+    },
+    {
+      "id": "learn-section:css:layout",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn display through concise explanations, examples, and connected practice.",
+            "vi": "Learn display through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:display",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:css:layout",
+          "slug": "display",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Display",
+            "vi": "Display"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn position through concise explanations, examples, and connected practice.",
+            "vi": "Learn position through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:position",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:css:display"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:layout",
+          "slug": "position",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Position",
+            "vi": "Position"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn flexbox through concise explanations, examples, and connected practice.",
+            "vi": "Learn flexbox through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:flexbox",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:css:position"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:layout",
+          "slug": "flexbox",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Flexbox",
+            "vi": "Flexbox"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn grid through concise explanations, examples, and connected practice.",
+            "vi": "Learn grid through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:grid",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:css:flexbox"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:layout",
+          "slug": "grid",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Grid",
+            "vi": "Grid"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn responsive design through concise explanations, examples, and connected practice.",
+            "vi": "Learn responsive design through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:responsive-design",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:css:grid"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:layout",
+          "slug": "responsive-design",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Responsive Design",
+            "vi": "Responsive Design"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "css",
+      "title": {
+        "en": "Layout",
+        "vi": "Layout"
+      }
+    },
+    {
+      "id": "learn-section:css:modern-css",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn variables through concise explanations, examples, and connected practice.",
+            "vi": "Learn variables through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:variables",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:css:modern-css",
+          "slug": "variables",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Variables",
+            "vi": "Variables"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn functions through concise explanations, examples, and connected practice.",
+            "vi": "Learn functions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:functions",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:css:variables"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:modern-css",
+          "slug": "functions",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Functions",
+            "vi": "Functions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn transforms through concise explanations, examples, and connected practice.",
+            "vi": "Learn transforms through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:transforms",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:css:functions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:modern-css",
+          "slug": "transforms",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Transforms",
+            "vi": "Transforms"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn transitions through concise explanations, examples, and connected practice.",
+            "vi": "Learn transitions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:transitions",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:css:transforms"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:modern-css",
+          "slug": "transitions",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Transitions",
+            "vi": "Transitions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn animations through concise explanations, examples, and connected practice.",
+            "vi": "Learn animations through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:css:animations",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:css:transitions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:css:modern-css",
+          "slug": "animations",
+          "status": "SKELETON",
+          "subjectId": "css",
+          "title": {
+            "en": "Animations",
+            "vi": "Animations"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 3,
+      "subjectId": "css",
+      "title": {
+        "en": "Modern CSS",
+        "vi": "Modern CSS"
+      }
+    }
+  ],
+  "slug": "css",
+  "status": "SKELETON",
+  "title": {
+    "en": "CSS",
+    "vi": "CSS"
+  },
+  "translationStatus": "english-only"
+}

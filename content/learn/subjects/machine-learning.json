@@ -1,0 +1,819 @@
+{
+  "category": "ai-machine-learning",
+  "conceptIds": [
+    "topic:ml-fundamentals"
+  ],
+  "description": {
+    "en": "Mathematical foundations, supervised and unsupervised learning, evaluation, model selection, and production-minded workflows.",
+    "vi": "Mathematical foundations, supervised and unsupervised learning, evaluation, model selection, and production-minded workflows."
+  },
+  "exerciseGroups": [],
+  "icon": "BrainCircuit",
+  "id": "machine-learning",
+  "navigationOrder": 12,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:machine-learning:foundations",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn introduction through concise explanations, examples, and connected practice.",
+            "vi": "Learn introduction through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:introduction",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:foundations",
+          "slug": "introduction",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Introduction",
+            "vi": "Introduction"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn train validation test through concise explanations, examples, and connected practice.",
+            "vi": "Learn train validation test through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:train-validation-test",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:introduction"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:foundations",
+          "slug": "train-validation-test",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Train Validation Test",
+            "vi": "Train Validation Test"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn bias and variance through concise explanations, examples, and connected practice.",
+            "vi": "Learn bias and variance through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:bias-and-variance",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:train-validation-test"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:foundations",
+          "slug": "bias-and-variance",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Bias and Variance",
+            "vi": "Bias and Variance"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn feature engineering through concise explanations, examples, and connected practice.",
+            "vi": "Learn feature engineering through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:feature-engineering",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:bias-and-variance"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:foundations",
+          "slug": "feature-engineering",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Feature Engineering",
+            "vi": "Feature Engineering"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn metrics through concise explanations, examples, and connected practice.",
+            "vi": "Learn metrics through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:metrics",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:feature-engineering"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:foundations",
+          "slug": "metrics",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Metrics",
+            "vi": "Metrics"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "machine-learning",
+      "title": {
+        "en": "Foundations",
+        "vi": "Foundations"
+      }
+    },
+    {
+      "id": "learn-section:machine-learning:algorithms",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn linear regression through concise explanations, examples, and connected practice.",
+            "vi": "Learn linear regression through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:linear-regression",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "linear-regression",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Linear Regression",
+            "vi": "Linear Regression"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn logistic regression through concise explanations, examples, and connected practice.",
+            "vi": "Learn logistic regression through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:logistic-regression",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:linear-regression"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "logistic-regression",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Logistic Regression",
+            "vi": "Logistic Regression"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn knn through concise explanations, examples, and connected practice.",
+            "vi": "Learn knn through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:knn",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:logistic-regression"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "knn",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "KNN",
+            "vi": "KNN"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn naive bayes through concise explanations, examples, and connected practice.",
+            "vi": "Learn naive bayes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:naive-bayes",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:knn"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "naive-bayes",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Naive Bayes",
+            "vi": "Naive Bayes"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn decision trees through concise explanations, examples, and connected practice.",
+            "vi": "Learn decision trees through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:decision-trees",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:naive-bayes"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "decision-trees",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Decision Trees",
+            "vi": "Decision Trees"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn random forest through concise explanations, examples, and connected practice.",
+            "vi": "Learn random forest through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:random-forest",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:decision-trees"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "random-forest",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Random Forest",
+            "vi": "Random Forest"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn gradient boosting through concise explanations, examples, and connected practice.",
+            "vi": "Learn gradient boosting through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:gradient-boosting",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:random-forest"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "gradient-boosting",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Gradient Boosting",
+            "vi": "Gradient Boosting"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn svm through concise explanations, examples, and connected practice.",
+            "vi": "Learn svm through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:svm",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:gradient-boosting"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "svm",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "SVM",
+            "vi": "SVM"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn k-means through concise explanations, examples, and connected practice.",
+            "vi": "Learn k-means through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:k-means",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:svm"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "k-means",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "K-Means",
+            "vi": "K-Means"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn pca through concise explanations, examples, and connected practice.",
+            "vi": "Learn pca through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:pca",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:k-means"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:algorithms",
+          "slug": "pca",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "PCA",
+            "vi": "PCA"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "machine-learning",
+      "title": {
+        "en": "Algorithms",
+        "vi": "Algorithms"
+      }
+    },
+    {
+      "id": "learn-section:machine-learning:scikit-learn",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn datasets through concise explanations, examples, and connected practice.",
+            "vi": "Learn datasets through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:datasets",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:scikit-learn",
+          "slug": "datasets",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Datasets",
+            "vi": "Datasets"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn preprocessing through concise explanations, examples, and connected practice.",
+            "vi": "Learn preprocessing through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:preprocessing",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:datasets"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:scikit-learn",
+          "slug": "preprocessing",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Preprocessing",
+            "vi": "Preprocessing"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn pipelines through concise explanations, examples, and connected practice.",
+            "vi": "Learn pipelines through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:pipelines",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:preprocessing"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:scikit-learn",
+          "slug": "pipelines",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Pipelines",
+            "vi": "Pipelines"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn models through concise explanations, examples, and connected practice.",
+            "vi": "Learn models through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:models",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:pipelines"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:scikit-learn",
+          "slug": "models",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Models",
+            "vi": "Models"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn metrics api through concise explanations, examples, and connected practice.",
+            "vi": "Learn metrics api through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:metrics-api",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:models"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:scikit-learn",
+          "slug": "metrics-api",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Metrics API",
+            "vi": "Metrics API"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn model selection through concise explanations, examples, and connected practice.",
+            "vi": "Learn model selection through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:model-selection",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:metrics-api"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:scikit-learn",
+          "slug": "model-selection",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Model Selection",
+            "vi": "Model Selection"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 3,
+      "subjectId": "machine-learning",
+      "title": {
+        "en": "scikit-learn",
+        "vi": "scikit-learn"
+      }
+    },
+    {
+      "id": "learn-section:machine-learning:generative-ai",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn attention through concise explanations, examples, and connected practice.",
+            "vi": "Learn attention through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:attention",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:generative-ai",
+          "slug": "attention",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Attention",
+            "vi": "Attention"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn transformers through concise explanations, examples, and connected practice.",
+            "vi": "Learn transformers through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:transformers",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:attention"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:generative-ai",
+          "slug": "transformers",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Transformers",
+            "vi": "Transformers"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn llms through concise explanations, examples, and connected practice.",
+            "vi": "Learn llms through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:llms",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:transformers"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:generative-ai",
+          "slug": "llms",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "LLMs",
+            "vi": "LLMs"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn embeddings through concise explanations, examples, and connected practice.",
+            "vi": "Learn embeddings through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:embeddings",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:llms"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:generative-ai",
+          "slug": "embeddings",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Embeddings",
+            "vi": "Embeddings"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn rag through concise explanations, examples, and connected practice.",
+            "vi": "Learn rag through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:rag",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:embeddings"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:generative-ai",
+          "slug": "rag",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "RAG",
+            "vi": "RAG"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn agents through concise explanations, examples, and connected practice.",
+            "vi": "Learn agents through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:agents",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:rag"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:generative-ai",
+          "slug": "agents",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Agents",
+            "vi": "Agents"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:ml-fundamentals"
+          ],
+          "description": {
+            "en": "Learn evaluation through concise explanations, examples, and connected practice.",
+            "vi": "Learn evaluation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:machine-learning:evaluation",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:machine-learning:agents"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:machine-learning:generative-ai",
+          "slug": "evaluation",
+          "status": "SKELETON",
+          "subjectId": "machine-learning",
+          "title": {
+            "en": "Evaluation",
+            "vi": "Evaluation"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 4,
+      "subjectId": "machine-learning",
+      "title": {
+        "en": "Generative AI",
+        "vi": "Generative AI"
+      }
+    }
+  ],
+  "slug": "machine-learning",
+  "status": "SKELETON",
+  "title": {
+    "en": "Machine Learning",
+    "vi": "Machine Learning"
+  },
+  "translationStatus": "english-only"
+}

@@ -1,0 +1,594 @@
+{
+  "category": "programming-languages",
+  "conceptIds": [
+    "topic:programming-fundamentals"
+  ],
+  "description": {
+    "en": "The JavaScript language, browser platform, asynchronous programming, modules, and modern application patterns.",
+    "vi": "The JavaScript language, browser platform, asynchronous programming, modules, and modern application patterns."
+  },
+  "exerciseGroups": [],
+  "icon": "FileCode2",
+  "id": "javascript",
+  "navigationOrder": 3,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:javascript:language",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn syntax through concise explanations, examples, and connected practice.",
+            "vi": "Learn syntax through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:syntax",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:language",
+          "slug": "syntax",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Syntax",
+            "vi": "Syntax"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn variables through concise explanations, examples, and connected practice.",
+            "vi": "Learn variables through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:variables",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:javascript:syntax"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:language",
+          "slug": "variables",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Variables",
+            "vi": "Variables"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn types through concise explanations, examples, and connected practice.",
+            "vi": "Learn types through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:types",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:javascript:variables"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:language",
+          "slug": "types",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Types",
+            "vi": "Types"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn operators through concise explanations, examples, and connected practice.",
+            "vi": "Learn operators through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:operators",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:javascript:types"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:language",
+          "slug": "operators",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Operators",
+            "vi": "Operators"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn control flow through concise explanations, examples, and connected practice.",
+            "vi": "Learn control flow through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:control-flow",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:javascript:operators"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:language",
+          "slug": "control-flow",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Control Flow",
+            "vi": "Control Flow"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn functions through concise explanations, examples, and connected practice.",
+            "vi": "Learn functions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:functions",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:javascript:control-flow"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:language",
+          "slug": "functions",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Functions",
+            "vi": "Functions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn objects through concise explanations, examples, and connected practice.",
+            "vi": "Learn objects through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:objects",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:javascript:functions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:language",
+          "slug": "objects",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Objects",
+            "vi": "Objects"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn arrays through concise explanations, examples, and connected practice.",
+            "vi": "Learn arrays through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:arrays",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:javascript:objects"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:language",
+          "slug": "arrays",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Arrays",
+            "vi": "Arrays"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn strings through concise explanations, examples, and connected practice.",
+            "vi": "Learn strings through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:strings",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:javascript:arrays"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:language",
+          "slug": "strings",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Strings",
+            "vi": "Strings"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "javascript",
+      "title": {
+        "en": "Language",
+        "vi": "Language"
+      }
+    },
+    {
+      "id": "learn-section:javascript:modern-javascript",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn classes through concise explanations, examples, and connected practice.",
+            "vi": "Learn classes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:classes",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:modern-javascript",
+          "slug": "classes",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Classes",
+            "vi": "Classes"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn modules through concise explanations, examples, and connected practice.",
+            "vi": "Learn modules through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:modules",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:javascript:classes"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:modern-javascript",
+          "slug": "modules",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Modules",
+            "vi": "Modules"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn promises through concise explanations, examples, and connected practice.",
+            "vi": "Learn promises through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:promises",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:javascript:modules"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:modern-javascript",
+          "slug": "promises",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Promises",
+            "vi": "Promises"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn async and await through concise explanations, examples, and connected practice.",
+            "vi": "Learn async and await through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:async-and-await",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:javascript:promises"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:modern-javascript",
+          "slug": "async-and-await",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Async and Await",
+            "vi": "Async and Await"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn iterators through concise explanations, examples, and connected practice.",
+            "vi": "Learn iterators through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:iterators",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:javascript:async-and-await"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:modern-javascript",
+          "slug": "iterators",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Iterators",
+            "vi": "Iterators"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn generators through concise explanations, examples, and connected practice.",
+            "vi": "Learn generators through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:generators",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:javascript:iterators"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:modern-javascript",
+          "slug": "generators",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Generators",
+            "vi": "Generators"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn errors through concise explanations, examples, and connected practice.",
+            "vi": "Learn errors through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:errors",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:javascript:generators"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:modern-javascript",
+          "slug": "errors",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Errors",
+            "vi": "Errors"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "javascript",
+      "title": {
+        "en": "Modern JavaScript",
+        "vi": "Modern JavaScript"
+      }
+    },
+    {
+      "id": "learn-section:javascript:browser",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn dom through concise explanations, examples, and connected practice.",
+            "vi": "Learn dom through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:dom",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:browser",
+          "slug": "dom",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "DOM",
+            "vi": "DOM"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn events through concise explanations, examples, and connected practice.",
+            "vi": "Learn events through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:events",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:javascript:dom"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:browser",
+          "slug": "events",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Events",
+            "vi": "Events"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn fetch through concise explanations, examples, and connected practice.",
+            "vi": "Learn fetch through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:fetch",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:javascript:events"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:browser",
+          "slug": "fetch",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Fetch",
+            "vi": "Fetch"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn storage through concise explanations, examples, and connected practice.",
+            "vi": "Learn storage through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:javascript:storage",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:javascript:fetch"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:javascript:browser",
+          "slug": "storage",
+          "status": "SKELETON",
+          "subjectId": "javascript",
+          "title": {
+            "en": "Storage",
+            "vi": "Storage"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 3,
+      "subjectId": "javascript",
+      "title": {
+        "en": "Browser",
+        "vi": "Browser"
+      }
+    }
+  ],
+  "slug": "javascript",
+  "status": "SKELETON",
+  "title": {
+    "en": "JavaScript",
+    "vi": "JavaScript"
+  },
+  "translationStatus": "english-only"
+}

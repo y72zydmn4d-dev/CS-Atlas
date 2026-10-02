@@ -7,10 +7,10 @@ async function sourceFiles(directory: string): Promise<string[]> {
   return nested.flat().filter((name) => /\.(ts|tsx)$/.test(name));
 }
 
-describe("Studio A–F browser flow remains a read-only canonical consumer", () => {
-  it("has no mutation handler, Server Action, filesystem writer, execution or persisted draft path", async () => {
+describe("Studio G exposes only guarded existing-lesson Save", () => {
+  it("keeps filesystem writes internal and excludes execution, generic APIs and persisted drafts", async () => {
     const files = (await Promise.all([sourceFiles("app/studio"), sourceFiles("app/api/studio"), sourceFiles("components/studio"), sourceFiles("lib/studio"), sourceFiles("lib/domain/learn-validation")])).flat();
-    expect(files.filter((name) => /\/route\.(ts|tsx)$/.test(name)).sort()).toEqual(["app/api/studio/preview/route.ts", "app/api/studio/relationships/[kind]/route.ts", "app/api/studio/validation/route.ts"]);
+    expect(files.filter((name) => /\/route\.(ts|tsx)$/.test(name)).sort()).toEqual(["app/api/studio/lesson/route.ts", "app/api/studio/preview/route.ts", "app/api/studio/relationships/[kind]/route.ts", "app/api/studio/validation/route.ts"]);
     for (const file of files) {
       const source = await readFile(file, "utf8");
       // F's internal server-only foundation is deliberately not reachable from UI/routes.
@@ -20,7 +20,7 @@ describe("Studio A–F browser flow remains a read-only canonical consumer", () 
         expect(source, file).not.toMatch(/child_process|["']use server["']|["']use client["']/);
         continue;
       }
-      expect(source, file).not.toMatch(/(?:from\s*|import\s*\()["'][^"']*(?:studio\/writer|\.\/writer)/);
+      if (!["lib/studio/save.server.ts", "lib/studio/live-save.server.ts"].includes(file)) expect(source, file).not.toMatch(/(?:from\s*|import\s*\()["'][^"']*(?:studio\/writer|\.\/writer)/);
       expect(source, file).not.toMatch(/["']use server["']/);
       expect(source, file).not.toMatch(/(?:from\s*|import\s*\()["'](?:node:)?(?:fs|fs\/promises|path|child_process)["']/);
       expect(source, file).not.toMatch(/\b(?:eval|Function|exec|spawn|writeFile|localStorage|indexedDB)\s*[.(]/);

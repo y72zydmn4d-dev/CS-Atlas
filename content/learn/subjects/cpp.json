@@ -1,0 +1,369 @@
+{
+  "category": "programming-languages",
+  "conceptIds": [
+    "topic:programming-fundamentals"
+  ],
+  "description": {
+    "en": "Modern C++ foundations, value semantics, the standard library, generic programming, and resource-safe design.",
+    "vi": "Modern C++ foundations, value semantics, the standard library, generic programming, and resource-safe design."
+  },
+  "exerciseGroups": [],
+  "icon": "Braces",
+  "id": "cpp",
+  "navigationOrder": 8,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:cpp:language",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn introduction through concise explanations, examples, and connected practice.",
+            "vi": "Learn introduction through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:introduction",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:language",
+          "slug": "introduction",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "Introduction",
+            "vi": "Introduction"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn types through concise explanations, examples, and connected practice.",
+            "vi": "Learn types through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:types",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:cpp:introduction"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:language",
+          "slug": "types",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "Types",
+            "vi": "Types"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn control flow through concise explanations, examples, and connected practice.",
+            "vi": "Learn control flow through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:control-flow",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:cpp:types"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:language",
+          "slug": "control-flow",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "Control Flow",
+            "vi": "Control Flow"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn functions through concise explanations, examples, and connected practice.",
+            "vi": "Learn functions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:functions",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:cpp:control-flow"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:language",
+          "slug": "functions",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "Functions",
+            "vi": "Functions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn references through concise explanations, examples, and connected practice.",
+            "vi": "Learn references through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:references",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:cpp:functions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:language",
+          "slug": "references",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "References",
+            "vi": "References"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn pointers through concise explanations, examples, and connected practice.",
+            "vi": "Learn pointers through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:pointers",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:cpp:references"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:language",
+          "slug": "pointers",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "Pointers",
+            "vi": "Pointers"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "cpp",
+      "title": {
+        "en": "Language",
+        "vi": "Language"
+      }
+    },
+    {
+      "id": "learn-section:cpp:abstraction",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn classes through concise explanations, examples, and connected practice.",
+            "vi": "Learn classes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:classes",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:abstraction",
+          "slug": "classes",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "Classes",
+            "vi": "Classes"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn raii through concise explanations, examples, and connected practice.",
+            "vi": "Learn raii through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:raii",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:cpp:classes"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:abstraction",
+          "slug": "raii",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "RAII",
+            "vi": "RAII"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn inheritance through concise explanations, examples, and connected practice.",
+            "vi": "Learn inheritance through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:inheritance",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:cpp:raii"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:abstraction",
+          "slug": "inheritance",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "Inheritance",
+            "vi": "Inheritance"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn templates through concise explanations, examples, and connected practice.",
+            "vi": "Learn templates through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:templates",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:cpp:inheritance"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:abstraction",
+          "slug": "templates",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "Templates",
+            "vi": "Templates"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn stl containers through concise explanations, examples, and connected practice.",
+            "vi": "Learn stl containers through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:stl-containers",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:cpp:templates"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:abstraction",
+          "slug": "stl-containers",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "STL Containers",
+            "vi": "STL Containers"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn algorithms through concise explanations, examples, and connected practice.",
+            "vi": "Learn algorithms through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:cpp:algorithms",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:cpp:stl-containers"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:cpp:abstraction",
+          "slug": "algorithms",
+          "status": "SKELETON",
+          "subjectId": "cpp",
+          "title": {
+            "en": "Algorithms",
+            "vi": "Algorithms"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "cpp",
+      "title": {
+        "en": "Abstraction",
+        "vi": "Abstraction"
+      }
+    }
+  ],
+  "slug": "cpp",
+  "status": "SKELETON",
+  "title": {
+    "en": "C++",
+    "vi": "C++"
+  },
+  "translationStatus": "english-only"
+}

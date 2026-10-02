@@ -1,0 +1,369 @@
+{
+  "category": "programming-languages",
+  "conceptIds": [
+    "topic:object-oriented-programming"
+  ],
+  "description": {
+    "en": "Java syntax, object-oriented design, collections, streams, concurrency, testing, and runtime fundamentals.",
+    "vi": "Java syntax, object-oriented design, collections, streams, concurrency, testing, and runtime fundamentals."
+  },
+  "exerciseGroups": [],
+  "icon": "Coffee",
+  "id": "java",
+  "navigationOrder": 6,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:java:foundations",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn introduction through concise explanations, examples, and connected practice.",
+            "vi": "Learn introduction through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:introduction",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:java:foundations",
+          "slug": "introduction",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Introduction",
+            "vi": "Introduction"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn types through concise explanations, examples, and connected practice.",
+            "vi": "Learn types through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:types",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:java:introduction"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:foundations",
+          "slug": "types",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Types",
+            "vi": "Types"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn control flow through concise explanations, examples, and connected practice.",
+            "vi": "Learn control flow through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:control-flow",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:java:types"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:foundations",
+          "slug": "control-flow",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Control Flow",
+            "vi": "Control Flow"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn methods through concise explanations, examples, and connected practice.",
+            "vi": "Learn methods through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:methods",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:java:control-flow"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:foundations",
+          "slug": "methods",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Methods",
+            "vi": "Methods"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn arrays through concise explanations, examples, and connected practice.",
+            "vi": "Learn arrays through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:arrays",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:java:methods"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:foundations",
+          "slug": "arrays",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Arrays",
+            "vi": "Arrays"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "java",
+      "title": {
+        "en": "Foundations",
+        "vi": "Foundations"
+      }
+    },
+    {
+      "id": "learn-section:java:object-model",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn classes through concise explanations, examples, and connected practice.",
+            "vi": "Learn classes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:classes",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:java:object-model",
+          "slug": "classes",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Classes",
+            "vi": "Classes"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn inheritance through concise explanations, examples, and connected practice.",
+            "vi": "Learn inheritance through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:inheritance",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:java:classes"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:object-model",
+          "slug": "inheritance",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Inheritance",
+            "vi": "Inheritance"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn interfaces through concise explanations, examples, and connected practice.",
+            "vi": "Learn interfaces through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:interfaces",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:java:inheritance"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:object-model",
+          "slug": "interfaces",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Interfaces",
+            "vi": "Interfaces"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn exceptions through concise explanations, examples, and connected practice.",
+            "vi": "Learn exceptions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:exceptions",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:java:interfaces"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:object-model",
+          "slug": "exceptions",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Exceptions",
+            "vi": "Exceptions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn collections through concise explanations, examples, and connected practice.",
+            "vi": "Learn collections through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:collections",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:java:exceptions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:object-model",
+          "slug": "collections",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Collections",
+            "vi": "Collections"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn streams through concise explanations, examples, and connected practice.",
+            "vi": "Learn streams through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:streams",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:java:collections"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:object-model",
+          "slug": "streams",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Streams",
+            "vi": "Streams"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:object-oriented-programming"
+          ],
+          "description": {
+            "en": "Learn concurrency through concise explanations, examples, and connected practice.",
+            "vi": "Learn concurrency through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:java:concurrency",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:java:streams"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:java:object-model",
+          "slug": "concurrency",
+          "status": "SKELETON",
+          "subjectId": "java",
+          "title": {
+            "en": "Concurrency",
+            "vi": "Concurrency"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "java",
+      "title": {
+        "en": "Object model",
+        "vi": "Object model"
+      }
+    }
+  ],
+  "slug": "java",
+  "status": "SKELETON",
+  "title": {
+    "en": "Java",
+    "vi": "Java"
+  },
+  "translationStatus": "english-only"
+}

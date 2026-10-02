@@ -1,0 +1,477 @@
+{
+  "category": "web-development",
+  "conceptIds": [
+    "topic:programming-fundamentals"
+  ],
+  "description": {
+    "en": "Semantic document structure, forms, media, metadata, graphics, and accessible markup.",
+    "vi": "Semantic document structure, forms, media, metadata, graphics, and accessible markup."
+  },
+  "exerciseGroups": [],
+  "icon": "FileType2",
+  "id": "html",
+  "navigationOrder": 1,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:html:document",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn document structure through concise explanations, examples, and connected practice.",
+            "vi": "Learn document structure through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:document-structure",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:html:document",
+          "slug": "document-structure",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Document Structure",
+            "vi": "Document Structure"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn elements through concise explanations, examples, and connected practice.",
+            "vi": "Learn elements through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:elements",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:html:document-structure"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:document",
+          "slug": "elements",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Elements",
+            "vi": "Elements"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn attributes through concise explanations, examples, and connected practice.",
+            "vi": "Learn attributes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:attributes",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:html:elements"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:document",
+          "slug": "attributes",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Attributes",
+            "vi": "Attributes"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn headings through concise explanations, examples, and connected practice.",
+            "vi": "Learn headings through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:headings",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:html:attributes"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:document",
+          "slug": "headings",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Headings",
+            "vi": "Headings"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn paragraphs through concise explanations, examples, and connected practice.",
+            "vi": "Learn paragraphs through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:paragraphs",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:html:headings"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:document",
+          "slug": "paragraphs",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Paragraphs",
+            "vi": "Paragraphs"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn links through concise explanations, examples, and connected practice.",
+            "vi": "Learn links through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:links",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:html:paragraphs"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:document",
+          "slug": "links",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Links",
+            "vi": "Links"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn images through concise explanations, examples, and connected practice.",
+            "vi": "Learn images through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:images",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:html:links"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:document",
+          "slug": "images",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Images",
+            "vi": "Images"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn lists through concise explanations, examples, and connected practice.",
+            "vi": "Learn lists through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:lists",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:html:images"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:document",
+          "slug": "lists",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Lists",
+            "vi": "Lists"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn tables through concise explanations, examples, and connected practice.",
+            "vi": "Learn tables through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:tables",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:html:lists"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:document",
+          "slug": "tables",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Tables",
+            "vi": "Tables"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "html",
+      "title": {
+        "en": "Document",
+        "vi": "Document"
+      }
+    },
+    {
+      "id": "learn-section:html:semantic-web",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn semantic html through concise explanations, examples, and connected practice.",
+            "vi": "Learn semantic html through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:semantic-html",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:html:semantic-web",
+          "slug": "semantic-html",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Semantic HTML",
+            "vi": "Semantic HTML"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn forms through concise explanations, examples, and connected practice.",
+            "vi": "Learn forms through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:forms",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:html:semantic-html"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:semantic-web",
+          "slug": "forms",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Forms",
+            "vi": "Forms"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn media through concise explanations, examples, and connected practice.",
+            "vi": "Learn media through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:media",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:html:forms"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:semantic-web",
+          "slug": "media",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Media",
+            "vi": "Media"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn accessibility through concise explanations, examples, and connected practice.",
+            "vi": "Learn accessibility through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:accessibility",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:html:media"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:semantic-web",
+          "slug": "accessibility",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Accessibility",
+            "vi": "Accessibility"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn metadata through concise explanations, examples, and connected practice.",
+            "vi": "Learn metadata through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:metadata",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:html:accessibility"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:semantic-web",
+          "slug": "metadata",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Metadata",
+            "vi": "Metadata"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn canvas through concise explanations, examples, and connected practice.",
+            "vi": "Learn canvas through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:canvas",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:html:metadata"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:semantic-web",
+          "slug": "canvas",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "Canvas",
+            "vi": "Canvas"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn svg through concise explanations, examples, and connected practice.",
+            "vi": "Learn svg through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:html:svg",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:html:canvas"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:html:semantic-web",
+          "slug": "svg",
+          "status": "SKELETON",
+          "subjectId": "html",
+          "title": {
+            "en": "SVG",
+            "vi": "SVG"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "html",
+      "title": {
+        "en": "Semantic web",
+        "vi": "Semantic web"
+      }
+    }
+  ],
+  "slug": "html",
+  "status": "SKELETON",
+  "title": {
+    "en": "HTML",
+    "vi": "HTML"
+  },
+  "translationStatus": "english-only"
+}

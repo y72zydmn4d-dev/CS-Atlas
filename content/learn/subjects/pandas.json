@@ -1,0 +1,396 @@
+{
+  "category": "data-science",
+  "conceptIds": [
+    "topic:pandas"
+  ],
+  "description": {
+    "en": "Labeled tabular data, selection, cleaning, grouping, reshaping, joins, time series, and IO.",
+    "vi": "Labeled tabular data, selection, cleaning, grouping, reshaping, joins, time series, and IO."
+  },
+  "exerciseGroups": [],
+  "icon": "Table2",
+  "id": "pandas",
+  "navigationOrder": 11,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:pandas:core-structures",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn introduction through concise explanations, examples, and connected practice.",
+            "vi": "Learn introduction through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:introduction",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:core-structures",
+          "slug": "introduction",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Introduction",
+            "vi": "Introduction"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn series through concise explanations, examples, and connected practice.",
+            "vi": "Learn series through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:series",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:pandas:introduction"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:core-structures",
+          "slug": "series",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Series",
+            "vi": "Series"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn dataframe through concise explanations, examples, and connected practice.",
+            "vi": "Learn dataframe through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:dataframe",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:pandas:series"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:core-structures",
+          "slug": "dataframe",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "DataFrame",
+            "vi": "DataFrame"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn indexing through concise explanations, examples, and connected practice.",
+            "vi": "Learn indexing through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:indexing",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:pandas:dataframe"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:core-structures",
+          "slug": "indexing",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Indexing",
+            "vi": "Indexing"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn filtering through concise explanations, examples, and connected practice.",
+            "vi": "Learn filtering through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:filtering",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:pandas:indexing"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:core-structures",
+          "slug": "filtering",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Filtering",
+            "vi": "Filtering"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn missing data through concise explanations, examples, and connected practice.",
+            "vi": "Learn missing data through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:missing-data",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:pandas:filtering"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:core-structures",
+          "slug": "missing-data",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Missing Data",
+            "vi": "Missing Data"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "pandas",
+      "title": {
+        "en": "Core structures",
+        "vi": "Core structures"
+      }
+    },
+    {
+      "id": "learn-section:pandas:transform",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn groupby through concise explanations, examples, and connected practice.",
+            "vi": "Learn groupby through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:groupby",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:transform",
+          "slug": "groupby",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "GroupBy",
+            "vi": "GroupBy"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn merge through concise explanations, examples, and connected practice.",
+            "vi": "Learn merge through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:merge",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:pandas:groupby"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:transform",
+          "slug": "merge",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Merge",
+            "vi": "Merge"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn join through concise explanations, examples, and connected practice.",
+            "vi": "Learn join through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:join",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:pandas:merge"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:transform",
+          "slug": "join",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Join",
+            "vi": "Join"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn pivot through concise explanations, examples, and connected practice.",
+            "vi": "Learn pivot through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:pivot",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:pandas:join"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:transform",
+          "slug": "pivot",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Pivot",
+            "vi": "Pivot"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn time series through concise explanations, examples, and connected practice.",
+            "vi": "Learn time series through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:time-series",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:pandas:pivot"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:transform",
+          "slug": "time-series",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Time Series",
+            "vi": "Time Series"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn io through concise explanations, examples, and connected practice.",
+            "vi": "Learn io through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:io",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:pandas:time-series"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:transform",
+          "slug": "io",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "IO",
+            "vi": "IO"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:pandas"
+          ],
+          "description": {
+            "en": "Learn cleaning through concise explanations, examples, and connected practice.",
+            "vi": "Learn cleaning through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pandas:cleaning",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:pandas:io"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pandas:transform",
+          "slug": "cleaning",
+          "status": "SKELETON",
+          "subjectId": "pandas",
+          "title": {
+            "en": "Cleaning",
+            "vi": "Cleaning"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "pandas",
+      "title": {
+        "en": "Transform",
+        "vi": "Transform"
+      }
+    }
+  ],
+  "slug": "pandas",
+  "status": "SKELETON",
+  "title": {
+    "en": "Pandas",
+    "vi": "Pandas"
+  },
+  "translationStatus": "english-only"
+}

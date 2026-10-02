@@ -6,9 +6,9 @@ vi.mock("server-only", () => ({}));
 import { writerFixture, preparedUpdate, type WriterFixture } from "./studio-writer-fixtures";
 import { targetPath, checkedPath, isContained, discoverRepositoryRoot } from "@/lib/studio/writer/paths.server";
 import { checkPlanTargets } from "@/lib/studio/writer/planning.server";
-import { createCanonicalLessonWriter } from "@/lib/studio/writer/service.server";
 import { sha256 } from "@/lib/studio/writer/serialization.server";
 import type { AuthoringWritePlan } from "@/lib/studio/writer/types.server";
+import { liveLessonWriter } from "@/lib/studio/writer/live.server";
 
 const fixtures: WriterFixture[] = [];
 async function fixture() { const result = await writerFixture(); fixtures.push(result); return result; }
@@ -85,7 +85,7 @@ describe("internal writer security", () => {
     await expect(f.writer.recoverAbandonedOperation(plan.operationId, true)).rejects.toMatchObject({ code: "WRITE_DISABLED" });
     expect(await f.hashes()).toEqual(before);
   });
-  it("real Atlas content is unchanged and unmigrated storage fails before dependencies or staging", async () => {
+  it("real Atlas content is unchanged by canonical readback and no executor is invoked", async () => {
     const directory = "content";
     async function hashes(relative: string): Promise<Record<string, string>> {
       const entries = await readdir(relative, { withFileTypes: true });
@@ -97,10 +97,9 @@ describe("internal writer security", () => {
       }
       return result;
     }
-    const before = await hashes(directory); const readDependencies = vi.fn();
-    const writer = createCanonicalLessonWriter({ rootAnchor: process.cwd(), readDependencies });
-    await expect(writer.loadExistingLesson("java", "learn:java:interfaces")).rejects.toMatchObject({ code: "STORAGE_NOT_READY" });
-    expect(readDependencies).not.toHaveBeenCalled(); expect(await hashes(directory)).toEqual(before);
-    expect(await readdir("content/learn")).not.toContain(".authoring-transactions");
+    const before = await hashes(directory);
+    const writer = await liveLessonWriter();
+    expect((await writer.loadExistingLesson("java", "learn:java:interfaces")).draft.lesson.id).toBe("learn:java:interfaces");
+    expect(await hashes(directory)).toEqual(before);
   });
 });

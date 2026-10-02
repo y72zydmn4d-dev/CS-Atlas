@@ -1,0 +1,30 @@
+{
+  "semanticHash": "7c8a53cc37d202a70e28285ad3d7542157b209e3610905464c6ee62d2ad06e5e",
+  "sources": {
+    "content/algorithms.ts": "cb44c42e734e39dbe928c5cdea0addb22115dbe63cd350c0bd941101047cf4f6",
+    "content/bilingual-glossary.ts": "dd33c05fcc962528bea502899d5d29f1726de691a9acfaf3285a458948aada6b",
+    "content/concepts/legacy-map.ts": "968768c308321dcee5ddc194396e238151b744d1c931f9706dc640a18178953c",
+    "content/concepts/registry.ts": "4c16bdfb6f6326660f01bf174c2752bcdacf258945089a4d95661d0c4e99e111",
+    "content/deep-topic-content.ts": "54d63eb9a236b99d7f6c82e6ad0a57376f077af0dc1fae45be71b8691a3942e6",
+    "content/domains.ts": "59af9d72ff35302886b44ac4b5fafc86eb7d298b76cd8468e0db21702caf3cf3",
+    "content/exercises.ts": "30b9e10693a4535697276858610c530f239b17273e03060f5de969e3f76639ed",
+    "content/index.ts": "207799b74597fbd378af0d3885f46d671a5b07c60f6cc80eca0e61b0ccf5b47a",
+    "content/landing/knowledge-preview.ts": "c9a06f6165f371eb72b3bdfc209007a8a7f087ee6463fdb8f765e7ee30d2f0cd",
+    "content/learn/examples.ts": "6f9d2aa9d50ec27f98dfea9a11003c054bc15bc197899c0b427c03b8d6d3ee8e",
+    "content/learn/lesson-content.ts": "151f3ad0631a36f4a5d6d2486f14f3dbe8118531f6327bae2bf644b49834cf2e",
+    "content/learn/quizzes.ts": "1ca3efe110f55e7e4305d1d424dced25fe94eb1ce151f25bea70d5a0b51c6fb7",
+    "content/learn/references.ts": "7d68fdd428c64bf3045b4cbc6ca3ae293162bb3afafdf7a8e693cb9e10311837",
+    "content/learn/registry.ts": "05b23cd3cf481c9a671fca3b7aa03b0cb30047798a75e3e42652a04dfaa7b46c",
+    "content/lessons.ts": "f1d999fc8febd453fd49e07205d545522f84b8bc6d5b7521790501dee5d4bc04",
+    "content/practice/problems.ts": "10d1191cae4a94ec9e0e1d73c044dfcba76e280d03d456bf67d93cf3f0214f6d",
+    "content/practice/references.server.ts": "b41b477ca1820539f656c74339bcb2a16d7f1c0b4b7a9b4eefc30c1ffa0be08a",
+    "content/problems.ts": "6bc1ab973e967bb4758fd3001d72cd3af5424259a33efbdff5d77c1505a53493",
+    "content/projects.ts": "c6cc9e7f250916c50ba10c22d899df3ff4dda35db065aaf9a7e5e4bdfb1c0e19",
+    "content/resources.ts": "e8357b7c30a232efe01f71e93c0b0d9b3e59e9495599f75c208146c71e480757",
+    "content/sources.ts": "be3c660e8574619364e9c24fb9984603b89b6b876b44dd86e17ed42094cb0f4d",
+    "content/techniques.ts": "e2a9d2d8c7a2f775fd5af6e80cb18fc0f0b2b5cee4b6e7e02a104d49c2b8adb7",
+    "content/topics.ts": "18d7fbe5947735471ec5f700437620a29f68d04370758b1a582244afd46b6c0d",
+    "content/translations/deep-vi.ts": "3069dcffbd57d0147bc9fa0e183e5b768cad3d349d2e5cd7a5026b2a25385809",
+    "content/translations/vi.ts": "ff715295a42391844ae19bab49bf46820b7762103c71bc23b17150a88b318c2f"
+  }
+}

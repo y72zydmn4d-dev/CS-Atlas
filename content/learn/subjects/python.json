@@ -1,0 +1,4328 @@
+{
+  "category": "programming-languages",
+  "conceptIds": [
+    "topic:python"
+  ],
+  "description": {
+    "en": "A precise path from Python fundamentals through the object model, standard library, testing, and concurrency.",
+    "vi": "A precise path from Python fundamentals through the object model, standard library, testing, and concurrency."
+  },
+  "exerciseGroups": [],
+  "icon": "Code2",
+  "id": "python",
+  "navigationOrder": 5,
+  "quizGroups": [
+    {
+      "id": "python-basics-quiz",
+      "lessonIds": [
+        "learn:python:introduction",
+        "learn:python:variables",
+        "learn:python:strings"
+      ],
+      "questionIds": [
+        "python-quiz-dynamic-types",
+        "python-quiz-string-index"
+      ],
+      "title": {
+        "en": "Python basics quiz",
+        "vi": "Python basics quiz"
+      }
+    },
+    {
+      "id": "python-collections-quiz",
+      "lessonIds": [
+        "learn:python:lists"
+      ],
+      "questionIds": [
+        "python-quiz-list-mutation"
+      ],
+      "title": {
+        "en": "Python collections quiz",
+        "vi": "Python collections quiz"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "python-builtins",
+      "order": 1,
+      "referenceIds": [
+        "python-ref-len",
+        "python-ref-range",
+        "python-ref-enumerate"
+      ],
+      "title": {
+        "en": "Built-in functions",
+        "vi": "Built-in functions"
+      }
+    },
+    {
+      "id": "python-list-methods",
+      "order": 2,
+      "referenceIds": [
+        "python-ref-list-append",
+        "python-ref-list-pop",
+        "python-ref-list-sort"
+      ],
+      "title": {
+        "en": "List methods",
+        "vi": "List methods"
+      }
+    }
+  ],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:python:getting-started",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn python home through concise explanations, examples, and connected practice.",
+            "vi": "Learn python home through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:python-home",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:getting-started",
+          "slug": "python-home",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Python Home",
+            "vi": "Python Home"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "contentSource": "content/learn/lessons/python/introduction.json",
+          "description": {
+            "en": "Learn introduction through concise explanations, examples, and connected practice.",
+            "vi": "Learn introduction through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 18,
+          "exerciseIds": [],
+          "id": "learn:python:introduction",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:python-home"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:getting-started",
+          "slug": "introduction",
+          "status": "COMPLETE",
+          "subjectId": "python",
+          "title": {
+            "en": "Introduction",
+            "vi": "Introduction"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn installation through concise explanations, examples, and connected practice.",
+            "vi": "Learn installation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:installation",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:introduction"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:getting-started",
+          "slug": "installation",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Installation",
+            "vi": "Installation"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn syntax through concise explanations, examples, and connected practice.",
+            "vi": "Learn syntax through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:syntax",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:installation"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:getting-started",
+          "slug": "syntax",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Syntax",
+            "vi": "Syntax"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn comments through concise explanations, examples, and connected practice.",
+            "vi": "Learn comments through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:comments",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:syntax"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:getting-started",
+          "slug": "comments",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Comments",
+            "vi": "Comments"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "python",
+      "title": {
+        "en": "Getting started",
+        "vi": "Getting started"
+      }
+    },
+    {
+      "id": "learn-section:python:variables",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "contentSource": "content/learn/lessons/python/variables.json",
+          "description": {
+            "en": "Learn variables through concise explanations, examples, and connected practice.",
+            "vi": "Learn variables through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 18,
+          "exerciseIds": [],
+          "id": "learn:python:variables",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:variables",
+          "slug": "variables",
+          "status": "COMPLETE",
+          "subjectId": "python",
+          "title": {
+            "en": "Variables",
+            "vi": "Variables"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn variable names through concise explanations, examples, and connected practice.",
+            "vi": "Learn variable names through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:variable-names",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:variables"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:variables",
+          "slug": "variable-names",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Variable Names",
+            "vi": "Variable Names"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn multiple values through concise explanations, examples, and connected practice.",
+            "vi": "Learn multiple values through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:multiple-values",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:variable-names"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:variables",
+          "slug": "multiple-values",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Multiple Values",
+            "vi": "Multiple Values"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn output through concise explanations, examples, and connected practice.",
+            "vi": "Learn output through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:output",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:multiple-values"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:variables",
+          "slug": "output",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Output",
+            "vi": "Output"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn global variables through concise explanations, examples, and connected practice.",
+            "vi": "Learn global variables through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:global-variables",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:output"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:variables",
+          "slug": "global-variables",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Global Variables",
+            "vi": "Global Variables"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn scope through concise explanations, examples, and connected practice.",
+            "vi": "Learn scope through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:scope",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:global-variables"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:variables",
+          "slug": "scope",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Scope",
+            "vi": "Scope"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "python",
+      "title": {
+        "en": "Variables",
+        "vi": "Variables"
+      }
+    },
+    {
+      "id": "learn-section:python:data-types",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn data types through concise explanations, examples, and connected practice.",
+            "vi": "Learn data types through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:data-types",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:data-types",
+          "slug": "data-types",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Data Types",
+            "vi": "Data Types"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn numbers through concise explanations, examples, and connected practice.",
+            "vi": "Learn numbers through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:numbers",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:data-types"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:data-types",
+          "slug": "numbers",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Numbers",
+            "vi": "Numbers"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn casting through concise explanations, examples, and connected practice.",
+            "vi": "Learn casting through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:casting",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:numbers"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:data-types",
+          "slug": "casting",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Casting",
+            "vi": "Casting"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn booleans through concise explanations, examples, and connected practice.",
+            "vi": "Learn booleans through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:booleans",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:casting"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:data-types",
+          "slug": "booleans",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Booleans",
+            "vi": "Booleans"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn none through concise explanations, examples, and connected practice.",
+            "vi": "Learn none through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:none",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:booleans"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:data-types",
+          "slug": "none",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "None",
+            "vi": "None"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 3,
+      "subjectId": "python",
+      "title": {
+        "en": "Data types",
+        "vi": "Data types"
+      }
+    },
+    {
+      "id": "learn-section:python:strings",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "contentSource": "content/learn/lessons/python/strings.json",
+          "description": {
+            "en": "Learn strings through concise explanations, examples, and connected practice.",
+            "vi": "Learn strings through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 18,
+          "exerciseIds": [],
+          "id": "learn:python:strings",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:strings",
+          "slug": "strings",
+          "status": "COMPLETE",
+          "subjectId": "python",
+          "title": {
+            "en": "Strings",
+            "vi": "Strings"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn slicing through concise explanations, examples, and connected practice.",
+            "vi": "Learn slicing through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:slicing",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:strings"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:strings",
+          "slug": "slicing",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Slicing",
+            "vi": "Slicing"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn modify strings through concise explanations, examples, and connected practice.",
+            "vi": "Learn modify strings through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:modify-strings",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:slicing"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:strings",
+          "slug": "modify-strings",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Modify Strings",
+            "vi": "Modify Strings"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn concatenation through concise explanations, examples, and connected practice.",
+            "vi": "Learn concatenation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:concatenation",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:modify-strings"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:strings",
+          "slug": "concatenation",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Concatenation",
+            "vi": "Concatenation"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn formatting through concise explanations, examples, and connected practice.",
+            "vi": "Learn formatting through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:formatting",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:concatenation"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:strings",
+          "slug": "formatting",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Formatting",
+            "vi": "Formatting"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn escape characters through concise explanations, examples, and connected practice.",
+            "vi": "Learn escape characters through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:escape-characters",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:formatting"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:strings",
+          "slug": "escape-characters",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Escape Characters",
+            "vi": "Escape Characters"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn string methods through concise explanations, examples, and connected practice.",
+            "vi": "Learn string methods through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:string-methods",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:escape-characters"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:strings",
+          "slug": "string-methods",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "String Methods",
+            "vi": "String Methods"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 4,
+      "subjectId": "python",
+      "title": {
+        "en": "Strings",
+        "vi": "Strings"
+      }
+    },
+    {
+      "id": "learn-section:python:operators",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn arithmetic through concise explanations, examples, and connected practice.",
+            "vi": "Learn arithmetic through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:arithmetic",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:operators",
+          "slug": "arithmetic",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Arithmetic",
+            "vi": "Arithmetic"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn assignment through concise explanations, examples, and connected practice.",
+            "vi": "Learn assignment through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:assignment",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:arithmetic"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:operators",
+          "slug": "assignment",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Assignment",
+            "vi": "Assignment"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn comparison through concise explanations, examples, and connected practice.",
+            "vi": "Learn comparison through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:comparison",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:assignment"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:operators",
+          "slug": "comparison",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Comparison",
+            "vi": "Comparison"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn logical through concise explanations, examples, and connected practice.",
+            "vi": "Learn logical through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:logical",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:comparison"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:operators",
+          "slug": "logical",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Logical",
+            "vi": "Logical"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn identity through concise explanations, examples, and connected practice.",
+            "vi": "Learn identity through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:identity",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:logical"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:operators",
+          "slug": "identity",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Identity",
+            "vi": "Identity"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn membership through concise explanations, examples, and connected practice.",
+            "vi": "Learn membership through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:membership",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:identity"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:operators",
+          "slug": "membership",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Membership",
+            "vi": "Membership"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn bitwise through concise explanations, examples, and connected practice.",
+            "vi": "Learn bitwise through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:bitwise",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:membership"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:operators",
+          "slug": "bitwise",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Bitwise",
+            "vi": "Bitwise"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn precedence through concise explanations, examples, and connected practice.",
+            "vi": "Learn precedence through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:precedence",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:bitwise"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:operators",
+          "slug": "precedence",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Precedence",
+            "vi": "Precedence"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 5,
+      "subjectId": "python",
+      "title": {
+        "en": "Operators",
+        "vi": "Operators"
+      }
+    },
+    {
+      "id": "learn-section:python:collections",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "contentSource": "content/learn/lessons/python/lists.json",
+          "description": {
+            "en": "Learn lists through concise explanations, examples, and connected practice.",
+            "vi": "Learn lists through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 18,
+          "exerciseIds": [],
+          "id": "learn:python:lists",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "lists",
+          "status": "COMPLETE",
+          "subjectId": "python",
+          "title": {
+            "en": "Lists",
+            "vi": "Lists"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn access lists through concise explanations, examples, and connected practice.",
+            "vi": "Learn access lists through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:access-lists",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:lists"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "access-lists",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Access Lists",
+            "vi": "Access Lists"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn change lists through concise explanations, examples, and connected practice.",
+            "vi": "Learn change lists through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:change-lists",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:access-lists"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "change-lists",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Change Lists",
+            "vi": "Change Lists"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn add items through concise explanations, examples, and connected practice.",
+            "vi": "Learn add items through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:add-items",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:change-lists"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "add-items",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Add Items",
+            "vi": "Add Items"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn remove items through concise explanations, examples, and connected practice.",
+            "vi": "Learn remove items through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:remove-items",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:add-items"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "remove-items",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Remove Items",
+            "vi": "Remove Items"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn loop lists through concise explanations, examples, and connected practice.",
+            "vi": "Learn loop lists through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:loop-lists",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:remove-items"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "loop-lists",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Loop Lists",
+            "vi": "Loop Lists"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn list comprehensions through concise explanations, examples, and connected practice.",
+            "vi": "Learn list comprehensions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:list-comprehensions",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:loop-lists"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "list-comprehensions",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "List Comprehensions",
+            "vi": "List Comprehensions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn sort lists through concise explanations, examples, and connected practice.",
+            "vi": "Learn sort lists through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:sort-lists",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:list-comprehensions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "sort-lists",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Sort Lists",
+            "vi": "Sort Lists"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn copy lists through concise explanations, examples, and connected practice.",
+            "vi": "Learn copy lists through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:copy-lists",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:python:sort-lists"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "copy-lists",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Copy Lists",
+            "vi": "Copy Lists"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn join lists through concise explanations, examples, and connected practice.",
+            "vi": "Learn join lists through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:join-lists",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:python:copy-lists"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "join-lists",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Join Lists",
+            "vi": "Join Lists"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn tuples through concise explanations, examples, and connected practice.",
+            "vi": "Learn tuples through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:tuples",
+          "order": 11,
+          "prerequisiteLessonIds": [
+            "learn:python:join-lists"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "tuples",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Tuples",
+            "vi": "Tuples"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn access tuples through concise explanations, examples, and connected practice.",
+            "vi": "Learn access tuples through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:access-tuples",
+          "order": 12,
+          "prerequisiteLessonIds": [
+            "learn:python:tuples"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "access-tuples",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Access Tuples",
+            "vi": "Access Tuples"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn update tuples through concise explanations, examples, and connected practice.",
+            "vi": "Learn update tuples through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:update-tuples",
+          "order": 13,
+          "prerequisiteLessonIds": [
+            "learn:python:access-tuples"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "update-tuples",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Update Tuples",
+            "vi": "Update Tuples"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn unpack tuples through concise explanations, examples, and connected practice.",
+            "vi": "Learn unpack tuples through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:unpack-tuples",
+          "order": 14,
+          "prerequisiteLessonIds": [
+            "learn:python:update-tuples"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "unpack-tuples",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Unpack Tuples",
+            "vi": "Unpack Tuples"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn loop tuples through concise explanations, examples, and connected practice.",
+            "vi": "Learn loop tuples through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:loop-tuples",
+          "order": 15,
+          "prerequisiteLessonIds": [
+            "learn:python:unpack-tuples"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "loop-tuples",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Loop Tuples",
+            "vi": "Loop Tuples"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn join tuples through concise explanations, examples, and connected practice.",
+            "vi": "Learn join tuples through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:join-tuples",
+          "order": 16,
+          "prerequisiteLessonIds": [
+            "learn:python:loop-tuples"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "join-tuples",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Join Tuples",
+            "vi": "Join Tuples"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn sets through concise explanations, examples, and connected practice.",
+            "vi": "Learn sets through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:sets",
+          "order": 17,
+          "prerequisiteLessonIds": [
+            "learn:python:join-tuples"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "sets",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Sets",
+            "vi": "Sets"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn access sets through concise explanations, examples, and connected practice.",
+            "vi": "Learn access sets through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:access-sets",
+          "order": 18,
+          "prerequisiteLessonIds": [
+            "learn:python:sets"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "access-sets",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Access Sets",
+            "vi": "Access Sets"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn add set items through concise explanations, examples, and connected practice.",
+            "vi": "Learn add set items through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:add-set-items",
+          "order": 19,
+          "prerequisiteLessonIds": [
+            "learn:python:access-sets"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "add-set-items",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Add Set Items",
+            "vi": "Add Set Items"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn remove set items through concise explanations, examples, and connected practice.",
+            "vi": "Learn remove set items through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:remove-set-items",
+          "order": 20,
+          "prerequisiteLessonIds": [
+            "learn:python:add-set-items"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "remove-set-items",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Remove Set Items",
+            "vi": "Remove Set Items"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn loop sets through concise explanations, examples, and connected practice.",
+            "vi": "Learn loop sets through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:loop-sets",
+          "order": 21,
+          "prerequisiteLessonIds": [
+            "learn:python:remove-set-items"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "loop-sets",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Loop Sets",
+            "vi": "Loop Sets"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn join sets through concise explanations, examples, and connected practice.",
+            "vi": "Learn join sets through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:join-sets",
+          "order": 22,
+          "prerequisiteLessonIds": [
+            "learn:python:loop-sets"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "join-sets",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Join Sets",
+            "vi": "Join Sets"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn frozenset through concise explanations, examples, and connected practice.",
+            "vi": "Learn frozenset through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:frozenset",
+          "order": 23,
+          "prerequisiteLessonIds": [
+            "learn:python:join-sets"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "frozenset",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Frozenset",
+            "vi": "Frozenset"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn dictionaries through concise explanations, examples, and connected practice.",
+            "vi": "Learn dictionaries through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:dictionaries",
+          "order": 24,
+          "prerequisiteLessonIds": [
+            "learn:python:frozenset"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "dictionaries",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Dictionaries",
+            "vi": "Dictionaries"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn access dictionaries through concise explanations, examples, and connected practice.",
+            "vi": "Learn access dictionaries through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:access-dictionaries",
+          "order": 25,
+          "prerequisiteLessonIds": [
+            "learn:python:dictionaries"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "access-dictionaries",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Access Dictionaries",
+            "vi": "Access Dictionaries"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn change dictionaries through concise explanations, examples, and connected practice.",
+            "vi": "Learn change dictionaries through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:change-dictionaries",
+          "order": 26,
+          "prerequisiteLessonIds": [
+            "learn:python:access-dictionaries"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "change-dictionaries",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Change Dictionaries",
+            "vi": "Change Dictionaries"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn add dictionary items through concise explanations, examples, and connected practice.",
+            "vi": "Learn add dictionary items through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:add-dictionary-items",
+          "order": 27,
+          "prerequisiteLessonIds": [
+            "learn:python:change-dictionaries"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "add-dictionary-items",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Add Dictionary Items",
+            "vi": "Add Dictionary Items"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn remove dictionary items through concise explanations, examples, and connected practice.",
+            "vi": "Learn remove dictionary items through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:remove-dictionary-items",
+          "order": 28,
+          "prerequisiteLessonIds": [
+            "learn:python:add-dictionary-items"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "remove-dictionary-items",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Remove Dictionary Items",
+            "vi": "Remove Dictionary Items"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn loop dictionaries through concise explanations, examples, and connected practice.",
+            "vi": "Learn loop dictionaries through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:loop-dictionaries",
+          "order": 29,
+          "prerequisiteLessonIds": [
+            "learn:python:remove-dictionary-items"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "loop-dictionaries",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Loop Dictionaries",
+            "vi": "Loop Dictionaries"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn copy dictionaries through concise explanations, examples, and connected practice.",
+            "vi": "Learn copy dictionaries through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:copy-dictionaries",
+          "order": 30,
+          "prerequisiteLessonIds": [
+            "learn:python:loop-dictionaries"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "copy-dictionaries",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Copy Dictionaries",
+            "vi": "Copy Dictionaries"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn nested dictionaries through concise explanations, examples, and connected practice.",
+            "vi": "Learn nested dictionaries through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:nested-dictionaries",
+          "order": 31,
+          "prerequisiteLessonIds": [
+            "learn:python:copy-dictionaries"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:collections",
+          "slug": "nested-dictionaries",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Nested Dictionaries",
+            "vi": "Nested Dictionaries"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 6,
+      "subjectId": "python",
+      "title": {
+        "en": "Collections",
+        "vi": "Collections"
+      }
+    },
+    {
+      "id": "learn-section:python:control-flow",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn if through concise explanations, examples, and connected practice.",
+            "vi": "Learn if through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:if",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "if",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "If",
+            "vi": "If"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn elif through concise explanations, examples, and connected practice.",
+            "vi": "Learn elif through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:elif",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:if"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "elif",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Elif",
+            "vi": "Elif"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn else through concise explanations, examples, and connected practice.",
+            "vi": "Learn else through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:else",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:elif"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "else",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Else",
+            "vi": "Else"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn conditional expressions through concise explanations, examples, and connected practice.",
+            "vi": "Learn conditional expressions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:conditional-expressions",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:else"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "conditional-expressions",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Conditional Expressions",
+            "vi": "Conditional Expressions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn nested conditions through concise explanations, examples, and connected practice.",
+            "vi": "Learn nested conditions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:nested-conditions",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:conditional-expressions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "nested-conditions",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Nested Conditions",
+            "vi": "Nested Conditions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn match through concise explanations, examples, and connected practice.",
+            "vi": "Learn match through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:match",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:nested-conditions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "match",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Match",
+            "vi": "Match"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn while through concise explanations, examples, and connected practice.",
+            "vi": "Learn while through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:while",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:match"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "while",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "While",
+            "vi": "While"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn for through concise explanations, examples, and connected practice.",
+            "vi": "Learn for through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:for",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:while"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "for",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "For",
+            "vi": "For"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn range through concise explanations, examples, and connected practice.",
+            "vi": "Learn range through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:range",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:python:for"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "range",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Range",
+            "vi": "Range"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn pass through concise explanations, examples, and connected practice.",
+            "vi": "Learn pass through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Intermediate",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:pass",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:python:range"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:control-flow",
+          "slug": "pass",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Pass",
+            "vi": "Pass"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 7,
+      "subjectId": "python",
+      "title": {
+        "en": "Control flow",
+        "vi": "Control flow"
+      }
+    },
+    {
+      "id": "learn-section:python:functions",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "contentSource": "content/learn/lessons/python/functions.json",
+          "description": {
+            "en": "Learn functions through concise explanations, examples, and connected practice.",
+            "vi": "Learn functions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 18,
+          "exerciseIds": [],
+          "id": "learn:python:functions",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "functions",
+          "status": "COMPLETE",
+          "subjectId": "python",
+          "title": {
+            "en": "Functions",
+            "vi": "Functions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn arguments through concise explanations, examples, and connected practice.",
+            "vi": "Learn arguments through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:arguments",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:functions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "arguments",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Arguments",
+            "vi": "Arguments"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn positional arguments through concise explanations, examples, and connected practice.",
+            "vi": "Learn positional arguments through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:positional-arguments",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:arguments"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "positional-arguments",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Positional Arguments",
+            "vi": "Positional Arguments"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn keyword arguments through concise explanations, examples, and connected practice.",
+            "vi": "Learn keyword arguments through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:keyword-arguments",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:positional-arguments"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "keyword-arguments",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Keyword Arguments",
+            "vi": "Keyword Arguments"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn default arguments through concise explanations, examples, and connected practice.",
+            "vi": "Learn default arguments through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:default-arguments",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:keyword-arguments"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "default-arguments",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Default Arguments",
+            "vi": "Default Arguments"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn *args through concise explanations, examples, and connected practice.",
+            "vi": "Learn *args through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:args",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:default-arguments"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "args",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "*args",
+            "vi": "*args"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn **kwargs through concise explanations, examples, and connected practice.",
+            "vi": "Learn **kwargs through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:kwargs",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:args"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "kwargs",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "**kwargs",
+            "vi": "**kwargs"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn return values through concise explanations, examples, and connected practice.",
+            "vi": "Learn return values through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:return-values",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:kwargs"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "return-values",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Return Values",
+            "vi": "Return Values"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn lambda through concise explanations, examples, and connected practice.",
+            "vi": "Learn lambda through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:lambda",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:python:return-values"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "lambda",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Lambda",
+            "vi": "Lambda"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn recursion through concise explanations, examples, and connected practice.",
+            "vi": "Learn recursion through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:recursion",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:python:lambda"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "recursion",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Recursion",
+            "vi": "Recursion"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn decorators through concise explanations, examples, and connected practice.",
+            "vi": "Learn decorators through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:decorators",
+          "order": 11,
+          "prerequisiteLessonIds": [
+            "learn:python:recursion"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "decorators",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Decorators",
+            "vi": "Decorators"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn generators through concise explanations, examples, and connected practice.",
+            "vi": "Learn generators through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:generators",
+          "order": 12,
+          "prerequisiteLessonIds": [
+            "learn:python:decorators"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:functions",
+          "slug": "generators",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Generators",
+            "vi": "Generators"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 8,
+      "subjectId": "python",
+      "title": {
+        "en": "Functions",
+        "vi": "Functions"
+      }
+    },
+    {
+      "id": "learn-section:python:modules",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn modules through concise explanations, examples, and connected practice.",
+            "vi": "Learn modules through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:modules",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:modules",
+          "slug": "modules",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Modules",
+            "vi": "Modules"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn import through concise explanations, examples, and connected practice.",
+            "vi": "Learn import through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:import",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:modules"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:modules",
+          "slug": "import",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Import",
+            "vi": "Import"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn packages through concise explanations, examples, and connected practice.",
+            "vi": "Learn packages through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:packages",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:import"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:modules",
+          "slug": "packages",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Packages",
+            "vi": "Packages"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn pip through concise explanations, examples, and connected practice.",
+            "vi": "Learn pip through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:pip",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:packages"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:modules",
+          "slug": "pip",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "pip",
+            "vi": "pip"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn virtual environments through concise explanations, examples, and connected practice.",
+            "vi": "Learn virtual environments through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:virtual-environments",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:pip"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:modules",
+          "slug": "virtual-environments",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Virtual Environments",
+            "vi": "Virtual Environments"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 9,
+      "subjectId": "python",
+      "title": {
+        "en": "Modules",
+        "vi": "Modules"
+      }
+    },
+    {
+      "id": "learn-section:python:object-oriented-programming",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn classes through concise explanations, examples, and connected practice.",
+            "vi": "Learn classes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:classes",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "classes",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Classes",
+            "vi": "Classes"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn objects through concise explanations, examples, and connected practice.",
+            "vi": "Learn objects through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:objects",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:classes"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "objects",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Objects",
+            "vi": "Objects"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn __init__ through concise explanations, examples, and connected practice.",
+            "vi": "Learn __init__ through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:init",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:objects"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "init",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "__init__",
+            "vi": "__init__"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn self through concise explanations, examples, and connected practice.",
+            "vi": "Learn self through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:self",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:init"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "self",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "self",
+            "vi": "self"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn properties through concise explanations, examples, and connected practice.",
+            "vi": "Learn properties through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:properties",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:self"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "properties",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Properties",
+            "vi": "Properties"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn methods through concise explanations, examples, and connected practice.",
+            "vi": "Learn methods through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:methods",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:properties"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "methods",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Methods",
+            "vi": "Methods"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn class methods through concise explanations, examples, and connected practice.",
+            "vi": "Learn class methods through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:class-methods",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:methods"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "class-methods",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Class Methods",
+            "vi": "Class Methods"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn static methods through concise explanations, examples, and connected practice.",
+            "vi": "Learn static methods through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:static-methods",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:class-methods"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "static-methods",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Static Methods",
+            "vi": "Static Methods"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn inheritance through concise explanations, examples, and connected practice.",
+            "vi": "Learn inheritance through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:inheritance",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:python:static-methods"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "inheritance",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Inheritance",
+            "vi": "Inheritance"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn polymorphism through concise explanations, examples, and connected practice.",
+            "vi": "Learn polymorphism through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:polymorphism",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:python:inheritance"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "polymorphism",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Polymorphism",
+            "vi": "Polymorphism"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn encapsulation through concise explanations, examples, and connected practice.",
+            "vi": "Learn encapsulation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:encapsulation",
+          "order": 11,
+          "prerequisiteLessonIds": [
+            "learn:python:polymorphism"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "encapsulation",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Encapsulation",
+            "vi": "Encapsulation"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn abstract classes through concise explanations, examples, and connected practice.",
+            "vi": "Learn abstract classes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:abstract-classes",
+          "order": 12,
+          "prerequisiteLessonIds": [
+            "learn:python:encapsulation"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "abstract-classes",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Abstract Classes",
+            "vi": "Abstract Classes"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn dataclasses through concise explanations, examples, and connected practice.",
+            "vi": "Learn dataclasses through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:dataclasses",
+          "order": 13,
+          "prerequisiteLessonIds": [
+            "learn:python:abstract-classes"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "dataclasses",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Dataclasses",
+            "vi": "Dataclasses"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn inner classes through concise explanations, examples, and connected practice.",
+            "vi": "Learn inner classes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:inner-classes",
+          "order": 14,
+          "prerequisiteLessonIds": [
+            "learn:python:dataclasses"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:object-oriented-programming",
+          "slug": "inner-classes",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Inner Classes",
+            "vi": "Inner Classes"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 10,
+      "subjectId": "python",
+      "title": {
+        "en": "Object-oriented programming",
+        "vi": "Object-oriented programming"
+      }
+    },
+    {
+      "id": "learn-section:python:magic-methods",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn __str__ through concise explanations, examples, and connected practice.",
+            "vi": "Learn __str__ through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:str",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:magic-methods",
+          "slug": "str",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "__str__",
+            "vi": "__str__"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn __repr__ through concise explanations, examples, and connected practice.",
+            "vi": "Learn __repr__ through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:repr",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:str"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:magic-methods",
+          "slug": "repr",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "__repr__",
+            "vi": "__repr__"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn __eq__ through concise explanations, examples, and connected practice.",
+            "vi": "Learn __eq__ through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:eq",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:repr"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:magic-methods",
+          "slug": "eq",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "__eq__",
+            "vi": "__eq__"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn __lt__ through concise explanations, examples, and connected practice.",
+            "vi": "Learn __lt__ through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:lt",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:eq"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:magic-methods",
+          "slug": "lt",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "__lt__",
+            "vi": "__lt__"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn __len__ through concise explanations, examples, and connected practice.",
+            "vi": "Learn __len__ through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:len",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:lt"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:magic-methods",
+          "slug": "len",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "__len__",
+            "vi": "__len__"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn __contains__ through concise explanations, examples, and connected practice.",
+            "vi": "Learn __contains__ through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:contains",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:len"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:magic-methods",
+          "slug": "contains",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "__contains__",
+            "vi": "__contains__"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn __call__ through concise explanations, examples, and connected practice.",
+            "vi": "Learn __call__ through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:call",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:contains"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:magic-methods",
+          "slug": "call",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "__call__",
+            "vi": "__call__"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn arithmetic operators through concise explanations, examples, and connected practice.",
+            "vi": "Learn arithmetic operators through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:arithmetic-operators",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:call"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:magic-methods",
+          "slug": "arithmetic-operators",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Arithmetic Operators",
+            "vi": "Arithmetic Operators"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn comparison operators through concise explanations, examples, and connected practice.",
+            "vi": "Learn comparison operators through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:comparison-operators",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:python:arithmetic-operators"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:magic-methods",
+          "slug": "comparison-operators",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Comparison Operators",
+            "vi": "Comparison Operators"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 11,
+      "subjectId": "python",
+      "title": {
+        "en": "Magic methods",
+        "vi": "Magic methods"
+      }
+    },
+    {
+      "id": "learn-section:python:iteration-and-errors",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn iterables through concise explanations, examples, and connected practice.",
+            "vi": "Learn iterables through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:iterables",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "iterables",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Iterables",
+            "vi": "Iterables"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn iterators through concise explanations, examples, and connected practice.",
+            "vi": "Learn iterators through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:iterators",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:iterables"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "iterators",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Iterators",
+            "vi": "Iterators"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn generator iteration through concise explanations, examples, and connected practice.",
+            "vi": "Learn generator iteration through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:generator-iteration",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:iterators"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "generator-iteration",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Generator Iteration",
+            "vi": "Generator Iteration"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn exceptions through concise explanations, examples, and connected practice.",
+            "vi": "Learn exceptions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:exceptions",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:generator-iteration"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "exceptions",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Exceptions",
+            "vi": "Exceptions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn try through concise explanations, examples, and connected practice.",
+            "vi": "Learn try through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:try",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:exceptions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "try",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Try",
+            "vi": "Try"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn except through concise explanations, examples, and connected practice.",
+            "vi": "Learn except through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:except",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:try"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "except",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Except",
+            "vi": "Except"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn else clause through concise explanations, examples, and connected practice.",
+            "vi": "Learn else clause through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:else-clause",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:except"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "else-clause",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Else Clause",
+            "vi": "Else Clause"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn finally through concise explanations, examples, and connected practice.",
+            "vi": "Learn finally through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:finally",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:else-clause"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "finally",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Finally",
+            "vi": "Finally"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn raise through concise explanations, examples, and connected practice.",
+            "vi": "Learn raise through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:raise",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:python:finally"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "raise",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Raise",
+            "vi": "Raise"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn custom exceptions through concise explanations, examples, and connected practice.",
+            "vi": "Learn custom exceptions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:custom-exceptions",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:python:raise"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:iteration-and-errors",
+          "slug": "custom-exceptions",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Custom Exceptions",
+            "vi": "Custom Exceptions"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 12,
+      "subjectId": "python",
+      "title": {
+        "en": "Iteration and errors",
+        "vi": "Iteration and errors"
+      }
+    },
+    {
+      "id": "learn-section:python:files-and-formats",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn open files through concise explanations, examples, and connected practice.",
+            "vi": "Learn open files through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:open-files",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:files-and-formats",
+          "slug": "open-files",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Open Files",
+            "vi": "Open Files"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn read files through concise explanations, examples, and connected practice.",
+            "vi": "Learn read files through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:read-files",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:open-files"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:files-and-formats",
+          "slug": "read-files",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Read Files",
+            "vi": "Read Files"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn write files through concise explanations, examples, and connected practice.",
+            "vi": "Learn write files through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:write-files",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:read-files"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:files-and-formats",
+          "slug": "write-files",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Write Files",
+            "vi": "Write Files"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn append files through concise explanations, examples, and connected practice.",
+            "vi": "Learn append files through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:append-files",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:write-files"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:files-and-formats",
+          "slug": "append-files",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Append Files",
+            "vi": "Append Files"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn delete files through concise explanations, examples, and connected practice.",
+            "vi": "Learn delete files through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:delete-files",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:append-files"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:files-and-formats",
+          "slug": "delete-files",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Delete Files",
+            "vi": "Delete Files"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn paths through concise explanations, examples, and connected practice.",
+            "vi": "Learn paths through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:paths",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:delete-files"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:files-and-formats",
+          "slug": "paths",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Paths",
+            "vi": "Paths"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn context managers through concise explanations, examples, and connected practice.",
+            "vi": "Learn context managers through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:context-managers",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:paths"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:files-and-formats",
+          "slug": "context-managers",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Context Managers",
+            "vi": "Context Managers"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn json through concise explanations, examples, and connected practice.",
+            "vi": "Learn json through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:json",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:context-managers"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:files-and-formats",
+          "slug": "json",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "JSON",
+            "vi": "JSON"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn csv through concise explanations, examples, and connected practice.",
+            "vi": "Learn csv through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:csv",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:python:json"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:files-and-formats",
+          "slug": "csv",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "CSV",
+            "vi": "CSV"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 13,
+      "subjectId": "python",
+      "title": {
+        "en": "Files and formats",
+        "vi": "Files and formats"
+      }
+    },
+    {
+      "id": "learn-section:python:standard-library",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn dates through concise explanations, examples, and connected practice.",
+            "vi": "Learn dates through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:dates",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "dates",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Dates",
+            "vi": "Dates"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn math through concise explanations, examples, and connected practice.",
+            "vi": "Learn math through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:math",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:dates"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "math",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Math",
+            "vi": "Math"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn random through concise explanations, examples, and connected practice.",
+            "vi": "Learn random through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:random",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:math"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "random",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Random",
+            "vi": "Random"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn statistics through concise explanations, examples, and connected practice.",
+            "vi": "Learn statistics through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:statistics",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:random"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "statistics",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Statistics",
+            "vi": "Statistics"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn collections module through concise explanations, examples, and connected practice.",
+            "vi": "Learn collections module through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:collections-module",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:statistics"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "collections-module",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Collections Module",
+            "vi": "Collections Module"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn itertools through concise explanations, examples, and connected practice.",
+            "vi": "Learn itertools through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:itertools",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:collections-module"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "itertools",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "itertools",
+            "vi": "itertools"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn functools through concise explanations, examples, and connected practice.",
+            "vi": "Learn functools through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:functools",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:itertools"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "functools",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "functools",
+            "vi": "functools"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn pathlib through concise explanations, examples, and connected practice.",
+            "vi": "Learn pathlib through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:pathlib",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:functools"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "pathlib",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "pathlib",
+            "vi": "pathlib"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn os through concise explanations, examples, and connected practice.",
+            "vi": "Learn os through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:os",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:python:pathlib"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "os",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "os",
+            "vi": "os"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn sys through concise explanations, examples, and connected practice.",
+            "vi": "Learn sys through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:sys",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:python:os"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "sys",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "sys",
+            "vi": "sys"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn re through concise explanations, examples, and connected practice.",
+            "vi": "Learn re through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:re",
+          "order": 11,
+          "prerequisiteLessonIds": [
+            "learn:python:sys"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:standard-library",
+          "slug": "re",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "re",
+            "vi": "re"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 14,
+      "subjectId": "python",
+      "title": {
+        "en": "Standard library",
+        "vi": "Standard library"
+      }
+    },
+    {
+      "id": "learn-section:python:advanced",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn type hints through concise explanations, examples, and connected practice.",
+            "vi": "Learn type hints through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:type-hints",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "type-hints",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Type Hints",
+            "vi": "Type Hints"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn typing through concise explanations, examples, and connected practice.",
+            "vi": "Learn typing through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:typing",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:python:type-hints"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "typing",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Typing",
+            "vi": "Typing"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn comprehensions through concise explanations, examples, and connected practice.",
+            "vi": "Learn comprehensions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:comprehensions",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:python:typing"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "comprehensions",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Comprehensions",
+            "vi": "Comprehensions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn closures through concise explanations, examples, and connected practice.",
+            "vi": "Learn closures through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:closures",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:python:comprehensions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "closures",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Closures",
+            "vi": "Closures"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn async and await through concise explanations, examples, and connected practice.",
+            "vi": "Learn async and await through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:async-and-await",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:python:closures"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "async-and-await",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Async and Await",
+            "vi": "Async and Await"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn concurrency overview through concise explanations, examples, and connected practice.",
+            "vi": "Learn concurrency overview through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:concurrency-overview",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:python:async-and-await"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "concurrency-overview",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Concurrency Overview",
+            "vi": "Concurrency Overview"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn testing through concise explanations, examples, and connected practice.",
+            "vi": "Learn testing through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:testing",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:python:concurrency-overview"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "testing",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Testing",
+            "vi": "Testing"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn logging through concise explanations, examples, and connected practice.",
+            "vi": "Learn logging through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:logging",
+          "order": 8,
+          "prerequisiteLessonIds": [
+            "learn:python:testing"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "logging",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Logging",
+            "vi": "Logging"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn debugging through concise explanations, examples, and connected practice.",
+            "vi": "Learn debugging through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:debugging",
+          "order": 9,
+          "prerequisiteLessonIds": [
+            "learn:python:logging"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "debugging",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Debugging",
+            "vi": "Debugging"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:python"
+          ],
+          "description": {
+            "en": "Learn performance basics through concise explanations, examples, and connected practice.",
+            "vi": "Learn performance basics through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Advanced",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:python:performance-basics",
+          "order": 10,
+          "prerequisiteLessonIds": [
+            "learn:python:debugging"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:python:advanced",
+          "slug": "performance-basics",
+          "status": "SKELETON",
+          "subjectId": "python",
+          "title": {
+            "en": "Performance Basics",
+            "vi": "Performance Basics"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 15,
+      "subjectId": "python",
+      "title": {
+        "en": "Advanced",
+        "vi": "Advanced"
+      }
+    }
+  ],
+  "slug": "python",
+  "status": "PARTIAL",
+  "title": {
+    "en": "Python",
+    "vi": "Python"
+  },
+  "translationStatus": "english-only"
+}

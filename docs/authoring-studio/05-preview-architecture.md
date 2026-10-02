@@ -1,5 +1,7 @@
 # 05 — Canonical unsaved lesson preview (Milestone E)
 
+G activation: Save persists the editor's canonical candidate, never this presentation model. Successful canonical readback resets preview/validation snapshots; failed Save preserves draft and current preview staleness. Preview remains unsaved/read-only and side-effect-free. Historical E boundary below is retained; see09 for persistence.
+
 Baseline: `3b7cc33`, `atlas-v2`. Implementation contract recorded before code. Canonical content remains read-only; no temporary content file, persisted preview ID, Save or writer.
 
 Status: implemented in Milestone E. Validation, no-write/side-effect and production HTTP evidence is recorded in [06 QA](06-qa.md); independent visual/keyboard review remains manual because an isolated browser is unavailable.

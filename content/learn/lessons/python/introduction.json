@@ -1,0 +1,88 @@
+{
+  "blocks": [
+    {
+      "id": "objectives",
+      "items": [
+        {
+          "en": "Explain how a Python source file becomes executed instructions.",
+          "vi": "Explain how a Python source file becomes executed instructions."
+        },
+        {
+          "en": "Distinguish syntax, values, names, and side effects.",
+          "vi": "Distinguish syntax, values, names, and side effects."
+        },
+        {
+          "en": "Run a small program with observable output in an approved Python environment.",
+          "vi": "Run a small program with observable output in an approved Python environment."
+        }
+      ],
+      "type": "objectives"
+    },
+    {
+      "body": {
+        "en": "A sequence of statements evaluated by a Python implementation. Statements may bind names, compute values, control execution, define reusable behavior, or interact with the outside world.",
+        "vi": "A sequence of statements evaluated by a Python implementation. Statements may bind names, compute values, control execution, define reusable behavior, or interact with the outside world."
+      },
+      "id": "model",
+      "term": "Python program",
+      "type": "definition"
+    },
+    {
+      "body": {
+        "en": "Read a program from top to bottom while tracking the current bindings and control flow. When a function is called, create a new local scope; when an exception is raised, follow the active handling path. This model is more durable than memorizing punctuation.",
+        "vi": "Read a program from top to bottom while tracking the current bindings and control flow. When a function is called, create a new local scope; when an exception is raised, follow the active handling path. This model is more durable than memorizing punctuation."
+      },
+      "id": "execution",
+      "title": {
+        "en": "A useful execution model",
+        "vi": "A useful execution model"
+      },
+      "type": "paragraph"
+    },
+    {
+      "code": "name = expression\nprint(name)",
+      "id": "syntax",
+      "language": "python",
+      "type": "syntax"
+    },
+    {
+      "exampleId": "python-example-first-program",
+      "id": "example",
+      "type": "example"
+    },
+    {
+      "body": {
+        "en": "Python source is editable here, but this Atlas build does not claim an approved Python runtime. Use the displayed output as authored material or open an external/local Python environment.",
+        "vi": "Python source is editable here, but this Atlas build does not claim an approved Python runtime. Use the displayed output as authored material or open an external/local Python environment."
+      },
+      "id": "note",
+      "tone": "important",
+      "type": "callout"
+    },
+    {
+      "body": {
+        "en": "Readable syntax does not remove the need to reason about types, mutation, exceptions, and algorithmic cost.",
+        "vi": "Readable syntax does not remove the need to reason about types, mutation, exceptions, and algorithmic cost."
+      },
+      "id": "mistake",
+      "tone": "common-mistake",
+      "type": "callout"
+    },
+    {
+      "id": "related",
+      "lessonIds": [
+        "learn:python:variables",
+        "learn:python:strings"
+      ],
+      "problemIds": [],
+      "type": "related"
+    }
+  ],
+  "lessonId": "learn:python:introduction",
+  "reviewedAt": "2026-09-30",
+  "summary": {
+    "en": "Understand Python's execution model, strengths, and the boundary between readable syntax and runtime behavior.",
+    "vi": "Understand Python's execution model, strengths, and the boundary between readable syntax and runtime behavior."
+  },
+  "version": 1
+}

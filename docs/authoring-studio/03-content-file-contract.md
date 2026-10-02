@@ -1,18 +1,19 @@
 # 03 — Content file ownership and safe-write contract
 
-Milestone 0 decision contract, baseline `80018c6`. Existing content stays read-only through F. The latest F scope forbids real content changes: implement/test this layout only in isolated fixtures, fail closed on unmigrated storage. The historical migration sequence below is now a reviewed prerequisite before G exposure, not permission to migrate in F. See [08 — save pipeline](08-save-pipeline.md). No parallel override store is permitted.
+Milestone 0 contract, baseline `80018c6`, activated by G. The13 manifests and9 authored bodies now use the exact canonical JSON layout below; old seed/body literals are retired, adapters/aliases retained. No empty skeleton bodies or parallel override store. F transaction guarantees are in08; G migration/parity/Save evidence and seal regeneration are in09/06. The historical sequence below records how this cutover was performed.
 
 ## Ownership categories
 
 | Category | Exact source / proposed target | Studio permissions |
 |---|---|---|
-| A — STUDIO-SAFE, proposed | `content/learn/subjects/<subject-id>.json`: one canonical SubjectManifest, including nested Sections/LessonManifests | After migration only: update lesson editable metadata, create section/lesson, reorder. Subject identity/config/reference/quiz/group metadata outside the operation is preserved. |
-| A — STUDIO-SAFE, proposed | `content/learn/lessons/<subject-id>/<initial-lesson-slug>.json`: one canonical LearnLessonContent | Create/update selected body only. Stable ID determines immutable file identity; no route rename/delete. |
-| B — GENERATED, proposed | `content/learn/generated/subject-index.ts`, `content/learn/generated/lesson-content-index.ts` | Fixed literal filenames, deterministic explicit imports/exports from validated canonical JSON inventory. No executable author text, directory glob, browser-supplied import target or hand edits. |
-| C — HAND-MAINTAINED, existing | `content/learn/registry.ts`, `content/learn/lesson-content.ts` | Never rewritten by browser Studio. One developer-reviewed migration removes seed/body ownership and retains adapters/maps/legacy alias behavior; see cutover below. |
+| A — STUDIO-SAFE, live | `content/learn/subjects/<subject-id>.json`: canonical SubjectManifest including nested Sections/LessonManifests | G updates only existing lesson editable metadata. Subject/group/identity/order fields preserved. Create/reorder remain future operations. |
+| A — STUDIO-SAFE, live | `content/learn/lessons/<subject-id>/<initial-lesson-slug>.json`: canonical LearnLessonContent | Update or first body of existing lesson only. Stable ID determines file identity; no rename/delete. |
+| B — GENERATED, live | `content/learn/generated/subject-index.ts`, `content/learn/generated/lesson-content-index.ts` | Fixed deterministic literal imports from canonical inventory. G may update only body index for an existing lesson's first body; subject index is read-only. |
+| B — GENERATED, verification only | `content/learn/generated/authoring-dependency-seal.json` | Developer-generated read-only source/semantic hashes; never content authority or browser write target. |
+| C — HAND-MAINTAINED, adapters | `content/learn/registry.ts`, `content/learn/lesson-content.ts` | Never rewritten by Studio. JSON parsing/export/lookup and legacy alias compatibility only; no legacy body fallback. |
 | C — HAND-MAINTAINED, existing | `lib/domain/learn-platform.ts`, all schema/validator/serializer/service/renderer/route source, `content/index.ts`, i18n, docs, configs | Engineering changes only, never write-plan targets. |
 | D — READ-ONLY REGISTRY | `content/concepts/*`, Topics/Algorithms/Techniques/Domains, `content/lessons.ts`, `content/exercises.ts`, `content/problems.ts`, `content/practice/*`, `content/sources.ts`, Resources/translation registries | Link/search IDs only. No new Concepts, Exercises, Problems, legacy Lessons, sources or relations through v1. Never return server-only solutions/credentials. |
-| D — READ-ONLY REGISTRY, existing then extracted leaves | LearnExample, LearnReference, LearnQuizQuestion arrays currently in `lesson-content.ts`; future `content/learn/examples.ts`, `references.ts`, `quizzes.ts` | Pick/inspect existing records only. Extract manually without data changes; no authoring endpoint owns these paths. |
+| D — READ-ONLY REGISTRY | LearnExample, LearnReference, LearnQuizQuestion arrays in `content/learn/examples.ts`, `references.ts`, `quizzes.ts`, extracted without data changes in G | Pick/inspect existing records only. Hand-maintained records; no authoring endpoint owns these paths. |
 | Operational, transient | `content/learn/.authoring-transactions/` (proposed) | Server-owned lock/journal/recovery staging only. Not canonical content, draft autosave or browser API. Not imported/bundled; exclude from Git with an explicit narrow rule at F. |
 
 Allowed writes are **not** all of `content/learn/`. Only A JSON patterns, the two exact B filenames, and server-created transaction resources. `content/exercises/`/`content/references/` are not authorized roots merely because the product vision mentions them.
@@ -61,7 +62,7 @@ Existing IDs/slugs and body paths are immutable in v1. Show route identity/warni
 
 Subject status remains the canonical declared value in v1; do not automatically promote the whole subject. COMPLETE subject validation must reject incompletely authored promised lessons. Existing subject metadata/group arrays preserved by lesson saves. Learning objectives editor edits an objectives block, never a duplicated metadata field.
 
-## Guard and request boundary (mandatory, not yet implemented)
+## Guard and request boundary (implemented for G existing-lesson Save)
 
 - Availability: `NODE_ENV === "development"` **AND** `AUTHORING_STUDIO_ENABLED === "true"`; server-only flag, no NEXT_PUBLIC, default off. Test production even when flag=true. When unavailable, `/studio` returns notFound and every read/validate/preview/mutation endpoint returns404 before reading/parsing/planning any filesystem action. No learner nav entry.
 - Node runtime, `server-only` I/O module. Domain parsers are pure and reusable by tests/build/Studio; services own I/O. Do not ship fs/path/repository absolute paths to client modules/results.

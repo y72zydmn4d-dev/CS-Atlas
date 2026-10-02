@@ -2,6 +2,8 @@
 
 ## Scope / activation
 
+Historical F foundation contract below. G has now activated the same JSON layout and writer through a guarded existing-lesson resource; see09 for live cutover/Save, dependency freshness and reload. No F transaction guarantee is replaced.
+
 Internal server-only foundation, **not a Studio Save API/action**. Editor/shortcut/validation/preview remain nonpersistent. No live content migration/writes in F. Current manifests/bodies are hand-maintained TypeScript. Initialization fails STORAGE_NOT_READY until03's reviewed parity cutover. F exercises that exact canonical JSON layout in isolated fixtures, not an overlay/CMS. G must complete cutover and prove Learn/Search/HMR parity before exposing Save.
 
 ## Canonical / validation boundary

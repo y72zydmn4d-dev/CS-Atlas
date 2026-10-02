@@ -5,6 +5,7 @@ import { StudioWorkspace } from "@/components/studio/studio-workspace";
 import { requireStudioEnabled } from "@/lib/studio/guard.server";
 import { getStudioCurriculum, getStudioLesson, getStudioOverview, getStudioSubjects } from "@/lib/studio/loaders.server";
 import "./studio.css";
+import { liveExistingLessonService } from "@/lib/studio/live-save.server";
 
 export const runtime = "nodejs";
 export const metadata: Metadata = { title: "Content Studio", robots: { index: false, follow: false } };
@@ -20,7 +21,8 @@ export default async function StudioPage({ searchParams }: {
   const [overview, subjects] = await Promise.all([getStudioOverview(), getStudioSubjects()]);
   const curriculum = subject !== undefined ? await getStudioCurriculum(subject) : null;
   if (subject !== undefined && !curriculum) notFound();
-  const inspection = subject && lesson !== undefined ? await getStudioLesson(subject, lesson) : null;
+  let inspection = subject && lesson !== undefined ? await getStudioLesson(subject, lesson) : null;
   if (lesson !== undefined && !inspection) notFound();
+  if (inspection) inspection = await (await liveExistingLessonService()).load(inspection.lesson.subjectId, inspection.lesson.id);
   return <StudioWorkspace overview={overview} subjects={subjects} curriculum={curriculum} inspection={inspection} />;
 }

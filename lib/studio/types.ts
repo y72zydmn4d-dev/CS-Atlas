@@ -22,6 +22,7 @@ export interface StudioCurriculum {
   sections: Array<Pick<CurriculumSection, "id" | "title" | "order"> & { lessons: StudioLessonSummary[] }>;
 }
 export interface StudioLessonInspection {
+  baseRevision?: string;
   lesson: LessonManifest;
   section: Pick<CurriculumSection, "id" | "title" | "order">;
   content: LearnLessonContent | null;

@@ -67,9 +67,11 @@ describe("shared canonical lesson validation", () => {
   });
   it("checks positive ordering and duplicate canonical placement", () => {
     const context = validationContext(); const draft = validationDraft();
-    context.subjects[0].sections[0].lessons.push(structuredClone(draft.lesson));
+    const subject = context.subjects.find(s => s.id === draft.lesson.subjectId);
+    if (!subject) throw Error("Missing fixture subject");
+    subject.sections[0].lessons.push(structuredClone(draft.lesson));
     expect(validateCanonicalLesson(draft, context).issues.map((issue) => issue.code)).toContain("CURRICULUM_IDENTITY_INVALID");
-    context.subjects[0].sections[0].order = 100;
+    subject.sections[0].order = 100;
     expect(validateCanonicalLesson(draft, context).issues.map((issue) => issue.code)).toContain("SECTION_ORDER_INVALID");
   });
   it("reports all unknown relationships at actual field paths and keeps unresolved IDs", () => {

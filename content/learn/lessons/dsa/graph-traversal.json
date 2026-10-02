@@ -1,0 +1,121 @@
+{
+  "blocks": [
+    {
+      "id": "objectives",
+      "items": [
+        {
+          "en": "Represent a sparse graph with adjacency lists.",
+          "vi": "Represent a sparse graph with adjacency lists."
+        },
+        {
+          "en": "Explain BFS and DFS frontier behavior.",
+          "vi": "Explain BFS and DFS frontier behavior."
+        },
+        {
+          "en": "Prevent duplicate processing with a visited invariant.",
+          "vi": "Prevent duplicate processing with a visited invariant."
+        }
+      ],
+      "type": "objectives"
+    },
+    {
+      "body": {
+        "en": "A systematic process for discovering reachable vertices and examining edges while preventing repeated expansion of already discovered state.",
+        "vi": "A systematic process for discovering reachable vertices and examining edges while preventing repeated expansion of already discovered state."
+      },
+      "id": "definition",
+      "term": "Graph traversal",
+      "type": "definition"
+    },
+    {
+      "columns": [
+        {
+          "en": "Frontier",
+          "vi": "Frontier"
+        },
+        {
+          "en": "Useful property",
+          "vi": "Useful property"
+        }
+      ],
+      "id": "compare",
+      "rows": [
+        {
+          "label": {
+            "en": "BFS",
+            "vi": "BFS"
+          },
+          "values": [
+            {
+              "en": "Queue",
+              "vi": "Queue"
+            },
+            {
+              "en": "Nondecreasing unweighted distance",
+              "vi": "Nondecreasing unweighted distance"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "DFS",
+            "vi": "DFS"
+          },
+          "values": [
+            {
+              "en": "Stack or recursion",
+              "vi": "Stack or recursion"
+            },
+            {
+              "en": "Deep exploration and structural finishing order",
+              "vi": "Deep exploration and structural finishing order"
+            }
+          ]
+        }
+      ],
+      "type": "comparison"
+    },
+    {
+      "exampleId": "dsa-example-bfs",
+      "id": "example",
+      "type": "example"
+    },
+    {
+      "body": {
+        "en": "With adjacency lists, each reachable vertex is enqueued once and each outgoing edge is examined once.",
+        "vi": "With adjacency lists, each reachable vertex is enqueued once and each outgoing edge is examined once."
+      },
+      "id": "complexity",
+      "space": "O(V)",
+      "time": "O(V + E)",
+      "type": "complexity"
+    },
+    {
+      "body": {
+        "en": "Mark a vertex when it enters the frontier, not after it leaves, or the same vertex may be queued many times.",
+        "vi": "Mark a vertex when it enters the frontier, not after it leaves, or the same vertex may be queued many times."
+      },
+      "id": "warning",
+      "tone": "warning",
+      "type": "callout"
+    },
+    {
+      "id": "related",
+      "lessonIds": [
+        "learn:dsa:graph-representation",
+        "learn:dsa:bfs-shortest-path"
+      ],
+      "problemIds": [
+        "unweighted-distance"
+      ],
+      "type": "related"
+    }
+  ],
+  "lessonId": "learn:dsa:graph-traversal",
+  "reviewedAt": "2026-09-30",
+  "summary": {
+    "en": "Traverse graph state with an explicit frontier, a visited invariant, and a representation chosen for the workload.",
+    "vi": "Traverse graph state with an explicit frontier, a visited invariant, and a representation chosen for the workload."
+  },
+  "version": 1
+}

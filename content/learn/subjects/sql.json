@@ -1,0 +1,396 @@
+{
+  "category": "data-databases",
+  "conceptIds": [
+    "topic:programming-fundamentals"
+  ],
+  "description": {
+    "en": "Relational querying, joins, aggregation, schema design, constraints, transactions, and performance fundamentals.",
+    "vi": "Relational querying, joins, aggregation, schema design, constraints, transactions, and performance fundamentals."
+  },
+  "exerciseGroups": [],
+  "icon": "Database",
+  "id": "sql",
+  "navigationOrder": 4,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:sql:queries",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn select through concise explanations, examples, and connected practice.",
+            "vi": "Learn select through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:select",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:queries",
+          "slug": "select",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Select",
+            "vi": "Select"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn filter through concise explanations, examples, and connected practice.",
+            "vi": "Learn filter through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:filter",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:sql:select"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:queries",
+          "slug": "filter",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Filter",
+            "vi": "Filter"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn sort through concise explanations, examples, and connected practice.",
+            "vi": "Learn sort through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:sort",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:sql:filter"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:queries",
+          "slug": "sort",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Sort",
+            "vi": "Sort"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn aggregate through concise explanations, examples, and connected practice.",
+            "vi": "Learn aggregate through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:aggregate",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:sql:sort"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:queries",
+          "slug": "aggregate",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Aggregate",
+            "vi": "Aggregate"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn group by through concise explanations, examples, and connected practice.",
+            "vi": "Learn group by through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:group-by",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:sql:aggregate"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:queries",
+          "slug": "group-by",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Group By",
+            "vi": "Group By"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn joins through concise explanations, examples, and connected practice.",
+            "vi": "Learn joins through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:joins",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:sql:group-by"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:queries",
+          "slug": "joins",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Joins",
+            "vi": "Joins"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn subqueries through concise explanations, examples, and connected practice.",
+            "vi": "Learn subqueries through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:subqueries",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:sql:joins"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:queries",
+          "slug": "subqueries",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Subqueries",
+            "vi": "Subqueries"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "sql",
+      "title": {
+        "en": "Queries",
+        "vi": "Queries"
+      }
+    },
+    {
+      "id": "learn-section:sql:data-definition",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn tables through concise explanations, examples, and connected practice.",
+            "vi": "Learn tables through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:tables",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:data-definition",
+          "slug": "tables",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Tables",
+            "vi": "Tables"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn keys through concise explanations, examples, and connected practice.",
+            "vi": "Learn keys through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:keys",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:sql:tables"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:data-definition",
+          "slug": "keys",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Keys",
+            "vi": "Keys"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn constraints through concise explanations, examples, and connected practice.",
+            "vi": "Learn constraints through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:constraints",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:sql:keys"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:data-definition",
+          "slug": "constraints",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Constraints",
+            "vi": "Constraints"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn indexes through concise explanations, examples, and connected practice.",
+            "vi": "Learn indexes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:indexes",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:sql:constraints"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:data-definition",
+          "slug": "indexes",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Indexes",
+            "vi": "Indexes"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn transactions through concise explanations, examples, and connected practice.",
+            "vi": "Learn transactions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:transactions",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:sql:indexes"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:data-definition",
+          "slug": "transactions",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Transactions",
+            "vi": "Transactions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn views through concise explanations, examples, and connected practice.",
+            "vi": "Learn views through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:sql:views",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:sql:transactions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:sql:data-definition",
+          "slug": "views",
+          "status": "SKELETON",
+          "subjectId": "sql",
+          "title": {
+            "en": "Views",
+            "vi": "Views"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "sql",
+      "title": {
+        "en": "Data definition",
+        "vi": "Data definition"
+      }
+    }
+  ],
+  "slug": "sql",
+  "status": "SKELETON",
+  "title": {
+    "en": "SQL",
+    "vi": "SQL"
+  },
+  "translationStatus": "english-only"
+}

@@ -23,6 +23,7 @@ export async function inventory(root: string): Promise<string[]> {
     const absolute = await checkedPath(root, relative);
     const entries = await readdir(absolute, { withFileTypes: true });
     for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name, "en"))) {
+      if (entry.name === ".DS_Store") continue; // Finder metadata is not canonical content or a dependency.
       const next = `${relative}/${entry.name}`;
       if (next === transactionRelativeRoot) continue;
       if (entry.isSymbolicLink()) throw new AuthoringWriteError("PATH_REJECTED", [next]);

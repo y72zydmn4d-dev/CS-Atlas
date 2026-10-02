@@ -1,15 +1,16 @@
 import "server-only";
 import { requireStudioEnabled } from "@/lib/studio/guard.server";
+import { learnRepositoryRoot, readCanonicalSubjects, readCanonicalLessonBody } from "@/lib/learn/content-storage.server";
 
 export async function readStudioManifests() {
   requireStudioEnabled();
-  const { learnSubjectsForNavigation } = await import("@/content/learn/registry");
-  return learnSubjectsForNavigation;
+  return (await readCanonicalSubjects(await learnRepositoryRoot())).sort((a, b) => a.navigationOrder - b.navigationOrder);
 }
 
-/** Current body source is monolithic. Load it only on a valid lesson selection. */
+/** Only the selected canonical JSON body, no body registry import. */
 export async function readStudioLessonBody(lessonId: string) {
   requireStudioEnabled();
-  const { learnContentByLessonId } = await import("@/content/learn/lesson-content");
-  return learnContentByLessonId.get(lessonId) ?? null;
+  const root = await learnRepositoryRoot();
+  const lesson = (await readCanonicalSubjects(root)).flatMap(s => s.sections.flatMap(s => s.lessons)).find(l => l.id === lessonId);
+  return lesson ? readCanonicalLessonBody(root, lesson) : null;
 }

@@ -1,0 +1,73 @@
+// @vitest-environment node
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+vi.mock("server-only", () => ({}));
+import { readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { writerFixture, type WriterFixture } from "./studio-writer-fixtures";
+import { existingLessonService } from "@/lib/studio/save.server";
+import { readCanonicalSubjects, readCanonicalLessonBody } from "@/lib/learn/content-storage.server";
+import { draftFingerprint, toAuthoringDraft } from "@/lib/studio/draft";
+let fixture: WriterFixture;
+beforeEach(async () => { vi.stubEnv("NODE_ENV", "development"); vi.stubEnv("AUTHORING_STUDIO_ENABLED", "true"); fixture = await writerFixture(); });
+afterEach(async () => { await fixture.cleanup(); vi.unstubAllEnvs(); });
+describe("existing lesson Save pipeline", () => {
+  it("persists exact Unicode, objectives, code, relationship and block order through normal Learn reader", async () => {
+    const service = existingLessonService(fixture.writer, fixture.root);
+    const original = await service.load("java", fixture.body.lessonId);
+    const draft = toAuthoringDraft(original);
+    draft.lesson.title.vi = "Giao diện đã sửa";
+    if (!draft.content) throw Error("body");
+    draft.content.blocks.reverse();
+    draft.content.blocks.push({ id: "related", type: "related", lessonIds: ["learn:java:classes"], problemIds: [] });
+    const code = draft.content.blocks.find(b => b.type === "code");
+    if (code?.type === "code") code.code = '<script onclick="x">`Việt`</script>\n';
+    const objectives = draft.content.blocks.find(b => b.type === "objectives");
+    if (objectives?.type === "objectives") objectives.items.push({ en: "Explain contracts", vi: "Giải thích hợp đồng" });
+    const result = await service.save({ subjectId: "java", lessonId: original.lesson.id, draft, baseRevision: original.baseRevision });
+    expect(result.status).toBe("saved");
+    if (result.status !== "saved") return;
+    expect(result.inspection.baseRevision).not.toBe(original.baseRevision);
+    const lesson = (await readCanonicalSubjects(fixture.root))[0].sections[0].lessons[0];
+    const body = await readCanonicalLessonBody(fixture.root, lesson);
+    expect(body?.blocks).toEqual(draft.content.blocks);
+    expect(lesson.title.vi).toBe(draft.lesson.title.vi);
+    expect(draftFingerprint(toAuthoringDraft(result.inspection))).toBe(draftFingerprint({ lesson, content: body }));
+    expect(result.changedFiles).toHaveLength(2);
+    const noOp = await service.save({ subjectId: "java", lessonId: lesson.id, draft: toAuthoringDraft(result.inspection), baseRevision: result.inspection.baseRevision });
+    expect(noOp.status === "saved" && noOp.changedFiles).toEqual([]);
+  });
+  it("rejects a second stale tab and preserves the first saved bytes", async () => {
+    const service = existingLessonService(fixture.writer, fixture.root);
+    const a = await service.load("java", fixture.body.lessonId);
+    const b = structuredClone(a);
+    const draft = toAuthoringDraft(a); draft.lesson.title.en += " A";
+    expect((await service.save({ subjectId: "java", lessonId: a.lesson.id, draft, baseRevision: a.baseRevision })).status).toBe("saved");
+    const hashes = await fixture.hashes();
+    expect((await service.save({ subjectId: "java", lessonId: b.lesson.id, draft: toAuthoringDraft(b), baseRevision: b.baseRevision })).status).toBe("conflict");
+    expect(await fixture.hashes()).toEqual(hashes);
+  });
+  it("rejects manual changes, malformed input, unknown identity and blocking validation without writes", async () => {
+    const service = existingLessonService(fixture.writer, fixture.root);
+    const loaded = await service.load("java", fixture.body.lessonId);
+    const draft = toAuthoringDraft(loaded); draft.lesson.conceptIds = ["unknown"];
+    const input = { subjectId: "java", lessonId: loaded.lesson.id, draft, baseRevision: loaded.baseRevision };
+    const before = await fixture.hashes();
+    expect((await service.save(input)).status).toBe("validation-failed");
+    expect((await service.save({ ...input, path: "../package.json" })).status).toBe("failed");
+    expect((await service.save({ ...input, lessonId: "learn:java:new-record" })).status).toBe("failed");
+    expect(await fixture.hashes()).toEqual(before);
+    const target = path.join(fixture.root, "content/learn/subjects/java.json");
+    await writeFile(target, await readFile(target, "utf8") + "\n");
+    expect((await service.save(input)).status).toBe("conflict");
+  });
+  it.each([false, true])("reports transaction / critical rollback failure safely (%s)", async critical => {
+    fixture.configuration.hooks = { replaced: async () => { throw Error("injected"); }, ...(critical ? { rollingBack: async () => { throw Error("injected rollback"); } } : {}) };
+    const service = existingLessonService(fixture.writer, fixture.root);
+    const source = await service.load("java", fixture.body.lessonId);
+    const draft = toAuthoringDraft(source); draft.lesson.title.en += " edit";
+    const before = await fixture.hashes();
+    const result = await service.save({ subjectId: "java", lessonId: source.lesson.id, draft, baseRevision: source.baseRevision });
+    expect(result).toMatchObject({ status: "failed", code: critical ? "ROLLBACK_FAILED" : "COMMIT_FAILED" });
+    if (!critical) expect(await fixture.hashes()).toEqual(before);
+  });
+});

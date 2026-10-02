@@ -1,0 +1,109 @@
+{
+  "blocks": [
+    {
+      "id": "objectives",
+      "items": [
+        {
+          "en": "Read and update list items.",
+          "vi": "Read and update list items."
+        },
+        {
+          "en": "Predict aliasing and copying behavior.",
+          "vi": "Predict aliasing and copying behavior."
+        },
+        {
+          "en": "Choose iteration patterns that remain correct during mutation.",
+          "vi": "Choose iteration patterns that remain correct during mutation."
+        }
+      ],
+      "type": "objectives"
+    },
+    {
+      "body": {
+        "en": "A mutable ordered container that stores references to objects. A list can grow, shrink, and contain values of different runtime types.",
+        "vi": "A mutable ordered container that stores references to objects. A list can grow, shrink, and contain values of different runtime types."
+      },
+      "id": "definition",
+      "term": "List",
+      "type": "definition"
+    },
+    {
+      "code": "items = [first, second]\nitems.append(value)\ncopy = items.copy()",
+      "id": "syntax",
+      "language": "python",
+      "type": "syntax"
+    },
+    {
+      "exampleId": "python-example-list-aliasing",
+      "id": "example",
+      "type": "example"
+    },
+    {
+      "columns": [
+        {
+          "en": "Operation",
+          "vi": "Operation"
+        },
+        {
+          "en": "Typical cost",
+          "vi": "Typical cost"
+        }
+      ],
+      "id": "cost",
+      "rows": [
+        [
+          "items[index]",
+          "O(1)"
+        ],
+        [
+          "items.append(value)",
+          "amortized O(1)"
+        ],
+        [
+          "items.insert(0, value)",
+          "O(n)"
+        ],
+        [
+          "value in items",
+          "O(n)"
+        ]
+      ],
+      "type": "table"
+    },
+    {
+      "body": {
+        "en": "Do not remove arbitrary items from the same list you are iterating unless the algorithm is designed around changing indices. Filter into a new list or iterate over a copy.",
+        "vi": "Do not remove arbitrary items from the same list you are iterating unless the algorithm is designed around changing indices. Filter into a new list or iterate over a copy."
+      },
+      "id": "warning",
+      "tone": "warning",
+      "type": "callout"
+    },
+    {
+      "id": "refs",
+      "referenceIds": [
+        "python-ref-list-append",
+        "python-ref-list-pop",
+        "python-ref-list-sort",
+        "python-ref-enumerate"
+      ],
+      "type": "references"
+    },
+    {
+      "id": "related",
+      "lessonIds": [
+        "learn:dsa:arrays",
+        "learn:python:functions"
+      ],
+      "problemIds": [],
+      "type": "related"
+    }
+  ],
+  "lessonId": "learn:python:lists",
+  "reviewedAt": "2026-09-30",
+  "summary": {
+    "en": "Use lists as ordered mutable sequences and reason explicitly about aliasing, copying, mutation, and traversal.",
+    "vi": "Use lists as ordered mutable sequences and reason explicitly about aliasing, copying, mutation, and traversal."
+  },
+  "version": 1
+}

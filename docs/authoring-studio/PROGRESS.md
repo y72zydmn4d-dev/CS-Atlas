@@ -1,6 +1,32 @@
 # Content Authoring Studio — resumable checkpoint
 
-STATUS: MILESTONE F — COMPLETE.
+STATUS: MILESTONE G — COMPLETE.
+EXISTING LESSON SAVE: ENABLED.
+CREATE NEW LESSON: NOT IMPLEMENTED.
+CREATE SECTION: NOT IMPLEMENTED.
+CURRICULUM REORDER: NOT IMPLEMENTED.
+NEXT: MILESTONE H — CREATE NEW LESSON.
+G BASE COMMIT: c0ce7d6; CURRENT BRANCH: atlas-v2. LOCAL COMPLETION COMMIT: feat(studio): enable safe existing lesson saves (this checkpoint; resolve exact hash with git log).
+G CURRENT WRITER CONTRACT: F receipt/revision-bound existing-lesson plans and transaction executor; guarded GET/PUT exposure, validated end to end.
+G CURRENT CANONICAL STORAGE: canonical JSON manifests/bodies; hand-maintained compatibility adapters and read-only Example/Reference/Quiz leaves.
+G STORAGE CUTOVER STATUS: 13 canonical manifests / 9 bodies migrated; semantic digest parity and 14 initial Learn tests passed; no skeleton body expansion. Shared fresh JSON reader powers Studio and dev Learn; static import adapters power build/Search.
+G SAVE EXPOSURE STATUS: guarded GET/PUT /api/studio/lesson plus Save/Ctrl+S implemented. No other persistence operations. F executor is the sole canonical write path.
+G EXACT NEXT ACTION: after owner authorizes H, verify this checkpoint/worktree, read03/08/09, design canonical new-lesson identity/collision/curriculum insertion as a distinct operation using F. Do not reuse existing-lesson Save to create identities. Keep next-env.d.ts untouched. No push/merge.
+G EVIDENCE SO FAR: isolated service and request/UI suites passed; one controlled real Save changed Python title/VI summary, HTTP200 normal Learn and Studio reflected it without restarting dev; stale409, invalid422, origin403/type415 passed. Developer audit restored exact two original JSON byte hashes (see09/06). Browser inventory empty/iab unavailable. Full interim suite exposed eight outdated/first-live-storage assertions; fixed fixture subject lookup, no-Save expectations, internal boundary contract and ignored noncanonical Finder .DS_Store (never deleted).
+RESUME 2026-10-02: recovered unchanged G worktree on c0ce7d6. Last full run: 82 suites passed / 1 failed, 713 tests passed / 1 failed. Sole failure studio-validation-ui.test.tsx Vietnamese diagnostic notice expectation; restore established wording, retaining Save revalidation text. Prior chained lint/typecheck did not run. Previous terminal handles expired; recover/check local processes before final smokes. No commit until all final gates pass.
+
+### G completion evidence / files / limits
+
+- Fixed the exact interrupted failure by restoring established VI diagnostic-language copy, not weakening the test or rewriting Save. Focused6 suites/31 tests passed. Final typecheck/lint (zero warnings),83 suites/714 tests, production build740 entries and build audit passed. Unused test-import cleanup additionally verified with35 writer-security tests/typecheck/lint. All72 F writer tests retained.
+- Enabled-dev Studio/registry/validation/preview/Learn smokes pass; disabled-dev and production flag=true page/API denial verified, including Save GET/PUT404/no-store. One previous opt-in live Save/readback/restore audit passed; final original content hashes rechecked (06/09). No test content remains. Owned QA servers stopped. No safe browser available; visual/native focus/theme checklist remains manual in06.
+- Storage:13 JSON manifests/nine bodies, generated literal indexes/dependency seal; retired TS literal storage, unchanged aliases/read-only Example/Reference/Quiz leaves. Shared fresh disk reader in lib/learn; existing facade imports power builds/Search. Semantic parity snapshot proves migrated content/order/relationships. Normal Learn refresh sees Save without restart; Search remains metadata projection/module invalidation, not new full-text indexing.
+- Save: app/api/studio/lesson; lib/studio/save contracts/client/request/server/live composition; writer/live dependency adapter. UI LessonSave and existing draft session handle Ctrl/Cmd+S, busy state, canonical readback baseline/new revision, errors/conflicts/confirmed reload and changed paths. No create/reorder/slug/Git workflow.
+- Files changed: content/learn/{subjects,lessons,generated,registry,lesson-content,examples,references,quizzes}; lib/learn/content-storage.server; lib/studio/{content-reader,types,save*,live-save,writer/live*,writer/repository}; app/api/studio/lesson and selected Studio/Learn pages/styles; components/studio/{lesson-editor,lesson-save,studio-draft-session}; i18n/messages/studio; scripts/{migrate-learn-storage,audit-studio,audit-studio-save}; G fixture/service/request/UI/seal/parity tests and narrowly updated existing assertions; Studio00–06/08/09/PROGRESS, learn-authoring, STATUS, directory ownership, TASKS, DECISIONS. No dependency/vendor changes.
+- Audit:107 chunks /959,586 aggregate gzip bytes; largest148,115; Studio14,659 (+1,731 vs F). Writer stays server-only. Conservative bounded server graph scans remain; no428-body/client bulk load or build on Save.
+- Remaining limits: per-file atomicity, conditional verified rollback, same-account TOCTOU/crash recovery as F; conservative cross-record conflicts; readonly dependency seal and initial migration snapshot need reviewed maintenance after intentional content changes. Readback failure after committed write is critical READBACK_FAILED, not false unchanged success. Preview/validation reset after canonical rebase. No browser visual certification.
+- Original unrelated next-env.d.ts blob a419cbe4e3a5e8d4b481b851dbf4ac767de069e6 preserved/excluded. Final scoped diff/check and local commit only; no push/merge. Historical checkpoints below describe their original scope, not current G behavior.
+
+## Completed Milestone F checkpoint (historical)
 CURRENT BRANCH: atlas-v2.
 CURRENT COMMIT / BASE: 13b92af (E), verified; M0/A/B/C/D/E not restarted.
 LOCAL COMPLETION COMMIT: feat(studio): add secure canonical write foundation (this checkpoint; resolve with git log).

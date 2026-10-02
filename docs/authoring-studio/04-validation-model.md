@@ -1,5 +1,7 @@
 # 04 — Authoritative canonical validation (Milestone D)
 
+G activation: existing-lesson Save reruns this policy through F's process-local exact-draft receipt and revision/preflight checks. Browser reports never authorize persistence. Errors block Save; warnings/info do not. Canonical readback resets validation/preview snapshots. Validation itself remains read-only; historical D/E scope below is unchanged. See09.
+
 ## Implemented contract
 
 Canonical files remain read-only. D introduced no Preview, Save, creation, writer, migration or curriculum mutation. E now adds unsaved shared-renderer preview; see [05](05-preview-architecture.md). POST `/api/studio/validation` is a **read-only computation** accepting an unsaved draft, not a mutation operation. No file target, client validation result or executable source is accepted.

@@ -1,0 +1,288 @@
+{
+  "category": "ai-machine-learning",
+  "conceptIds": [
+    "topic:neural-networks"
+  ],
+  "description": {
+    "en": "Tensor computation, autograd, datasets, modules, training loops, accelerators, and model persistence.",
+    "vi": "Tensor computation, autograd, datasets, modules, training loops, accelerators, and model persistence."
+  },
+  "exerciseGroups": [],
+  "icon": "Flame",
+  "id": "pytorch",
+  "navigationOrder": 13,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:pytorch:foundations",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:neural-networks"
+          ],
+          "description": {
+            "en": "Learn tensors through concise explanations, examples, and connected practice.",
+            "vi": "Learn tensors through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pytorch:tensors",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:pytorch:foundations",
+          "slug": "tensors",
+          "status": "SKELETON",
+          "subjectId": "pytorch",
+          "title": {
+            "en": "Tensors",
+            "vi": "Tensors"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:neural-networks"
+          ],
+          "description": {
+            "en": "Learn autograd through concise explanations, examples, and connected practice.",
+            "vi": "Learn autograd through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pytorch:autograd",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:pytorch:tensors"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pytorch:foundations",
+          "slug": "autograd",
+          "status": "SKELETON",
+          "subjectId": "pytorch",
+          "title": {
+            "en": "Autograd",
+            "vi": "Autograd"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:neural-networks"
+          ],
+          "description": {
+            "en": "Learn datasets through concise explanations, examples, and connected practice.",
+            "vi": "Learn datasets through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pytorch:datasets",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:pytorch:autograd"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pytorch:foundations",
+          "slug": "datasets",
+          "status": "SKELETON",
+          "subjectId": "pytorch",
+          "title": {
+            "en": "Datasets",
+            "vi": "Datasets"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:neural-networks"
+          ],
+          "description": {
+            "en": "Learn dataloader through concise explanations, examples, and connected practice.",
+            "vi": "Learn dataloader through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pytorch:dataloader",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:pytorch:datasets"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pytorch:foundations",
+          "slug": "dataloader",
+          "status": "SKELETON",
+          "subjectId": "pytorch",
+          "title": {
+            "en": "DataLoader",
+            "vi": "DataLoader"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:neural-networks"
+          ],
+          "description": {
+            "en": "Learn nn.module through concise explanations, examples, and connected practice.",
+            "vi": "Learn nn.module through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pytorch:nn-module",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:pytorch:dataloader"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pytorch:foundations",
+          "slug": "nn-module",
+          "status": "SKELETON",
+          "subjectId": "pytorch",
+          "title": {
+            "en": "nn.Module",
+            "vi": "nn.Module"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "pytorch",
+      "title": {
+        "en": "Foundations",
+        "vi": "Foundations"
+      }
+    },
+    {
+      "id": "learn-section:pytorch:training",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:neural-networks"
+          ],
+          "description": {
+            "en": "Learn training loops through concise explanations, examples, and connected practice.",
+            "vi": "Learn training loops through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pytorch:training-loops",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:pytorch:training",
+          "slug": "training-loops",
+          "status": "SKELETON",
+          "subjectId": "pytorch",
+          "title": {
+            "en": "Training Loops",
+            "vi": "Training Loops"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:neural-networks"
+          ],
+          "description": {
+            "en": "Learn gpu through concise explanations, examples, and connected practice.",
+            "vi": "Learn gpu through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pytorch:gpu",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:pytorch:training-loops"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pytorch:training",
+          "slug": "gpu",
+          "status": "SKELETON",
+          "subjectId": "pytorch",
+          "title": {
+            "en": "GPU",
+            "vi": "GPU"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:neural-networks"
+          ],
+          "description": {
+            "en": "Learn saving models through concise explanations, examples, and connected practice.",
+            "vi": "Learn saving models through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pytorch:saving-models",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:pytorch:gpu"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pytorch:training",
+          "slug": "saving-models",
+          "status": "SKELETON",
+          "subjectId": "pytorch",
+          "title": {
+            "en": "Saving Models",
+            "vi": "Saving Models"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:neural-networks"
+          ],
+          "description": {
+            "en": "Learn evaluation through concise explanations, examples, and connected practice.",
+            "vi": "Learn evaluation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:pytorch:evaluation",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:pytorch:saving-models"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:pytorch:training",
+          "slug": "evaluation",
+          "status": "SKELETON",
+          "subjectId": "pytorch",
+          "title": {
+            "en": "Evaluation",
+            "vi": "Evaluation"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "pytorch",
+      "title": {
+        "en": "Training",
+        "vi": "Training"
+      }
+    }
+  ],
+  "slug": "pytorch",
+  "status": "SKELETON",
+  "title": {
+    "en": "PyTorch",
+    "vi": "PyTorch"
+  },
+  "translationStatus": "english-only"
+}

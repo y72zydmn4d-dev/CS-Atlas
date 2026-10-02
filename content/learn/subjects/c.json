@@ -1,0 +1,423 @@
+{
+  "category": "programming-languages",
+  "conceptIds": [
+    "topic:programming-fundamentals"
+  ],
+  "description": {
+    "en": "Procedural programming, memory, pointers, data structures, files, and systems-oriented foundations.",
+    "vi": "Procedural programming, memory, pointers, data structures, files, and systems-oriented foundations."
+  },
+  "exerciseGroups": [],
+  "icon": "Terminal",
+  "id": "c",
+  "navigationOrder": 7,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:c:foundations",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn introduction through concise explanations, examples, and connected practice.",
+            "vi": "Learn introduction through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:introduction",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:c:foundations",
+          "slug": "introduction",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Introduction",
+            "vi": "Introduction"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn toolchain through concise explanations, examples, and connected practice.",
+            "vi": "Learn toolchain through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:toolchain",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:c:introduction"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:foundations",
+          "slug": "toolchain",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Toolchain",
+            "vi": "Toolchain"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn syntax through concise explanations, examples, and connected practice.",
+            "vi": "Learn syntax through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:syntax",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:c:toolchain"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:foundations",
+          "slug": "syntax",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Syntax",
+            "vi": "Syntax"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn types through concise explanations, examples, and connected practice.",
+            "vi": "Learn types through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:types",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:c:syntax"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:foundations",
+          "slug": "types",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Types",
+            "vi": "Types"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn operators through concise explanations, examples, and connected practice.",
+            "vi": "Learn operators through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:operators",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:c:types"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:foundations",
+          "slug": "operators",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Operators",
+            "vi": "Operators"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn control flow through concise explanations, examples, and connected practice.",
+            "vi": "Learn control flow through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:control-flow",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:c:operators"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:foundations",
+          "slug": "control-flow",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Control Flow",
+            "vi": "Control Flow"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn functions through concise explanations, examples, and connected practice.",
+            "vi": "Learn functions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:functions",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:c:control-flow"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:foundations",
+          "slug": "functions",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Functions",
+            "vi": "Functions"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "c",
+      "title": {
+        "en": "Foundations",
+        "vi": "Foundations"
+      }
+    },
+    {
+      "id": "learn-section:c:memory-and-data",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn arrays through concise explanations, examples, and connected practice.",
+            "vi": "Learn arrays through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:arrays",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:c:memory-and-data",
+          "slug": "arrays",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Arrays",
+            "vi": "Arrays"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn strings through concise explanations, examples, and connected practice.",
+            "vi": "Learn strings through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:strings",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:c:arrays"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:memory-and-data",
+          "slug": "strings",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Strings",
+            "vi": "Strings"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn pointers through concise explanations, examples, and connected practice.",
+            "vi": "Learn pointers through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:pointers",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:c:strings"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:memory-and-data",
+          "slug": "pointers",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Pointers",
+            "vi": "Pointers"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn dynamic memory through concise explanations, examples, and connected practice.",
+            "vi": "Learn dynamic memory through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:dynamic-memory",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:c:pointers"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:memory-and-data",
+          "slug": "dynamic-memory",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Dynamic Memory",
+            "vi": "Dynamic Memory"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn structures through concise explanations, examples, and connected practice.",
+            "vi": "Learn structures through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:structures",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:c:dynamic-memory"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:memory-and-data",
+          "slug": "structures",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Structures",
+            "vi": "Structures"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn files through concise explanations, examples, and connected practice.",
+            "vi": "Learn files through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:files",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:c:structures"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:memory-and-data",
+          "slug": "files",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Files",
+            "vi": "Files"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:programming-fundamentals"
+          ],
+          "description": {
+            "en": "Learn errors through concise explanations, examples, and connected practice.",
+            "vi": "Learn errors through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:c:errors",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:c:files"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:c:memory-and-data",
+          "slug": "errors",
+          "status": "SKELETON",
+          "subjectId": "c",
+          "title": {
+            "en": "Errors",
+            "vi": "Errors"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "c",
+      "title": {
+        "en": "Memory and data",
+        "vi": "Memory and data"
+      }
+    }
+  ],
+  "slug": "c",
+  "status": "SKELETON",
+  "title": {
+    "en": "C",
+    "vi": "C"
+  },
+  "translationStatus": "english-only"
+}

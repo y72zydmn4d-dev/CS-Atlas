@@ -127,7 +127,8 @@ describe("transient lesson editing", () => {
     fireEvent.click(details);
     expect(screen.getAllByText("exercise:array-linear-scan").length).toBeGreaterThan(0);
     expect(screen.getByRole("combobox", { name: "Search Concept IDs" })).toBeVisible();
-    expect(screen.queryByRole("button", { name: /save|create/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /create/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
     expect(screen.getByRole("button", { name: "Preview" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Validate" })).toBeVisible();
     const choices = within(screen.getByLabelText("Block type")).getAllByRole("option").map((option) => option.textContent);
@@ -275,7 +276,7 @@ describe("dirty draft protection", () => {
     const event = new KeyboardEvent("keydown", { key: "s", [modifier]: true, bubbles: true, cancelable: true });
     fireEvent(window, event);
     expect(event.defaultPrevented).toBe(true);
-    expect(screen.getByText(/Repository Save is not enabled/)).toBeVisible();
+    expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
     expect(navigateStudioDocument).not.toHaveBeenCalled();
   });
 });

@@ -1,0 +1,89 @@
+{
+  "blocks": [
+    {
+      "id": "objectives",
+      "items": [
+        {
+          "en": "Define and call a function.",
+          "vi": "Define and call a function."
+        },
+        {
+          "en": "Distinguish parameters from arguments.",
+          "vi": "Distinguish parameters from arguments."
+        },
+        {
+          "en": "Design a predictable return and error contract.",
+          "vi": "Design a predictable return and error contract."
+        }
+      ],
+      "type": "objectives"
+    },
+    {
+      "body": {
+        "en": "A reusable callable object that binds arguments to parameters, executes a body in a local scope, and returns a value or raises an exception.",
+        "vi": "A reusable callable object that binds arguments to parameters, executes a body in a local scope, and returns a value or raises an exception."
+      },
+      "id": "definition",
+      "term": "Function",
+      "type": "definition"
+    },
+    {
+      "code": "def name(parameter, optional=default):\n    \"\"\"Describe the contract.\"\"\"\n    return result",
+      "id": "syntax",
+      "language": "python",
+      "type": "syntax"
+    },
+    {
+      "exampleId": "python-example-function-contract",
+      "id": "example",
+      "type": "example"
+    },
+    {
+      "id": "practice",
+      "items": [
+        {
+          "en": "State the input domain.",
+          "vi": "State the input domain."
+        },
+        {
+          "en": "Choose a return shape that callers can rely on.",
+          "vi": "Choose a return shape that callers can rely on."
+        },
+        {
+          "en": "Reject invalid input deliberately.",
+          "vi": "Reject invalid input deliberately."
+        },
+        {
+          "en": "Keep side effects visible in the name or interface.",
+          "vi": "Keep side effects visible in the name or interface."
+        }
+      ],
+      "ordered": true,
+      "type": "list"
+    },
+    {
+      "body": {
+        "en": "A function that sometimes returns a value and sometimes falls through to None creates a hidden union that every caller must handle.",
+        "vi": "A function that sometimes returns a value and sometimes falls through to None creates a hidden union that every caller must handle."
+      },
+      "id": "mistake",
+      "tone": "common-mistake",
+      "type": "callout"
+    },
+    {
+      "id": "refs",
+      "referenceIds": [
+        "python-ref-len",
+        "python-ref-range"
+      ],
+      "type": "references"
+    }
+  ],
+  "lessonId": "learn:python:functions",
+  "reviewedAt": "2026-09-30",
+  "summary": {
+    "en": "Design functions as explicit contracts with inputs, outputs, failure behavior, and a focused responsibility.",
+    "vi": "Design functions as explicit contracts with inputs, outputs, failure behavior, and a focused responsibility."
+  },
+  "version": 1
+}

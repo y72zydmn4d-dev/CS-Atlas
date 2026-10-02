@@ -47,7 +47,7 @@ describe("unsaved preview / retained editor / race isolation", () => {
     expect(container.querySelector("form")).toHaveAttribute("hidden");
     back(); expect(screen.getByLabelText("Lesson title (EN)")).toHaveValue("UNSAVED Python title"); expect(prose).toHaveValue("UNSAVED paragraph");
     expect(screen.getByText("Modified draft")).toBeVisible(); expect(validationDraft().lesson.title.en).not.toBe("UNSAVED Python title");
-    expect(screen.queryByRole("button", { name: "Save" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Save" })).toBeDisabled(); // fixture has no disk revision
   });
   it("explicit refresh only; edits stale prior preview and validation, then refresh updates the model", async () => {
     editor(); preview(); await screen.findByText(/Preview represents this exact draft/); back();

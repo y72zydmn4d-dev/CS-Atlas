@@ -1,0 +1,97 @@
+{
+  "blocks": [
+    {
+      "id": "objectives",
+      "items": [
+        {
+          "en": "Index and slice strings safely.",
+          "vi": "Index and slice strings safely."
+        },
+        {
+          "en": "Explain string immutability.",
+          "vi": "Explain string immutability."
+        },
+        {
+          "en": "Select formatting and joining operations deliberately.",
+          "vi": "Select formatting and joining operations deliberately."
+        }
+      ],
+      "type": "objectives"
+    },
+    {
+      "body": {
+        "en": "An immutable sequence of Unicode code points. Indexing returns a one-character string; slicing returns a new string.",
+        "vi": "An immutable sequence of Unicode code points. Indexing returns a one-character string; slicing returns a new string."
+      },
+      "id": "definition",
+      "term": "String",
+      "type": "definition"
+    },
+    {
+      "code": "text[index]\ntext[start:stop:step]\nf\"value={value}\"",
+      "id": "syntax",
+      "language": "python",
+      "type": "syntax"
+    },
+    {
+      "exampleId": "python-example-string-slice",
+      "id": "example",
+      "type": "example"
+    },
+    {
+      "columns": [
+        {
+          "en": "Operation",
+          "vi": "Operation"
+        },
+        {
+          "en": "Meaning",
+          "vi": "Meaning"
+        }
+      ],
+      "id": "table",
+      "rows": [
+        [
+          "text[0]",
+          "first item"
+        ],
+        [
+          "text[-1]",
+          "last item"
+        ],
+        [
+          "text[:k]",
+          "prefix before k"
+        ],
+        [
+          "separator.join(parts)",
+          "combine many pieces once"
+        ]
+      ],
+      "type": "table"
+    },
+    {
+      "body": {
+        "en": "Repeated string concatenation inside a large loop may allocate many intermediate strings. Accumulate parts and join when scale matters.",
+        "vi": "Repeated string concatenation inside a large loop may allocate many intermediate strings. Accumulate parts and join when scale matters."
+      },
+      "id": "mistake",
+      "tone": "common-mistake",
+      "type": "callout"
+    },
+    {
+      "id": "refs",
+      "referenceIds": [
+        "python-ref-len"
+      ],
+      "type": "references"
+    }
+  ],
+  "lessonId": "learn:python:strings",
+  "reviewedAt": "2026-09-30",
+  "summary": {
+    "en": "Use Python strings as immutable sequences while accounting for indexing, slicing, encoding, and construction cost.",
+    "vi": "Use Python strings as immutable sequences while accounting for indexing, slicing, encoding, and construction cost."
+  },
+  "version": 1
+}

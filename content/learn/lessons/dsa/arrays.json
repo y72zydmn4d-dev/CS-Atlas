@@ -1,0 +1,109 @@
+{
+  "blocks": [
+    {
+      "id": "objectives",
+      "items": [
+        {
+          "en": "Explain constant-time index access.",
+          "vi": "Explain constant-time index access."
+        },
+        {
+          "en": "Predict insertion and deletion costs.",
+          "vi": "Predict insertion and deletion costs."
+        },
+        {
+          "en": "Choose traversal invariants that avoid index errors.",
+          "vi": "Choose traversal invariants that avoid index errors."
+        }
+      ],
+      "type": "objectives"
+    },
+    {
+      "body": {
+        "en": "A sequence whose elements occupy regular positions in memory, allowing an index to be translated into an address with constant arithmetic.",
+        "vi": "A sequence whose elements occupy regular positions in memory, allowing an index to be translated into an address with constant arithmetic."
+      },
+      "id": "definition",
+      "term": "Array",
+      "type": "definition"
+    },
+    {
+      "code": "address(i) = base + i × element_size",
+      "id": "formula",
+      "language": "text",
+      "type": "syntax"
+    },
+    {
+      "columns": [
+        {
+          "en": "Operation",
+          "vi": "Operation"
+        },
+        {
+          "en": "Cost",
+          "vi": "Cost"
+        },
+        {
+          "en": "Reason",
+          "vi": "Reason"
+        }
+      ],
+      "id": "cost",
+      "rows": [
+        [
+          "read/write by index",
+          "O(1)",
+          "direct address calculation"
+        ],
+        [
+          "scan",
+          "O(n)",
+          "inspect up to n items"
+        ],
+        [
+          "insert at front",
+          "O(n)",
+          "shift existing items"
+        ],
+        [
+          "append to dynamic array",
+          "amortized O(1)",
+          "occasional resize"
+        ]
+      ],
+      "type": "table"
+    },
+    {
+      "exerciseId": "exercise:array-linear-scan",
+      "id": "exercise",
+      "type": "exercise"
+    },
+    {
+      "body": {
+        "en": "A dynamic array may have spare capacity, but indices at or beyond its logical length are still invalid.",
+        "vi": "A dynamic array may have spare capacity, but indices at or beyond its logical length are still invalid."
+      },
+      "id": "mistake",
+      "tone": "common-mistake",
+      "type": "callout"
+    },
+    {
+      "id": "related",
+      "lessonIds": [
+        "learn:dsa:binary-search",
+        "learn:python:lists"
+      ],
+      "problemIds": [
+        "first-occurrence"
+      ],
+      "type": "related"
+    }
+  ],
+  "lessonId": "learn:dsa:arrays",
+  "reviewedAt": "2026-09-30",
+  "summary": {
+    "en": "Model contiguous indexed storage, distinguish logical length from capacity, and predict the cost of access and shifting.",
+    "vi": "Model contiguous indexed storage, distinguish logical length from capacity, and predict the cost of access and shifting."
+  },
+  "version": 1
+}

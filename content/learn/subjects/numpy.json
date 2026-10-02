@@ -1,0 +1,342 @@
+{
+  "category": "data-science",
+  "conceptIds": [
+    "topic:numpy"
+  ],
+  "description": {
+    "en": "Typed multidimensional arrays, vectorized operations, broadcasting, aggregation, random sampling, and linear algebra basics.",
+    "vi": "Typed multidimensional arrays, vectorized operations, broadcasting, aggregation, random sampling, and linear algebra basics."
+  },
+  "exerciseGroups": [],
+  "icon": "Grid3X3",
+  "id": "numpy",
+  "navigationOrder": 10,
+  "quizGroups": [],
+  "references": [],
+  "relatedProblemIds": [],
+  "relatedRoadmapIds": [],
+  "sections": [
+    {
+      "id": "learn-section:numpy:arrays",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn introduction through concise explanations, examples, and connected practice.",
+            "vi": "Learn introduction through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:introduction",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:arrays",
+          "slug": "introduction",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Introduction",
+            "vi": "Introduction"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn arrays through concise explanations, examples, and connected practice.",
+            "vi": "Learn arrays through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:arrays",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:numpy:introduction"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:arrays",
+          "slug": "arrays",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Arrays",
+            "vi": "Arrays"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn dtypes through concise explanations, examples, and connected practice.",
+            "vi": "Learn dtypes through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:dtypes",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:numpy:arrays"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:arrays",
+          "slug": "dtypes",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Dtypes",
+            "vi": "Dtypes"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn shape through concise explanations, examples, and connected practice.",
+            "vi": "Learn shape through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:shape",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:numpy:dtypes"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:arrays",
+          "slug": "shape",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Shape",
+            "vi": "Shape"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn indexing through concise explanations, examples, and connected practice.",
+            "vi": "Learn indexing through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:indexing",
+          "order": 5,
+          "prerequisiteLessonIds": [
+            "learn:numpy:shape"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:arrays",
+          "slug": "indexing",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Indexing",
+            "vi": "Indexing"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn slicing through concise explanations, examples, and connected practice.",
+            "vi": "Learn slicing through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:slicing",
+          "order": 6,
+          "prerequisiteLessonIds": [
+            "learn:numpy:indexing"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:arrays",
+          "slug": "slicing",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Slicing",
+            "vi": "Slicing"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn broadcasting through concise explanations, examples, and connected practice.",
+            "vi": "Learn broadcasting through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:broadcasting",
+          "order": 7,
+          "prerequisiteLessonIds": [
+            "learn:numpy:slicing"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:arrays",
+          "slug": "broadcasting",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Broadcasting",
+            "vi": "Broadcasting"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 1,
+      "subjectId": "numpy",
+      "title": {
+        "en": "Arrays",
+        "vi": "Arrays"
+      }
+    },
+    {
+      "id": "learn-section:numpy:computation",
+      "lessons": [
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn universal functions through concise explanations, examples, and connected practice.",
+            "vi": "Learn universal functions through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:universal-functions",
+          "order": 1,
+          "prerequisiteLessonIds": [],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:computation",
+          "slug": "universal-functions",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Universal Functions",
+            "vi": "Universal Functions"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn aggregation through concise explanations, examples, and connected practice.",
+            "vi": "Learn aggregation through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:aggregation",
+          "order": 2,
+          "prerequisiteLessonIds": [
+            "learn:numpy:universal-functions"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:computation",
+          "slug": "aggregation",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Aggregation",
+            "vi": "Aggregation"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn random through concise explanations, examples, and connected practice.",
+            "vi": "Learn random through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:random",
+          "order": 3,
+          "prerequisiteLessonIds": [
+            "learn:numpy:aggregation"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:computation",
+          "slug": "random",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Random",
+            "vi": "Random"
+          },
+          "translationStatus": "english-only"
+        },
+        {
+          "conceptIds": [
+            "topic:numpy"
+          ],
+          "description": {
+            "en": "Learn linear algebra basics through concise explanations, examples, and connected practice.",
+            "vi": "Learn linear algebra basics through concise explanations, examples, and connected practice."
+          },
+          "difficulty": "Foundational",
+          "estimatedMinutes": 12,
+          "exerciseIds": [],
+          "id": "learn:numpy:linear-algebra-basics",
+          "order": 4,
+          "prerequisiteLessonIds": [
+            "learn:numpy:random"
+          ],
+          "problemIds": [],
+          "sectionId": "learn-section:numpy:computation",
+          "slug": "linear-algebra-basics",
+          "status": "SKELETON",
+          "subjectId": "numpy",
+          "title": {
+            "en": "Linear Algebra Basics",
+            "vi": "Linear Algebra Basics"
+          },
+          "translationStatus": "english-only"
+        }
+      ],
+      "order": 2,
+      "subjectId": "numpy",
+      "title": {
+        "en": "Computation",
+        "vi": "Computation"
+      }
+    }
+  ],
+  "slug": "numpy",
+  "status": "SKELETON",
+  "title": {
+    "en": "NumPy",
+    "vi": "NumPy"
+  },
+  "translationStatus": "english-only"
+}

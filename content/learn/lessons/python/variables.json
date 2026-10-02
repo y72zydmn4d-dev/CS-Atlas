@@ -1,0 +1,115 @@
+{
+  "blocks": [
+    {
+      "id": "objectives",
+      "items": [
+        {
+          "en": "Bind and rebind names.",
+          "vi": "Bind and rebind names."
+        },
+        {
+          "en": "Distinguish equality from identity.",
+          "vi": "Distinguish equality from identity."
+        },
+        {
+          "en": "Choose names that expose intent and scope.",
+          "vi": "Choose names that expose intent and scope."
+        }
+      ],
+      "type": "objectives"
+    },
+    {
+      "body": {
+        "en": "An association between a name and an object in a namespace. Assignment changes a binding; it does not declare a permanent type for the name.",
+        "vi": "An association between a name and an object in a namespace. Assignment changes a binding; it does not declare a permanent type for the name."
+      },
+      "id": "definition",
+      "term": "Binding",
+      "type": "definition"
+    },
+    {
+      "code": "name = value\nleft, right = right, left",
+      "id": "assignment",
+      "language": "python",
+      "type": "syntax"
+    },
+    {
+      "exampleId": "python-example-variables-state",
+      "id": "example",
+      "type": "example"
+    },
+    {
+      "columns": [
+        {
+          "en": "Question",
+          "vi": "Question"
+        },
+        {
+          "en": "Operator",
+          "vi": "Operator"
+        }
+      ],
+      "id": "compare",
+      "rows": [
+        {
+          "label": {
+            "en": "Do these values compare equal?",
+            "vi": "Do these values compare equal?"
+          },
+          "values": [
+            {
+              "en": "==",
+              "vi": "=="
+            },
+            {
+              "en": "Value semantics",
+              "vi": "Value semantics"
+            }
+          ]
+        },
+        {
+          "label": {
+            "en": "Are these references the same object?",
+            "vi": "Are these references the same object?"
+          },
+          "values": [
+            {
+              "en": "is",
+              "vi": "is"
+            },
+            {
+              "en": "Identity semantics",
+              "vi": "Identity semantics"
+            }
+          ]
+        }
+      ],
+      "type": "comparison"
+    },
+    {
+      "body": {
+        "en": "Prefer one clear binding per line. Use unpacking when the parallel structure is part of the idea, not merely to shorten the file.",
+        "vi": "Prefer one clear binding per line. Use unpacking when the parallel structure is part of the idea, not merely to shorten the file."
+      },
+      "id": "tip",
+      "tone": "tip",
+      "type": "callout"
+    },
+    {
+      "id": "related",
+      "lessonIds": [
+        "learn:python:strings",
+        "learn:python:lists"
+      ],
+      "problemIds": [],
+      "type": "related"
+    }
+  ],
+  "lessonId": "learn:python:variables",
+  "reviewedAt": "2026-09-30",
+  "summary": {
+    "en": "Reason about names as bindings to values, including rebinding, identity, scope, and naming discipline.",
+    "vi": "Reason about names as bindings to values, including rebinding, identity, scope, and naming discipline."
+  },
+  "version": 1
+}
